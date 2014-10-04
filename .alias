@@ -1,0 +1,23 @@
+# $Id: skel.alias,v 1.2 1998/04/20 11:41:32 luisgh Exp $
+# Luis Francisco González <luisgh@debian.org> based on that of Vadik Vygonets
+# Please check /usr/doc/tcsh/examples/alias to see other possible values.
+alias ls='ls -lhG'
+alias l="ls"
+alias la='ls -lah'
+alias lc="ls | wc -l"
+
+alias md='mkdir'
+alias rd='rm -rf'
+alias ..='cd ..'
+alias e="mcedit -x"
+alias root="sudo bash"
+alias du1="du -d 1 -h"
+alias df="df -h"
+alias scr='screen -r'
+alias tgz='tar czfv'
+alias utgz='tar xzfv'
+alias web="export IP=`ifconfig  | grep -E 'inet.[0-9]' | egrep -v '127.0.0.1|192.168|172.16' | awk '{print $2}'`; echo 'http://'$IP':8000/'; python -m SimpleHTTPServer"
+
+alias work='workon twotickets'
+alias tt='workon tt31; cd ~/projects/twotickets; git checkout tt31'
+alias shell='python manage.py shell'
