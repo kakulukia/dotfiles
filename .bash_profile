@@ -51,7 +51,4 @@ export PATH=~/ghar/bin:~/bin:$PATH
 
 source /usr/local/bin/virtualenvwrapper.sh
 
-function mkdir
-{
-    command mkdir $1 && cd $1
-}
+eval "$(fasd --init auto)"

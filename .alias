@@ -6,7 +6,11 @@ alias l="ls"
 alias la='ls -lah'
 alias lc="ls | wc -l"
 
-alias md='mkdir'
+# alias md='mkdir' diabled in favour of
+function md
+{
+    command mkdir $1 && cd $1
+}
 alias rd='rm -rf'
 alias ..='cd ..'
 alias root="sudo bash"
