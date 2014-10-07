@@ -1,33 +1,57 @@
-# ~/.bash_profile: executed by bash(1) for login shells.
-# see /usr/share/doc/bash/examples/startup-files for examples.
-# the files are located in the bash-doc package.
+#!/usr/bin/env bash
 
-# the default umask is set in /etc/login.defs
-#umask 022
+# Path to the bash it configuration
+export BASH_IT=$HOME/.bash_it
 
-# include .bashrc if it exists
-if [ -f ~/.bashrc ]; then
-    . ~/.bashrc
+# Lock and Load a custom theme file
+# location /.bash_it/themes/
+export BASH_IT_THEME='Powerline-Plain'
+
+# Set my editor and git editor
+export EDITOR="/usr/bin/vim"
+export GIT_EDITOR='/usr/bin/vim'
+
+export IRC_CLIENT='irssi'
+
+# Load Bash It
+source $BASH_IT/bash_it.sh
+
+# Case-insensitive globbing (used in pathname expansion)
+shopt -s nocaseglob;
+
+# Append to the Bash history file, rather than overwriting it
+shopt -s histappend;
+
+# Autocorrect typos in path names when using `cd`
+shopt -s cdspell;
+
+# Add tab completion for many Bash commands
+if which brew > /dev/null && [ -f "$(brew --prefix)/etc/bash_completion" ]; then
+    source "$(brew --prefix)/etc/bash_completion";
+elif [ -f /etc/bash_completion ]; then
+    source /etc/bash_completion;
+fi;
+
+# Enable tab completion for `g` by marking it as an alias for `git`
+if type _git &> /dev/null && [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
+    complete -o default -o nospace -F _git g;
+fi;
+
+# Thanks to @tmoitie, adds more tab completion for bash,
+# also when hitting tab twice it will show a list.
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
 fi
 
-# the rest of this file is commented out.
+. ~/.alias
 
-# set PATH so it includes user's private bin if it exists
-#if [ -d ~/bin ] ; then
-#    PATH=.:~/bin:"${PATH}"
-#fi
+HISTFILESIZE=12345
+export HISTCONTROL=ignoreboth:erasedups
+export PATH=~/ghar/bin:~/bin:$PATH
 
-# do the same with MANPATH
-#if [ -d ~/man ]; then
-#    MANPATH=~/man${MANPATH:-:}
-#    export MANPATH
-#fi
+source /usr/local/bin/virtualenvwrapper.sh
 
-source .profile
-
-# ignore identical lines next to each other
-export HISTCONTROL=ignoreboth
-
-# Change this to a reasonable number of lines to save, I like to save only 100.
-export HISTSIZE=17777
-export INPUTRC=~/.inputrc
+function mkdir
+{
+    command mkdir $1 && cd $1
+}

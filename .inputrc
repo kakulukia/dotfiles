@@ -1,70 +1,46 @@
-# /etc/inputrc - global inputrc for libreadline
-# See readline(3readline) and `info rluserman' for more information.
+# Make Tab autocomplete regardless of filename case
+set completion-ignore-case on
 
+# List all matches in case multiple possible completions are possible
+set show-all-if-ambiguous on
 # Be 8 bit clean.
 set input-meta on
 set output-meta on
 
+# Immediately add a trailing slash when autocompleting symlinks to directories
+set mark-symlinked-directories on
 # To allow the use of 8bit-characters like the german umlauts, uncomment
 # the line below. However this makes the meta key not work as a meta key,
 # which is annoying to those which don't need to type in 8-bit characters.
 
-# set convert-meta off
-
-# try to enable the application keypad when it is called.  Some systems
-# need this to enable the arrow keys.
-# set enable-keypad on
-
-# see /usr/share/doc/bash/inputrc.arrows for other codes of arrow keys
-
-# do not bell on tab-completion
-# set bell-style none
-set bell-style visible
-
-# some defaults / modifications for the emacs mode
-$if mode=emacs
-
-# allow the use of the Home/End keys
-"\e[1~": beginning-of-line
-"\e[4~": end-of-line
-
-# allow the use of the Delete/Insert keys
-"\e[3~": delete-char
-"\e[2~": quoted-insert
-
-# mappings for "page up" and "page down" to step to the beginning/end
-# of the history
-# "\e[5~": beginning-of-history
-# "\e[6~": end-of-history
-
-# alternate mappings for "page up" and "page down" to search the history
-"\e[5~": history-search-backward
-"\e[6~": history-search-forward
+# Use the text that has already been typed as the prefix for searching through
+# commands (i.e. more intelligent Up/Down behavior)
 "\e[B": history-search-forward
 "\e[A": history-search-backward
 
-# mappings for Ctrl-left-arrow and Ctrl-right-arrow for word moving
-"\e[1;5C": forward-word
-"\e[1;5D": backward-word
-"\e[5C": forward-word
-"\e[5D": backward-word
-"\e\e[C": forward-word
-"\e\e[D": backward-word
+# Do not autocomplete hidden files unless the pattern explicitly begins with a dot
+set match-hidden-files off
 
-$if term=rxvt
-"\e[8~": end-of-line
-"\eOc": forward-word
-"\eOd": backward-word
-$endif
+# Show all autocomplete results at once
+set page-completions off
 
-# for non RH/Debian xterm, can't hurt for RH/Debian xterm
-# "\eOH": beginning-of-line
-# "\eOF": end-of-line
+# If there are more than 200 possible completions for a word, ask to show them all
+set completion-query-items 200
 
-# for freebsd console
-# "\e[H": beginning-of-line
-# "\e[F": end-of-line
+# Show extra file information when completing, like `ls -F` does
+set visible-stats on
 
-set completion-ignore-case On
+# Be more intelligent when autocompleting by also looking at the text after
+# the cursor. For example, when the current line is "cd ~/src/mozil", and
+# the cursor is on the "z", pressing Tab will not autocomplete it to "cd
+# ~/src/mozillail", but to "cd ~/src/mozilla". (This is supported by the
+# Readline used by Bash 4.)
+set skip-completed-text on
 
-$endif
+# Allow UTF-8 input and output, instead of showing stuff like $'\0123\0456'
+set input-meta on
+set output-meta on
+set convert-meta off
+
+# Use Alt/Meta + Delete to delete the preceding word
+"\e[3;3~": kill-word
