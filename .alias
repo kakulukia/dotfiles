@@ -19,13 +19,14 @@ alias df="df -h"
 alias scr='screen -r'
 alias tgz='tar czfv'
 alias utgz='tar xzfv'
-alias web="export IP=`ipconfig getifaddr en1`; echo 'http://'$IP':8000/'; python -m SimpleHTTPServer"
+
 
 
 alias shell='python manage.py shell_plus'
 alias v='f -e vim' # quick opening files with vim
 alias c='z'
 alias s='subl'
+alias o='open'
 alias stree='open -a SourceTree'
 
 # Get week number
@@ -36,7 +37,15 @@ alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias localip="ipconfig getifaddr en1"
+
+if which ipconfig > /dev/null; then
+    alias localip="ipconfig getifaddr en0"
+    alias web="export IP=`ipconfig getifaddr en1`; echo 'http://'$IP':8000/'; python -m SimpleHTTPServer"
+else 
+    alias web="python -m SimpleHTTPServer"
+fi;
+
+
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
 # Flush Directory Service cache
@@ -52,4 +61,8 @@ alias pumpitup="osascript -e 'set volume 7'"
 
 # Faster npm for Europeans
 command -v npm > /dev/null && alias npme="npm --registry http://registry.npmjs.eu/"
+
+# work stuff
+alias be='workon backend'
+alias fe='deactivate; cd ~/ubimake/frontend'
 

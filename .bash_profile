@@ -39,7 +39,7 @@ fi;
 
 # Thanks to @tmoitie, adds more tab completion for bash,
 # also when hitting tab twice it will show a list.
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
+if which brew > /dev/null && [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 fi
 
@@ -52,3 +52,5 @@ export PATH=~/ghar/bin:~/bin:$PATH
 source /usr/local/bin/virtualenvwrapper.sh
 
 eval "$(fasd --init auto)"
+
+source ~/.profile
