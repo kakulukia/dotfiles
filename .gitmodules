@@ -10,3 +10,6 @@
 [submodule ".vim/bundle/vim-sensible"]
 	path = .vim/bundle/vim-sensible
 	url = git@github.com:tpope/vim-sensible.git
+[submodule ".bash_it"]
+	path = .bash_it
+	url = git@github.com:kakulukia/bash-it.git
