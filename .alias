@@ -6,7 +6,7 @@ alias l="ls"
 alias la='ls -lah'
 alias lc="ls | wc -l"
 
-# alias md='mkdir' diabled in favour of
+# create folder and cd into it
 function md
 {
     command mkdir $1 && cd $1
@@ -20,7 +20,6 @@ alias scr='screen -r'
 alias tgz='tar czfv'
 alias utgz='tar xzfv'
 alias gitlog='git log --pretty=oneline -n 20 --graph --abbrev-commit'
-
 
 alias shell='python manage.py shell_plus'
 alias v='f -e vim' # quick opening files with vim
