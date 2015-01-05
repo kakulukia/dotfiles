@@ -26,7 +26,7 @@ alias v='f -e vim' # quick opening files with vim
 alias c='z'
 alias s='subl'
 alias o='open'
-alias stree='open -a SourceTree'
+alias stree='open -a SourceTree .'
 
 # Get week number
 alias week='date +%V'
