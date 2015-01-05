@@ -19,7 +19,7 @@ alias df="df -h"
 alias scr='screen -r'
 alias tgz='tar czfv'
 alias utgz='tar xzfv'
-alias gitlog='git log --pretty=oneline -n 20 --graph --abbrev-commit'
+alias gitlog='git log --pretty=oneline -n 35 --graph --abbrev-commit'
 
 alias shell='python manage.py shell_plus'
 alias v='f -e vim' # quick opening files with vim
