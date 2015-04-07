@@ -1,6 +1,6 @@
 [submodule ".vim/bundle/vim-fugitive"]
 	path = .vim/bundle/vim-fugitive
-	url = git@github.com:tpope/vim-fugitive.git
+	url = git://github.com/tpope/vim-fugitive.git
 [submodule ".vim/bundle/vim-airline"]
 	path = .vim/bundle/vim-airline
 	url = https://github.com/bling/vim-airline
@@ -9,7 +9,7 @@
 	url = git://github.com/altercation/vim-colors-solarized.git
 [submodule ".vim/bundle/vim-sensible"]
 	path = .vim/bundle/vim-sensible
-	url = git@github.com:tpope/vim-sensible.git
+	url = git://github.com/tpope/vim-sensible.git
 [submodule ".bash_it"]
 	path = .bash_it
 	url = git://github.com/revans/bash-it.git
