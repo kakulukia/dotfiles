@@ -1,10 +1,9 @@
 # $Id: skel.alias,v 1.2 1998/04/20 11:41:32 luisgh Exp $
 # Luis Francisco González <luisgh@debian.org> based on that of Vadik Vygonets
 # Please check /usr/doc/tcsh/examples/alias to see other possible values.
-alias ls='ls -lhG'
-alias l="ls"
-alias la='ls -lah'
-alias lc="ls | wc -l"
+alias l='ls -lhG'
+alias la='l -a'
+alias lc="l | wc -l"
 
 # create folder and cd into it
 function md
