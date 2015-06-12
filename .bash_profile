@@ -53,4 +53,4 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 eval "$(fasd --init auto)"
 export TERM='xterm-256color'
-
+source ~/.profile
