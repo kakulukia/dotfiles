@@ -1,8 +1,8 @@
 # $Id: skel.alias,v 1.2 1998/04/20 11:41:32 luisgh Exp $
 # Luis Francisco González <luisgh@debian.org> based on that of Vadik Vygonets
 # Please check /usr/doc/tcsh/examples/alias to see other possible values.
-alias l='ls -lhG --color=auto'
-alias la='ls -lha --color=auto'
+alias l='ls -lhG'
+alias la='ls -lha'
 alias lc="l | wc -l"
 
 # create folder and cd into it
