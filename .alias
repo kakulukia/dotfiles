@@ -27,7 +27,8 @@ alias c='z'
 alias s='subl'
 alias o='open'
 alias stree='open -a SourceTree .'
-alias sv='sudo supervisorctl' 
+alias sv='sudo supervisorctl'
+alias gd='git diff --word-diff'
 
 # Get week number
 alias week='date +%V'
