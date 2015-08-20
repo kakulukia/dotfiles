@@ -12,4 +12,4 @@
 	url = git://github.com/tpope/vim-sensible.git
 [submodule ".bash_it"]
 	path = .bash_it
-	url = git://github.com/revans/bash-it.git
+	url = git://github.com/Bash-it/bash-it.git
