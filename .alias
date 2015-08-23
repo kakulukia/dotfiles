@@ -27,6 +27,10 @@ alias s='subl'
 alias o='open'
 alias stree='open -a SourceTree .'
 
+# Globals
+alias -g G="| grep"
+alias -g L="| less"
+
 # Get week number
 alias week='date +%V'
 
