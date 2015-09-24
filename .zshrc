@@ -40,7 +40,7 @@ ZSH_CUSTOM=~/.zsh-custom
 plugins=(git autoenv extract supervisor fasd fabric virtualenv virtualenvwrapper history-substring-search)
 
 # User configuration
-export PATH="/usr/local/bin:/usr/bin::/usr/sbin:/sbin:~/bin:/usr/local/sbin:.:/bin"
+export PATH="/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/usr/local/sbin:.:/bin:~/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh

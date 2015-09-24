@@ -17,7 +17,7 @@ VIRTUAL_ENV_DISABLE_PROMPT=true
 
 # PROMPT
 if [ ! -n "${BULLETTRAIN_PROMPT_CHAR+1}" ]; then
-  BULLETTRAIN_PROMPT_CHAR="\$"
+  BULLETTRAIN_PROMPT_CHAR=""
 fi
 if [ ! -n "${BULLETTRAIN_PROMPT_ROOT+1}" ]; then
   BULLETTRAIN_PROMPT_ROOT=true
@@ -45,7 +45,7 @@ fi
 
 # TIME
 if [ ! -n "${BULLETTRAIN_TIME_SHOW+1}" ]; then
-  BULLETTRAIN_TIME_SHOW=true
+  BULLETTRAIN_TIME_SHOW=false
 fi
 if [ ! -n "${BULLETTRAIN_TIME_BG+1}" ]; then
   BULLETTRAIN_TIME_BG=white
@@ -59,13 +59,13 @@ if [ ! -n "${BULLETTRAIN_VIRTUALENV_SHOW+1}" ]; then
   BULLETTRAIN_VIRTUALENV_SHOW=true
 fi
 if [ ! -n "${BULLETTRAIN_VIRTUALENV_BG+1}" ]; then
-  BULLETTRAIN_VIRTUALENV_BG=yellow
+  BULLETTRAIN_VIRTUALENV_BG=green
 fi
 if [ ! -n "${BULLETTRAIN_VIRTUALENV_FG+1}" ]; then
   BULLETTRAIN_VIRTUALENV_FG=white
 fi
 if [ ! -n "${BULLETTRAIN_VIRTUALENV_PREFIX+1}" ]; then
-  BULLETTRAIN_VIRTUALENV_PREFIX=🐍
+  BULLETTRAIN_VIRTUALENV_PREFIX=⬡
 fi
 
 # NVM
@@ -101,7 +101,7 @@ if [ ! -n "${BULLETTRAIN_DIR_SHOW+1}" ]; then
   BULLETTRAIN_DIR_SHOW=true
 fi
 if [ ! -n "${BULLETTRAIN_DIR_BG+1}" ]; then
-  BULLETTRAIN_DIR_BG=blue
+  BULLETTRAIN_DIR_BG=008
 fi
 if [ ! -n "${BULLETTRAIN_DIR_FG+1}" ]; then
   BULLETTRAIN_DIR_FG=white
@@ -118,10 +118,10 @@ if [ ! -n "${BULLETTRAIN_GIT_SHOW+1}" ]; then
   BULLETTRAIN_GIT_SHOW=true
 fi
 if [ ! -n "${BULLETTRAIN_GIT_BG+1}" ]; then
-  BULLETTRAIN_GIT_BG=white
+  BULLETTRAIN_GIT_BG=235
 fi
 if [ ! -n "${BULLETTRAIN_GIT_FG+1}" ]; then
-  BULLETTRAIN_GIT_FG=black
+  BULLETTRAIN_GIT_FG=white
 fi
 if [ ! -n "${BULLETTRAIN_GIT_EXTENDED+1}" ]; then
   BULLETTRAIN_GIT_EXTENDED=true
@@ -140,7 +140,7 @@ fi
 
 # GIT PROMPT
 if [ ! -n "${BULLETTRAIN_GIT_PREFIX+1}" ]; then
-  ZSH_THEME_GIT_PROMPT_PREFIX=" ⎇ "
+  ZSH_THEME_GIT_PROMPT_PREFIX="⎇   "
 else
   ZSH_THEME_GIT_PROMPT_PREFIX=$BULLETTRAIN_GIT_PREFIX
 fi
@@ -410,7 +410,7 @@ prompt_status() {
   symbols=()
   [[ $RETVAL -ne 0 && $BULLETTRAIN_STATUS_EXIT_SHOW != true ]] && symbols+="✘"
   [[ $RETVAL -ne 0 && $BULLETTRAIN_STATUS_EXIT_SHOW == true ]] && symbols+="✘ $RETVAL"
-  [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}⚡%f"
+  [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%} / %f"
   [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="⚙"
 
   if [[ -n "$symbols" && $RETVAL -ne 0 ]]; then
@@ -449,9 +449,8 @@ build_prompt() {
   prompt_virtualenv
   prompt_nvm
   prompt_context
-  prompt_dir
   prompt_git
-  # prompt_hg
+  prompt_dir
   prompt_end
 }
 
