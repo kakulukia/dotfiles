@@ -40,7 +40,7 @@ ZSH_CUSTOM=~/.zsh-custom
 plugins=(git autoenv extract supervisor fasd fabric virtualenv virtualenvwrapper history-substring-search)
 
 # User configuration
-export PATH="/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/usr/local/sbin:.:/bin:~/bin"
+export PATH="$PATH:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/usr/local/sbin:.:/bin:~/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -97,3 +97,28 @@ error_color=red
 jobs_color=green
 zstyle ':completion:*' special-dirs true
 export REPORTTIME=2
+
+# Keypad
+# 0 . , Enter
+bindkey -s "^[Op" "0"
+bindkey -s "^[Ol" "."
+bindkey -s "^[On" "."
+bindkey -s "^[OM" "^M"
+# 1 2 3
+bindkey -s "^[Oq" "1"
+bindkey -s "^[Or" "2"
+bindkey -s "^[Os" "3"
+# 4 5 6
+bindkey -s "^[Ot" "4"
+bindkey -s "^[Ou" "5"
+bindkey -s "^[Ov" "6"
+# 7 8 9
+bindkey -s "^[Ow" "7"
+bindkey -s "^[Ox" "8"
+bindkey -s "^[Oy" "9"
+# + -  * /
+bindkey -s "^[Ok" "+"
+bindkey -s "^[Om" "-"
+bindkey -s "^[Oj" "*"
+bindkey -s "^[Oo" "/"
+bindkey -s "^[OX" "="
