@@ -47,19 +47,21 @@ BULLETTRAIN_DIR_EXTENDED=1
 
 # GIT
 BULLETTRAIN_GIT_SHOW=true
-BULLETTRAIN_GIT_BG=235
+BULLETTRAIN_GIT_BG=237
 BULLETTRAIN_GIT_FG=white
 BULLETTRAIN_GIT_DIRTY_FG=red
 BULLETTRAIN_GIT_EXTENDED=true
 
 # CONTEXT
 BULLETTRAIN_CONTEXT_SHOW=true
-BULLETTRAIN_CONTEXT_BG=blue
-BULLETTRAIN_CONTEXT_FG=default
+BULLETTRAIN_CONTEXT_BG=033
+BULLETTRAIN_CONTEXT_SSH_BG=208
+BULLETTRAIN_CONTEXT_FG=015
 
 # GIT PROMPT
-ZSH_THEME_GIT_PROMPT_PREFIX="⎇   "
+ZSH_THEME_GIT_PROMPT_PREFIX="⎇ "
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
+ZSH_THEME_GIT_PROMPT_DIRTY=""
 ZSH_THEME_GIT_PROMPT_ADDED=" %F{green}✚%F{black}"
 ZSH_THEME_GIT_PROMPT_MODIFIED=" %F{blue}✹%F{black}"
 ZSH_THEME_GIT_PROMPT_DELETED=" %F{red}✖%F{black}"
@@ -126,7 +128,11 @@ prompt_context() {
   [[ $BULLETTRAIN_CONTEXT_SHOW == false ]] && return
 
   local _context="$(context)"
-  [[ -n "$_context" ]] && prompt_segment $BULLETTRAIN_CONTEXT_BG $BULLETTRAIN_CONTEXT_FG "$_context"
+  if [[ -n "$SSH_CLIENT" ]]; then
+    [[ -n "$_context" ]] && prompt_segment $BULLETTRAIN_CONTEXT_SSH_BG $BULLETTRAIN_CONTEXT_FG "$_context"
+  else
+    [[ -n "$_context" ]] && prompt_segment $BULLETTRAIN_CONTEXT_BG $BULLETTRAIN_CONTEXT_FG "$_context"
+  fi
 }
 
 # Git
@@ -158,7 +164,7 @@ prompt_git() {
     [[ "${git_status}" =~ ${ahead_re} ]] && BRANCH_INFO+="${ZSH_THEME_GIT_PROMPT_AHEAD}$match"
     [[ "${git_status}" =~ ${behind_re} ]] && BRANCH_INFO+="${ZSH_THEME_GIT_PROMPT_BEHIND}$match"
 
-    echo -n $(git_prompt_info)¶$BRANCH_INFO
+    echo -n $(git_prompt_info)$BRANCH_INFO
     
   fi
 }
@@ -195,7 +201,7 @@ prompt_virtualenv() {
 
   local virtualenv_path="$VIRTUAL_ENV"
   if [[ -n $virtualenv_path && -n $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
-    prompt_segment $BULLETTRAIN_VIRTUALENV_BG $BULLETTRAIN_VIRTUALENV_FG $BULLETTRAIN_VIRTUALENV_PREFIX"  $(basename $virtualenv_path)"
+    prompt_segment $BULLETTRAIN_VIRTUALENV_BG $BULLETTRAIN_VIRTUALENV_FG $BULLETTRAIN_VIRTUALENV_PREFIX" $(basename $virtualenv_path)"
   fi
 }
 
