@@ -2,7 +2,7 @@
 # Luis Francisco González <luisgh@debian.org> based on that of Vadik Vygonets
 # Please check /usr/doc/tcsh/examples/alias to see other possible values.
 alias l='ls -lhG'
-alias la='l -a'
+alias ll='l -a'
 alias lc="l | wc -l"
 
 # create folder and cd into it
