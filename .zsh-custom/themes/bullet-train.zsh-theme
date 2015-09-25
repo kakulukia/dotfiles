@@ -36,19 +36,7 @@ BULLETTRAIN_TIME_FG=black
 BULLETTRAIN_VIRTUALENV_SHOW=true
 BULLETTRAIN_VIRTUALENV_BG=green
 BULLETTRAIN_VIRTUALENV_FG=white
-BULLETTRAIN_VIRTUALENV_PREFIX=⬡
-
-# NVM
-BULLETTRAIN_NVM_SHOW=false
-BULLETTRAIN_NVM_BG=green
-BULLETTRAIN_NVM_FG=white
-BULLETTRAIN_NVM_PREFIX="⬡ "
-
-# RUBY
-BULLETTRAIN_RUBY_SHOW=true
-BULLETTRAIN_RUBY_BG=magenta
-BULLETTRAIN_RUBY_FG=white
-BULLETTRAIN_RUBY_PREFIX=♦️
+BULLETTRAIN_VIRTUALENV_PREFIX="⬡"
 
 # DIR
 BULLETTRAIN_DIR_SHOW=true
@@ -61,25 +49,24 @@ BULLETTRAIN_DIR_EXTENDED=1
 BULLETTRAIN_GIT_SHOW=true
 BULLETTRAIN_GIT_BG=235
 BULLETTRAIN_GIT_FG=white
+BULLETTRAIN_GIT_DIRTY_FG=red
 BULLETTRAIN_GIT_EXTENDED=true
 
 # CONTEXT
-BULLETTRAIN_CONTEXT_SHOW=false
-BULLETTRAIN_CONTEXT_BG=black
+BULLETTRAIN_CONTEXT_SHOW=true
+BULLETTRAIN_CONTEXT_BG=blue
 BULLETTRAIN_CONTEXT_FG=default
 
 # GIT PROMPT
 ZSH_THEME_GIT_PROMPT_PREFIX="⎇   "
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
-ZSH_THEME_GIT_PROMPT_DIRTY=" ✘"
-ZSH_THEME_GIT_PROMPT_CLEAN=" ✔"
 ZSH_THEME_GIT_PROMPT_ADDED=" %F{green}✚%F{black}"
 ZSH_THEME_GIT_PROMPT_MODIFIED=" %F{blue}✹%F{black}"
 ZSH_THEME_GIT_PROMPT_DELETED=" %F{red}✖%F{black}"
 ZSH_THEME_GIT_PROMPT_UNTRACKED=" %F{yellow}✭%F{black}"
 ZSH_THEME_GIT_PROMPT_RENAMED=" ➜"
 ZSH_THEME_GIT_PROMPT_UNMERGED=" ═"
-ZSH_THEME_GIT_PROMPT_AHEAD=" ⬆"
+ZSH_THEME_GIT_PROMPT_AHEAD=" ↑"
 ZSH_THEME_GIT_PROMPT_BEHIND=" ↓"
 ZSH_THEME_GIT_PROMPT_DIVERGED=" ⬍"
 
@@ -128,7 +115,12 @@ prompt_end() {
 # Context: user@hostname (who am I and where am I)
 context() {
   local user="$(whoami)"
-  [[ "$user" != "$BULLETTRAIN_CONTEXT_DEFAULT_USER" || -n "$SSH_CLIENT" ]] && echo -n "${user}@%m"
+  #[[ "$user" != "$BULLETTRAIN_CONTEXT_DEFAULT_USER" || -n "$SSH_CLIENT" ]] && echo -n "${user}@%m"
+  if [[ -n "$SSH_CLIENT" ]]; then
+    echo -n "⌁ ${user}@%m"
+  else
+    echo "$USER"
+  fi
 }
 prompt_context() {
   [[ $BULLETTRAIN_CONTEXT_SHOW == false ]] && return
@@ -143,52 +135,31 @@ prompt_git() {
     return
   fi
 
+  is_dirty() {
+    test -n "$(git status --porcelain --ignore-submodules)"
+  }
+  
+  local git_status="$(git status -b --porcelain 2> /dev/null)"
+  local ahead_re='.+ahead ([0-9]+).+'
+  local behind_re='.+behind ([0-9]+).+'
+
   local ref dirty mode repo_path
   repo_path=$(git rev-parse --git-dir 2>/dev/null)
 
   if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
-    prompt_segment $BULLETTRAIN_GIT_BG $BULLETTRAIN_GIT_FG
-
-    if [[ $BULLETTRAIN_GIT_EXTENDED == true ]]; then
-      echo -n $(git_prompt_info)$(git_prompt_status)
+    
+    if is_dirty; then
+      prompt_segment $BULLETTRAIN_GIT_BG $BULLETTRAIN_GIT_DIRTY_FG
     else
-      echo -n $(git_prompt_info)
+      prompt_segment $BULLETTRAIN_GIT_BG $BULLETTRAIN_GIT_FG
     fi
-  fi
-}
 
-prompt_hg() {
-  local rev status
-  if $(hg id >/dev/null 2>&1); then
-    if $(hg prompt >/dev/null 2>&1); then
-      if [[ $(hg prompt "{status|unknown}") = "?" ]]; then
-        # if files are not added
-        prompt_segment red white
-        st='±'
-      elif [[ -n $(hg prompt "{status|modified}") ]]; then
-        # if any modification
-        prompt_segment yellow black
-        st='±'
-      else
-        # if working copy is clean
-        prompt_segment green black
-      fi
-      echo -n $(hg prompt "☿ {rev}@{branch}") $st
-    else
-      st=""
-      rev=$(hg id -n 2>/dev/null | sed 's/[^-0-9]//g')
-      branch=$(hg id -b 2>/dev/null)
-      if $(hg st | grep -Eq "^\?"); then
-        prompt_segment red black
-        st='±'
-      elif $(hg st | grep -Eq "^(M|A)"); then
-        prompt_segment yellow black
-        st='±'
-      else
-        prompt_segment green black
-      fi
-      echo -n "☿ $rev@$branch" $st
-    fi
+    local BRANCH_INFO=""
+    [[ "${git_status}" =~ ${ahead_re} ]] && BRANCH_INFO+="${ZSH_THEME_GIT_PROMPT_AHEAD}$match"
+    [[ "${git_status}" =~ ${behind_re} ]] && BRANCH_INFO+="${ZSH_THEME_GIT_PROMPT_BEHIND}$match"
+
+    echo -n $(git_prompt_info)¶$BRANCH_INFO
+    
   fi
 }
 
@@ -216,27 +187,6 @@ prompt_dir() {
   prompt_segment $BULLETTRAIN_DIR_BG $BULLETTRAIN_DIR_FG $dir
 }
 
-# RUBY
-# RVM: only shows RUBY info if on a gemset that is not the default one
-# RBENV: shows current ruby version active in the shell
-# CHRUBY: shows current ruby version active in the shell
-prompt_ruby() {
-  if [[ $BULLETTRAIN_RUBY_SHOW == false ]]; then
-    return
-  fi
-
-  if command -v rvm-prompt > /dev/null 2>&1; then
-    if [[ ! -n $(rvm gemset list | grep "=> (default)") ]]
-    then
-      prompt_segment $BULLETTRAIN_RUBY_BG $BULLETTRAIN_RUBY_FG $BULLETTRAIN_RUBY_PREFIX"  $(rvm-prompt i v g)"
-    fi
-  elif command -v chruby > /dev/null 2>&1; then
-    prompt_segment $BULLETTRAIN_RUBY_BG $BULLETTRAIN_RUBY_FG $BULLETTRAIN_RUBY_PREFIX"  $(chruby | sed -e 's/ \* //')"
-  elif command -v rbenv > /dev/null 2>&1; then
-    prompt_segment $BULLETTRAIN_RUBY_BG $BULLETTRAIN_RUBY_FG $BULLETTRAIN_RUBY_PREFIX"  $(rbenv version | sed -e 's/ (set.*$//')"
-  fi
-}
-
 # Virtualenv: current working virtualenv
 prompt_virtualenv() {
   if [[ $BULLETTRAIN_VIRTUALENV_SHOW == false ]]; then
@@ -247,21 +197,6 @@ prompt_virtualenv() {
   if [[ -n $virtualenv_path && -n $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
     prompt_segment $BULLETTRAIN_VIRTUALENV_BG $BULLETTRAIN_VIRTUALENV_FG $BULLETTRAIN_VIRTUALENV_PREFIX"  $(basename $virtualenv_path)"
   fi
-}
-
-# NVM: Node version manager
-prompt_nvm() {
-  if [[ $BULLETTRAIN_NVM_SHOW == false ]]; then
-    return
-  fi
-
-  $(type nvm >/dev/null 2>&1) || return
-
-  local nvm_prompt
-  nvm_prompt=$(node -v 2>/dev/null)
-  [[ "${nvm_prompt}x" == "x" ]] && return
-  nvm_prompt=${nvm_prompt:1}
-  prompt_segment $BULLETTRAIN_NVM_BG $BULLETTRAIN_NVM_FG $BULLETTRAIN_NVM_PREFIX$nvm_prompt
 }
 
 prompt_time() {
@@ -323,11 +258,9 @@ prompt_char() {
 build_prompt() {
   RETVAL=$?
   prompt_time
-  prompt_status
-  prompt_ruby
-  prompt_virtualenv
-  prompt_nvm
   prompt_context
+  prompt_status
+  prompt_virtualenv
   prompt_git
   prompt_dir
   prompt_end
@@ -338,5 +271,5 @@ if [[ $BULLETTRAIN_PROMPT_SEPARATE_LINE == true ]] then
 %{%f%b%k%}$(build_prompt)
 %{${fg_bold[default]}%}$(prompt_char) %{$reset_color%}'
 else
-  PROMPT='%{%f%b%k%}$(build_prompt)%{${fg_bold[default]}%} $(prompt_char) %{$reset_color%}'
+  PROMPT='%{%f%b%k%}$(build_prompt)%{${fg_bold[default]}%} $(prompt_char)%{$reset_color%}'
 fi
