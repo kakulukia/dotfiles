@@ -66,5 +66,5 @@ command -v npm > /dev/null && alias npme="npm --registry http://registry.npmjs.e
 
 # work stuff
 alias be='workon backend'
-alias fe='deactivate; cd ~/ubimake/frontend'
+alias fe='deactivate; cd ~/projects/ubi-frontend'
 
