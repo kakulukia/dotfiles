@@ -12,4 +12,3 @@ dotfiles
     cd ghar
     git clone --recursive git://github.com/kakulukia/dotfiles.git andy
     bin/ghar install
-
