@@ -128,11 +128,11 @@ prompt_context() {
   [[ $BULLETTRAIN_CONTEXT_SHOW == false ]] && return
 
   local _context="$(context)"
-  if [[ -n "$SSH_CLIENT" ]]; then
-    [[ -n "$_context" ]] && prompt_segment $BULLETTRAIN_CONTEXT_SSH_BG $BULLETTRAIN_CONTEXT_FG "$_context"
-  else
-    [[ -n "$_context" ]] && prompt_segment $BULLETTRAIN_CONTEXT_BG $BULLETTRAIN_CONTEXT_FG "$_context"
-  fi
+  local background=$BULLETTRAIN_CONTEXT_BG
+  [[ -n "$SSH_CLIENT" ]] && background=$BULLETTRAIN_CONTEXT_SSH_BG
+  [[ $UID -eq 0 ]] && background=red
+  
+  [[ -n "$_context" ]] && prompt_segment $background $BULLETTRAIN_CONTEXT_FG "$_context"
 }
 
 # Git
@@ -230,7 +230,6 @@ prompt_status() {
   symbols=()
   [[ $RETVAL -ne 0 && $BULLETTRAIN_STATUS_EXIT_SHOW != true ]] && symbols+="✘"
   [[ $RETVAL -ne 0 && $BULLETTRAIN_STATUS_EXIT_SHOW == true ]] && symbols+="✘ $RETVAL"
-  [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%} / %f"
   [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="⚙"
 
   if [[ -n "$symbols" && $RETVAL -ne 0 ]]; then
@@ -243,16 +242,6 @@ prompt_status() {
 
 # Prompt Character
 prompt_char() {
-  local bt_prompt_char
-
-  if [[ ${#BULLETTRAIN_PROMPT_CHAR} -eq 1 ]]; then
-    bt_prompt_char="${BULLETTRAIN_PROMPT_CHAR}"
-  fi
-
-  if [[ $BULLETTRAIN_PROMPT_ROOT == true ]]; then
-    bt_prompt_char="%(!.%F{red}#.%F{green}${bt_prompt_char}%f)"
-  fi
-
   echo -n $bt_prompt_char
 }
 
