@@ -2,7 +2,7 @@
 # Luis Francisco González <luisgh@debian.org> based on that of Vadik Vygonets
 # Please check /usr/doc/tcsh/examples/alias to see other possible values.
 alias l='ls -lhG'
-alias la='ls -lha'
+alias ll='l -a'
 alias lc="l | wc -l"
 
 # create folder and cd into it
@@ -19,7 +19,10 @@ alias scr='screen -r'
 alias tgz='tar czfv'
 alias utgz='tar xzfv'
 alias gitlog='git log --pretty=oneline -n 35 --graph --abbrev-commit'
+alias gs='git status -s'
 alias gu='git submodule update --init --recursive'
+alias gd='git diff --word-diff'
+alias sv='sudo supervisorctl'
 
 alias shell='python manage.py shell_plus'
 alias v='f -e vim' # quick opening files with vim
@@ -27,8 +30,10 @@ alias c='z'
 alias s='subl'
 alias o='open'
 alias stree='open -a SourceTree .'
-alias sv='sudo supervisorctl'
-alias gd='git diff --word-diff'
+
+# Globals
+alias -g G="| grep"
+alias -g L="| less"
 
 # Get week number
 alias week='date +%V'
@@ -63,7 +68,4 @@ alias pumpitup="osascript -e 'set volume 7'"
 # Faster npm for Europeans
 command -v npm > /dev/null && alias npme="npm --registry http://registry.npmjs.eu/"
 
-# work stuff
-alias be='workon backend'
-alias fe='deactivate; cd ~/ubimake/ubi-frontend'
 
