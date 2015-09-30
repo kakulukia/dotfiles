@@ -1,12 +1,15 @@
 ZSH
 ===
 
-    apt-get install zsh git
-    chsh -s /usr/bin/zsh
-    sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+    apt-get/brew install zsh git
 
-dotfiles
-========
+Settings ZSH as the default shell.
+    
+    chsh -s /usr/bin/zsh
+
+install the dotfiles repo
+=========================
+
     cd
     git clone https://github.com/philips/ghar.git
     cd ghar
