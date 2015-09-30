@@ -17,3 +17,5 @@ install the dotfiles repo
     bin/ghar install
 
 This theme was inspired by PowerlinePlain (https://github.com/Bash-it/bash-it/blob/master/themes/powerline-plain/powerline-plain.theme.bash) and based on BulletTrain (https://github.com/caiogondim/bullet-train-oh-my-zsh-theme).
+
+In the misc folder you can find the Powerline patched SourceCode font and my currently used Sundried.itermcolors.
