@@ -1,3 +1,15 @@
+FEATURES
+========
+
+. completion for almost anything via zsh
+. icon shows running background processes
+. history-substring-search
+. fasd (and tab completion for it)
+. powerline theme for vim
+. shows git status in prompt
+. shows active python virtual env
+. shows error codes from failed commands
+
 ZSH
 ===
 
@@ -19,3 +31,4 @@ install the dotfiles repo
 This theme was inspired by PowerlinePlain (https://github.com/Bash-it/bash-it/blob/master/themes/powerline-plain/powerline-plain.theme.bash) and based on BulletTrain (https://github.com/caiogondim/bullet-train-oh-my-zsh-theme).
 
 In the misc folder you can find the Powerline patched SourceCode font and my currently used Sundried.itermcolors.
+
