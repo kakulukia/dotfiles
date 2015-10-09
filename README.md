@@ -9,6 +9,7 @@ FEATURES
   * shows git status in prompt
   * shows active python virtual env
   * shows error codes from failed commands
+  * some handy aliases
 
 ZSH
 ===
