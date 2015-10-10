@@ -3,15 +3,19 @@ FEATURES
 
 ![Preview](http://raw.github.com/kakulukia/dotfiles/master/misc/img/preview.png)
 
-  * completion for almost anything via zsh
+In this screen shot:
+
   * icon shows running background processes
-  * history-substring-search
   * fasd (and tab completion for it)
-  * powerline theme for vim
   * shows git status in prompt
   * shows active python virtual env
-  * shows error codes from failed commands
+  * different prompt when connected via ssh or as root
   * some handy aliases
+  * completion for almost anything via zsh
+  * shows errors (and optional codes) from failed commands
+  * history-substring-search
+  
+Also inculded some basic vim config and a powerline theme for vim.
 
 ZSH
 ===
