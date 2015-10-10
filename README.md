@@ -17,8 +17,8 @@ Features in this screen shot:
   
 Also inculded is some basic vim config and a powerline theme for vim.
 
-ZSH
-===
+install ZSH
+===========
 
     apt-get/brew install zsh git
 
@@ -26,8 +26,8 @@ Settings ZSH as the default shell.
     
     chsh -s /usr/bin/zsh
 
-install the dotfiles repo 
-=========================
+install this dotfiles repo 
+==========================
 
     cd
     git clone https://github.com/philips/ghar.git
