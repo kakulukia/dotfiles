@@ -1,6 +1,8 @@
 FEATURES
 ========
 
+![Preview](http://raw.github.com/kakulukia/dotfiles/master/misc/img/preview.png)
+
   * completion for almost anything via zsh
   * icon shows running background processes
   * history-substring-search
