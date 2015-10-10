@@ -30,6 +30,8 @@ alias c='z'
 alias s='subl'
 alias o='open'
 alias stree='open -a SourceTree .'
+alias root='sudo zsh'
+alias please='sudo'
 
 # Globals
 alias -g G="| grep"
