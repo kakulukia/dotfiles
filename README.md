@@ -26,7 +26,7 @@ Settings ZSH as the default shell.
     
     chsh -s /usr/bin/zsh
 
-install the dotfiles repo
+install the dotfiles repo 
 =========================
 
     cd
