@@ -3,7 +3,7 @@ FEATURES
 
 ![Preview](http://raw.github.com/kakulukia/dotfiles/master/misc/img/preview.png)
 
-In this screen shot:
+Features in this screen shot:
 
   * icon shows running background processes
   * fasd (and tab completion for it)
@@ -15,7 +15,7 @@ In this screen shot:
   * shows errors (and optional codes) from failed commands
   * history-substring-search
   
-Also inculded some basic vim config and a powerline theme for vim.
+Also inculded is some basic vim config and a powerline theme for vim.
 
 ZSH
 ===
