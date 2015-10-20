@@ -1,17 +1,24 @@
 FEATURES
 ========
 
-  * completion for almost anything via zsh
+![Preview](http://raw.github.com/kakulukia/dotfiles/master/misc/img/preview.png)
+
+Features in this screen shot:
+
   * icon shows running background processes
-  * history-substring-search
   * fasd (and tab completion for it)
-  * powerline theme for vim
   * shows git status in prompt
   * shows active python virtual env
-  * shows error codes from failed commands
+  * different prompt when connected via ssh or as root
+  * some handy aliases
+  * completion for almost anything via zsh
+  * shows errors (and optional codes) from failed commands
+  * history-substring-search
+  
+Also inculded is some basic vim config and a powerline theme for vim.
 
-ZSH
-===
+install ZSH
+===========
 
     apt-get/brew install zsh git
 
@@ -19,8 +26,8 @@ Settings ZSH as the default shell.
     
     chsh -s /usr/bin/zsh
 
-install the dotfiles repo
-=========================
+install this dotfiles repo 
+==========================
 
     cd
     git clone https://github.com/philips/ghar.git

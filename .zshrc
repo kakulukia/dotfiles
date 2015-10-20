@@ -87,7 +87,6 @@ setopt HIST_NO_STORE
 bindkey -M vicmd "\e[A" history-beginning-search-backward
 bindkey -M vicmd "\e[B" history-beginning-search-forward
 
-
 host_color=cyan
 history_color=yellow
 user_color=green
@@ -97,6 +96,9 @@ error_color=red
 jobs_color=green
 zstyle ':completion:*' special-dirs true
 export REPORTTIME=2
+
+# include local settings
+[[ -e ~/.profile ]] && source ~/.profile
 
 # Keypad
 # 0 . , Enter
@@ -123,5 +125,3 @@ bindkey -s "^[Oj" "*"
 bindkey -s "^[Oo" "/"
 bindkey -s "^[OX" "="
 
-# include local settings
-source ~/.profile
