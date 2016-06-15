@@ -43,6 +43,13 @@ alias pipsave=pipsave
 watcher(){
   fswatch -o $1 | xargs -n1 -I{} $2 $1
 }
+
+web_server(){
+  export IP=`localip`
+  echo "http://$IP:8000/"
+  python -m SimpleHTTPServer
+}
+
 alias watch=watcher
 
 # Globals
@@ -59,7 +66,7 @@ alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 
 alias localip="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'"
-alias web="export IP=`localip`; echo 'http://'$IP':8000/'; python -m SimpleHTTPServer"
+alias web=web_server
 
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
