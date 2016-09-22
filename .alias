@@ -2,7 +2,7 @@
 # Luis Francisco González <luisgh@debian.org> based on that of Vadik Vygonets
 # Please check /usr/doc/tcsh/examples/alias to see other possible values.
 alias l='ls -lhG'
-alias ll='l -a'
+alias ll='ls -alh'
 alias lc="l | wc -l"
 
 # create folder and cd into it
@@ -22,6 +22,7 @@ alias gitlog='git log --pretty=oneline -n 35 --graph --abbrev-commit'
 alias gs='git status -s'
 alias gu='git submodule update --init --recursive'
 alias gd='git diff --word-diff'
+alias gf='git fetch --all'
 alias sv='sudo supervisorctl'
 alias start-docker="/Applications/Docker/Docker\ Quickstart\ Terminal.app/Contents/Resources/Scripts/start.sh"
 
@@ -33,6 +34,8 @@ alias o='open'
 alias stree='open -a SourceTree .'
 alias root='sudo zsh'
 alias please='sudo'
+alias upgrade='sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove
+'
 
 pipsave(){
   pip install $1 && pip freeze | grep -i $1 >> requirements.txt
