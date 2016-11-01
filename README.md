@@ -39,7 +39,15 @@ Additional installation steps:
 
     sudo apt-get install -y python-pip python-dev
     sudo pip install psutil thefuck virtualenvwrapper
+    
+Instal FASD:
 
+    cd /tmp
+    wget https://github.com/clvv/fasd/archive/1.0.1.tar.gz
+    x 1.0.1.tar.gz
+    cd /tmp/fasd-1.0.1
+    sudo make install
+    
 This theme was inspired by PowerlinePlain (https://github.com/Bash-it/bash-it/blob/master/themes/powerline-plain/powerline-plain.theme.bash) and based on BulletTrain (https://github.com/caiogondim/bullet-train-oh-my-zsh-theme).
 
 In the misc folder you can find the Powerline patched SourceCode font and my currently used Sundried.itermcolors.
