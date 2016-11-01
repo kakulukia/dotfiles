@@ -37,7 +37,7 @@ install this dotfiles repo
     
 Additional installation steps:
 
-    sudo apt-get install python-pip python-dev
+    sudo apt-get install -y python-pip python-dev
     sudo pip install psutil thefuck virtualenvwrapper
 
 This theme was inspired by PowerlinePlain (https://github.com/Bash-it/bash-it/blob/master/themes/powerline-plain/powerline-plain.theme.bash) and based on BulletTrain (https://github.com/caiogondim/bullet-train-oh-my-zsh-theme).
