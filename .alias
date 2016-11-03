@@ -38,7 +38,7 @@ alias upgrade='sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y
 '
 
 pipsave(){
-  pip install $1 && pip freeze | grep -i $1 >> requirements.txt
+  pip install $1 && pip freeze > requirements.txt
 }
 
 alias pipsave=pipsave
@@ -88,3 +88,4 @@ alias pumpitup="osascript -e 'set volume 7'"
 command -v npm > /dev/null && alias npme="npm --registry http://registry.npmjs.eu/"
 
 alias vfk="cd $VFK_HOME; ./internal/bin/vfk.sh"
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
