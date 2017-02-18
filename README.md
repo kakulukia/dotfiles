@@ -44,7 +44,7 @@ Instal FASD:
 
     cd /tmp
     wget https://github.com/clvv/fasd/archive/1.0.1.tar.gz
-    x 1.0.1.tar.gz
+    tar xzfv 1.0.1.tar.gz
     cd /tmp/fasd-1.0.1
     sudo make install
     
