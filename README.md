@@ -17,6 +17,7 @@ Features in this screen shot:
   
 Also inculded is some basic vim config and a powerline theme for vim.
 
+
 install ZSH
 ===========
 
@@ -48,6 +49,16 @@ Instal FASD:
     cd /tmp/fasd-1.0.1
     sudo make install
     
+
+Install on a remote computer
+============================
+
+Go to the misc/ansible folder and follow the README.md inside that folder.
+
+
+disclaimer
+===
+
 This theme was inspired by PowerlinePlain (https://github.com/Bash-it/bash-it/blob/master/themes/powerline-plain/powerline-plain.theme.bash) and based on BulletTrain (https://github.com/caiogondim/bullet-train-oh-my-zsh-theme).
 
 In the misc folder you can find the Powerline patched SourceCode font and my currently used Sundried.itermcolors.
