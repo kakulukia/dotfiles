@@ -1,0 +1,69 @@
+- name: Install git and zsh
+  package: name={{item}} state=installed update_cache=yes
+  with_items:
+    - git
+    - zsh
+    - make
+    - gcc
+
+- name: Install python pip
+  shell: curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"; python get-pip.py
+
+- name: Install python dev package for RedHat systems
+  package: name=python-devel state=installed
+  when: ansible_os_family == "RedHat"
+  
+- name: Install python dev package for Debian systems
+  package: name=python-dev state=installed
+  when: ansible_os_family == "Debian"
+
+- name: Install ghar
+  git: 
+    repo: https://github.com/philips/ghar.git
+    dest: /home/{{ username }}/ghar
+
+- name: Install dotfiles repo
+  git: 
+    repo: git://github.com/kakulukia/dotfiles.git
+    dest: /home/{{ username }}/ghar/{{ username }}
+
+- name: Installing thefuck psutil and virtualenvwrapper
+  pip: name={{item}}
+  with_items:
+    - thefuck 
+    - psutil 
+    - virtualenvwrapper
+
+- name: Downloading FASD
+  get_url: 
+    url: https://github.com/clvv/fasd/archive/1.0.1.tar.gz
+    dest: /tmp/
+
+- name: Unpacking FASD
+  unarchive: 
+    src: /tmp/fasd-1.0.1.tar.gz
+    dest: /tmp/
+    remote_src: yes
+     
+- name: Installing FASD
+  make: chdir=/tmp/fasd-1.0.1  target=install
+
+- name: Add sudo group if not present already
+  group: name=sudo state=present
+
+- name: SUDO without passwords
+  lineinfile: "dest=/etc/sudoers state=present regexp='^%sudo' line='%sudo ALL=(ALL) NOPASSWD: ALL'"
+  
+- name: add {{ username }} as a system user
+  user: name={{ username }} group=sudo shell=/bin/zsh
+
+- name: Add the public key for easy access
+  authorized_key: user={{ username }} key="{{ lookup('file', 'public.key') }}"
+
+- name: change ownerships
+  file: path=/home/{{ username }} owner={{ username }} recurse=yes
+
+- name: install shell environment for {{ username }}
+  shell: /home/{{ username }}/ghar/bin/ghar install
+  become: yes
+  become_user: "{{ username }}"
