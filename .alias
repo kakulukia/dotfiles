@@ -22,7 +22,7 @@ alias gitlog='git log --pretty=oneline -n 35 --graph --abbrev-commit'
 alias gs='git status -s'
 alias gu='git submodule update --init --recursive'
 alias gd='git diff --word-diff'
-alias gf='git fetch --all'
+alias gf='git fetch --all --prune'
 alias sv='sudo supervisorctl'
 alias start-docker="/Applications/Docker/Docker\ Quickstart\ Terminal.app/Contents/Resources/Scripts/start.sh"
 
