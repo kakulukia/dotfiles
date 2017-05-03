@@ -3,7 +3,12 @@
 # Please check /usr/doc/tcsh/examples/alias to see other possible values.
 alias l='ls -lhG'
 alias ll='ls -alh'
-alias lc="l | wc -l"
+
+function wordcount(){
+  l ${@:1} | wc -l
+}
+
+alias lc="wordcount"
 
 # create folder and cd into it
 function md
@@ -34,11 +39,10 @@ alias o='open'
 alias stree='open -a SourceTree .'
 alias root='sudo zsh'
 alias please='sudo'
-alias upgrade='sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove
-'
+alias upgrade='sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove'
 
 pipsave(){
-  pip install $1 && pip freeze > requirements.txt
+  pip install ${@:1} && pip freeze > requirements.txt
 }
 
 alias pipsave=pipsave
