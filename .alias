@@ -29,7 +29,7 @@ alias gu='git submodule update --init --recursive'
 alias gd='git diff --word-diff'
 alias gf='git fetch --all --prune'
 alias sv='sudo supervisorctl'
-alias start-docker="/Applications/Docker/Docker\ Quickstart\ Terminal.app/Contents/Resources/Scripts/start.sh"
+alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 
 alias shell='python manage.py shell_plus'
 alias v='f -e vim' # quick opening files with vim
@@ -60,7 +60,7 @@ web_server(){
 alias watch=watcher
 
 # Globals
-alias -g G="| grep"
+alias -g G="| grep -i"
 alias -g L="| less"
 
 # Get week number
