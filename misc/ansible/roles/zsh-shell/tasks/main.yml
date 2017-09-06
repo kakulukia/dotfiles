@@ -12,39 +12,39 @@
 - name: Install python dev package for RedHat systems
   package: name=python-devel state=installed
   when: ansible_os_family == "RedHat"
-  
+
 - name: Install python dev package for Debian systems
   package: name=python-dev state=installed
   when: ansible_os_family == "Debian"
 
 - name: Install ghar
-  git: 
+  git:
     repo: https://github.com/philips/ghar.git
     dest: /home/{{ username }}/ghar
 
 - name: Install dotfiles repo
-  git: 
+  git:
     repo: git://github.com/kakulukia/dotfiles.git
     dest: /home/{{ username }}/ghar/{{ username }}
 
 - name: Installing thefuck psutil and virtualenvwrapper
   pip: name={{item}}
   with_items:
-    - thefuck 
-    - psutil 
+    - thefuck
+    - psutil
     - virtualenvwrapper
 
 - name: Downloading FASD
-  get_url: 
+  get_url:
     url: https://github.com/clvv/fasd/archive/1.0.1.tar.gz
     dest: /tmp/
 
 - name: Unpacking FASD
-  unarchive: 
+  unarchive:
     src: /tmp/fasd-1.0.1.tar.gz
     dest: /tmp/
     remote_src: yes
-     
+
 - name: Installing FASD
   make: chdir=/tmp/fasd-1.0.1  target=install
 
@@ -53,7 +53,7 @@
 
 - name: SUDO without passwords
   lineinfile: "dest=/etc/sudoers state=present regexp='^%sudo' line='%sudo ALL=(ALL) NOPASSWD: ALL'"
-  
+
 - name: add {{ username }} as a system user
   user: name={{ username }} group=sudo shell=/bin/zsh
 

@@ -6,7 +6,7 @@ Enter the desired host in the hosts file like this:
 
 Choose any user who is either root or has sudo rights.
 
-After that set the username for whom the shell shell be setup inside pimp_shell.yml
+After that set the username for whom the shell shall be setup inside pimp_shell.yml
 
     vars:
       username: <username>

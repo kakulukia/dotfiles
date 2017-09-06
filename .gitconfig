@@ -1,5 +1,6 @@
 [core]
 	excludesfile = /Users/andy/.gitignore_global
+	compression = 1
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
