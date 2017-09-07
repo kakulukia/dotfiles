@@ -1,8 +1,13 @@
 # $Id: skel.alias,v 1.2 1998/04/20 11:41:32 luisgh Exp $
 # Luis Francisco González <luisgh@debian.org> based on that of Vadik Vygonets
 # Please check /usr/doc/tcsh/examples/alias to see other possible values.
-alias l='ls -lhG'
-alias ll='ls -alh'
+if ! type "colorls" > /dev/null; then
+    alias l='ls -lhG'
+    alias ll='ls -alh'
+else
+    alias l='colorls -sd -1'
+    alias ll='colorls -sd -l -a'
+fi
 
 function wordcount(){
   l ${@:1} | wc -l
