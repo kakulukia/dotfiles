@@ -38,8 +38,8 @@ install this dotfiles repo
     
 Additional installation steps:
 
-    sudo apt-get install -y python-pip python-dev
-    sudo pip install psutil thefuck virtualenvwrapper
+    sudo apt-get install -y python3-pip python-dev
+    sudo pip3 install psutil thefuck virtualenvwrapper
     
 Instal FASD:
 
