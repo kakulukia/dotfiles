@@ -5,8 +5,8 @@ if ! type "colorls" > /dev/null; then
     alias l='ls -lhG'
     alias ll='ls -alh'
 else
-    alias l='colorls -sd -1'
-    alias ll='colorls -sd -l -a'
+    alias l='colorls --sd -1'
+    alias ll='colorls --sd -l -a'
 fi
 
 function wordcount(){
