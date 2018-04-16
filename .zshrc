@@ -127,7 +127,6 @@ bindkey -s "^[OX" "="
 
 # set JAVA_HOME on OSX
 [[ -e /usr/libexec/java_home ]] && export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
-eval $(thefuck --alias)
 ###-begin-pm2-completion-###
 ### credits to npm for the completion file model
 #
@@ -171,3 +170,6 @@ fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 autoload zmv
+test -e `command -v pyenv` && eval "$(pyenv init -)"
+export PIPENV_VENV_IN_PROJECT=1
+
