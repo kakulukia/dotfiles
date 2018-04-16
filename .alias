@@ -43,7 +43,7 @@ alias s='subl'
 alias o='open'
 alias stree='open -a SourceTree .'
 alias root='sudo zsh'
-alias please='sudo'
+alias please='sudo -H'
 alias upgrade='sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove'
 
 pipsave(){
@@ -98,3 +98,6 @@ command -v npm > /dev/null && alias npme="npm --registry http://registry.npmjs.e
 
 alias vfk="cd $VFK_HOME; ./internal/bin/vfk.sh"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+alias be="cd /Users/andy/projects/whish_basket"
+alias fe="cd /users/andy/projects/whish_basket/frontend"
