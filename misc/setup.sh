@@ -66,9 +66,13 @@ setup () {
   cd /tmp/fasd-1.0.1
   sudo make install
 
-  clear
-  green "Have fun with you new shell!"
-  zsh
+
+  echo ""
+  echo ""
+  green "Have fun with your new shell!"
+  echo "type zsh to start it"
+  echo ""
+  echo ""
 
 }
 

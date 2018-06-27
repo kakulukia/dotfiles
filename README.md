@@ -21,6 +21,8 @@ Also inculded is some basic vim config and a powerline theme for vim.
 installation
 ==============
 
+Be sure you are logged in as the user for whom you want to install this shell pakage and that the user has sudo rights.
+
     wget -O - https://raw.githubusercontent.com/kakulukia/dotfiles/master/misc/setup.sh | bash
 
 disclaimer
