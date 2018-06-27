@@ -18,46 +18,13 @@ Features in this screen shot:
 Also inculded is some basic vim config and a powerline theme for vim.
 
 
-install ZSH
-===========
+installation
+==============
 
-    apt-get/brew install zsh git
-
-Settings ZSH as the default shell.
-    
-    chsh -s /usr/bin/zsh
-
-install this dotfiles repo 
-==========================
-
-    cd
-    git clone https://github.com/philips/ghar.git
-    cd ghar
-    git clone --recursive git://github.com/kakulukia/dotfiles.git andy
-    bin/ghar install
-    
-Additional installation steps:
-
-    sudo apt-get install -y python3-pip python-dev
-    sudo pip3 install psutil thefuck virtualenvwrapper
-    
-Instal FASD:
-
-    cd /tmp
-    wget https://github.com/clvv/fasd/archive/1.0.1.tar.gz
-    tar xzfv 1.0.1.tar.gz
-    cd /tmp/fasd-1.0.1
-    sudo make install
-    
-
-Install on a remote computer
-============================
-
-Go to the misc/ansible folder and follow the README.md inside that folder.
-
+    wget -O - https://raw.githubusercontent.com/kakulukia/dotfiles/master/misc/setup.sh | bash
 
 disclaimer
-===
+===========
 
 This theme was inspired by PowerlinePlain (https://github.com/Bash-it/bash-it/blob/master/themes/powerline-plain/powerline-plain.theme.bash) and based on BulletTrain (https://github.com/caiogondim/bullet-train-oh-my-zsh-theme).
 
