@@ -96,8 +96,5 @@ alias pumpitup="osascript -e 'set volume 7'"
 # Faster npm for Europeans
 command -v npm > /dev/null && alias npme="npm --registry http://registry.npmjs.eu/"
 
-alias vfk="cd $VFK_HOME; ./internal/bin/vfk.sh"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-alias be="cd /Users/andy/projects/whish_basket"
-alias fe="cd /users/andy/projects/whish_basket/frontend"
