@@ -22,7 +22,6 @@ function md
 }
 alias rd='rm -rf'
 alias ..='cd ..'
-alias root="sudo bash"
 alias du1="du -d 1 -h"
 alias df="df -h"
 alias scr='screen -r'
@@ -59,7 +58,7 @@ watcher(){
 web_server(){
   export IP=`localip`
   echo "http://$IP:8000/"
-  python -m SimpleHTTPServer
+  python -m http.server
 }
 
 alias watch=watcher
