@@ -61,7 +61,7 @@ setup () {
   if [ -n "$yum" ]; then
     sudo rpm -iUvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
     sudo yum -y install python34
-    sudo curl --silent https://bootstrap.pypa.io/get-pip.py | sudo python
+    sudo curl --silent https://bootstrap.pypa.io/get-pip.py | sudo python3
   else
     check pip3 && $INSTALL python3-pip
     #$INSTALL python-dev
