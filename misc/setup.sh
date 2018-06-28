@@ -51,7 +51,7 @@ setup () {
   chsh -s /usr/bin/zsh
 
   echo ""
-  green "cloning the repo .."
+  green "Cloning the repo .."
   cd
   git clone https://github.com/philips/ghar.git
   cd ghar
@@ -65,12 +65,12 @@ setup () {
   else
     check pip3 && $INSTALL python3-pip
     #$INSTALL python-dev
-    sudo pip3 install virtualenvwrapper
     #sudo pip3 install psutil
   fi
+  sudo pip3 install virtualenvwrapper
 
   echo ""
-  green "installing fasd .."
+  green "Installing fasd .."
   cd /tmp
   wget https://github.com/clvv/fasd/archive/1.0.1.tar.gz
   tar xzfv 1.0.1.tar.gz
