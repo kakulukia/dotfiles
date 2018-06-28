@@ -18,14 +18,24 @@ Features in this screen shot:
 Also inculded is some basic vim config and a powerline theme for vim.
 
 
-installation
+Installation
 ==============
 
 Be sure you are logged in as the user for whom you want to install this shell pakage and that the user has sudo rights.
 
     wget -O - https://raw.githubusercontent.com/kakulukia/dotfiles/master/misc/setup.sh | bash
+    
+This will install the following:
 
-disclaimer
+  - GIT to be able to download the repo itself
+  - ZSH as your new default shell
+  - oh my zsh
+  - ghar for managing the dotfiles itself (links everythin into the home folder)
+  - vim-colors-solarized
+  - vim-airline
+  - fasd
+
+Disclaimer
 ===========
 
 This theme was inspired by PowerlinePlain (https://github.com/Bash-it/bash-it/blob/master/themes/powerline-plain/powerline-plain.theme.bash) and based on BulletTrain (https://github.com/caiogondim/bullet-train-oh-my-zsh-theme).
