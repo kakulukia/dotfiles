@@ -43,23 +43,34 @@ check () {
 
 ## main setup
 setup () {
+  echo ""
   green "installing dotfiles .."
   ## test for require features
   check git && $INSTALL git 
   check zsh && $INSTALL zsh
   chsh -s /usr/bin/zsh
 
+  echo ""
+  green "cloning the repo .."
   cd
   git clone https://github.com/philips/ghar.git
   cd ghar
   git clone --recursive git://github.com/kakulukia/dotfiles.git
   bin/ghar install
 
-  check pip3 && $INSTALL python3-pip
-  $INSTALL python-dev
-  sudo pip3 install virtualenvwrapper
-  #sudo pip3 install psutil
+  if [ -n "$yum" ]; then
+    sudo rpm -iUvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
+    sudo yum -y install python34
+    sudo curl --silent https://bootstrap.pypa.io/get-pip.py | sudo python
+  else
+    check pip3 && $INSTALL python3-pip
+    #$INSTALL python-dev
+    sudo pip3 install virtualenvwrapper
+    #sudo pip3 install psutil
+  fi
 
+  echo ""
+  green "installing fasd .."
   cd /tmp
   wget https://github.com/clvv/fasd/archive/1.0.1.tar.gz
   tar xzfv 1.0.1.tar.gz
