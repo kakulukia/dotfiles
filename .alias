@@ -44,6 +44,10 @@ alias stree='open -a SourceTree .'
 alias root='sudo zsh'
 alias please='sudo -H'
 alias upgrade='sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove'
+alias k="kubectl"
+alias cat="bat --style=changes"
+alias pcat="bat --style=plain"
+alias ping='prettyping --nolegend'
 
 pipsave(){
   pip install ${@:1} && pip freeze > requirements.txt
