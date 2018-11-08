@@ -172,6 +172,6 @@ fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 autoload zmv
-test -e 'pyenv' && eval "$(pyenv init -)"
+test -e 'pyenv' && export PATH="$HOME/.pyenv/bin:$PATH"; eval "$(pyenv init -)"
 export PIPENV_VENV_IN_PROJECT=1
 

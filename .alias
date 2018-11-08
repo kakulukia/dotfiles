@@ -96,4 +96,12 @@ alias pumpitup="osascript -e 'set volume 7'"
 command -v npm > /dev/null && alias npme="npm --registry http://registry.npmjs.eu/"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+alias rs="manage.py runserver 0.0.0.0:8000"
+
+command -v bat >/dev/null 2>&1 && alias cat="bat --theme TwoDark --style changes --paging never"
+command -v prettyping >/dev/null 2>&1 && alias ping="prettyping --nolegend"
+command -v fzf >/dev/null 2>&1 && alias preview="fzf --preview 'bat --color \"always\" {}'"
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
+command -v ncdu >/dev/null 2>&1 && alias ddu="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
+
 

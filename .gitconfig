@@ -1,6 +1,6 @@
 [core]
 	excludesfile = /Users/andy/.gitignore_global
-	compression = 1
+  compression = 1
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
@@ -13,13 +13,13 @@
 [commit]
 	template = /Users/andy/.stCommitMsg
 [merge]
-	tool = opendiff
+  tool = opendiff
 
   conflictstyle = diff3
   # Standard diff is two sets of final changes. This introduces the original text before each side's changes.
   # https://git-scm.com/docs/git-config#git-config-mergeconflictStyle
 
-  
+
 [push]
   default = simple
   # "push the current branch back to the branch whose changes are usually integrated into the current branch"
@@ -45,9 +45,7 @@
 
 # A nice little github-like colorful, split diff right in the console.
 # via http://owen.cymru/github-style-diff-in-terminal-with-icdiff/
-[diff]
-  tool = icdiff
-[difftool]
-  prompt = false
-[difftool "icdiff"]
-  cmd = /usr/local/bin/icdiff --line-numbers $LOCAL $REMOTE
+
+[pager]
+  diff = diff-so-fancy | less --tabs=1,5 -RFX
+  show = diff-so-fancy | less --tabs=1,5 -RFX
