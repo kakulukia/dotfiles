@@ -45,9 +45,6 @@ alias root='sudo zsh'
 alias please='sudo -H'
 alias upgrade='sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove'
 alias k="kubectl"
-alias cat="bat --style=changes"
-alias pcat="bat --style=plain"
-alias ping='prettyping --nolegend'
 
 pipsave(){
   pip install ${@:1} && pip freeze > requirements.txt
@@ -102,7 +99,7 @@ command -v npm > /dev/null && alias npme="npm --registry http://registry.npmjs.e
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 alias rs="manage.py runserver 0.0.0.0:8000"
 
-command -v bat >/dev/null 2>&1 && alias cat="bat --theme TwoDark --style changes --paging never"
+command -v bat >/dev/null 2>&1 && alias cat="bat --theme TwoDark --style=plain --paging never"
 command -v prettyping >/dev/null 2>&1 && alias ping="prettyping --nolegend"
 command -v fzf >/dev/null 2>&1 && alias preview="fzf --preview 'bat --color \"always\" {}'"
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
