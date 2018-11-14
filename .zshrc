@@ -39,7 +39,7 @@ ZSH_CUSTOM=~/.zsh-custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker extract fasd virtualenvwrapper history-substring-search kubectl)
+plugins=(git docker extract fasd history-substring-search kubectl)
 
 # User configuration
 export PATH="$PATH:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/usr/local/sbin:.:/bin:$HOME/bin"
@@ -171,6 +171,7 @@ fi
 ###-end-pm2-completion-###
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-autoload zmv
+#autoload zmv
 command -v 'pyenv'  >/dev/null 2>&1 && eval "$(pyenv init -)"
 export PIPENV_VENV_IN_PROJECT=1
+export PYTHONBREAKPOINT=ipdb.set_trace
