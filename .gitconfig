@@ -45,6 +45,10 @@
 
 # A nice little github-like colorful, split diff right in the console.
 # via http://owen.cymru/github-style-diff-in-terminal-with-icdiff/
+[credential]
+  helper = store --file ~/.git-credentials
+	#helper = !/home/linuxbrew/.linuxbrew/Cellar/jdk/9.0.4/bin/java -Ddebug=false -Djava.net.useSystemProxies=true -jar /home/linuxbrew/.linuxbrew/Cellar/git-credential-manager/2.0.4/libexec/git-credential-manager-2.0.4.jar
+	#canFallBackToInsecureStore = true
 
 [pager]
   diff = diff-so-fancy | less --tabs=1,5 -RFX
