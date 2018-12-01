@@ -48,7 +48,7 @@ setup () {
   ## test for require features
   check git && $INSTALL git 
   check zsh && $INSTALL zsh
-  chsh -s /usr/bin/zsh
+  chsh -s `which zsh`
 
   echo ""
   green "Cloning the repo .."
