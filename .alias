@@ -1,5 +1,5 @@
 # $Id: skel.alias,v 1.2 1998/04/20 11:41:32 luisgh Exp $
-# Luis Francisco Gonz�lez <luisgh@debian.org> based on that of Vadik Vygonets
+# Luis Francisco Gonzalez <luisgh@debian.org> based on that of Vadik Vygonets
 # Please check /usr/doc/tcsh/examples/alias to see other possible values.
 if ! type "colorls" > /dev/null; then
     alias l='ls -lhG'
@@ -10,6 +10,9 @@ else
 fi
 
 lc () { l ${@:1} | wc -l }
+
+# Enable aliases to be sudo’ed
+alias sudo='sudo '
 
 # create folder and cd into it
 makedirs () { mkdir -p $1; cd $1 }
@@ -46,15 +49,26 @@ alias shell='python manage.py shell_plus'
 # FASD
 alias v='f -e vim' # quick opening files with vim
 alias c='z'
-alias o='open'
-alias k="kubectl"
+# `o` with no arguments opens the current directory, otherwise opens the given
+# location
+function o() {
+	if [ $# -eq 0 ]; then
+		open .;
+	else
+		open "$@";
+	fi;
+}
+alias k="kubectl "
 
 #watcher () { fswatch -o $1 | xargs -n1 -I{} $2 $1 }
 
-web () {
-  export IP=`localip`
-  echo "http://$IP:8000/"
-  python -m http.server
+# Start an HTTP server from a directory, optionally specifying the port
+function server() {
+    local IP=`localip`
+    local port="${1:-8000}";
+    echo "http://$IP:$port/"
+    #sleep 1 && open "http://localhost:${port}/" &
+    python -m http.server $port
 }
 
 # Globals
@@ -65,7 +79,23 @@ alias -g L="| less"
 alias ip="curl https://ipinfo.io/ip"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 alias localip="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'"
+function digga() {
+	dig +nocmd "$1" any +multiline +noall +answer;
+}
 
+# Hide/show all desktop icons (useful when presenting)
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+
+# URL-encode strings
+alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
+
+# Recursively delete `.DS_Store` files
+alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+# Empty the Trash on all mounted volumes and the main HDD.
+# Also, clear Apple’s System Logs to improve shell startup speed.
+# Finally, clear download history from quarantine. https://mths.be/bum
+alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
 
 # Flush Directory Service cache
 alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
@@ -78,6 +108,9 @@ alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET
 alias stfu="osascript -e 'set volume output muted true'"
 alias pumpitup="osascript -e 'set volume 7'"
 
+# Print each PATH entry on a separate line
+alias path='echo -e ${PATH//:/\\n}'
+
 # Faster npm for Europeans
 command -v npm > /dev/null && alias npme="npm --registry http://registry.npmjs.eu/"
 
@@ -87,7 +120,5 @@ alias rs="manage.py runserver 0.0.0.0:8000"
 command -v bat >/dev/null 2>&1 && alias cat="bat --theme TwoDark --style=plain --paging never"
 command -v prettyping >/dev/null 2>&1 && alias ping="prettyping --nolegend"
 command -v fzf >/dev/null 2>&1 && alias preview="fzf --preview 'bat --color \"always\" {}'"
-export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
-command -v ncdu >/dev/null 2>&1 && alias ddu="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 
 
