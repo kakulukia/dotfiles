@@ -1,0 +1,36 @@
+#!/bin/bash
+
+FILE_NAME=$(basename $1)
+GO_RELOAD_APP_TO_RUN=$@
+DIR=$(dirname $GO_RELOAD_APP_TO_RUN)
+GO_RELOAD_PROCESS_NAME=${FILE_NAME%%.*}
+
+# Terminate and rerun the main Go program
+function reload {
+  echo ">> Reloading..."
+  pkill $GO_RELOAD_PROCESS_NAME
+  eval "go run $GO_RELOAD_APP_TO_RUN &"
+}
+function monitor() {
+    # Watch the file base dir and call the reload function
+    # ones anything changes in there
+    export -f reload
+    export GO_RELOAD_APP_TO_RUN
+    export GO_RELOAD_PROCESS_NAME
+    fswatch -0 -o $DIR | xargs -0 -n 1 -I {} bash -c 'reload'
+}
+
+# Make sure all background processes get terminated
+function close {
+  pkill fswatch
+  exit 0
+}
+
+trap close INT
+
+# Start the main Go program
+echo ">> Watching everythin under $DIR, CTRL+C to stop"
+echo ""
+eval "go run $GO_RELOAD_APP_TO_RUN &"
+
+monitor .

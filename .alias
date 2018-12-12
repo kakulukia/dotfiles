@@ -28,6 +28,8 @@ alias stree='open -a SourceTree .'
 alias root='sudo zsh'
 alias please='sudo -H'
 alias upgrade='sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove'
+alias t='cd /tmp'
+alias o='open .'
 
 # GIT stuff
 alias gs='git status -s'
@@ -46,18 +48,13 @@ alias sv='sudo supervisorctl'
 alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 alias shell='python manage.py shell_plus'
 
+
 # FASD
 alias v='f -e vim' # quick opening files with vim
+alias code='f -e code' #quick opening files with code
 alias c='z'
 # `o` with no arguments opens the current directory, otherwise opens the given
 # location
-function o() {
-	if [ $# -eq 0 ]; then
-		open .;
-	else
-		open "$@";
-	fi;
-}
 alias k="kubectl "
 
 #watcher () { fswatch -o $1 | xargs -n1 -I{} $2 $1 }
@@ -72,7 +69,7 @@ function server() {
 }
 
 # Globals
-alias -g G="| grep -i"
+alias -g G="| grep -v grep | grep -i "
 alias -g L="| less"
 
 # get public/local IP addresses
