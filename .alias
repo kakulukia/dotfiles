@@ -51,7 +51,7 @@ alias shell='python manage.py shell_plus'
 
 # FASD
 alias v='f -e vim' # quick opening files with vim
-alias code='f -e code' #quick opening files with code
+alias co='f -e code ' #quick opening files with code
 alias c='z'
 # `o` with no arguments opens the current directory, otherwise opens the given
 # location
