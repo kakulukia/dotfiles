@@ -18,7 +18,6 @@ pyenv
 redis
 sift
 speedtest-cli
-telsocket
 telnet
 ssh-copy-id
 tldr

@@ -17,7 +17,6 @@ Features in this screen shot:
   
 Also inculded is some basic vim config and a powerline theme for vim.
 
-
 Installation
 ==============
 

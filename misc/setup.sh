@@ -48,7 +48,6 @@ setup () {
   ## test for require features
   check git && $INSTALL git 
   check zsh && $INSTALL zsh
-  chsh -s `which zsh`
 
   echo ""
   green "Cloning the repo .."
@@ -80,8 +79,11 @@ setup () {
 
   echo ""
   echo ""
+  green "Changing your default login shell to zsh .."
+  sudo chsh -s `which zsh` `whoami`
+  echo ""
   green "Have fun with your new shell!"
-  echo "type zsh to start it"
+  echo "type zsh to start it or just login again .."
   echo ""
   echo ""
 
