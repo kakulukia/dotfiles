@@ -121,8 +121,12 @@ sudo pmset -a sms 0
 
 # Trackpad: enable tap to click for this user and for the login screen
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -int 1
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Dragging -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults write com.apple.AppleMultitouchTrackpad Dragging -int 1
+defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 
 # Trackpad: map bottom right corner to right-click
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
