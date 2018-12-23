@@ -123,6 +123,8 @@ export COMP_WORDBREAKS
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 if command -v pyenv 1>/dev/null 2>&1; then
+  PYENV_ROOT="$HOME/.pyenv"
+  PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init -)"
   if which pyenv-virtualenv-init > /dev/null; then pyenv virtualenvwrapper_lazy; fi
 fi
