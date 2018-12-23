@@ -39,7 +39,7 @@ ZSH_CUSTOM=~/.zsh-custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(docker extract fasd history-substring-search kubectl)
+plugins=(docker extract virtualenvwrapper fasd history-substring-search kubectl)
 
 # User configuration
 export PATH="$PATH:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/usr/local/sbin:.:/bin:$HOME/bin:/home/ag/go/bin"
