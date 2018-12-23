@@ -79,8 +79,8 @@ setup () {
 
   echo ""
   echo ""
-  green "Execute the following command t switch to zsh:"
-  echo "chsh -s `which zsh`"
+  green "Changing your default login shell to zsh .."
+  sudo chsh -s `which zsh` `whoami`
   echo ""
   green "Have fun with your new shell!"
   echo "type zsh to start it or just login again .."
