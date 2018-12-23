@@ -32,7 +32,7 @@ ZSH_CUSTOM=~/.zsh-custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(docker extract fasd history-substring-search golang kubectl)
+plugins=(docker extract virtualenvwrapper fasd history-substring-search golang kubectl)
 
 # User configuration
 export PATH="$PATH:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/usr/local/sbin:.:/bin:$HOME/bin:$HOME/go/bin"
@@ -122,9 +122,9 @@ export COMP_WORDBREAKS
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-command -v 'pyenv'  >/dev/null 2>&1 && eval "$(pyenv init -)"
-pyenv virtualenvwrapper_lazy
-if which pyenv-virtualenv-init > /dev/null; then pyenv virtualenvwrapper_lazy; fi
+# command -v 'pyenv'  >/dev/null 2>&1 && echo "jepp .." && eval "$(pyenv init -)"
+# pyenv virtualenvwrapper_lazy
+# if which pyenv-virtualenv-init > /dev/null; then pyenv virtualenvwrapper_lazy; fi
 export PIPENV_VENV_IN_PROJECT=1
 export PYTHONBREAKPOINT=ipdb.set_trace
 export VIRTUALENVWRAPPER_PYTHON=`which python`
