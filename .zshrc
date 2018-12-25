@@ -9,7 +9,7 @@ HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="false"
-unsetopt correct_all  
+unsetopt correct_all
 setopt correct
 
 # Uncomment the following line to display red dots whilst waiting for completion.
@@ -52,7 +52,7 @@ fi
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs, plugins, and themes. 
+# Set personal aliases, overriding those provided by oh-my-zsh libs, plugins, and themes.
 source ~/.alias
 
 # Where it gets saved
@@ -91,7 +91,7 @@ export REPORTTIME=2
 # include local settings
 [[ -e ~/.profile ]] && source ~/.profile
 
-# Keypad
+# Bind keypad
 # 0 . , Enter
 bindkey -s "^[Op" "0"
 bindkey -s "^[Ol" "."
