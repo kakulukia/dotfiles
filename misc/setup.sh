@@ -21,12 +21,12 @@ fi
 
 green () {
   out='\033[0;32m'
-  NC='\033[0m'  
+  NC='\033[0m'
   echo -e "${out}${1}${NC}"
 }
 red () {
   out='\033[0;31m'
-  NC='\033[0m'  
+  NC='\033[0m'
   echo -e "${out}${1}${NC}"
 }
 
@@ -46,7 +46,7 @@ setup () {
   echo ""
   green "installing dotfiles .."
   ## test for require features
-  check git && $INSTALL git 
+  check git && $INSTALL git
   check zsh && $INSTALL zsh
 
   echo ""
@@ -57,16 +57,9 @@ setup () {
   git clone --recursive git://github.com/kakulukia/dotfiles.git
   bin/ghar install
 
-  if [ -n "$yum" ]; then
-    sudo rpm -iUvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
-    sudo yum -y install python34
-    sudo curl --silent https://bootstrap.pypa.io/get-pip.py | sudo python3
-  else
-    check pip3 && $INSTALL python3-pip
-    #$INSTALL python-dev
-    #sudo pip3 install psutil
-  fi
-  sudo pip3 install virtualenvwrapper
+  # install pyenv
+  git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+  git clone https://github.com/pyenv/pyenv-virtualenvwrapper.git ~/.pyenv/plugins/pyenv-virtualenvwrapper
 
   echo ""
   green "Installing fasd .."

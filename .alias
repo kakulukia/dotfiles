@@ -10,6 +10,8 @@ else
 fi
 
 lc () { l ${@:1} | wc -l }
+alias lt='ls -ltrh'
+alias llt='ls -latrh'
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
