@@ -10,6 +10,8 @@ else
 fi
 
 lc () { l ${@:1} | wc -l }
+alias lt='ls -ltrh'
+alias llt='ls -latrh'
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
@@ -26,7 +28,7 @@ alias tgz='tar czfv'
 alias utgz='tar xzfv'
 alias stree='open -a SourceTree .'
 alias root='sudo zsh'
-alias please='sudo -H'
+alias please='sudo -H '
 alias upgrade='sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove'
 alias t='cd /tmp'
 alias o='open .'

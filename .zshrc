@@ -9,7 +9,7 @@ HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="false"
-unsetopt correct_all  
+unsetopt correct_all
 setopt correct
 
 # Uncomment the following line to display red dots whilst waiting for completion.
@@ -32,7 +32,7 @@ ZSH_CUSTOM=~/.zsh-custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(docker extract fasd history-substring-search golang kubectl)
+plugins=(docker extract virtualenvwrapper fasd history-substring-search golang kubectl)
 
 # User configuration
 export PATH="$PATH:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/usr/local/sbin:.:/bin:$HOME/bin:$HOME/go/bin"
@@ -52,7 +52,7 @@ fi
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs, plugins, and themes. 
+# Set personal aliases, overriding those provided by oh-my-zsh libs, plugins, and themes.
 source ~/.alias
 
 # Where it gets saved
@@ -91,7 +91,7 @@ export REPORTTIME=2
 # include local settings
 [[ -e ~/.profile ]] && source ~/.profile
 
-# Keypad
+# Bind keypad
 # 0 . , Enter
 bindkey -s "^[Op" "0"
 bindkey -s "^[Ol" "."
@@ -122,9 +122,13 @@ export COMP_WORDBREAKS
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-command -v 'pyenv'  >/dev/null 2>&1 && eval "$(pyenv init -)"
-pyenv virtualenvwrapper_lazy
-if which pyenv-virtualenv-init > /dev/null; then pyenv virtualenvwrapper_lazy; fi
+if [ -d "$HOME/.pyenv" ]; then
+  PYENV_ROOT="$HOME/.pyenv"
+  PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+  if which pyenv-virtualenv-init > /dev/null; then pyenv virtualenvwrapper_lazy; fi
+fi
+
 export PIPENV_VENV_IN_PROJECT=1
 export PYTHONBREAKPOINT=ipdb.set_trace
 export VIRTUALENVWRAPPER_PYTHON=`which python`
