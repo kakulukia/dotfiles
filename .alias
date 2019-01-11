@@ -43,7 +43,8 @@ alias gl='git pull'
 alias gp='git push'
 commit () { git commit -v -m "$*" }
 alias gc='commit'
-alias gitlog='git log --pretty=oneline -n 35 --graph --abbrev-commit'
+alias gitlog2='git log --pretty=oneline -n 35 --graph --abbrev-commit'
+alias gitlog='git log --stat'
 
 # Python / supervisor
 alias sv='sudo supervisorctl'
