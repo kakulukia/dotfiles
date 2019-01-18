@@ -43,8 +43,11 @@ alias gl='git pull'
 alias gp='git push'
 commit () { git commit -v -m "$*" }
 alias gc='commit'
-alias gitlog2='git log --pretty=oneline -n 35 --graph --abbrev-commit'
-alias gitlog='git log --stat'
+alias gitlog='git log --oneline --decorate --stat --graph --format="%C(yellow)%h %Creset%ai %Cred %an %Creset | %s"'
+# show the git graph
+alias gg='gitlog'
+# find files ignored by git and the reason why
+alias gfi='find . -type f  | git check-ignore -v --stdin'
 
 # Python / supervisor
 alias sv='sudo supervisorctl'
