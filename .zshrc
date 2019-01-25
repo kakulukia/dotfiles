@@ -1,4 +1,4 @@
-# Path to your oh-my-zsh installation.
+# Path to your oh-my-dzsh installation.
 export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load.
@@ -32,22 +32,35 @@ ZSH_CUSTOM=~/.zsh-custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(docker extract virtualenvwrapper fasd history-substring-search golang kubectl)
+plugins=(extract virtualenvwrapper fasd history-substring-search)
 
 # User configuration
-export PATH="$PATH:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/usr/local/sbin:.:/bin:$HOME/bin:$HOME/go/bin"
+function paths {
+  if [[ -d "$1" ]] ; then
+    if [[ -z "$PATH" ]] ; then
+      export PATH=$1
+    else
+      export PATH=$PATH:$1
+    fi
+  fi
+}
+
+paths .
+paths /bin
+paths /sbin
+paths /Users/andy/.poetry/bin
+paths /Users/andy/bin
+paths /Users/andy/go/bin
+paths /usr/bin
+paths /usr/local/bin
+paths /usr/local/go/bin
+paths /usr/local/sbin
+paths /usr/sbin
 
 source $ZSH/oh-my-zsh.sh
-
 # You may need to manually set your language environment
 export LANG=de_DE.UTF-8
-
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='vim'
-fi
+export EDITOR='vim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -57,26 +70,18 @@ source ~/.alias
 
 # Where it gets saved
 HISTFILE=~/.history
-
 # Remember about a years worth of history (AWESOME)
 SAVEHIST=10000
 HISTSIZE=10000
-
 # Killer: share history between multiple shells
 setopt SHARE_HISTORY
-
 # If I type cd and then cd again, only save the last one
 setopt HIST_IGNORE_DUPS
-
 # Even if there are commands inbetween commands that are the same, still only save the last one
 setopt HIST_IGNORE_ALL_DUPS
-
 # If a line starts with a space, don't save it.
 setopt HIST_IGNORE_SPACE
 setopt HIST_NO_STORE
-
-bindkey -M vicmd "\e[A" history-beginning-search-backward
-bindkey -M vicmd "\e[B" history-beginning-search-forward
 
 host_color=cyan
 history_color=yellow
@@ -132,5 +137,4 @@ fi
 export PIPENV_VENV_IN_PROJECT=1
 export PYTHONBREAKPOINT=ipdb.set_trace
 export VIRTUALENVWRAPPER_PYTHON=`which python`
-
-
+export PROMPT_EOL_MARK=""

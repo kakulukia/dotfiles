@@ -51,3 +51,25 @@ inoremap <S-Tab> <C-d>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
+" this way undo works even after the file has been closed
+set undofile
+set undodir=~/.vim/undodir
+
+let mapleader="\<space>"
+nmap <leader>u :GundoToggle<CR>
+let g:gundo_close_on_revert = 1
+
+
+" Fast saving
+nmap <leader>s :w!<cr>
+
+" Save as super user
+noremap <leader>S :w !sudo tee % > /dev/null<CR>
+
+" Fast quit
+nmap <leader>q :q<cr>
+
+
+" Keep search matches in middle of window
+nnoremap n nzzzv
+nnoremap N Nzzzv

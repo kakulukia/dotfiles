@@ -1,27 +1,22 @@
-# $Id: skel.alias,v 1.2 1998/04/20 11:41:32 luisgh Exp $
-# Luis Francisco Gonzalez <luisgh@debian.org> based on that of Vadik Vygonets
-# Please check /usr/doc/tcsh/examples/alias to see other possible values.
-if ! type "colorls" > /dev/null; then
-    alias l='ls -lhG'
-    alias ll='ls -alh'
-else
-    alias l='colorls --sd -1'
-    alias ll='colorls --sd -l -a'
-fi
-
+alias l='ls -Flh'
+alias ll='ls -Flah'
+alias lt='ls -Flthr'
+alias llt='ls -Flathr'
 lc () { l ${@:1} | wc -l }
-alias lt='ls -ltrh'
-alias llt='ls -latrh'
+
+alias cp='cp -iv'
+alias mv='mv -iv'
 
 # Enable aliases to be sudo’ed
-alias sudo='sudo '
+alias sudo='sudo --preserve-env '
 
 # create folder and cd into it
 makedirs () { mkdir -p $1; cd $1 }
 alias md='makedirs'
 alias rd='rm -rf'
 alias ..='cd ..'
-alias du1="du -d 1 -h"
+alias ,,='git rev-parse --git-dir >/dev/null 2>&1 && cd `git rev-parse --show-toplevel` || echo "Not in git repo"'
+alias dus='sudo du -d 1 -h | sort -h'
 alias df="df -h"
 alias scr='screen -r'
 alias tgz='tar czfv'
@@ -32,6 +27,14 @@ alias please='sudo -H '
 alias upgrade='sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove'
 alias t='cd /tmp'
 alias o='open .'
+alias csv='column -s, -t'
+alias wetter='curl wttr.in/Berlin'
+alias tm='tmux new -A'
+
+# Show mount information in a nice format
+alias mountt="mount | column -t | sort"
+alias getmp3="youtube-dl -x --audio-format mp3 "
+sleep-in() {echo "Sleeping laptop in $1 minutes..." && sleep $((60 * $1)) && pmset sleepnow}
 
 # GIT stuff
 alias gs='git status -s'
@@ -43,11 +46,12 @@ alias gl='git pull'
 alias gp='git push'
 commit () { git commit -v -m "$*" }
 alias gc='commit'
-alias gitlog='git log --oneline --decorate --stat --graph --format="%C(yellow)%h %Creset%ai %Cred %an %Creset | %s"'
 # show the git graph
-alias gg='gitlog'
+alias gg='git log --oneline --decorate --stat --graph --format="%C(yellow)%h %Creset%ai %Cred %an %Creset | %s"'
 # find files ignored by git and the reason why
 alias gfi='find . -type f  | git check-ignore -v --stdin'
+alias grm="git branch --merged | grep -v \"\*\" | xargs -n 1 git branch -d"
+
 
 # Python / supervisor
 alias sv='sudo supervisorctl'
@@ -79,7 +83,7 @@ alias -g G="| grep -v grep | grep -i "
 alias -g L="| less"
 
 # get public/local IP addresses
-alias ip="curl https://ipinfo.io/ip"
+alias ip="curl https://ipinfo.io/"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 alias localip="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'"
 function digga() {
