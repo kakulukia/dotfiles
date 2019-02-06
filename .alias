@@ -47,7 +47,8 @@ alias gp='git push'
 commit () { git commit -v -m "$*" }
 alias gc='commit'
 # show the git graph
-alias gg='git log --oneline --decorate --stat --graph --format="%C(yellow)%h %Creset%ai %Cred %an %Creset | %s"'
+alias gg="git log --oneline --decorate --stat --abbrev-commit --date=relative --branches --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n'"
+
 # find files ignored by git and the reason why
 alias gfi='find . -type f  | git check-ignore -v --stdin'
 alias grm="git branch --merged | grep -v \"\*\" | xargs -n 1 git branch -d"
