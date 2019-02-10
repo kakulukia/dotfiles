@@ -46,11 +46,11 @@ function paths {
 }
 
 paths .
+paths ~/bin
+paths ~/go/bin
+paths ~/.poetry/bin
 paths /bin
 paths /sbin
-paths /Users/andy/.poetry/bin
-paths /Users/andy/bin
-paths /Users/andy/go/bin
 paths /usr/bin
 paths /usr/local/bin
 paths /usr/local/go/bin
