@@ -39,7 +39,7 @@ sleep-in() {echo "Sleeping laptop in $1 minutes..." && sleep $((60 * $1)) && pms
 # GIT stuff
 alias gs='git status -s'
 alias gu='git submodule update --init --recursive'
-alias gd='git diff --word-diff'
+alias gd='git diff'
 alias gf='git fetch --all --prune'
 alias ga='git add'
 alias gl='git pull'
