@@ -13,7 +13,7 @@ alias sudo='sudo --preserve-env '
 # create folder and cd into it
 makedirs () { mkdir -p $1; cd $1 }
 alias md='makedirs'
-alias rd='rm -rf'
+alias rd='trash'
 alias ..='cd ..'
 alias ,,='git rev-parse --git-dir >/dev/null 2>&1 && cd `git rev-parse --show-toplevel` || echo "Not in git repo"'
 alias dus='sudo du -d 1 -h | sort -h'
@@ -49,10 +49,12 @@ alias gc='commit'
 # show the git graph
 alias gg="git log --oneline --decorate --stat --abbrev-commit --date=relative --branches --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n'"
 
+diff_so_fancy () {diff -u "$@" | diff-so-fancy}
+alias diff="diff_so_fancy"
+
 # find files ignored by git and the reason why
 alias gfi='find . -type f  | git check-ignore -v --stdin'
 alias grm="git branch --merged | grep -v \"\*\" | xargs -n 1 git branch -d"
-
 
 # Python / supervisor
 alias sv='sudo supervisorctl'
@@ -62,8 +64,8 @@ alias shell='python manage.py shell_plus'
 
 # FASD
 alias v='f -e vim' # quick opening files with vim
-alias co='f -e code ' #quick opening files with code
 alias c='z'
+alias co='f -e code ' #quick opening files with code
 # `o` with no arguments opens the current directory, otherwise opens the given
 # location
 alias k="kubectl "
@@ -82,6 +84,7 @@ function server() {
 # Globals
 alias -g G="| grep -v grep | grep -i "
 alias -g L="| less"
+alias -g J="| jq"
 
 # get public/local IP addresses
 alias ip="curl https://ipinfo.io/"
@@ -126,7 +129,11 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 alias rs="manage.py runserver 0.0.0.0:8000"
 
 command -v bat >/dev/null 2>&1 && alias cat="bat --theme TwoDark --style=plain --paging never"
+command -v ddgr >/dev/null 2>&1 && alias d="ddgr"
+command -v ddgr >/dev/null 2>&1 && alias dd="ddgr --ducky"
 command -v prettyping >/dev/null 2>&1 && alias ping="prettyping --nolegend"
 command -v fzf >/dev/null 2>&1 && alias preview="fzf --preview 'bat --color \"always\" {}'"
+# brew install gnu-sed ?
+command -v bat >/dev/null 2>&1 && alias sed="gsed"
 
 
