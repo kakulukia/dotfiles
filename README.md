@@ -33,6 +33,8 @@ This will install the following:
   - vim-colors-solarized
   - vim-airline
   - fasd
+  
+Note: Use the `~/.gitconfig-personal` file to set you git username. That file is imported in `.gitconfig` so that settings can be ported via this repot, but the username stays personal.
 
 Disclaimer
 ===========
