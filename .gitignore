@@ -7,3 +7,10 @@ connect-to-jumphost.sh
 idea
 pycharm
 minikube-docker.sh
+.gitconfig-personal
+start-bell.sh
+start-sbc.sh
+start-unblu.sh
+chromedriver
+pinServerCert.sh
+fixCSV.py
