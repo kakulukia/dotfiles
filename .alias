@@ -47,7 +47,7 @@ alias gp='git push'
 commit () { git commit -v -m "$*" }
 alias gc='commit'
 # show the git graph
-alias gg="git log --oneline --decorate --stat --abbrev-commit --date=relative --branches --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n'"
+alias gg="git log --remotes --tags --oneline --decorate --stat --abbrev-commit --date=relative --branches --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n'"
 
 diff_so_fancy () {diff -u "$@" | diff-so-fancy}
 alias diff="diff_so_fancy"
@@ -118,9 +118,6 @@ alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET
 # Stuff I never really use but cannot delete either because of http://xkcd.com/530/
 alias stfu="osascript -e 'set volume output muted true'"
 alias pumpitup="osascript -e 'set volume 7'"
-
-# Print each PATH entry on a separate line
-alias path='echo -e ${PATH//:/\\n}'
 
 # Faster npm for Europeans
 command -v npm > /dev/null && alias npme="npm --registry http://registry.npmjs.eu/"

@@ -35,27 +35,28 @@ ZSH_CUSTOM=~/.zsh-custom
 plugins=(extract virtualenvwrapper fasd history-substring-search)
 
 # User configuration
-function paths {
+function path {
   if [[ -d "$1" ]] ; then
     if [[ -z "$PATH" ]] ; then
       export PATH=$1
     else
       export PATH=$PATH:$1
     fi
+  else
+    echo -e ${PATH//:/\\n} | sort
   fi
 }
 
-paths .
-paths ~/bin
-paths ~/go/bin
-paths ~/.poetry/bin
-paths /bin
-paths /sbin
-paths /usr/bin
-paths /usr/local/bin
-paths /usr/local/go/bin
-paths /usr/local/sbin
-paths /usr/sbin
+path .
+path ~/bin
+path ~/go/bin
+path ~/.poetry/bin
+path /bin
+path /sbin
+path /usr/bin
+path /usr/local/bin
+path /usr/local/sbin
+path /usr/sbin
 
 source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
