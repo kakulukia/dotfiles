@@ -16,3 +16,6 @@
 [submodule ".vim/bundle/gundo"]
 	path = .vim/bundle/gundo
 	url = http://github.com/sjl/gundo.vim.git
+[submodule ".SpaceVim"]
+	path = .SpaceVim
+	url = https://github.com/SpaceVim/SpaceVim.git
