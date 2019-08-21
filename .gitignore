@@ -14,3 +14,4 @@ start-unblu.sh
 chromedriver
 pinServerCert.sh
 fixCSV.py
+*.pyc
