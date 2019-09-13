@@ -49,8 +49,6 @@ function path {
 
 path .
 path ~/bin
-path ~/go/bin
-path ~/.poetry/bin
 path /bin
 path /sbin
 path /usr/bin
