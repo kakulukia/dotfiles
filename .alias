@@ -20,7 +20,6 @@ alias dus='sudo du -d 1 -h | sort -h'
 alias df="df -h"
 alias scr='screen -r'
 alias tgz='COPYFILE_DISABLE=true tar -c --exclude=.git --exclude=.DS_Store -zvf '
-alias utgz='tar xzfv'
 alias stree='open -a SourceTree .'
 alias root='sudo zsh'
 alias please='sudo -H '
