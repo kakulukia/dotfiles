@@ -23,6 +23,7 @@
     buffer_index_type = 4
     enable_tabline_filetype_icon = true
     enable_statusline_mode = false
+    bootstrap_before = "loadkeys#before"
 
 # Enable autocomplete layer
 [[layers]]
