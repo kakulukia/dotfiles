@@ -17,4 +17,7 @@ function! loadkeys#before() abort
   vnoremap <Esc>[1;3B :m '>+1<CR>gv=gv
   vnoremap <Esc>[1;3A :m '<-2<CR>gv=gv
 
+  " activate copy mode again
+  set mouse=r
+
 endf
