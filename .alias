@@ -28,7 +28,7 @@ alias t='cd /tmp'
 alias o='open .'
 alias csv='column -s, -t'
 alias wetter='curl wttr.in/Berlin'
-alias tm='tmux new -A'
+alias tm='tmux attach || tmux new'
 
 alias rgi='rg -i'
 alias rga='rg --hidden'

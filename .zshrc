@@ -137,3 +137,4 @@ export PIPENV_VENV_IN_PROJECT=1
 export PYTHONBREAKPOINT=ipdb.set_trace
 export VIRTUALENVWRAPPER_PYTHON=`which python`
 export PROMPT_EOL_MARK=""
+export TERM=screen-256color
