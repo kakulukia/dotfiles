@@ -33,6 +33,7 @@ ZSH_CUSTOM=~/.zsh-custom
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(extract virtualenvwrapper fasd history-substring-search)
+plugins+=(zsh-autosuggestions)
 
 # User configuration
 function path {
@@ -49,6 +50,7 @@ function path {
 
 path .
 path ~/bin
+path ~/.local/bin
 path /bin
 path /sbin
 path /usr/bin
@@ -138,3 +140,4 @@ export PYTHONBREAKPOINT=ipdb.set_trace
 export VIRTUALENVWRAPPER_PYTHON=`which python`
 export PROMPT_EOL_MARK=""
 export TERM=screen-256color
+

@@ -34,3 +34,8 @@ unrar
 wget
 woof
 youtube-dl
+up
+cloc
+nnn
+fd
+neofetch
