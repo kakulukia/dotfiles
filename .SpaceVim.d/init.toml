@@ -24,6 +24,7 @@
     enable_tabline_filetype_icon = true
     enable_statusline_mode = false
     bootstrap_before = "loadkeys#before"
+    filemanager = "nerdtree"
 
 # Enable autocomplete layer
 [[layers]]
@@ -32,6 +33,10 @@ auto-completion-return-key-behavior = "complete"
 auto-completion-tab-key-behavior = "smart"
 
 [[layers]]
+name = "lang#python"
+
+[[layers]]
 name = 'shell'
 default_position = 'top'
 default_height = 30
+
