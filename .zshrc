@@ -14,7 +14,6 @@ ZSH_CUSTOM=~/.zsh-custom
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(extract virtualenvwrapper fasd history-substring-search)
 plugins+=(zsh-autosuggestions)
-plugins+=(k)
 
 
 # nicer path configuration and lookup
