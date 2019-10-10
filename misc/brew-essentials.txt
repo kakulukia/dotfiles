@@ -1,9 +1,12 @@
 ack
 ansiweather
 bat
+cloc
+coreutils
 ddgr
 dos2unix
 fasd
+fd
 ffmpeg
 fswatch
 git
@@ -14,7 +17,9 @@ icdiff
 irssi
 jq
 n
+neofetch
 nmap
+nnn
 node
 openconnect
 openssl
@@ -31,11 +36,7 @@ tldr
 tmux
 tree
 unrar
+up
 wget
 woof
 youtube-dl
-up
-cloc
-nnn
-fd
-neofetch

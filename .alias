@@ -1,7 +1,15 @@
-alias l='ls -Flh'
-alias ll='ls -Flah'
-alias lt='ls -Flthr'
-alias llt='ls -Flathr'
+
+if hash colorls 2>/dev/null; then
+    alias l='colorls --gs --sd -lh'
+    alias ll='colorls --gs --sd -lah'
+    alias lt='colorls --gs --sd -lthr'
+    alias llt='colorls --gs --sd -lathr'
+else
+    alias l='ls -Flh'
+    alias ll='ls -Flah'
+    alias lt='ls -Flthr'
+    alias llt='ls -Flathr'
+fi
 lc () { l ${@:1} | wc -l }
 
 alias cp='cp -iv'
@@ -58,8 +66,7 @@ alias diff="diff_so_fancy"
 alias gfi='find . -type f  | git check-ignore -v --stdin'
 alias grm="git branch --merged | grep -v \"\*\" | xargs -n 1 git branch -d"
 
-# Python / supervisor
-alias sv='sudo supervisorctl'
+# Python / Django
 alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 alias shell='python manage.py shell_plus'
 

@@ -1,31 +1,11 @@
 # Path to your oh-my-dzsh installation.
 export ZSH=~/.oh-my-zsh
 
-# Set name of the theme to load.
 ZSH_THEME="bullet-train"
-
-# _ and - will be interchangeable.
-HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="false"
+HYPHEN_INSENSITIVE="true" # _ and - will be interchangeable.
 unsetopt correct_all
 setopt correct
-
-# Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-HIST_STAMPS="dd.mm.yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM=~/.zsh-custom
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
@@ -34,8 +14,10 @@ ZSH_CUSTOM=~/.zsh-custom
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(extract virtualenvwrapper fasd history-substring-search)
 plugins+=(zsh-autosuggestions)
+plugins+=(k)
 
-# User configuration
+
+# nicer path configuration and lookup
 function path {
   if [[ -d "$1" ]] ; then
     if [[ -z "$PATH" ]] ; then
@@ -47,8 +29,10 @@ function path {
     echo -e ${PATH//:/\\n} | sort
   fi
 }
+#starting clean
+export PATH=""
 
-path .
+path . # no need to use ./ to execute local scripts 
 path ~/bin
 path ~/.local/bin
 path /bin
@@ -69,35 +53,33 @@ export EDITOR='vim'
 # Set personal aliases, overriding those provided by oh-my-zsh libs, plugins, and themes.
 source ~/.alias
 
-# Where it gets saved
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+HIST_STAMPS="dd.mm.yyyy"
 HISTFILE=~/.history
-# Remember about a years worth of history (AWESOME)
 SAVEHIST=10000
 HISTSIZE=10000
-# Killer: share history between multiple shells
-setopt SHARE_HISTORY
-# If I type cd and then cd again, only save the last one
+setopt SHARE_HISTORY # Killer: share history between multiple shells
 setopt HIST_IGNORE_DUPS
-# Even if there are commands inbetween commands that are the same, still only save the last one
 setopt HIST_IGNORE_ALL_DUPS
-# If a line starts with a space, don't save it.
-setopt HIST_IGNORE_SPACE
+setopt HIST_IGNORE_SPACE # If a line starts with a space, don't save it.
 setopt HIST_NO_STORE
 
-host_color=cyan
-history_color=yellow
-user_color=green
-root_color=red
-directory_color=magenta
-error_color=red
-jobs_color=green
-zstyle ':completion:*' special-dirs true
-export REPORTTIME=2
+# testing if we need thse colors
+# host_color=cyan
+# history_color=yellow
+# user_color=green
+# root_color=red
+# directory_color=magenta
+# error_color=red
+# jobs_color=green
+# zstyle ':completion:*' special-dirs true
+export REPORTTIME=1
 
 # include local settings
 [[ -e ~/.profile ]] && source ~/.profile
 
 # Bind keypad
+############################
 # 0 . , Enter
 bindkey -s "^[Op" "0"
 bindkey -s "^[Ol" "."
@@ -141,3 +123,15 @@ export VIRTUALENVWRAPPER_PYTHON=`which python`
 export PROMPT_EOL_MARK=""
 export TERM=screen-256color
 
+zle-upify() {
+    buf="$(echo "$BUFFER" | sed 's/[ |]*$//')"
+    tmp="$(mktemp)"
+    eval "$buf |& up --unsafe-full-throttle -o '$tmp' 2>/dev/null"
+    cmd="$(tail -n +2 "$tmp")"
+    rm -f "$tmp"
+    BUFFER="$BUFFER | $cmd"
+    zle end-of-line
+}
+zle -N zle-upify
+
+bindkey '^U' zle-upify
