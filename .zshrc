@@ -29,14 +29,13 @@ function path {
   fi
 }
 #starting clean
-export PATH=""
+export PATH="/usr/bin"
 
-path . # no need to use ./ to execute local scripts 
+path . # no need to use ./ to execute local scripts
 path ~/bin
 path ~/.local/bin
 path /bin
 path /sbin
-path /usr/bin
 path /usr/local/bin
 path /usr/local/sbin
 path /usr/sbin
