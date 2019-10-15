@@ -1,9 +1,9 @@
 
 if hash colorls 2>/dev/null; then
-    alias l='colorls --gs --sd -lh'
-    alias ll='colorls --gs --sd -lah'
-    alias lt='colorls --gs --sd -lthr'
-    alias llt='colorls --gs --sd -lathr'
+    alias l='colorls --gs --sd -l'
+    alias ll='colorls --gs --sd -la'
+    alias lt='colorls --gs --sd -ltr'
+    alias llt='colorls --gs --sd -latr'
 else
     alias l='ls -Flh'
     alias ll='ls -Flah'
