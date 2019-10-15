@@ -39,9 +39,9 @@ In the misc folder you can find:
 
 * the Powerline patched SourceCode font
 * my currently used Sundried.itermcolors
-    * better-osx-settings script
+ better-osx-settings script
 * additional tools to be installed (install-brew-essentials.sh / additional-stuff.txt)
-    * customized `dark_colors.yaml` for colorls, which goes into `~/.config/colorls/`
+* customized `dark_colors.yaml` for colorls, which goes into `~/.config/colorls/`
 
 Disclaimer
 ===========
