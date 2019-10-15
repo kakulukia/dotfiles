@@ -11,3 +11,5 @@ pip install -U pgcli
 go get -u github.com/hugows/hf
 
 gem install colorls
+
+xcode-select --install

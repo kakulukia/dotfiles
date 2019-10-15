@@ -13,7 +13,7 @@ ZSH_CUSTOM=~/.zsh-custom
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(extract virtualenvwrapper fasd history-substring-search)
-plugins+=(zsh-autosuggestions)
+plugins+=(zsh-autosuggestions zsh-explain-shell)
 
 
 # nicer path configuration and lookup
@@ -60,7 +60,7 @@ HISTSIZE=10000
 setopt SHARE_HISTORY # Killer: share history between multiple shells
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_IGNORE_SPACE # If a line starts with a space, don't save it.
+setopt HIST_IGNORE_SPACE # If a line starts with a space, dont save it.
 setopt HIST_NO_STORE
 
 # testing if we need thse colors

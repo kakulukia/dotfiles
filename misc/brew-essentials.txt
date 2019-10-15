@@ -28,6 +28,7 @@ pyenv
 python
 redis
 ripgrep
+sed
 sift
 speedtest-cli
 ssh-copy-id
