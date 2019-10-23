@@ -5,7 +5,15 @@ cd ghar/dotfiles
 
 echo "\nupdating dotfiles .."
 git pull
+
+if ! git diff --quiet remotes/origin/HEAD; then
+ exit 
+fi
+
 git submodule update --init --recursive
+
+echo "\n\nrefreshing dotfiles links .."
+../bin/ghar install
 
 echo "\n\ninstalling additional system packages .."
 apt=`command -v apt-get`

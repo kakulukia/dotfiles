@@ -69,6 +69,10 @@ setup () {
   cd /tmp/fasd-1.0.1
   sudo make install
 
+  # installing additional stuff
+  cd
+  ghar/dotfiles/misc/update.sh
+
 
   echo ""
   echo ""
