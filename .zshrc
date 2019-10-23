@@ -31,8 +31,6 @@ zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 # Declare the variable
 typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=red'
-# To differentiate aliases from other command types
-ZSH_HIGHLIGHT_STYLES[alias]='fg=bold'
 # To have paths colored instead of underlined
 ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
 # To disable highlighting of globbing expressions
@@ -45,7 +43,7 @@ function path {
     if [[ -z "$PATH" ]] ; then
       export PATH=$1
     else
-      export PATH=$PATH:$1
+      export PATH=$1:$PATH
     fi
   else
     echo -e ${PATH//:/\\n} | sort

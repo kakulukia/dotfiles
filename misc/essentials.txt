@@ -10,6 +10,7 @@ fd
 ffmpeg
 fswatch
 git
+gnu-sed
 grep
 htop
 httpie
@@ -32,7 +33,6 @@ pyenv
 python
 redis
 ripgrep
-sed
 sift
 speedtest-cli
 ssh-copy-id
