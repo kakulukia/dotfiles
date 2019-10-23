@@ -7,13 +7,36 @@ unsetopt correct_all
 setopt correct
 COMPLETION_WAITING_DOTS="true"
 ZSH_CUSTOM=~/.zsh-custom
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(extract virtualenvwrapper fasd history-substring-search)
-plugins+=(zsh-autosuggestions zsh-explain-shell)
+plugins=(
+  extract 
+  virtualenvwrapper 
+  fasd 
+  history-substring-search
+  zsh-autosuggestions 
+  zsh-explain-shell 
+  history-search-multi-word
+  zsh-syntax-highlighting
+)
+
+# syntax highlighting has to be loaded last
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+zstyle ':bracketed-paste-magic' active-widgets '.self-*'
+# Declare the variable
+typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=red'
+# To differentiate aliases from other command types
+ZSH_HIGHLIGHT_STYLES[alias]='fg=bold'
+# To have paths colored instead of underlined
+ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
+# To disable highlighting of globbing expressions
+ZSH_HIGHLIGHT_STYLES[globbing]='none'
 
 
 # nicer path configuration and lookup

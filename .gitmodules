@@ -22,3 +22,9 @@
 [submodule ".zsh-custom/plugins/zsh-autosuggestions"]
 	path = .zsh-custom/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule ".zsh-custom/plugins/history-search-multi-word"]
+	path = .zsh-custom/plugins/history-search-multi-word
+	url = git@github.com:zdharma/history-search-multi-word.git
+[submodule ".zsh-custom/plugins/zsh-syntax-highlighting"]
+	path = .zsh-custom/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git

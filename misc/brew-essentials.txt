@@ -14,9 +14,13 @@ grep
 htop
 httpie
 icdiff
+iftop
 irssi
 jq
+mosh
+mtr
 n
+ncdu
 neofetch
 nmap
 nnn

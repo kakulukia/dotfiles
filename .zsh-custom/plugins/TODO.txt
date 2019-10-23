@@ -1,0 +1,5 @@
+we still have to make it work: ssh-connect
+prezto
+zplug
+startup-timer
+
