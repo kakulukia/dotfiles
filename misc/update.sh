@@ -22,10 +22,10 @@ brew=`command -v brew`
 
 ## Detect the systems installer
 if [ -n "$apt" ]; then
-    echo "some of the packages might not be installable if not using osx"
+    echo "some of the packages might not be installable if not using osx\n\n"
     INSTALL='sudo apt -y install'
 elif [ -n "$yum" ]; then
-    echo "some of the packages might not be installable if not using osx"
+    echo "some of the packages might not be installable if not using osx\n\n"
     INSTALL='sudo yum -y install'
 elif [ -n "$brew" ]; then
     INSTALL='brew install'
@@ -39,3 +39,5 @@ $INSTALL $(cat misc/essentials.txt)
 echo "\n\ninstalling even more additional packages .."
 misc/additional-stuff.sh
 
+mkdir -p ~/.config/colorls
+cp misc/dark_colors.yaml ~/.config/colorls/
