@@ -20,8 +20,10 @@ plugins=(
   zsh-autosuggestions
   zsh-explain-shell
   history-search-multi-word
+  zsh-completions
   zsh-syntax-highlighting
 )
+autoload -U compinit && compinit
 
 # syntax highlighting has to be loaded last
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
