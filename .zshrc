@@ -7,20 +7,18 @@ unsetopt correct_all
 setopt correct
 COMPLETION_WAITING_DOTS="true"
 ZSH_CUSTOM=~/.zsh-custom
-export ZPLUG_HOME=/usr/local/opt/zplug
-source $ZPLUG_HOME/init.zsh
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  extract 
-  virtualenvwrapper 
-  fasd 
+  extract
+  virtualenvwrapper
+  fasd
   history-substring-search
-  zsh-autosuggestions 
-  zsh-explain-shell 
+  zsh-autosuggestions
+  zsh-explain-shell
   history-search-multi-word
   zsh-syntax-highlighting
 )

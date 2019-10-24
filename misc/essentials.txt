@@ -33,7 +33,6 @@ pyenv
 python
 redis
 ripgrep
-sift
 speedtest-cli
 ssh-copy-id
 telnet

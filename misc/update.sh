@@ -7,7 +7,7 @@ echo "\nupdating dotfiles .."
 git pull
 
 if ! git diff --quiet remotes/origin/HEAD; then
- exit 
+ exit
 fi
 
 git submodule update --init --recursive
