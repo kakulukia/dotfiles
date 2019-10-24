@@ -25,11 +25,16 @@ function! loadkeys#before() abort
   " tmux fixes "
   """"""""""""""
   " Handle tmux $TERM quirks in vim
-  if $TERM =~ '^screen-256color'
+  " if $TERM =~ '^screen-256color'
     map <Esc>OH <Home>
     map! <Esc>OH <Home>
     map <Esc>OF <End>
     map! <Esc>OF <End>
-  endif
+
+    map <ESC>[8    <End>
+    map <ESC>[7    <Home>
+    imap <ESC>[8    <End>  
+    imap <ESC>[7    <Home>
+  " endif
 
 endf
