@@ -27,7 +27,6 @@ nnn
 node
 openconnect
 openssl
-prettyping
 pyenv
 python
 redis

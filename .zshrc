@@ -56,7 +56,6 @@ export PATH="/usr/bin"
 
 path . # no need to use ./ to execute local scripts
 path ~/bin
-path ~/.local/bin
 path /bin
 path /sbin
 path /usr/local/bin
