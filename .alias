@@ -134,10 +134,10 @@ command -v npm > /dev/null && alias npme="npm --registry http://registry.npmjs.e
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 alias rs="manage.py runserver 0.0.0.0:8000"
 
+alias ping="prettyping --nolegend"
 command -v bat >/dev/null 2>&1 && alias cat="bat --theme TwoDark --style=plain --paging never"
 command -v ddgr >/dev/null 2>&1 && alias d="ddgr"
 command -v ddgr >/dev/null 2>&1 && alias dd="ddgr --ducky"
-command -v prettyping >/dev/null 2>&1 && alias ping="prettyping --nolegend"
 command -v fzf >/dev/null 2>&1 && alias preview="fzf --preview 'bat --color \"always\" {}'"
 # brew install gnu-sed ?
 command -v bat >/dev/null 2>&1 && alias sed="gsed"
