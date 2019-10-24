@@ -25,7 +25,7 @@
     enable_statusline_mode = false
     bootstrap_before = "loadkeys#before"
     filemanager = "nerdtree"
-    default_indent = 4
+    default_indent = 2
 
 # Enable autocomplete layer
 [[layers]]
