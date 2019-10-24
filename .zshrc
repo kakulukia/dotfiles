@@ -37,14 +37,18 @@ ZSH_HIGHLIGHT_STYLES[globbing]='none'
 
 # nicer path configuration and lookup
 function path {
-  if [[ -d "$1" ]] ; then
-    if [[ -z "$PATH" ]] ; then
-      export PATH=$1
-    else
-      export PATH=$1:$PATH
-    fi
-  else
+  if [ $# -eq 0 ]; then
     echo -e ${PATH//:/\\n} | sort
+  else
+    if [[ -d "$1" ]] ; then
+      if [[ -z "$PATH" ]] ; then
+        export PATH=$1
+      else
+        export PATH=$1:$PATH
+      fi
+    else
+      echo "$1 does not exist :("
+    fi
   fi
 }
 #starting clean
