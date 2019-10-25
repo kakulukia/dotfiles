@@ -15,7 +15,7 @@ Features in this screen shot:
 * shows errors (and optional codes) from failed commands
 * history-substring-search
   
-Also inculded is some basic vim config and a powerline theme for vim.
+Also included is some basic SpaceVim config and a powerline theme for tmux.
 
 Installation
 ==============
@@ -42,6 +42,8 @@ In the misc folder you can find:
  better-osx-settings script
 * additional tools to be installed (install-brew-essentials.sh / additional-stuff.txt)
 * customized `dark_colors.yaml` for colorls, which goes into `~/.config/colorls/`
+
+The dotfiles can be updated with the `update-dotfiles` alias.
 
 Disclaimer
 ===========
