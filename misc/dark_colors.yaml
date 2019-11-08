@@ -15,7 +15,7 @@ chardev:   green
 # Access Modes
 write:     darkslategray
 read:      darkslategray
-exec:      indianred
+exec:      red
 no_access: darkslategray
 
 # Age
@@ -24,21 +24,21 @@ hour_old:    darkorange
 no_modifier: darkslategray
 
 # File Size
-file_large:  indianred
+file_large:  red
 file_medium: darkorange
 file_small:  darkslategray
 
 # Random
 report: white
 user:   darkslategray
-tree:   cyan
+tree:   darkslategray
 empty:  darkslategray
 error:  red
 normal: darkslategray
 
 # Git
-addition:     chartreuse
-modification: darkkhaki
-deletion:     darkred
+addition:     green
+modification: red
+deletion:     red
 untracked:    darkorange
-unchanged:    forestgreen
+unchanged:    green

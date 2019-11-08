@@ -30,7 +30,7 @@ elif [ -n "$yum" ]; then
 elif [ -n "$brew" ]; then
     INSTALL='brew install'
 else
-    echo "Error: You OS is not supported :(" >&2;
+    echo "Error: Your OS is not supported :(" >&2;
     exit 1;
 fi
 
@@ -40,4 +40,5 @@ echo "\n\ninstalling even more additional packages .."
 misc/additional-stuff.sh
 
 mkdir -p ~/.config/colorls
-cp misc/dark_colors.yaml ~/.config/colorls/
+path=`pwd`
+lm -s $path/misc/dark_colors.yaml ~/.config/colorls/

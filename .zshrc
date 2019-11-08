@@ -1,6 +1,7 @@
 # Path to your oh-my-dzsh installation.
 export ZSH=~/.oh-my-zsh
 
+ZSH_DISABLE_COMPFIX=false
 ZSH_THEME="bullet-train"
 HYPHEN_INSENSITIVE="true" # _ and - will be interchangeable.
 unsetopt correct_all
@@ -13,6 +14,8 @@ ZSH_CUSTOM=~/.zsh-custom
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  kubectl
+  docker
   extract
   virtualenvwrapper
   fasd
@@ -156,4 +159,5 @@ zle-upify() {
 }
 zle -N zle-upify
 
-bindkey '^U' zle-upify
+# use ctrl+p to invoke and ctrl+x to close and use the result
+bindkey '^P' zle-upify
