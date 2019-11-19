@@ -10,7 +10,6 @@ else
     alias lt='ls -Flthr'
     alias llt='ls -Flathr'
 fi
-lc () { l ${@:1} | wc -l }
 
 alias cp='cp -iv'
 alias mv='mv -iv'
@@ -58,10 +57,8 @@ commit () { git commit -v -m "$*" }
 alias gc='commit'
 # show the git graph
 alias gg="git log --remotes --tags --oneline --decorate --stat --abbrev-commit --date=relative --branches --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n'"
-
 diff_so_fancy () {diff -u "$@" | diff-so-fancy}
 alias diff="diff_so_fancy"
-
 # find files ignored by git and the reason why
 alias gfi='find . -type f  | git check-ignore -v --stdin'
 alias grm="git branch --merged | grep -v \"\*\" | xargs -n 1 git branch -d"
@@ -94,6 +91,7 @@ function server() {
 alias -g G="| grep -v grep | grep -i "
 alias -g L="| less"
 alias -g J="| jq"
+alias -g C="| wc -l"
 
 # get public/local IP addresses
 alias ip="curl https://ipinfo.io/"

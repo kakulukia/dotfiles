@@ -39,6 +39,10 @@ ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
 # To disable highlighting of globbing expressions
 ZSH_HIGHLIGHT_STYLES[globbing]='none'
 
+# HISTORY SEARCH OPTIONS
+zstyle ":history-search-multi-word" highlight-color "fg=white,bg=yellow"
+zstyle ":plugin:history-search-multi-word" synhl "yes"                 # Whether to perform syntax highlighting (default true)
+zstyle ":plugin:history-search-multi-word" active "bold"          # Effect on active history entry. Try: standout, bold, bg=blue (default underline)
 
 # nicer path configuration and lookup
 function path {
