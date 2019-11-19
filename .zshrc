@@ -59,6 +59,7 @@ function path {
       fi
     else
       echo "$1 does not exist :("
+      return 1
     fi
   fi
 }
