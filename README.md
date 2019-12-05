@@ -37,7 +37,7 @@ Note: Use the `~/.gitconfig-personal` file to set your git username. That file i
 
 In the misc folder you can find:
 
-* the Powerline patched SourceCode font
+* the Powerline patched SourceCode font (use that for your console to not see weird characters in the console)
 * my currently used Sundried.itermcolors
  better-osx-settings script
 * additional tools to be installed (install-brew-essentials.sh / additional-stuff.txt)
