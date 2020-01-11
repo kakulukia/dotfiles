@@ -41,4 +41,4 @@ misc/additional-stuff.sh
 
 mkdir -p ~/.config/colorls
 path=`pwd`
-lm -s $path/misc/dark_colors.yaml ~/.config/colorls/
+ln -s $path/misc/dark_colors.yaml ~/.config/colorls/
