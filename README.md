@@ -14,6 +14,7 @@ Features in this screen shot:
 * completion for almost anything via zsh
 * shows errors (and optional codes) from failed commands
 * history-substring-search
+* custom tmux config using ctrl+space as activator shortcut
   
 Also included is some basic SpaceVim config and a powerline theme for tmux.
 
@@ -22,25 +23,27 @@ Installation
 
 Be sure you are logged in as the user for whom you want to install this shell pakage and that the user has sudo rights.
 
-    wget -O - https://raw.githubusercontent.com/kakulukia/dotfiles/master/misc/setup.sh | bash
+    curl https://raw.githubusercontent.com/kakulukia/dotfiles/master/misc/setup.sh | sh
+
 
 This will install the following:
 
 * GIT to be able to download the repo itself
 * ZSH as your new default shell
 * oh my zsh
-* ghar for managing the dotfiles itself (links everythin into the home folder)
+* ghar for managing the dotfiles itself (links everything into your home folder)
 * SpaceVim
 * fasd
+* some handy aliases
   
 Note: Use the `~/.gitconfig-personal` file to set your git username. That file is imported in `.gitconfig` so that settings can be ported via this repo, but the username stays personal.
 
 In the misc folder you can find:
 
-* the Powerline patched SourceCode font (use that for your console to not see weird characters in the console)
+* the Powerline patched SourceCode font (use that for your console to not see weird characters in the terminal - or any other [Nerdfont](https://www.nerdfonts.com/))
 * my currently used Sundried.itermcolors
- better-osx-settings script
-* additional tools to be installed (install-brew-essentials.sh / additional-stuff.txt)
+* better-osx-settings script
+* an opinionated set of tools ([these](https://github.com/kakulukia/dotfiles/blob/master/misc/essentials.txt) and [those](https://github.com/kakulukia/dotfiles/blob/master/misc/additional-stuff.sh))
 * customized `dark_colors.yaml` for colorls, which goes into `~/.config/colorls/`
 
 The dotfiles can be updated with the `update-dotfiles` alias.

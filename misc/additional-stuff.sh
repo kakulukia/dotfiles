@@ -8,3 +8,7 @@ go get -u github.com/cjbassi/gotop
 sudo gem install colorls
 
 # xcode-select --install
+
+pip install virtualenvwrapper
+
+cargo install broot

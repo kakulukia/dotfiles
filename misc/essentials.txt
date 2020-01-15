@@ -33,6 +33,7 @@ python
 redis
 ripgrep
 ruby
+rust
 sd
 speedtest-cli
 ssh-copy-id
