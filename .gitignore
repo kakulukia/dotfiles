@@ -12,3 +12,5 @@ chromedriver
 pinServerCert.sh
 fixCSV.py
 *.pyc
+aok-rdp.sh
+connect-to-jumphost-*
