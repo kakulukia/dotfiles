@@ -19,12 +19,12 @@ plugins=(
   extract
   virtualenvwrapper
   fasd
-  history-substring-search
   zsh-autosuggestions
   zsh-explain-shell
   history-search-multi-word
   zsh-completions
   zsh-syntax-highlighting
+  history-substring-search
 )
 autoload -U compinit && compinit
 
