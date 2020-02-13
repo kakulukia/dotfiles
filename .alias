@@ -37,8 +37,9 @@ alias csv='column -s, -t'
 alias wetter='curl wttr.in/Berlin'
 alias tm='tmux attach || tmux new'
 
-alias rgi='rg -i'
-alias rga='rg --hidden'
+alias rg="rg -S"
+alias rgi='rg -i --max-columns 444'
+alias rga='rgi --hidden --search-zip'
 
 # Show mount information in a nice format
 alias mountt="mount | column -t | sort"
