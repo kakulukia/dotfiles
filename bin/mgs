@@ -247,7 +247,6 @@ for DIR in "${@:-"."}"; do
         fi
         if [ -n "$NEEDS_PULL_BRANCHES" ] && [ "$NO_PULL" -eq 0 ]; then
             STATUS_NEEDS="${STATUS_NEEDS}${C_NEEDS_PULL}Needs pull ($NEEDS_PULL_BRANCHES)${C_RESET} "
-            git --work-tree "$(dirname $GIT_DIR)" --git-dir "$GIT_DIR" pull
         fi
         if [ -n "$NEEDS_UPSTREAM_BRANCHES" ] && [ "$NO_UPSTREAM" -eq 0 ]; then
             STATUS_NEEDS="${STATUS_NEEDS}${C_NEEDS_UPSTREAM}Needs upstream ($NEEDS_UPSTREAM_BRANCHES)${C_RESET} "
@@ -269,6 +268,9 @@ for DIR in "${@:-"."}"; do
         # Print the output, unless repo is 'ok' and -e was specified
         if [ "$IS_OK" -ne 1 ] || [ "$EXCLUDE_OK" -ne 1 ]; then
             printf "${PROJ_DIR} - $STATUS_NEEDS\n"
+        fi
+        if [ -n "$NEEDS_PULL_BRANCHES" ] && [ "$NO_PULL" -eq 0 ]; then
+            git --work-tree "$(dirname $GIT_DIR)" --git-dir "$GIT_DIR" pull
         fi
     done
 done

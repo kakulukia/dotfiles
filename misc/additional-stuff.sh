@@ -9,3 +9,6 @@ sudo gem install colorls
 # xcode-select --install
 
 cargo install broot
+
+brew cask install db-browser-for-sqlite
+
