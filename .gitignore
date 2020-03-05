@@ -14,3 +14,4 @@ fixCSV.py
 *.pyc
 aok-rdp.sh
 connect-to-jumphost-*
+.DS_Store
