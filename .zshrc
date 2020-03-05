@@ -44,25 +44,6 @@ zstyle ":history-search-multi-word" highlight-color "fg=white,bg=yellow"
 zstyle ":plugin:history-search-multi-word" synhl "yes"                 # Whether to perform syntax highlighting (default true)
 zstyle ":plugin:history-search-multi-word" active "bold"          # Effect on active history entry. Try: standout, bold, bg=blue (default underline)
 
-# nicer path configuration and lookup
-function path {
-  if [ $# -eq 0 ]; then
-    echo -e ${PATH//:/\\n} | sort
-  elif [[ "$1" == "--save" ]]; then
-    path $2 && echo "path $2" >> $HOME/.profile
-  else
-    if [[ -d "$1" ]] ; then
-      if [[ -z "$PATH" ]] ; then
-        export PATH=$1
-      else
-        export PATH=$1:$PATH
-      fi
-    else
-      echo "$1 does not exist :("
-      return 1
-    fi
-  fi
-}
 #starting clean
 export PATH="/usr/bin"
 
@@ -82,9 +63,6 @@ export EDITOR='vim'
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs, plugins, and themes.
-source ~/.alias
-
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 HIST_STAMPS="dd.mm.yyyy"
 HISTFILE=~/.history
@@ -96,15 +74,6 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE # If a line starts with a space, dont save it.
 setopt HIST_NO_STORE
 
-# testing if we need thse colors
-# host_color=cyan
-# history_color=yellow
-# user_color=green
-# root_color=red
-# directory_color=magenta
-# error_color=red
-# jobs_color=green
-# zstyle ':completion:*' special-dirs true
 export REPORTTIME=1
 
 # include local settings
@@ -168,3 +137,8 @@ zle -N zle-upify
 
 # use ctrl+p to invoke and ctrl+x to close and use the result
 bindkey '^P' zle-upify
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs, plugins, and themes.
+source ~/.alias
+
+
