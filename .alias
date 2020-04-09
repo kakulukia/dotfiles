@@ -88,6 +88,23 @@ function server() {
     python -m http.server $port
 }
 
+function which() {
+    IFS='
+'
+    set -f
+    for LINE in `type -a $1`; do
+        COMMAND=`echo $LINE | cut -d ' ' -f 3`
+        if [[ $COMMAND = /* ]]; then
+            version=`$COMMAND --version 2>/dev/null` # might not work with all commands
+            [[ -n "$version" ]] && version="($version)"
+            echo "$1 is $COMMAND $version"
+            ll $COMMAND
+        else
+            echo $LINE
+        fi
+    done
+}
+
 # Globals
 alias -g G="| grep -v grep | grep -i "
 alias -g L="| less"
