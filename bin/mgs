@@ -137,6 +137,7 @@ for DIR in "${@:-"."}"; do
     # shellcheck disable=SC2086
     find -L "$DIR" $FIND_OPTS -type d | while read -r PROJ_DIR
     do
+        # echo $PROJ_DIR
         GIT_DIR="$PROJ_DIR/.git"
         GIT_CONF="$PROJ_DIR/.git/config"
         

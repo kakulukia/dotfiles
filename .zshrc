@@ -45,7 +45,7 @@ zstyle ":plugin:history-search-multi-word" synhl "yes"                 # Whether
 zstyle ":plugin:history-search-multi-word" active "bold"          # Effect on active history entry. Try: standout, bold, bg=blue (default underline)
 
 #starting clean
-export PATH="/usr/bin"
+export PATH="/usr/sbin"
 
 path . # no need to use ./ to execute local scripts
 path ~/bin
@@ -53,7 +53,7 @@ path /bin
 path /sbin
 path /usr/local/bin
 path /usr/local/sbin
-path /usr/sbin
+path /usr/bin
 
 source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
