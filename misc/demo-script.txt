@@ -1,0 +1,182 @@
+okay, here we are inside the dotfiles repo
+lets see the current status
+
+l
+
+im using colorls to have sane file sizes, git status, some 
+icons and highlights for recently changed stuff
+and im lazy, trying to type as little as possible .. hence l 
+to see all normal files and ll to list everyting
+
+ll
+
+we currently are on branch master, red indicates its dirty, lets see why
+
+gs
+
+diff-so-fancy will give a more detailed look at what changed also marking changes inside a line
+ga will also tab complete changed files
+
+ga demo-tab
+gc last additions to the demo script
+
+we are done here, lets demonstrate some more zsh features
+since im lazy, i dont like to cd here, than cd there and than cd to the next folder
+i use fasd to remember my locations and to create shortcuts base on usage
+
+c kunde
+
+this also works with files!
+Oh lets test this new idea and change this alias
+
+v ali
+
+Works from everywhere! Or the zsh config
+
+v zsh
+
+This was SpaceVim thats also included.
+lets have a look whats in here
+
+l
+
+oh, most of the folders start with the same kp_micro_ .. no luck tab completiing
+there, but what if we ..
+
+cd sso TAB
+
+Yes, you dont have to start typing from the beginning! Very nice!
+Lets have a look into this version file
+
+cat verTAB
+
+Try that with bash .. you dont need to write upper case letters!
+ZSH will also let you see all matching alternatives.
+
+cat reTAB TAB (release.sh)
+
+And also this is not the normal cat, its bat which also give you syntax highlighting
+Speeking of which
+
+which cat
+
+I pimped the which command a lil - it will even show the current version for
+commands that suppord the kinda standard --version flag.
+Lets go back to the dotfiles folder.
+
+c dot
+
+You can also use number to go back up to 9 directories.
+
+3
+4
+
+Also included are some fonts and the iTerm colors shown here.
+Lets have a look into the git history. You can dotfiles
+
+git log
+
+But im also too lazy for that .. and lets be honest, this could hold some more info
+
+gg
+
+Have a look into the alias file to find some more usefull stuff like 
+
+ip
+
+showing off your current ip and details, so if you constantly for get the zip code
+
+ip J .postal
+
+What was that? It's called a global alias. So J ist basically | jq where jq 
+is a must have tool, if you work with JSON. I have defined some of those since 
+they are very handy:
+
+rg "alias -g" .alias
+
+So if you want to find the redis process
+
+ps aux G redis
+
+So basically G is a shortcut for "| rg" which previously was G for grep.
+But nobody should use grep anymore if ripgrep is available on the system. 
+And even if its not, there still are better choices like ack.
+
+Are you a fan of CTRL-R?
+There is a feature called history reverse search that basically works in all 
+linux distros, but is disabled by default.
+Let me show you
+
+ssh RIGHT ARROW
+
+You can use the right arrow to complete the suggestion or use the up arrow to cycle
+through all history entries matching whatever you typed.
+
+Being logged into a remote system will change the prompt to show you that you are
+on a remote system.
+Now is the time to press CTRL-R, but this time its much different and cooler 
+than the default version
+
+CTRL-R
+input
+
+exit
+
+Did you ever ping some box and hated the kiind of output you get?
+
+ping 1.1.1.1
+
+Meet prettyping, i love it! :)
+
+Lets start something in the background.
+
+redis-server &
+
+The little cog wheel shows that there is something running and will also prevent
+you fron accidentally closing that session.
+The kill command also got an upgrade, you can now tab complete.
+
+kill redTAB
+redis-server &
+
+Or for more complex stuff, use fkill, which can close that 
+nasty app running on port 6379
+
+fkill
+6379
+
+There are many more usefull tools in 
+
+c misc
+cat ess TAB
+cat addi TAB
+
+Probably one of the most usefull one is tldr that spare you to read those 
+horible man pages and also shows some usefull examples.
+
+tldr curl
+
+Did you ever find yourself in the position, where you wanted to scroll back
+to the first lines of your console output? Or did you ever want to know how long 
+some command was running?
+hr will draw a line in case having a colored pront is not enough.
+
+hr
+
+Also in the background all commands are measured and everything longer than 3s
+will leave stats after it finished.
+
+fkill
+
+path
+
+wget https://www.python.org/ftp/python/3.8.2/Python-3.8.2.tar.xz
+x
+
+rd - trash
+
+server
+
+CTRL-P
+
+vim global history

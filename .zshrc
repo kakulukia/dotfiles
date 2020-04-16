@@ -2,7 +2,8 @@
 export ZSH=~/.oh-my-zsh
 
 ZSH_DISABLE_COMPFIX=false
-ZSH_THEME="bullet-train"
+# ZSH_THEME="bullet-train"
+ZSH_THEME="oxide"
 HYPHEN_INSENSITIVE="true" # _ and - will be interchangeable.
 unsetopt correct_all
 setopt correct

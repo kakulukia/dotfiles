@@ -41,6 +41,7 @@ telnet
 tig
 tldr
 tmux
+trash-cli
 tree
 unrar
 up
