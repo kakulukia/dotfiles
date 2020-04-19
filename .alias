@@ -12,7 +12,6 @@ else
 fi
 
 alias cp='cp -iv'
-alias mv='mv -iv'
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo --preserve-env '
@@ -103,6 +102,17 @@ function which() {
             echo $LINE
         fi
     done
+}
+
+function mv() {
+  if [ "$#" -ne 1 ] || [ ! -f "$1" ]; then
+    command mv -iv "$@"
+    return
+  fi
+
+  newfilename="$1"
+  vared newfilename
+  command mv -iv -- "$1" "$newfilename"
 }
 
 # Globals

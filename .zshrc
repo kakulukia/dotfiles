@@ -2,8 +2,8 @@
 export ZSH=~/.oh-my-zsh
 
 ZSH_DISABLE_COMPFIX=false
-# ZSH_THEME="bullet-train"
-ZSH_THEME="oxide"
+ZSH_THEME="bullet-train"
+# ZSH_THEME="geometry"
 HYPHEN_INSENSITIVE="true" # _ and - will be interchangeable.
 unsetopt correct_all
 setopt correct
@@ -142,4 +142,6 @@ bindkey '^P' zle-upify
 # Set personal aliases, overriding those provided by oh-my-zsh libs, plugins, and themes.
 source ~/.alias
 
+# autoload -U promptinit; promptinit
+# prompt pure
 
