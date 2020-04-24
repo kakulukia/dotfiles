@@ -13,7 +13,7 @@ fi
 git submodule update --init --recursive
 
 echo "\n\nrefreshing dotfiles links .."
-../bin/ghar install
+python3 ../bin/ghar install
 
 echo "\n\ninstalling additional system packages .."
 apt=`command -v apt-get`
