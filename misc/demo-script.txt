@@ -156,27 +156,97 @@ horible man pages and also shows some usefull examples.
 
 tldr curl
 
+But dont use curl. ;)
+Use http(ie) or http-prompt for more complex stuff.
+
 Did you ever find yourself in the position, where you wanted to scroll back
 to the first lines of your console output? Or did you ever want to know how long 
 some command was running?
-hr will draw a line in case having a colored pront is not enough.
+hr will draw a line in case having a colored promt is not enough.
 
 hr
 
 Also in the background all commands are measured and everything longer than 3s
-will leave stats after it finished.
+will leave stats after it finished. Lets have a look at the while showing of 
+another cool feature: vim global history
 
-fkill
+v ali
+
+stats up here for longer running commands
+oldest change was from 2019/10/23 17:04:47
+
+So now all vim changes are persited at a local cache directory.
+
+cd /Users/andy/.cache/SpaceVim/undofile
+l
+
+dus
+which dus
+
+And its hardly taking up any noticible space. But having it setup saved 
+my ass so many times already! :)
+
+So, what was blocking that port 6379 again? 
+Lets find out .. and may directly kill it.
+
+fkill :6379
+
+echo $PATH
+
+Oh thats kinda hard to read, isnt it?
 
 path
 
-wget https://www.python.org/ftp/python/3.8.2/Python-3.8.2.tar.xz
-x
+Ahhh .. much better .. and sorted!
+Sorting is bad you say?
+If you really what to see why app x is used from path 1 instead of path 2, which
+is now listing everything, like in this case:
 
-rd - trash
+c sal
+which uwsgi
+
+So, we have this fancy zipped file .. 
+
+wget https://www.python.org/ftp/python/3.8.2/Python-3.8.2.tar.xz
+
+But what the hell is xz supposed to be?
+Ah, we dont care!
+
+x py<tab>
+
+Be gone!
+
+rd Python-3.8.2*
+
+Oh, and what also saved my ass multiple times: the rd alias is deleting 
+with trash cli so you can actually undelete stuff again!
+
+undelete
+
+And its back - Yeah!
+
+Lets quickly share that file.
+We have to options here with zero setup:
+
+send py<tab>
+
+Or lets send the whole directory!
+
+send .
+
+Or lets hand pick some files in the browser:
 
 server
 
-CTRL-P
+Those apps dont use the right ip?
+Hmm, how do we get the right one again?
+Lets figure that out on the go with the up command tied to CRTL+p
 
-vim global history
+ifconfig | grep inet | grep -v inet6 | cut -d ' ' -f2
+
+Actually the extract column thing is used so many times, 
+that i found a handy tool for that task
+
+ifconfig | grep inet | grep -v inet6 | ec 2
+
+fin
