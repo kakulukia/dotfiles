@@ -4,12 +4,12 @@ cd
 cd ghar/dotfiles
 
 echo "\nupdating dotfiles .."
-git pull
 
 if ! git diff --quiet remotes/origin/HEAD; then
  exit
 fi
 
+git pull
 git submodule update --init --recursive
 
 echo "\n\nrefreshing dotfiles links .."
