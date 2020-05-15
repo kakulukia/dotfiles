@@ -1,12 +1,12 @@
-okay, here we are inside the dotfiles repo
-lets see the current status
+Okay, where do we start? We are inside the dotfiles repo.
+Lets see the current status.
 
 l
 
-im using colorls to have sane file sizes, git status, some 
-icons and highlights for recently changed stuff
-and im lazy, trying to type as little as possible .. hence l 
-to see all normal files and ll to list everyting
+Im using colorls to have sane file sizes, git status, some 
+icons and highlights for recently changed stuff.
+And im lazy, trying to type as little as possible .. hence l 
+to see all normal files and ll to list everyting.
 
 ll
 
@@ -14,29 +14,26 @@ we currently are on branch master, red indicates its dirty, lets see why
 
 gs
 
-diff-so-fancy will give a more detailed look at what changed also marking changes inside a line
-ga will also tab complete changed files
+diff-so-fancy will give a more detailed look at what changed also marking 
+changes inside a line. ga will also tab complete changed files
 
 ga demo-tab
 gc last additions to the demo script
 
-we are done here, lets demonstrate some more zsh features
-since im lazy, i dont like to cd here, than cd there and than cd to the next folder
-i use fasd to remember my locations and to create shortcuts base on usage
+Since im lazy, i dont like to cd here, than cd there and than cd to the next folder
+I use fasd to remember my locations and to create shortcuts based on recent usage.
 
 c kunde
 
-this also works with files!
-Oh lets test this new idea and change this alias
+This also works with files!
+Oh, lets test this new idea and change this alias
 
 v ali
 
-Works from everywhere! Or the zsh config
+Open any file from everywhere!
 
-v zsh
-
-This was SpaceVim thats also included.
-lets have a look whats in here
+This was SpaceVim, which is also included.
+Lets have a look whats in here
 
 l
 
@@ -55,7 +52,7 @@ ZSH will also let you see all matching alternatives.
 
 cat reTAB TAB (release.sh)
 
-And also this is not the normal cat, its bat which also give you syntax highlighting
+And also this is not the normal cat, its bat which also gives you syntax highlighting
 Speeking of which
 
 which cat
