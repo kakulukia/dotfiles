@@ -26,7 +26,7 @@ fi
 $INSTALL $(cat essentials.txt)
 
 echo "\n\ninstalling even more additional packages .."
-additional-stuff.sh
+zsh additional-stuff.sh
 
 mkdir -p ~/.config/colorls
 path=`pwd`

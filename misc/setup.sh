@@ -74,7 +74,7 @@ setup () {
   cd
   cd ghar/dotfiles/misc/
   pwd
-  ./install-additional-stuff.sh
+  zsh install-additional-stuff.sh
 
 
   echo ""
