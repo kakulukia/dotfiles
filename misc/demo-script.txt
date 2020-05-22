@@ -27,7 +27,6 @@ q
  # ga will also let you tab complete the changed files.
 
 ga demo-ß
-BREAK
 gc last additions to the demo script
 
  # Since I'm lazy, I don't like to cd here, than cd there and than cd to 
@@ -82,6 +81,7 @@ c dot
 4
 
  # Also included are some fonts and the iTerm colors shown here.
+
  # Let's have a look at the git history. You can do
 
 git log
@@ -121,12 +121,12 @@ SLEEP: 2
 kill redß
 
  # red got replaced with its process id like shown above.
- # Let's start redis again in the background.
+ # Let's start redis again.
 
 redis-server &
 
- # The little cog wheel shows that there is something running and will also prevent
- # you fron accidentally closing that session.
+ # The little cog wheel shows that there is something running in the background
+ # and will also prevent you from accidentally closing that session.
  
  exit
 
@@ -134,7 +134,7 @@ redis-server &
  # nasty app running on port 6379 - what was it again? No need for netstat.
 
 fkill
-6379
+:6379
 
  # Are you a fan of CTRL-R?
  # There is a feature called history reverse search that basically works in all 
@@ -153,10 +153,10 @@ SLEEP: 9
 
 exit
 
- # Now is the time to press CTRL-R, but this time its much different and way cooler 
- # than the default version
+ # Now is the time to press CTRL-R, but this time it's much different and way cooler 
+ # than the default version.
 
-SLEEP: 9
+SLEEP: 9 : >>>>>>>>> CTRL+R >>> 1.1.1
 
  # Did you ever ping some box and hated the kind of output you get?
 

@@ -2,11 +2,17 @@ lastCD=`pwd`
 
 cd
 cd ghar/dotfiles
+git fetch
 
-echo "\nupdating dotfiles .."
+local git_status="$(git status -b --porcelain 2> /dev/null)"
+local behind_re='.+behind ([0-9]+).+'
 
-if ! git diff --quiet remotes/origin/HEAD; then
- exit
+if [[ "${git_status}" =~ ${behind_re} ]]; then
+    echo "\nupdating dotfiles .."
+else
+    echo "You are up to date."
+    echo ""
+    exit
 fi
 
 git pull
