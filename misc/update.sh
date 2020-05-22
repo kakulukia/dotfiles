@@ -5,7 +5,7 @@ cd
 cd ghar/dotfiles
 git fetch
 
-git_status="$(git status -b --porcelain > /dev/null)"
+git_status="$(git status -b --porcelain 2> /dev/null)"
 behind_re='.+behind ([0-9]+).+'
 
 if [[ "${git_status}" =~ ${behind_re} ]] ; then
