@@ -1,16 +1,20 @@
 echo "\n\nDo you also want to install additional app? [y/N] "
 read -r -q response
-if [[ "$response" == "n" ]]
+if [[ "$response" != "y" ]]
 then
     exit 0
 fi
 
+apt=`command -v snap`
 apt=`command -v apt-get`
 yum=`command -v yum`
 brew=`command -v brew`
 
 ## Detect the systems installer
 if [ -n "$apt" ]; then
+    echo "some of the packages might not be installable if not using osx\n\n"
+    INSTALL='sudo apt -y install'
+elif [ -n "$apt" ]; then
     echo "some of the packages might not be installable if not using osx\n\n"
     INSTALL='sudo apt -y install'
 elif [ -n "$yum" ]; then
