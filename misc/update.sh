@@ -4,8 +4,8 @@ cd
 cd ghar/dotfiles
 git fetch
 
-local git_status="$(git status -b --porcelain 2> /dev/null)"
-local behind_re='.+behind ([0-9]+).+'
+git_status="$(git status -b --porcelain 2> /dev/null)"
+behind_re='.+behind ([0-9]+).+'
 
 if [[ "${git_status}" =~ ${behind_re} ]]; then
     echo "\nupdating dotfiles .."
