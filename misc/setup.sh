@@ -9,7 +9,7 @@ brew=`command -v brew`
 
 ## Detect the systems installer
 if [ -n "$apt" ]; then
-    INSTALL='sudo apt -y install'
+    INSTALL='sudo apt-get -y install'
 elif [ -n "$yum" ]; then
     INSTALL='sudo yum -y install'
 elif [ -n "$brew" ]; then
@@ -71,7 +71,7 @@ setup () {
 
   # installing additional stuff
   cd
-  ghar/dotfiles/misc/update.sh
+  ghar/dotfiles/misc/install-additional-stuff.sh
 
 
   echo ""
