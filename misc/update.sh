@@ -17,12 +17,21 @@ else
 fi
 
 git pull
-git submodule update --init --recursive
+if [ "$?" -gt 0 ]; then
+    exit 1
+fi
+git submodule update --init --recursive --remote
 
 echo "\n\nrefreshing dotfiles links .."
 python3 ../bin/ghar install
 
-echo "\n\ninstalling additional system packages .."
+echo "\n\nDo you also want to install additional system packages? [y/N] "
+read -r -q response
+if [[ "$response" == "n" ]]
+then
+    exit 0
+fi
+
 apt=`command -v apt-get`
 yum=`command -v yum`
 brew=`command -v brew`
