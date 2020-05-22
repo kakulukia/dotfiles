@@ -69,9 +69,11 @@ setup () {
   cd /tmp/fasd-1.0.1
   sudo make install
 
-  # installing additional stuff
+  echo ""
+  green "Installing additional stuff .."
   cd
   cd ghar/dotfiles/misc/
+  pwd
   ./install-additional-stuff.sh
 
 
