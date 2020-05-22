@@ -1,13 +1,14 @@
+#!/usr/bin/env node
 lastCD=`pwd`
 
 cd
 cd ghar/dotfiles
 git fetch
 
-git_status="$(git status -b --porcelain 2> /dev/null)"
+git_status="$(git status -b --porcelain > /dev/null)"
 behind_re='.+behind ([0-9]+).+'
 
-if [ "${git_status}" =~ ${behind_re} ] ; then
+if [[ "${git_status}" =~ ${behind_re} ]] ; then
     echo "\nupdating dotfiles .."
 else
     echo "You are up to date."
