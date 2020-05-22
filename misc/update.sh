@@ -26,4 +26,5 @@ echo "\n\nrefreshing dotfiles links .."
 python3 ../bin/ghar install
 
 cd
-ghar/dotfiles/misc/install-additional-stuff.sh
+cd ghar/dotfiles/misc/
+install-additional-stuff.sh

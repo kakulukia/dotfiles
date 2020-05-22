@@ -23,12 +23,12 @@ else
     exit 1;
 fi
 
-$INSTALL $(cat misc/essentials.txt)
+$INSTALL $(cat essentials.txt)
 
 echo "\n\ninstalling even more additional packages .."
-misc/additional-stuff.sh
+additional-stuff.sh
 
 mkdir -p ~/.config/colorls
 path=`pwd`
-ln -s $path/misc/dark_colors.yaml ~/.config/colorls/
+ln -s $path/dark_colors.yaml ~/.config/colorls/
 

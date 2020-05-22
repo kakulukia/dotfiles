@@ -71,7 +71,8 @@ setup () {
 
   # installing additional stuff
   cd
-  ghar/dotfiles/misc/install-additional-stuff.sh
+  cd ghar/dotfiles/misc/
+  install-additional-stuff.sh
 
 
   echo ""
