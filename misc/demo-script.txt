@@ -1,249 +1,302 @@
-Okay, where do we start? We are inside the dotfiles repo.
-Lets see the current status.
+
+ # Okay, where do we start? We are inside the dotfiles repo.
+ # Let's have a look.
 
 l
 
-Im using colorls to have sane file sizes, git status, some 
-icons and highlights for recently changed stuff.
-And im lazy, trying to type as little as possible .. hence l 
-to see all normal files and ll to list everyting.
+ # I'm using colorls to have sane file sizes, git status, some 
+ # icons and highlights for recently changed stuff.
+ # And I'm lazy, trying to type as little as possible .. hence the l 
+ # alias to see all normal files and ll to list everyting.
 
 ll
 
-we currently are on branch master, red indicates its dirty, lets see why
+ # The prompt also shows that you are inside a git repo by displaying 
+ # the current branch. We currently are on branch master. 
+ # A red branch name indicates it's dirty, lets see why.
 
 gs
 
-diff-so-fancy will give a more detailed look at what changed also marking 
-changes inside a line. ga will also tab complete changed files
+ # diff-so-fancy will give a more detailed look at what changed also marking 
+ # changes inside a line. 
+ 
+gd
+SLEEP: 2
+q
+ 
+ # ga will also let you tab complete the changed files.
 
-ga demo-tab
+ga demo-ß
+BREAK
 gc last additions to the demo script
 
-Since im lazy, i dont like to cd here, than cd there and than cd to the next folder
-I use fasd to remember my locations and to create shortcuts based on recent usage.
+ # Since I'm lazy, I don't like to cd here, than cd there and than cd to 
+ # the next folder. I use fasd to remember my locations and to create 
+ # shortcuts based on recent usage.
 
 c kunde
 
-This also works with files!
-Oh, lets test this new idea and change this alias
+ # This also works with files!
+ # Oh, let's test this new idea and change this alias.
 
 v ali
+SLEEP: 2
+:q
 
-Open any file from everywhere!
+ # Voila! Open any file from anywhere!
 
-This was SpaceVim, which is also included.
-Lets have a look whats in here
+ # This was SpaceVim, which is also included.
+ # Let's have a look what's in here
 
 l
 
-oh, most of the folders start with the same kp_micro_ .. no luck tab completiing
-there, but what if we ..
+ # Oh, most of the folders start with the same kp_micro_ .. no luck 
+ # tab completiing there, but what if we ..
 
-cd sso TAB
+cd ssoß
 
-Yes, you dont have to start typing from the beginning! Very nice!
-Lets have a look into this version file
+ # Yes, you don't have to start typing from the beginning! Very nice!
+ # Let's have a look into this version file.
 
-cat verTAB
+cat verß
 
-Try that with bash .. you dont need to write upper case letters!
-ZSH will also let you see all matching alternatives.
+ # Try that with bash .. you dont need to write upper case letters!
+ # ZSH will also let you see all matching alternatives.
 
-cat reTAB TAB (release.sh)
+cat reßßß
 
-And also this is not the normal cat, its bat which also gives you syntax highlighting
-Speeking of which
+ # And also this is not the normal cat. It's bat which also gives you 
+ # syntax highlighting - speeking of which:
 
 which cat
 
-I pimped the which command a lil - it will even show the current version for
-commands that suppord the kinda standard --version flag.
-Lets go back to the dotfiles folder.
+ # I pimped the which command a lil - it will even show the current version for
+ # commands that support the kinda standard --version flag.
+ # Lets go back to the dotfiles folder.
 
 c dot
 
-You can also use number to go back up to 9 directories.
+ # You can also use numbers to go back up to 9 directories.
 
 3
 4
 
-Also included are some fonts and the iTerm colors shown here.
-Lets have a look into the git history. You can dotfiles
+ # Also included are some fonts and the iTerm colors shown here.
+ # Let's have a look at the git history. You can do
 
 git log
 
-But im also too lazy for that .. and lets be honest, this could hold some more info
+ # But I'm also too lazy for that .. and lets be honest, the default log 
+ # is missing some info and could look a lil like this.
 
 gg
+SLEEP: 2
 
-Have a look into the alias file to find some more usefull stuff like 
+ # Have a look into the alias file to find some more usefull stuff like 
 
 ip
 
-showing off your current ip and details, so if you constantly for get the zip code
+ # It's showing off your current ip and details, so if you constantly 
+ # forget the zip code like I am:
 
 ip J .postal
 
-What was that? It's called a global alias. So J ist basically | jq where jq 
-is a must have tool, if you work with JSON. I have defined some of those since 
-they are very handy:
+ # What was that? It's called a global alias. So J ist basically | jq where jq 
+ # is a must have tool, if you work with JSON. I have defined some of those 
+ # global aliases since they are very handy! 
 
 rg "alias -g" .alias
 
-So if you want to find the redis process
+ # So if you want to find that process ..
 
 ps aux G redis
+SLEEP: 2
 
-So basically G is a shortcut for "| rg" which previously was G for grep.
-But nobody should use grep anymore if ripgrep is available on the system. 
-And even if its not, there still are better choices like ack.
+ # I was typing | grep a lot before i found out about those global aliases.
+ # But nobody should use grep anymore if ripgrep is available on the system. :)
+ # And even if its not, there still are better choices like ack.
 
-Are you a fan of CTRL-R?
-There is a feature called history reverse search that basically works in all 
-linux distros, but is disabled by default.
-Let me show you
+ # Killing stuff can also be done with tab completion.
 
-ssh RIGHT ARROW
+kill redß
 
-You can use the right arrow to complete the suggestion or use the up arrow to cycle
-through all history entries matching whatever you typed.
-
-Being logged into a remote system will change the prompt to show you that you are
-on a remote system.
-Now is the time to press CTRL-R, but this time its much different and cooler 
-than the default version
-
-CTRL-R
-input
-
-exit
-
-Did you ever ping some box and hated the kiind of output you get?
-
-ping 1.1.1.1
-
-Meet prettyping, i love it! :)
-
-Lets start something in the background.
+ # red got replaced with its process id like shown above.
+ # Let's start redis again in the background.
 
 redis-server &
 
-The little cog wheel shows that there is something running and will also prevent
-you fron accidentally closing that session.
-The kill command also got an upgrade, you can now tab complete.
+ # The little cog wheel shows that there is something running and will also prevent
+ # you fron accidentally closing that session.
+ 
+ exit
 
-kill redTAB
-redis-server &
-
-Or for more complex stuff, use fkill, which can close that 
-nasty app running on port 6379
+ # Or for more complex stuff, use fkill, which can close that 
+ # nasty app running on port 6379 - what was it again? No need for netstat.
 
 fkill
 6379
 
-There are many more usefull tools in 
+ # Are you a fan of CTRL-R?
+ # There is a feature called history reverse search that basically works in all 
+ # linux distros, but is disabled by default. :(
+ # This setup goes one step further. You can
+ # Let me show you
+
+ssh 
+SLEEP: 9
+
+ # You can use the right arrow to complete the suggestion or use the up arrow to cycle
+ # through all history entries matching whatever you typed containing ssh.
+
+ # Being logged into a remote system will change the prompt to show you that you are
+ # on a remote system.
+
+exit
+
+ # Now is the time to press CTRL-R, but this time its much different and way cooler 
+ # than the default version
+
+SLEEP: 9
+
+ # Did you ever ping some box and hated the kind of output you get?
+
+ping 1.1.1.1
+SLEEP: 5
+
+ # Meet prettyping, i love it! :)
+
+
+ # There are many more usefull tools in 
 
 c misc
-cat ess TAB
-cat addi TAB
+cat essß
+SLEEP: 2
+cat addiß
 
-Probably one of the most usefull one is tldr that spare you to read those 
-horible man pages and also shows some usefull examples.
+ # Probably one of the most usefull one is tldr, that spares you to read those 
+ # horible man pages and also shows some usefull examples.
 
 tldr curl
 
-But dont use curl. ;)
-Use http(ie) or http-prompt for more complex stuff.
+ # But don't use curl. ;)
+ # Use http(ie) or http-prompt for more complex stuff.
 
-Did you ever find yourself in the position, where you wanted to scroll back
-to the first lines of your console output? Or did you ever want to know how long 
-some command was running?
-hr will draw a line in case having a colored promt is not enough.
+ # Did you ever find yourself in the position, where you wanted to scroll back
+ # to the first lines of your console output? Or did you ever want to know how long 
+ # some command was running?
+ # hr will draw a line in case having a colored prompt is not enough.
 
 hr
 
-Also in the background all commands are measured and everything longer than 3s
-will leave stats after it finished. Lets have a look at the while showing of 
-another cool feature: vim global history
+ # But most of the times it's AFTER long running command X that you know you want to
+ # measure the execution time. That's why by default all commands are measured in the 
+ # background and everything longer than a few seconds will leave stats after it finishes. 
+ # Lets have a look at that while showing of another cool feature: 
+ # vim global history
+ # Have a look at the dates below, while we are browsing back in history.
 
 v ali
+SLEEP: 1
+uuuu
+uuu
+uuu
+uuuuuuuu
+uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+SLEEP: 1
+:q!
 
-stats up here for longer running commands
-oldest change was from 2019/10/23 17:04:47
+# ^^ Here are those stats for longer running commands.
+# The oldest change is from 2019/10/23 17:04:47 - the date I switched to SpaceVim.
+# My previous setup used another directory for the undo files, but having that
+# setup by default while using SpaceVim is kina cool.
 
-So now all vim changes are persited at a local cache directory.
+ # So now all vim changes are persisted at a local cache directory.
 
 cd /Users/andy/.cache/SpaceVim/undofile
 l
+SLEEP: 1
 
 dus
 which dus
 
-And its hardly taking up any noticible space. But having it setup saved 
-my ass so many times already! :)
-
-So, what was blocking that port 6379 again? 
-Lets find out .. and may directly kill it.
-
-fkill :6379
+ # And its hardly taking up any noticible space. But having it setup saved 
+ # my ass so many times already! :)
 
 echo $PATH
 
-Oh thats kinda hard to read, isnt it?
+ # Oh thats kinda hard to read, isn't it?
+ # I built a different more user friendly version.
 
 path
 
-Ahhh .. much better .. and sorted!
-Sorting is bad you say?
-If you really what to see why app x is used from path 1 instead of path 2, which
-is now listing everything, like in this case:
+ # Ahhh .. much better .. and sorted!
+ # Sorting is bad you say?
+ # Because its not revealing why app X is used from path 1 instead of path 2?
+ # Yes, thats right, but which will tell you that too. 
+ # It's now listing everything like in this case:
 
 c sal
 which uwsgi
 
-So, we have this fancy zipped file .. 
+ # So, we have this fancy zipped file .. 
 
+t
 wget https://www.python.org/ftp/python/3.8.2/Python-3.8.2.tar.xz
+SLEEP: 7
 
-But what the hell is xz supposed to be?
-Ah, we dont care!
+ # But what the hell is xz supposed to be?
+ # Ah, we don't care!
 
-x py<tab>
+x pyß
+SLEEP: 4
 
-Be gone!
+ # Be gone!
 
 rd Python-3.8.2*
 
-Oh, and what also saved my ass multiple times: the rd alias is deleting 
-with trash cli so you can actually undelete stuff again!
+ # Oh, and what also saved my ass multiple times: the rd alias is deleting 
+ # with trash cli so you can actually undelete stuff again!
 
 undelete
+SLEEP:9
+0
 
-And its back - Yeah!
+l
 
-Lets quickly share that file.
-We have to options here with zero setup:
+ # And its back - Yeah!
 
-send py<tab>
+ # Lets quickly share that file.
+ # We have two options here with zero setup:
 
-Or lets send the whole directory!
+send pyß
+SLEEP: 5
+
+ # Or lets send the whole directory!
 
 send .
+SLEEP: 5
 
-Or lets hand pick some files in the browser:
+ # Or lets hand pick some files in the browser:
 
 server
+SLEEP: 5
 
-Those apps dont use the right ip?
-Hmm, how do we get the right one again?
-Lets figure that out on the go with the up command tied to CRTL+p
+ # Those apps don't use the right ip?
+ # Hmm, how do we get the right one again?
+ # Lets figure that out on the go with the up command tied to CRTL+P.
 
-ifconfig | grep inet | grep -v inet6 | cut -d ' ' -f2
+ifconfigü
+SLEEP: 4
+grep inet | grep -v inet6 | cut -d ' ' -f2
+SLEEP: 3
 
-Actually the extract column thing is used so many times, 
-that i found a handy tool for that task
+ # Actually the extract column thing is used so many times, 
+ # that I found a handy tool for that task.
 
-ifconfig | grep inet | grep -v inet6 | ec 2
+ifconfigü
+SLEEP: 4
+grep inet | grep -v inet6 | ec 2
+SLEEP: 3
 
-fin
+ # fin
+ SLEEP: 2

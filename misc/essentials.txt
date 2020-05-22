@@ -8,6 +8,7 @@ dos2unix
 fasd
 fd
 ffmpeg
+fx
 gdate
 git
 gnu-sed
