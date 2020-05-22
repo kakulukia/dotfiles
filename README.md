@@ -1,3 +1,6 @@
+![MacOS](https://github.com/kakulukia/dotfiles/workflows/MacOS/badge.svg)
+![Ubuntu](https://github.com/kakulukia/dotfiles/workflows/Ubuntu/badge.svg)
+
 FEATURES
 ========
 
