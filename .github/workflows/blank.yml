@@ -26,7 +26,5 @@ jobs:
     - name: install dotfiles
       run: |
         curl https://raw.githubusercontent.com/kakulukia/dotfiles/master/misc/setup.sh | sh
-        zsh
-        alias
-        echo "wir kommen hier locker hin"
+        zsh alias
       
