@@ -76,6 +76,7 @@ alias co='f -e code ' #quick opening files with code
 # `o` with no arguments opens the current directory, otherwise opens the given
 # location
 alias k="kubectl "
+alias errorcode="echo $?"
 
 #watcher () { fswatch -o $1 | xargs -n1 -I{} $2 $1 }
 

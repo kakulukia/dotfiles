@@ -1,9 +1,13 @@
 # Path to your oh-my-dzsh installation.
 export ZSH=~/.oh-my-zsh
 
+# use the theme defined in profile 
+if [ -z ${ZSH_THEME} ]; then
+  export ZSH_THEME="bullet-train"
+fi
+
 ZSH_DISABLE_COMPFIX=false
-ZSH_THEME="bullet-train"
-# ZSH_THEME="geometry"
+ZSH_DISABLE_COMPFIX=false
 HYPHEN_INSENSITIVE="true" # _ and - will be interchangeable.
 unsetopt correct_all
 setopt correct
@@ -56,7 +60,6 @@ path /usr/local/bin
 path /usr/local/sbin
 path /usr/bin
 
-source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 export LANG=de_DE.UTF-8
 export EDITOR='vim'
@@ -79,6 +82,7 @@ export REPORTTIME=1
 
 # include local settings
 [[ -e ~/.profile ]] && source ~/.profile
+source $ZSH/oh-my-zsh.sh
 
 # Bind keypad
 ############################
