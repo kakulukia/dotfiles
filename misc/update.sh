@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env zsh
 lastCD=`pwd`
 
 cd
