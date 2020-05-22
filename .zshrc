@@ -7,7 +7,6 @@ if [ -z ${ZSH_THEME} ]; then
 fi
 
 ZSH_DISABLE_COMPFIX=false
-ZSH_DISABLE_COMPFIX=false
 HYPHEN_INSENSITIVE="true" # _ and - will be interchangeable.
 unsetopt correct_all
 setopt correct
