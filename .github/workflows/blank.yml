@@ -29,4 +29,7 @@ jobs:
         zsh
         alias
         echo "wir kommen hier locker hin"
+        pwd
+        echo $GITHUB_WORKSPACE
+        
       
