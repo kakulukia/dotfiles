@@ -1,44 +1,35 @@
 
- # Okay, where do we start? 
+ # Let's jump somewhere interesting.
  
 c misc
 
- # We are inside the dotfiles repo.
  # Let's have a look.
 
 l
 
- # I'm using colorls to have sane file sizes, git status, some 
- # icons and highlights for recently changed stuff.
- # And I'm lazy, trying to type as little as possible .. hence the l 
- # alias to see all normal files and ll to list everyting.
+ # That's colorls showing a lil more than just finames.
 
-ll
-
- # The prompt also shows that you are inside a git repo by displaying 
- # the current branch. We currently are on branch master. 
- # A red branch name indicates it's dirty, lets see why.
+ # The prompt also shows that we are in a dirty git branch, lets see why.
 
 gs
 
- # diff-so-fancy will give a more detailed look at what changed also marking 
- # changes inside a line. 
+ # Let' see more details. 
  
 gd
 SLEEP: 2
 q
  
- # ga will also let you tab complete the changed files.
+ # We can tab complete the changed files.
 
-ga demo-ß
-gc last additions to the demo script
+ ga demo-ß
+ gc last additions to the demo script
 
  # How did we get here in the first place?
- # That was fasd remembering my locations based on recent usage.
 
-c | tail
+c | tail
 
- # This way you can instantly jump into any know dir.
+ # That was fasd remembering locations based on recent usage.
+ # This way you can instantly jump into any known dir.
 
 c kunde
 
@@ -51,207 +42,137 @@ SLEEP: 2
 
  # Voila! Open any file from anywhere!
 
- # This was SpaceVim, which is also included.
- # Let's have a look what's in here
-
 l
 
- # Oh, most of the folders start with the same kp_micro_ .. no luck 
- # tab completiing there, but what if we ..
+ # Oh, most of the folders start the same.
+ # No luck tab completing here, you say?
 
  cd ssoß
 
- # Yes, you don't have to start typing from the beginning! Very nice!
- # Let's have a look into this version file.
+ # Na, you don't have to start typing from the beginning!
+ # You dont't even have to use upper case letters.
 
 cat verü
 SLEEP: 1
 ß
 
- # Try that with bash .. you dont need to write upper case letters!
  # ZSH will also let you see all matching alternatives.
 
 cat reßßß
 
- # And also this is not the normal cat. It's bat which also gives you 
- # syntax highlighting - speeking of which:
+ # You guessed it .. that's not the normal cat.
 
 which cat
 
- # I pimped the which command a lil - it will even show the current version for
- # commands that support the kinda standard --version flag.
- # Lets go back to the dotfiles folder.
-
-c dot
-
- # You can also use numbers to go back up to 9 directories.
+ # Let's go back.
 
 2
-3
 
- # Also included are some fonts and the iTerm colors shown here.
-
- # Let's have a look at the git history. You can do
-
-git log
-q
-
- # But I'm also too lazy for that .. and lets be honest, the default log 
- # is missing some info and could look a lil like this.
+ # What was I working on?
 
 gg
 SLEEP: 2
 q
 
- # Have a look into the alias file to find some more usefull stuff like 
-
-ip
-
- # It's showing off your current ip and details, so if you constantly 
- # forget the zip code like I am:
+ # Have a look into the alias file to find some more usefull stuff like ip.
+ # Quite handy if you constantly forget your zip code like I am:
 
 ip J .postal
 
- # What was that? It's called a global alias. So J ist basically | jq where jq 
- # is a must have tool, if you work with JSON. I have defined some of those 
- # global aliases since they are very handy! 
+ # That J is basically | jq - a global alias only possible with zsh.
+ # And there are more.
 
+,,
 rg "alias -g" .alias
 
  # So if you want to find that process ..
 
 ps aux G redis
-SLEEP: 2
+SLEEP: 1
 
- # I was typing | grep a lot before i found out about those global aliases.
- # But nobody should use grep anymore if ripgrep is available on the system. :)
- # And even if its not, there still are better choices like ack.
+ # Oh, how many times did i type this?
+ 
+p redis
 
  # Killing stuff can also be done with tab completion.
 
 kill redß
 
- # red got replaced with its process id like shown above.
  # Let's start redis again.
 
 redis-server &
 
- # The little cog wheel shows that there is something running in the background
- # and will also prevent you from accidentally closing that session.
+ # We can see, there is something running in the background.
  
  exit
 
- # Or for more complex stuff, use fkill, which can close that 
- # nasty app running on port 6379 - what was it again? No need for netstat.
+ # And zsh will prevent you from accidentally closing that session.
+
+ssh po
+SLEEP: 2
+
+ # Being logged into a remote system will also change the prompt to reflect that.
+
+exit
+
+ # What was that nasty app running on port 6379? No need for netstat.
 
 fkill
 SLEEP: 1
 :6379
 
- # Are you a fan of CTRL-R?
- # There is a feature called history reverse search that basically works in all 
- # linux distros, but is disabled by default. :(
- # This setup goes one step further. You can
- # Let me show you:
+ # To help you remember all those commands, there are suggestions (gray text),
+ # history reverse search and an enhanced version of CTRL+R.
 
-sshü
-SLEEP: 9
+SLEEP: 9 : >>>>>>>>> CTRL+R >>> kill
 
- # You can use the right arrow to complete the suggestion or use the up arrow to cycle
- # through all history entries matching whatever you typed containing ssh.
-
- # Being logged into a remote system will change the prompt to show you that you are
- # on a remote system.
-
-exit
-
- # Now is the time to press CTRL-R, but this time it's much different and way cooler 
- # than the default version.
-
-SLEEP: 9 : >>>>>>>>> CTRL+R >>> 1.1.1
-
- # Did you ever ping some box and hated the kind of output you get?
-
-ping 1.1.1.1
-SLEEP: 5
-
- # Meet prettyping, i love it! :)
-
- # There are many more usefull tools in 
-
-c misc
-cat essß
-SLEEP: 2
-cat addiß
-
- # Probably one of the most usefull one is tldr, that spares you to read those 
- # horible man pages and also shows some usefull examples.
+ # Scan the misc folder for even more usefull tools.
+ # Probably one of the most usefull ones is tldr.
 
 tldr curl
 
- # But don't use curl. ;)
+ # But don't use curl. ;P
  # Use http(ie) or http-prompt for more complex stuff.
 
- # Did you ever find yourself in the position, where you wanted to scroll back
- # to the first lines of your console output? Or did you ever want to know how long 
- # some command was running?
- # hr will draw a line in case having a colored prompt is not enough.
-
-hr
-
- # But most of the times it's AFTER long running command X that you know you want to
- # measure the execution time. That's why by default all commands are measured in the 
- # background and everything longer than a few seconds will leave stats after it finishes. 
- # Lets have a look at that while showing of another cool feature: 
- # vim global history
- # Have a look at the dates below, while we are browsing back in history.
+ # Did you know, that vim has a global history feature?
+ # Have a look at the dates below, while we are browsing back in time.
 
 v ali
 SLEEP: 1
-uuuu
-uuu
-uuu
-uuuuuuuu
+uuuuuuuuuuuuuuuuuuuuuuuuuuuu
+uuuuuuuuuuuuuuuuuuuuuu
 uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
 SLEEP: 1
 :q!
 
-# ^^ Here are those stats for longer running commands.
-# The oldest change is from 2019/10/23 17:04:47 - the date I switched to SpaceVim.
-# My previous setup used another directory for the undo files, but having that
-# setup by default while using SpaceVim is kinda cool.
-
- # So now all vim changes are persisted at a local cache directory.
+# ^^ Here are stats for longer running commands.
+# This history was usefull more than once!
+# So now all vim changes are persisted at a local cache directory.
 
 cd /Users/andy/.cache/SpaceVim/undofile
 l
 SLEEP: 1
-
 dus
-which dus
 
- # And its hardly taking up any noticible space. But having it setup saved 
- # my ass so many times already! :)
+ # And its hardly taking up any space. 
 
 echo $PATH
 
- # Oh thats kinda hard to read, isn't it?
- # I built a different more user friendly version.
-
+ # Oh, thats kinda hard to read, isn't it?
+ 
 path
 
- # Ahhh .. much better .. and sorted!
- # Sorting is bad you say?
- # Because its not revealing why app X is used from path 1 instead of path 2?
- # Yes, thats right, but which will tell you that too. 
- # It's now listing everything like in this case:
-
+ # Ahhh, much better and sorted!
+ # By why is app X used from path 1 instead of path 2?
+ 
 c sal
 
 # BTW: virtualenvs are enabled by default
 
 which uwsgi
 
+ # which shows all matching alternatives.
+ 
  # So, we have this fancy zipped file .. 
 
 t
@@ -268,7 +189,7 @@ SLEEP: 4
 
 rd Python-3.8.2*
 
- # Oh, and what also saved my ass multiple times: the rd alias is deleting 
+ # Oh, and what also saved my ass multiple times: The rd alias is deleting 
  # with trash cli so you can actually undelete stuff again!
 
 undelete
@@ -279,8 +200,7 @@ l
 
  # And its back - Yeah!
 
- # Lets quickly share that file.
- # We have two options here with zero setup:
+ # Let's quickly share that file.
 
 send pyß
 SLEEP: 5
