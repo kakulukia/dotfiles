@@ -1,6 +1,7 @@
 # Path to your oh-my-dzsh installation.
 export ZSH=~/.oh-my-zsh
 
+
 # use the theme defined in profile 
 if [ -z ${ZSH_THEME} ]; then
   export ZSH_THEME="bullet-train"
@@ -18,13 +19,13 @@ ZSH_CUSTOM=~/.zsh-custom
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  kubectl
-  docker
+  # kubectl
+  # docker
   extract
   virtualenvwrapper
   fasd
   zsh-autosuggestions
-  zsh-explain-shell
+  # zsh-explain-shell
   history-search-multi-word
   zsh-completions
   zsh-syntax-highlighting

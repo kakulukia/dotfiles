@@ -123,6 +123,7 @@ alias -g G="| rg -v 'rg -S' | rg "
 alias -g L="| less"
 alias -g J="| jq"
 alias -g C="| wc -l"
+alias p="ps aux G "
 
 # get public/local IP addresses
 alias ip="curl -s https://ipinfo.io/"

@@ -4,16 +4,13 @@ import iterm2
 from random import random
 from time import sleep
 
-SESSION_ID = 'B14AEEAA-1377-4490-8E0C-18690B83D603'
-
-
 async def send_text(value, session):
     last_char = ''
     for char in value:
 
         schlaf = random()*0.1+0.05
         if char == last_char:
-            schlaf+=0.2
+            schlaf+=0
         if last_char in '.,!?#ß' and char == ' ':
             schlaf += 0.5
         if char in '|':
@@ -35,15 +32,17 @@ async def send_text(value, session):
 
 async def main(connection):
     app = await iterm2.async_get_app(connection)
-    session = app.get_session_by_id(SESSION_ID)
-
+    session = None
+    current_window = app.current_window 
+    for window in app.terminal_windows:
+        if window == current_window:
+            continue 
+        for tab in window.tabs:
+            for s in tab.sessions:
+                session = s
     if not session:
-        print('no session')
-        for window in app.terminal_windows:
-            for tab in window.tabs:
-                for session in tab.sessions:
-                    print(session)
-        return
+       print('no session found')
+       return
 
     with open('demo-script.txt', 'r') as source:
         for line in source.readlines():

@@ -1,33 +1,16 @@
+FEATURES
+========
 ![MacOS](https://github.com/kakulukia/dotfiles/workflows/MacOS/badge.svg)
 ![Ubuntu](https://github.com/kakulukia/dotfiles/workflows/Ubuntu/badge.svg)
 
-FEATURES
-========
-
 ![Preview](http://raw.github.com/kakulukia/dotfiles/master/misc/img/preview.png)
 
-Features in this screen shot:
-
-* icon shows running background processes
-* fasd (and tab completion for it)
-* shows git status in prompt
-* shows active python virtual env
-* different prompt when connected via ssh or as root
-* some handy aliases
-* completion for almost anything via zsh
-* shows errors (and optional codes) from failed commands
-* history-substring-search
-* custom tmux config using ctrl+space as activator shortcut
-  
-Also included is some basic SpaceVim config and a powerline theme for tmux.
-
 Installation
-==============
+--------------
 
 Be sure you are logged in as the user for whom you want to install this shell pakage and that the user has sudo rights.
 
     curl https://raw.githubusercontent.com/kakulukia/dotfiles/master/misc/setup.sh | sh
-
 
 This will install the following:
 
@@ -52,7 +35,6 @@ In the misc folder you can find:
 The dotfiles can be updated with the `update-dotfiles` alias.
 
 Disclaimer
-===========
+------------
 
 This theme was inspired by PowerlinePlain (https://github.com/Bash-it/bash-it/blob/master/themes/powerline-plain/powerline-plain.theme.bash) and based on BulletTrain (https://github.com/caiogondim/bullet-train-oh-my-zsh-theme).
-

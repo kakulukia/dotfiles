@@ -1,5 +1,9 @@
 
- # Okay, where do we start? We are inside the dotfiles repo.
+ # Okay, where do we start? 
+ 
+c misc
+
+ # We are inside the dotfiles repo.
  # Let's have a look.
 
 l
@@ -29,9 +33,12 @@ q
 ga demo-ß
 gc last additions to the demo script
 
- # Since I'm lazy, I don't like to cd here, than cd there and than cd to 
- # the next folder. I use fasd to remember my locations and to create 
- # shortcuts based on recent usage.
+ # How did we get here in the first place?
+ # That was fasd remembering my locations based on recent usage.
+
+c | tail
+
+ # This way you can instantly jump into any know dir.
 
 c kunde
 
@@ -52,12 +59,14 @@ l
  # Oh, most of the folders start with the same kp_micro_ .. no luck 
  # tab completiing there, but what if we ..
 
-cd ssoß
+ cd ssoß
 
  # Yes, you don't have to start typing from the beginning! Very nice!
  # Let's have a look into this version file.
 
-cat verß
+cat verü
+SLEEP: 1
+ß
 
  # Try that with bash .. you dont need to write upper case letters!
  # ZSH will also let you see all matching alternatives.
@@ -77,20 +86,22 @@ c dot
 
  # You can also use numbers to go back up to 9 directories.
 
+2
 3
-4
 
  # Also included are some fonts and the iTerm colors shown here.
 
  # Let's have a look at the git history. You can do
 
 git log
+q
 
  # But I'm also too lazy for that .. and lets be honest, the default log 
  # is missing some info and could look a lil like this.
 
 gg
 SLEEP: 2
+q
 
  # Have a look into the alias file to find some more usefull stuff like 
 
@@ -134,15 +145,16 @@ redis-server &
  # nasty app running on port 6379 - what was it again? No need for netstat.
 
 fkill
+SLEEP: 1
 :6379
 
  # Are you a fan of CTRL-R?
  # There is a feature called history reverse search that basically works in all 
  # linux distros, but is disabled by default. :(
  # This setup goes one step further. You can
- # Let me show you
+ # Let me show you:
 
-ssh 
+sshü
 SLEEP: 9
 
  # You can use the right arrow to complete the suggestion or use the up arrow to cycle
@@ -207,7 +219,7 @@ SLEEP: 1
 # ^^ Here are those stats for longer running commands.
 # The oldest change is from 2019/10/23 17:04:47 - the date I switched to SpaceVim.
 # My previous setup used another directory for the undo files, but having that
-# setup by default while using SpaceVim is kina cool.
+# setup by default while using SpaceVim is kinda cool.
 
  # So now all vim changes are persisted at a local cache directory.
 
@@ -235,6 +247,9 @@ path
  # It's now listing everything like in this case:
 
 c sal
+
+# BTW: virtualenvs are enabled by default
+
 which uwsgi
 
  # So, we have this fancy zipped file .. 
@@ -282,15 +297,7 @@ SLEEP: 5
 
  # Those apps don't use the right ip?
  # Hmm, how do we get the right one again?
- # Lets figure that out on the go with the up command tied to CRTL+P.
-
-ifconfigü
-SLEEP: 4
-grep inet | grep -v inet6 | cut -d ' ' -f2
-SLEEP: 3
-
- # Actually the extract column thing is used so many times, 
- # that I found a handy tool for that task.
+ # Lets figure that out on the go ..
 
 ifconfigü
 SLEEP: 4
