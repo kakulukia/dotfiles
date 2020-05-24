@@ -48,6 +48,7 @@ setup () {
   ## test for require features
   check git && $INSTALL git
   check zsh && $INSTALL zsh
+  check pip3 && $INSTALL python3-pip
 
   echo ""
   green "Cloning the repo .."

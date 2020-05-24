@@ -1,5 +1,6 @@
 FEATURES
 ========
+
 ![MacOS](https://github.com/kakulukia/dotfiles/workflows/MacOS/badge.svg)
 ![Ubuntu](https://github.com/kakulukia/dotfiles/workflows/Ubuntu/badge.svg)
 
@@ -37,4 +38,4 @@ The dotfiles can be updated with the `update-dotfiles` alias.
 Disclaimer
 ------------
 
-This theme was inspired by PowerlinePlain (https://github.com/Bash-it/bash-it/blob/master/themes/powerline-plain/powerline-plain.theme.bash) and based on BulletTrain (https://github.com/caiogondim/bullet-train-oh-my-zsh-theme).
+This theme was inspired by PowerlinePlain (<https://github.com/Bash-it/bash-it/blob/master/themes/powerline-plain/powerline-plain.theme.bash>) and based on BulletTrain (<https://github.com/caiogondim/bullet-train-oh-my-zsh-theme>).

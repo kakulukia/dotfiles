@@ -11,7 +11,7 @@ async def send_text(value, session):
         schlaf = random()*0.1+0.05
         if char == last_char:
             schlaf+=0
-        if last_char in '.,!?#ß' and char == ' ':
+        if last_char in '.!?#ß' and char == ' ':
             schlaf += 0.5
         if char in '|':
             schlaf += 1
@@ -27,6 +27,9 @@ async def send_text(value, session):
             await session.async_send_text('\t')
         else:
             await session.async_send_text(char)
+        
+        if char == '\n':
+            sleep(0.5)
     
 
 
