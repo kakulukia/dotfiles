@@ -9,7 +9,6 @@ fasd
 fd
 ffmpeg
 fx
-gdate
 git
 gnu-sed
 grep

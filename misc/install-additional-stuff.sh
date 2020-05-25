@@ -27,7 +27,7 @@ else
     exit 1;
 fi
 
-$INSTALL $(cat essentials.txt)
+cat essentials.txt | xargs ´$INSTALL´
 
 echo "\n\ninstalling even more additional packages .."
 zsh additional-stuff.sh
