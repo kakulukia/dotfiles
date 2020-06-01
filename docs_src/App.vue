@@ -9,7 +9,7 @@
       .section
         h1.title dotfiles
       .section
-        asciinema-player(v-pre id="player" src="/demo.cast" poster="npt:0:01" speed="1.5" idle-time-limit="1")
+        asciinema-player(v-pre id="player" src="demo.cast" poster="npt:0:01" speed="1.5" idle-time-limit="1")
         h2.subtitle Intro
         p.
           For the last 5 years I have been building up my shell environment and its the
@@ -23,7 +23,7 @@
           Be sure you are logged in as the user for whom you want to install this shell
           package and that the user has sudo rights.
         .install
-          img(src="/install_dotfiles.png")
+          img(src="install_dotfiles.png")
           p
             span.command curl
             span.text  "https://raw.githubusercontent.com/kakulukia/dotfiles/master/misc/setup.sh"
@@ -63,7 +63,7 @@
 export default {
   mounted () {
     let asciinema = document.createElement('script')
-    asciinema.setAttribute('src', '/asciinema-player.js')
+    asciinema.setAttribute('src', 'asciinema-player.js')
     document.head.appendChild(asciinema)
   }
 }
