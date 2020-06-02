@@ -56,11 +56,17 @@ setup () {
   git clone https://github.com/philips/ghar.git
   cd ghar
   git clone --recursive git://github.com/kakulukia/dotfiles.git
-  python3 bin/ghar install
 
-  # install pyenv
+  # install pyenv, activate and install python3 if necessary
   git clone https://github.com/pyenv/pyenv.git ~/.pyenv
   git clone https://github.com/pyenv/pyenv-virtualenvwrapper.git ~/.pyenv/plugins/pyenv-virtualenvwrapper
+  PYENV_ROOT="$HOME/.pyenv"
+  PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+  command -v python3 || pyenv install 3.8.3 &&   pyenv global 3.8.3
+
+  #installing dotfiles symlinks
+  python3 bin/ghar install
 
   echo ""
   green "Installing fasd .."
