@@ -4,7 +4,7 @@
       .section
         h1.title dotfiles
         p.
-          This is a not meant for mobile .. please com back with a higher resolution. :)
+          This is a not meant for mobile .. please come back with a higher resolution. :)
     .container.is-hidden-touch
       .section
         h1.title dotfiles

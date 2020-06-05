@@ -63,7 +63,7 @@ setup () {
   PYENV_ROOT="$HOME/.pyenv"
   PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init -)"
-  command -v python3 || pyenv install 3.8.3 &&   pyenv global 3.8.3
+  command -v python3 || pyenv install 3.8.3 && pyenv global 3.8.3
 
   #installing dotfiles symlinks
   python3 bin/ghar install
