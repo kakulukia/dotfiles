@@ -48,7 +48,7 @@ setup () {
   ## test for require features
   check git && $INSTALL git
   check zsh && $INSTALL zsh
-  check pip3 && $INSTALL python3-pip
+  check pip3 && $INSTALL python3 python3-pip
 
   echo ""
   green "Cloning the repo .."
@@ -63,7 +63,7 @@ setup () {
   PYENV_ROOT="$HOME/.pyenv"
   PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init -)"
-  command -v python3 || pyenv install 3.8.3 && pyenv global 3.8.3
+#  command -v python3 || pyenv install 3.8.2 && pyenv global 3.8.2
 
   #installing dotfiles symlinks
   python3 bin/ghar install

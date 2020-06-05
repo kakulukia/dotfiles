@@ -1,5 +1,13 @@
 <template lang="pug">
   body
+    .pizza
+      a(href="https://www.paypal.me/AndyGrabow/3" target="_blank")
+        img(src="pizza.png")
+        div
+          span If you like it
+          br
+          span buy me a pizza :)
+
     .container.is-hidden-tablet
       .section
         h1.title dotfiles
@@ -144,6 +152,24 @@ body, .asciinema-terminal
 .section + .section
   padding-top: 0
 
+.pizza
+  height:
+  z-index: 1
+  position: absolute
+  top: 20px
+  right: -185px
+  a
+    display: flex
+    align-items: center
+    color: #cd4d4c
+    img
+      height: 50px
+    div
+      margin: 0 20px 0 25px
+  transition: ease-in-out 0.2s
+  &:hover
+    right: 0
+
 figure
   display: block
   margin: 1em auto
@@ -172,7 +198,7 @@ ul
     position: absolute
     top: 42%
     left: 18px
-    font-size: 21px
+    font-size: 16px
     .command
       background: none
       color: #70865B
@@ -228,7 +254,10 @@ h2, h3
   .bg-4
     background: #5D70A5
 
-@media (max-width: 1215px)
+@media (max-width: 1000px)
   .install p
-    font-size: 17px
+    font-size: 14px
+@media (max-width: 800px)
+  .install p
+    font-size: 13px
 </style>
