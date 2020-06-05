@@ -40,6 +40,7 @@
         ul
           li GIT to be able to download the repo itself
           li ZSH as your new default shell
+          li Python3
           li oh my zsh
           li ghar for managing the dotfiles itself (links everything into your home folder)
           li SpaceVim
@@ -62,17 +63,25 @@
 
         p The dotfiles repo can be updated with the #[span.command update-dotfiles] alias.
 
-        h2.subtitle Other features
+        h2.subtitle Features
+        p Apart from what's shown in the recording, here is some more of what's included:
         ul
           li suggestions (grey text) - use the right arrow key to accept
-          li history reverse search - use the up arrow to cycle through previous commands
-            | Anything you typed before hitting up will be used as filter and highlighted.
+          li history reverse search - use the up arrow to cycle through previous commands.
+            |  Anything you typed before hitting up will be used as filter and highlighted.
+            |  This seriously saves a lot of typing. 😇
             br
             br
-            | migr + up
-            img(src="history.png")
-            | This seriously saves a lot of typing. 😇
-          li red / green colored commands - command is (un)available
+            figure
+              img(src="history.png")
+              figcaption migr + up
+          li red / green colored commands - shows that the command is (un)available
+          li . is in the path so no need for any ./ prefixing executables
+          li path
+            ul
+              li print a sorted version of $PATH
+              li add the given folder to $PATH and
+              li append the given path to your .profile when called with #[span.command path --save DIR]
           li mv - no need to type the file name twice for renaming
           li top - is aliased to glances if installed
           li ctop - for docker containers
@@ -83,9 +92,10 @@
             |  Use the command key to just drag it into the finders toolbar.
             br
             br
-            | The result will look like this:
-            img(src="cdto.png")
-          li tm - there's a tmux theme and tm will reconnect to to your last session o create a new one
+            figure
+              img(src="cdto.png")
+              figcaption The result will look like this
+          li tm - there's a tmux theme and tm will reconnect to to your last session or create a new one
             br
             | I also changed the default prefix to CTRL+SPACE for easier usage.
           li diff - aliased to diff-so-fancy in general, not just the git version
@@ -93,7 +103,7 @@
           li errorcode - in general I don't see the point in displaying the error code
             | , hence the sad smiley in the prompt, but if you really wanna know, use that alias (unless you can remember the #?)
           li ips - will show all local ips (IPV4) / ip will show some info about your external one
-          li prettyping - fancier ping
+          li ping - is aliased to prettyping if installed
           li go-reload - hot reload for go apps you are working on
           li mgs - multi git status - if your company/current project totally embraces micro services (🙈)
             |  this might come in handy to update em all in one go
@@ -134,9 +144,12 @@ body, .asciinema-terminal
 .section + .section
   padding-top: 0
 
-img
+figure
   display: block
   margin: 1em auto
+  text-align: center
+  figcaption
+    font-size: 0.7em
 
 span.command
   background: #eee
