@@ -20,6 +20,8 @@
     .container.is-hidden-mobile
       .section
         h1.title dotfiles
+          a(href="https://github.com/kakulukia/dotfiles" title="Go to the GitHub-Repo")
+            img.github(src="github.png")
       .section
         asciinema-player(v-pre id="player" src="demo.cast" poster="npt:0:01" speed="1.5" idle-time-limit="1")
 
@@ -151,7 +153,11 @@ body, .asciinema-terminal
 
 .section + .section
   padding-top: 0
-
+img.github
+  height: 30px
+  margin-left: 10px
+  position: relative
+  top: 4px
 .pizza
   height:
   z-index: 1
