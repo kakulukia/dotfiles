@@ -1,4 +1,5 @@
-echo "\n\nDo you also want to install additional app? [y/N] "
+#!/usr/bin/env zsh
+echo "\n\nDo you also want to install additional apps? [y/N] "
 read -r -q response
 if [[ "$response" != "y" ]]
 then
@@ -23,16 +24,11 @@ elif [ -n "$yum" ]; then
 elif [ -n "$brew" ]; then
     INSTALL='brew install'
 else
-    echo "Error: Your OS is not supported :(" >&2;
+    echo "Error: Your OS is not supported - please install the tools manually :(" >&2;
     exit 1;
 fi
 
-cat essentials.txt | xargs ´$INSTALL´
+cat essentials.txt | xargs -L 1 -I {} zsh -c "$INSTALL {}"
 
 echo "\n\ninstalling even more additional packages .."
-zsh additional-stuff.sh
-
-mkdir -p ~/.config/colorls
-path=`pwd`
-ln -s $path/dark_colors.yaml ~/.config/colorls/
-
+zsh extras.sh

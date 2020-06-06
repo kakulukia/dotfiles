@@ -1,7 +1,7 @@
 FROM ubuntu:20.04
 
 RUN apt update
-RUN apt install -y curl git wget sudo build-essential make 
+RUN apt install -y curl git wget sudo build-essential make
 # sudo warning workaround
 RUN echo "Set disable_coredump false" >> /etc/sudo.conf
 RUN apt install -y python3 python3-pip
@@ -19,8 +19,9 @@ RUN mv jq-linux64 ~/bin/jq
 RUN chmod +x ~/bin/jq
 
 RUN pip3 install httpie
-RUN git clone https://github.com/Shougo/dein.vim "/root/.cache/vimfiles/repos/github.com/Shougo/dein.vim"
-RUN vim "+call dein#install#_update([], 'update', 0)" '+qall'
+# enable this to fully install SpaceVim
+#RUN git clone https://github.com/Shougo/dein.vim "/root/.cache/vimfiles/repos/github.com/Shougo/dein.vim"
+#RUN vim "+call dein#install#_update([], 'update', 0)" '+qall'
 
 RUN apt install -y bsdmainutils
 RUN wget https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping

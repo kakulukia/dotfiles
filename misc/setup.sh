@@ -77,12 +77,12 @@ setup () {
   sudo make install
 
   echo ""
-  green "Installing additional stuff .."
   cd
   cd ghar/dotfiles/misc/
-  pwd
+  mkdir -p ~/.config/colorls
+  path=`pwd`
+  ln -s $path/dark_colors.yaml ~/.config/colorls/
   zsh install-additional-stuff.sh
-
 
   echo ""
   echo ""
