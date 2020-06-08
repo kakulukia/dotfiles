@@ -142,7 +142,7 @@
             |  to kinda achieve the same result. I just need a lil more time to get this done. 🙄
 
 
-        h2.subtitle Disclaimer
+        h2.subtitle Credits
         p
           | This theme was inspired by
           a(href="https://github.com/Bash-it/bash-it/blob/master/themes/powerline-plain/powerline-plain.theme.bash")  PowerlinePlain
