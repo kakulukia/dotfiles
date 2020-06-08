@@ -33,8 +33,8 @@
           history search is a huge time saver.
         p.
           Some of this stuff I didn't even know was possible before I switched to ZSH or
-          found app X, so I just wanted to share the whole collection. I did a few improvements myself
-          , but basically it was all out there. This repo enables everybody to get all the goodies at
+          found app X, so I just wanted to share the whole collection. I did a few improvements myself,
+          but basically it was all out there. This repo enables everybody to get all the goodies at
           once and helps me to feel at home, when opening a new shell.
 
         h2.subtitle Installation
