@@ -295,4 +295,10 @@ h2, h3
 @media (max-width: 800px)
   .install p
     font-size: 13px
+
+.asciinema-player .start-prompt .play-button div span
+    display: flex
+    align-items: center
+    margin: 0 auto
+    justify-content: center
 </style>
