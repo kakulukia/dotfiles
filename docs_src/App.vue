@@ -97,14 +97,19 @@
           li ctop - for docker containers
           li ,, - jump to the git root dir
           li o - will open the finder in the current directory
-          li cd to.app - the is an app in the bin folder that provides a
-            |  way to reverse the trick an open a terminal at the current finder location.
+          li
+            a(href="https://github.com/kakulukia/dotfiles/tree/master/bin") cd to.app
+            |  - there is an app in the bin folder that provides a
+            |  way to reverse the above trick and open a terminal at the current finder location.
             |  Use the command key to just drag it into the finders toolbar.
             br
             br
             figure
               img(src="cdto.png")
               figcaption The result will look like this
+          li
+            a(href="https://github.com/kakulukia/dotfiles/tree/master/misc/QuickLook") QuickLook Plugins
+            |  - there are a few collected plugins for OSX to preview some more files like Markdown
           li tm - there's a tmux theme and tm will reconnect to to your last session or create a new one
             br
             | I also changed the default prefix to CTRL+SPACE for easier usage.
@@ -118,6 +123,7 @@
           li mgs - multi git status - if your company/current project totally embraces micro services (🙈)
             |  this might come in handy to update em all in one go
           li rg - alias for "rg -S --max-columns 444" won't clutter the screen with nasty one line files
+          li and much more .. but that's about the stuff I frequently use :)
 
 
         h2.subtitle ToDo
@@ -126,6 +132,22 @@
             a(hreaf="https://github.com/Peltoche/lsd/issues/92")  it's not looking sexy yet
           li Maybe some day in the future I'm switching yet again to prezto and will redo my default theme.
             |  But as of yet this still sounds like too much trouble. :/
+          li Decoupling this shell from needing Python. I am a Python developer, but sure it's
+            |  not really needed for the shell itself. Currently the sync tool ghar is a Python script, tho.
+            br
+            | Nevertheless there is a
+            a(href="https://www.atlassian.com/git/tutorials/dotfiles")  trick
+            |  to kinda achieve the same result. I just need a lil more time to get this done. 🙄
+
+
+        h2.subtitle Disclaimer
+        p
+          | This theme was inspired by
+          a(href="https://github.com/Bash-it/bash-it/blob/master/themes/powerline-plain/powerline-plain.theme.bash")  PowerlinePlain
+          | and based on
+          a(href="https://github.com/caiogondim/bullet-train-oh-my-zsh-theme")  BulletTrain
+          | .
+
 
 
 </template>
