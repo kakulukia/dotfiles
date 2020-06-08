@@ -125,6 +125,13 @@
           li mgs - multi git status - if your company/current project totally embraces micro services (🙈)
             |  this might come in handy to update em all in one go
           li rg - alias for "rg -S --max-columns 444" won't clutter the screen with nasty one line files
+          li Themes - you can use any ZSH theme by redefining it in ~/.profile
+            br
+            span.command export ZSH_THEME="oxide"
+            br
+            | This is one of the four included options. Download it into
+            a(href="https://github.com/kakulukia/dotfiles/tree/master/.zsh-custom/themes")  themes
+            |  and update the #[span.command ZSH_THEME] var to use it.
           li and much more .. but that's about the stuff I frequently use :)
 
 
