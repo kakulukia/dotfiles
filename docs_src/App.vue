@@ -19,9 +19,10 @@
           enable desktop mode. But even then phones are kinda small. :/
     .container.is-hidden-mobile
       .section
-        h1.title dotfiles
+        h1.title.marginless dotfiles
           a(href="https://github.com/kakulukia/dotfiles" title="Go to the GitHub-Repo")
             img.github(src="github.png")
+        a.claim(href="https://ohmyz.sh/" target="_blank") Your terminal never felt #[i this] good before.™
       .section
         asciinema-player(v-pre id="player" src="demo.cast" poster="npt:0:01" speed="1.5" idle-time-limit="1")
 
@@ -129,7 +130,9 @@
             br
             span.command export ZSH_THEME="oxide"
             br
-            | This is one of the four included options. Download it into
+            | This is one of the four included options. Download
+            a(href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes")  any
+            |  into
             a(href="https://github.com/kakulukia/dotfiles/tree/master/.zsh-custom/themes")  themes
             |  and update the #[span.command ZSH_THEME] var to use it.
           li and much more .. but that's about the stuff I frequently use :)
@@ -186,6 +189,14 @@ export default {
 
 body, .asciinema-terminal
   font-family: "SauceCodePro"
+
+h1.title.marginless
+  margin-bottom: 0
+.claim
+  color: #4a4a4a
+  i
+    font-weight: bold
+    /*color: #c5d928*/
 
 .section + .section
   padding-top: 0
