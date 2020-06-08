@@ -27,12 +27,14 @@
 
         h2.subtitle Intro
         p.
-          For the last 5 years I have been building up my shell environment and its the
+          For the last 5 years I have been building up my shell environment and it's the
           first thing that gets installed on a new server or Mac. Especially fasd and the reverse
           history search is a huge time saver.
         p.
           Some of this stuff I didn't even know was possible before I switched to ZSH or
-          found app X, so i just wanted to share the whole collection.
+          found app X, so I just wanted to share the whole collection. I did a few improvements myself
+          , but basically it was all out there. This repo enables everybody to get all the goodies at
+          once and helps me to feel at home, when opening a new shell.
 
         h2.subtitle Installation
         p.
@@ -118,7 +120,7 @@
           li errorcode - in general I don't see the point in displaying the error code
             | , hence the sad smiley in the prompt, but if you really wanna know, use that alias (unless you can remember the #?)
           li ips - will show all local ips (IPV4) / ip will show some info about your external one
-          li ping - is aliased to prettyping if installed
+          li ping - is aliased to prettyping
           li go-reload - hot reload for go apps you are working on
           li mgs - multi git status - if your company/current project totally embraces micro services (🙈)
             |  this might come in handy to update em all in one go
@@ -144,9 +146,14 @@
         p
           | This theme was inspired by
           a(href="https://github.com/Bash-it/bash-it/blob/master/themes/powerline-plain/powerline-plain.theme.bash")  PowerlinePlain
-          | and based on
+          |  and based on
           a(href="https://github.com/caiogondim/bullet-train-oh-my-zsh-theme")  BulletTrain
           | .
+          br
+          br
+          strong Generally:
+          |  Mad props to all awesome devs who build most of the apps referenced here.
+          |  Too many to list em all, but most if not all do feature a credit line inside the scripts.
 
 
 
