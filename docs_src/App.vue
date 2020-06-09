@@ -1,6 +1,6 @@
 <template lang="pug">
   body
-    .pizza
+    .pizza.is-hidden-mobile
       a(href="https://www.paypal.me/AndyGrabow/3" target="_blank")
         img(src="pizza.png")
         div
@@ -10,7 +10,13 @@
 
     .container.is-hidden-tablet
       .section
-        h1.title dotfiles
+        h1.title.marginless dotfiles
+          a(href="https://github.com/kakulukia/dotfiles" title="Go to the GitHub-Repo")
+            img.github(src="github.png")
+        a.claim(href="https://ohmyz.sh/" target="_blank") Your terminal never felt #[i this] good before.™
+        br
+        br
+        br
         p.
           This is a not meant for mobile .. please come back with a higher resolution. :)
         br
@@ -130,11 +136,12 @@
             br
             span.command export ZSH_THEME="oxide"
             br
-            | This is one of the four included options. Download
-            a(href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes")  any
-            |  into
-            a(href="https://github.com/kakulukia/dotfiles/tree/master/.zsh-custom/themes")  themes
-            |  and update the #[span.command ZSH_THEME] var to use it.
+            | Choose
+            a(href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes")  any theme name
+            |  from this list and update the #[span.command ZSH_THEME] var to use it.
+            a(href="https://github.com/ohmyzsh/ohmyzsh/wiki/External-themes")  Here
+            |  are some more themes (that probably need to be installed first).
+          li up - that's the live preview pipe thing you saw at the end of the screencast. It's activated with CTRL+P for pipe.
           li and much more .. but that's about the stuff I frequently use :)
 
 
