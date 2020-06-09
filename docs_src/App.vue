@@ -172,12 +172,6 @@
           |  Mad props to all awesome devs who build most of the apps referenced here.
           |  Too many to list em all, but most if not all do feature a credit line inside the scripts.
 
-          br
-          | ||
-          br
-          | ||
-
-
 
 </template>
 
