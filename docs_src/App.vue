@@ -33,13 +33,15 @@
         p.
           Be sure you are logged in as the user for whom you want to install this shell
           package and that the user has sudo rights.
-        .install
+        .install.is-hidden-mobile
           img(src="install_dotfiles.png")
           p
             span.command curl
             span.text  "https://raw.githubusercontent.com/kakulukia/dotfiles/master/misc/setup.sh"
             span  |
             span.command  sh
+
+        img.is-hidden-tablet(src="install-mobile.png")
         p.
           This will install the following:
         ul
