@@ -165,6 +165,11 @@
           |  Mad props to all awesome devs who build most of the apps referenced here.
           |  Too many to list em all, but most if not all do feature a credit line inside the scripts.
 
+          br
+          | ||
+          br
+          | ||
+
 
 
 </template>
@@ -186,6 +191,40 @@ export default {
 @font-face
   font-family: SauceCodePro
   src: url(SauceCodePro.ttf)
+
+body::-webkit-scrollbar
+  width: 10px
+body::-webkit-scrollbar-thumb
+  background-color: #282a36
+  outline: 1px solid #282a36
+  background-image: url(public/scrollbar.png)
+
+/*body::-webkit-scrollbar-track*/
+  /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3)*/
+
+
+/*html*/
+  /*background: lightgrey*/
+  /*height: 100%*/
+  /*overflow: hidden*/
+
+/*body*/
+  /*height: 100%*/
+  /*background: whitesmoke*/
+  /*overflow: scroll*/
+  /*max-width: 250px*/
+  /*margin: 0 auto*/
+  /*border: 1px solid rgba(0,0,0,0.25)*/
+
+
+
+
+
+
+
+
+
+
 
 body, .asciinema-terminal
   font-family: "SauceCodePro"
