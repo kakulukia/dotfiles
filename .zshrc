@@ -1,8 +1,8 @@
-# Path to your oh-my-dzsh installation.
+# Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
 
-# use the theme defined in profile 
+# use the theme defined in profile
 if [ -z ${ZSH_THEME} ]; then
   export ZSH_THEME="bullet-train"
 fi
