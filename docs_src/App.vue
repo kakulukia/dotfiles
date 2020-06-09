@@ -271,10 +271,6 @@ h1, h2, h3
   border-bottom: 1px solid #eaecef
 h2, h3
   margin-top: 2em
-//#player
-  width: 894px
-  height: 492px
-  background: black
 
 .asciinema-player .control-bar, .asciinema-theme-asciinema .asciinema-terminal
   background: #282a36
@@ -312,10 +308,10 @@ h2, h3
   .bg-4
     background: #5D70A5
 
-@media (max-width: 1000px)
+@media (max-width: 1020px)
   .install p
     font-size: 14px
-@media (max-width: 800px)
+@media (max-width: 814px)
   .install p
     font-size: 13px
 
