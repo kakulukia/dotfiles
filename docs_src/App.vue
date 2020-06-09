@@ -8,29 +8,15 @@
           br
           span buy me a pizza :)
 
-    .container.is-hidden-tablet
-      .section
-        h1.title.marginless dotfiles
-          a(href="https://github.com/kakulukia/dotfiles" title="Go to the GitHub-Repo")
-            img.github(src="github.png")
-        a.claim(href="https://ohmyz.sh/" target="_blank") Your terminal never felt #[i this] good before.™
-        br
-        br
-        br
-        p.
-          This is a not meant for mobile .. please come back with a higher resolution. :)
-        br
-        p.
-          Well, the shell recording won't fit on your screen, so you should at least
-          enable desktop mode. But even then phones are kinda small. :/
-    .container.is-hidden-mobile
+    .container
       .section
         h1.title.marginless dotfiles
           a(href="https://github.com/kakulukia/dotfiles" title="Go to the GitHub-Repo")
             img.github(src="github.png")
         a.claim(href="https://ohmyz.sh/" target="_blank") Your terminal never felt #[i this] good before.™
       .section
-        asciinema-player(v-pre id="player" src="demo.cast" poster="npt:0:01" speed="1.5" idle-time-limit="1")
+        asciinema-player.is-hidden-mobile(v-pre id="player" src="demo.cast" poster="npt:0:01" speed="1.5" idle-time-limit="1")
+        iframe.is-hidden-tablet(width="560" height="315" src="https://www.youtube.com/embed/nkT3tQFLddU?VQ=HD720" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen)
 
         h2.subtitle Intro
         p.
@@ -41,7 +27,7 @@
           Some of this stuff I didn't even know was possible before I switched to ZSH or
           found app X, so I just wanted to share the whole collection. I did a few improvements myself,
           but basically it was all out there. This repo enables everybody to get all the goodies at
-          once and helps me to feel at home, when opening a new shell.
+          once and helps me to feel at home, whenever I open a new shell. 😎
 
         h2.subtitle Installation
         p.
@@ -200,32 +186,9 @@ body::-webkit-scrollbar-thumb
   outline: 1px solid #282a36
   background-image: url(public/scrollbar.png)
 
-/*body::-webkit-scrollbar-track*/
-  /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3)*/
-
-
-/*html*/
-  /*background: lightgrey*/
-  /*height: 100%*/
-  /*overflow: hidden*/
-
-/*body*/
-  /*height: 100%*/
-  /*background: whitesmoke*/
-  /*overflow: scroll*/
-  /*max-width: 250px*/
-  /*margin: 0 auto*/
-  /*border: 1px solid rgba(0,0,0,0.25)*/
-
-
-
-
-
-
-
-
-
-
+iframe
+  width: 100%
+  display: block
 
 body, .asciinema-terminal
   font-family: "SauceCodePro"
