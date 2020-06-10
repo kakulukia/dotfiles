@@ -15,7 +15,7 @@ function path {
   if [ $# -eq 0 ]; then
     echo -e ${PATH//:/\\n} | sort
   elif [[ "$1" == "--save" ]]; then
-    path $2 && echo "path $2" >> $HOME/.profile
+    path $2 && echo "\npath $2" >> $HOME/.profile
   else
     if [[ -d "$1" ]] ; then
       if [[ -z "$PATH" ]] ; then
