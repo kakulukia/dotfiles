@@ -22,7 +22,6 @@ plugins=(
   # kubectl
   # docker
   extract
-  virtualenvwrapper
   fasd
   zsh-autosuggestions
   # zsh-explain-shell
@@ -57,7 +56,6 @@ path ~/bin
 path /bin
 path /sbin
 path /usr/local/bin
-path /usr/local/sbin
 path /usr/bin
 
 # You may need to manually set your language environment
