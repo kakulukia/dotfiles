@@ -1,52 +1,46 @@
-ansiweather
-bat
-cloc
-coreutils
-ctop
-ddgr
-dos2unix
-fasd
-fd
-ffmpeg
-fx
-git
-gnu-sed
-grep
-htop
-httpie
-hyperfine
-icdiff
-iftop
-irssi
-jq
-mosh
-mtr
-n
-ncdu
-neofetch
-nmap
-nnn
+bat # cat with wings https://github.com/sharkdp/bat
+cloc # count lines of code
+coreutils # some core linux versions of totally outdated OSX/BSD tools like gdate and gsed
+ctop # top for docker containers
+ddgr # duck duck go for command line
+dos2unix # ^M no more
+fasd # https://github.com/clvv/fasd
+fd # find replacement
+ffmpeg # video en/decoding in the command line
+fx # json viewer https://github.com/antonmedv/fx
+git # version control
+gnu-sed # updated version of sed compared to OSX default
+htop # better version ot top
+httpie # better version of curl
+hyperfine # command line benchmarking https://github.com/sharkdp/hyperfine
+iftop # top for network interfaces
+irssi # irc client
+jq # a must have when working with json https://github.com/stedolan/jq
+mosh # the mobile shell https://github.com/mobile-shell/mosh
+n # node version manager
+neofetch # get stats about your OS https://github.com/dylanaraps/neofetch
+nmap # network mapper https://github.com/nmap/nmap
+nnn # command line file browser
 node
-openconnect
-openssl
-pyenv
+openconnect # VPN client
+openssl # SSL lib
+pyenv # Python version management
 python
 redis
-ripgrep
+ripgrep # it finds stuff - ultra fast - https://github.com/BurntSushi/ripgrep
 ruby
 rust
-sd
-speedtest-cli
-ssh-copy-id
+sd # find and replace (like sed)
+speedtest-cli # connection speed tester
+ssh-copy-id # copy ssh key to remote box
 telnet
-tig
-tldr
-tmux
-trash-cli
-tree
-unrar
-up
-watchexec
-wget
-woof
-youtube-dl
+tldr # better man pages
+tmux # terminal multiplexer
+trash-cli # trash for the command line
+tree # directory contents in a tree like structure
+unrar # unpack rar files
+up # the ultimate plumber https://github.com/akavel/up
+watchexec # Run arbitrary commands when files change https://github.com/watchexec/watchexec
+wget # get files from the web
+woof # send files or directories
+youtube-dl # download stuff from youtube
