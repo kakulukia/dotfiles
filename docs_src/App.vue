@@ -47,8 +47,8 @@
         ul
           li GIT to be able to download the repo itself
           li ZSH as your new default shell
-          li Python3
           li oh my zsh
+          li Python3 (ghar is a Python script)
           li ghar for managing the dotfiles itself (links everything into your home folder)
           li SpaceVim
           li fasd
@@ -129,6 +129,13 @@
             |  from this list and update the #[span.command ZSH_THEME] var to use it.
             a(href="https://github.com/ohmyzsh/ohmyzsh/wiki/External-themes")  Here
             |  are some more themes (that probably need to be installed first).
+          li
+            a(href="https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins") Plugins
+            |  - there are a lot of plugins, but choose wisely as they add up to zsh startup time
+            br
+            | To add plugins, enhance the plugins var inside your ~/.profile like this
+            br
+            span.command plugins+=(virtualenvwrapper docker)
           li up - that's the live preview pipe thing you saw at the end of the screencast. It's activated with CTRL+P for pipe.
           li and much more .. but that's about the stuff I frequently use :)
 

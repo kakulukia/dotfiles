@@ -48,8 +48,8 @@ setup () {
   ## test for require features
   check git && $INSTALL git
   check zsh && $INSTALL zsh
-  check pip3 && $INSTALL python3 python3-pip
   check wget && $INSTALL wget
+  check python3 && $INSTALL python3
 
   echo ""
   green "Cloning the repo .."
@@ -59,12 +59,12 @@ setup () {
   git clone --recursive git://github.com/kakulukia/dotfiles.git
 
   # install pyenv, activate and install python3 if necessary
-  git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-  git clone https://github.com/pyenv/pyenv-virtualenvwrapper.git ~/.pyenv/plugins/pyenv-virtualenvwrapper
-  PYENV_ROOT="$HOME/.pyenv"
-  PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init -)"
-#  command -v python3 || pyenv install 3.8.2 && pyenv global 3.8.2
+  # git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+  # git clone https://github.com/pyenv/pyenv-virtualenvwrapper.git ~/.pyenv/plugins/pyenv-virtualenvwrapper
+  # PYENV_ROOT="$HOME/.pyenv"
+  # PATH="$PYENV_ROOT/bin:$PATH"
+  # eval "$(pyenv init -)"
+  # command -v python3 || pyenv install 3.8.2 && pyenv global 3.8.2
 
   #installing dotfiles symlinks
   python3 bin/ghar install
