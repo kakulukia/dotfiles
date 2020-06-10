@@ -8,6 +8,7 @@ fasd # https://github.com/clvv/fasd
 fd # find replacement
 ffmpeg # video en/decoding in the command line
 fx # json viewer https://github.com/antonmedv/fx
+fzf # fuzzy finder https://github.com/junegunn/fzf
 git # version control
 gnu-sed # updated version of sed compared to OSX default
 htop # better version ot top
