@@ -19,12 +19,9 @@ ZSH_CUSTOM=~/.zsh-custom
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  # kubectl
-  # docker
   extract
   fasd
   zsh-autosuggestions
-  # zsh-explain-shell
   history-search-multi-word
   zsh-completions
   zsh-syntax-highlighting
