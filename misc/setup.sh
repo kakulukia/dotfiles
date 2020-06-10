@@ -49,6 +49,7 @@ setup () {
   check git && $INSTALL git
   check zsh && $INSTALL zsh
   check pip3 && $INSTALL python3 python3-pip
+  check wget && $INSTALL wget
 
   echo ""
   green "Cloning the repo .."
