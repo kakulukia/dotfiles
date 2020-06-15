@@ -50,3 +50,5 @@
 	template = ~/.stCommitMsg
 [filter "ignoredconfig"]
 	clean = "sed '/#gitignore$/'d"
+[pull]
+	rebase = false

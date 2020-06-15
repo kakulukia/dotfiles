@@ -52,8 +52,8 @@ path . # no need to use ./ to execute local scripts
 path ~/bin
 path /bin
 path /sbin
-path /usr/local/bin
 path /usr/bin
+path /usr/local/bin
 
 # You may need to manually set your language environment
 export LANG=de_DE.UTF-8

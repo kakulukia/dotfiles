@@ -27,9 +27,11 @@ openconnect # VPN client
 openssl # SSL lib
 pyenv # Python version management
 python
+python-dev # to be able to compile stuff
 redis
 ripgrep # it finds stuff - ultra fast - https://github.com/BurntSushi/ripgrep
 ruby
+ruby-dev # to be able to compile stuff
 rust
 sd # find and replace (like sed)
 speedtest-cli # connection speed tester
