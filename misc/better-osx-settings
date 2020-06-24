@@ -343,7 +343,7 @@ defaults write com.apple.dock show-recents -bool false
 defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
 
 # Add a spacer to the right side of the Dock (where the Trash is)
-defaults write com.apple.dock persistent-others -array-add '{tile-data={}; tile-type="spacer-tile";}'
+# defaults write com.apple.dock persistent-others -array-add '{tile-data={}; tile-type="spacer-tile";}'
 
 # Hot corners
 # Possible values:
