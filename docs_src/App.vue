@@ -143,7 +143,7 @@
         h2.subtitle ToDo
         ul
           li colorls is a lil slow - there is a promising alternative, but
-            a(hreaf="https://github.com/Peltoche/lsd/issues/92")  it's not looking sexy yet
+            a(href="https://github.com/Peltoche/lsd/issues/92")  it's not looking sexy yet
           li Maybe some day in the future I'm switching yet again to prezto and will redo my default theme.
             |  But as of yet this still sounds like too much trouble. :/
           li Decoupling this shell from needing Python. I am a Python developer, but sure it's
