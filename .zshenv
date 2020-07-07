@@ -25,3 +25,15 @@ function path {
   fi
 }
 
+# starting clean
+export PATH="/usr/sbin"
+
+path . # no need to use ./ to execute local scripts
+path ~/bin
+path /bin
+path /sbin
+path /usr/bin
+path /usr/local/bin
+
+# include local settings
+[[ -e ~/.profile ]] && source ~/.profile

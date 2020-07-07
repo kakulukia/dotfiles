@@ -45,16 +45,6 @@ zstyle ":history-search-multi-word" highlight-color "fg=white,bg=yellow"
 zstyle ":plugin:history-search-multi-word" synhl "yes"                 # Whether to perform syntax highlighting (default true)
 zstyle ":plugin:history-search-multi-word" active "bold"          # Effect on active history entry. Try: standout, bold, bg=blue (default underline)
 
-#starting clean
-export PATH="/usr/sbin"
-
-path . # no need to use ./ to execute local scripts
-path ~/bin
-path /bin
-path /sbin
-path /usr/bin
-path /usr/local/bin
-
 # You may need to manually set your language environment
 export LANG=de_DE.UTF-8
 export EDITOR='vim'
@@ -75,8 +65,6 @@ setopt HIST_NO_STORE
 
 export REPORTTIME=1
 
-# include local settings
-[[ -e ~/.profile ]] && source ~/.profile
 source $ZSH/oh-my-zsh.sh
 
 # Bind keypad
