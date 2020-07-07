@@ -1,5 +1,5 @@
 
-if hash colorls 2>/dev/null; then
+if command -v colorls >/dev/null 2>&1; then
     alias l='colorls --gs --sd -l'
     alias ll='colorls --gs --sd -la'
     alias lt='colorls --gs --sd -ltr'

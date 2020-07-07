@@ -23,16 +23,19 @@ neofetch # get stats about your OS https://github.com/dylanaraps/neofetch
 nmap # network mapper https://github.com/nmap/nmap
 nnn # command line file browser
 node
+nodejs # works on ubuntu
 openconnect # VPN client
 openssl # SSL lib
 pyenv # Python version management
-python
-python-dev # to be able to compile stuff
+python3
+python3-dev # to be able to compile stuff
+python3-pip # python package manager
 redis
 ripgrep # it finds stuff - ultra fast - https://github.com/BurntSushi/ripgrep
 ruby
 ruby-dev # to be able to compile stuff
-rust
+rust # this works on osx
+cargo # this works on ubuntu
 sd # find and replace (like sed)
 speedtest-cli # connection speed tester
 ssh-copy-id # copy ssh key to remote box
@@ -47,3 +50,4 @@ watchexec # Run arbitrary commands when files change https://github.com/watchexe
 wget # get files from the web
 woof # send files or directories
 youtube-dl # download stuff from youtube
+zlib1g-dev # needed for installing Python

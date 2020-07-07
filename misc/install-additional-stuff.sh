@@ -15,9 +15,11 @@ brew=`command -v brew`
 if [ -n "$apt" ]; then
     echo "some of the packages might not be installable if not using osx\n\n"
     INSTALL='sudo apt -y install'
-elif [ -n "$apt" ]; then
-    echo "some of the packages might not be installable if not using osx\n\n"
-    INSTALL='sudo apt -y install'
+    sudo apt-get install build-essential
+    # Python dependencies
+    sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
+    libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
+    xz-utils tk-dev libffi-dev liblzma-dev python-openssl libjpeg-dev zlib1g-dev
 elif [ -n "$yum" ]; then
     echo "some of the packages might not be installable if not using osx\n\n"
     INSTALL='sudo yum -y install'
