@@ -131,4 +131,4 @@ source ~/.alias
 
 # autoload -U promptinit; promptinit
 # prompt pure
-
+command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
