@@ -67,9 +67,12 @@ alias grm="git branch --merged | grep -v \"\*\" | xargs -n 1 git branch -d"
 # Python / Django
 alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 alias shell='python manage.py shell_plus'
+# creates a new virtualenv in the current dir including auto setup and activation via direnv
 function venv-here {
   echo "layout python3" > .envrc
-  echo "ln -s .direnv/\$(basename \$VIRTUAL_ENV)/ .env" >> .envrc
+  echo "FILE=.direnv/\$(basename \$VIRTUAL_ENV)/" >> .envrc
+  echo "[ ! -f $FILE ] || ln -s \$FILE .env" >> .envrc # PyCharm compatibility
+  direnv allow
 }
 alias idea='open -a "IntelliJ IDEA"'
 # FASD
