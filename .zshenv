@@ -37,3 +37,12 @@ path /usr/local/bin
 
 # include local settings
 [[ -e ~/.profile ]] && source ~/.profile
+
+# initialize direnv and pyenv
+if [ -d "$HOME/.pyenv" ]; then
+  PYENV_ROOT="$HOME/.pyenv"
+  PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+  if which pyenv-virtualenv-init > /dev/null; then pyenv virtualenvwrapper_lazy; fi
+fi
+command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"

@@ -99,13 +99,6 @@ export COMP_WORDBREAKS
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-if [ -d "$HOME/.pyenv" ]; then
-  PYENV_ROOT="$HOME/.pyenv"
-  PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init -)"
-  if which pyenv-virtualenv-init > /dev/null; then pyenv virtualenvwrapper_lazy; fi
-fi
-
 export PIPENV_VENV_IN_PROJECT=1
 export PYTHONBREAKPOINT=ipdb.set_trace
 export VIRTUALENVWRAPPER_PYTHON=`which python`
@@ -131,4 +124,4 @@ source ~/.alias
 
 # autoload -U promptinit; promptinit
 # prompt pure
-command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
+
