@@ -191,8 +191,6 @@ export default {
 body::-webkit-scrollbar
   width: 10px
 body::-webkit-scrollbar-thumb
-  background-color: #282a36
-  outline: 1px solid #282a36
   background-image: url(public/scrollbar.png)
 
 iframe
