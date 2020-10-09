@@ -71,7 +71,7 @@ alias shell='python manage.py shell_plus'
 function venv-here {
   echo "layout python3" > .envrc
   echo "FILE=.direnv/\$(basename \$VIRTUAL_ENV)/" >> .envrc
-  echo "[ ! -f $FILE ] || ln -s \$FILE .venv" >> .envrc # PyCharm compatibility
+  echo "[ ! -f .venv ] || ln -s \$FILE .venv" >> .envrc
   direnv allow
 }
 alias idea='open -a "IntelliJ IDEA"'
