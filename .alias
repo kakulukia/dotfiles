@@ -75,6 +75,8 @@ function venv-here {
   direnv allow
 }
 alias idea='open -a "IntelliJ IDEA"'
+alias init_python="pip install -U pip setuptools wheel poetry twine bumpversion isort black"
+
 # FASD
 alias v='f -e vim' # quick opening files with vim
 alias c='z'

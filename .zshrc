@@ -1,9 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
-# for som mysterious reason, this ain't working in .zshenv
-eval "$(pyenv init -)"
-
 # use the theme defined in profile
 if [ -z ${ZSH_THEME} ]; then
   export ZSH_THEME="bullet-train"

@@ -33,15 +33,17 @@ path ~/bin
 path /bin
 path /sbin
 path /usr/bin
+path /usr/sbin
 path /usr/local/bin
+# in case of weird paths problems: check /etc/paths and /ets/path.d
 
 # include local settings
 [[ -e ~/.profile ]] && source ~/.profile
 
-# initialize direnv and pyenv
+# initialize pyenv and direnv for all shells
 if [ -d "$HOME/.pyenv" ]; then
-  PYENV_ROOT="$HOME/.pyenv"
-  PATH="$PYENV_ROOT/bin:$PATH"
+  path ~/.pyenv/bin
   eval "$(pyenv init -)"
 fi
 command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
+
