@@ -124,3 +124,8 @@ source ~/.alias
 # autoload -U promptinit; promptinit
 # prompt pure
 
+if [ -d "$HOME/.pyenv" ]; then
+  # for interactive shells initialize pyenv here
+  [[ $- == *i* ]] && path ~/.pyenv/bin
+  [[ $- == *i* ]] && eval "$(pyenv init -)"
+fi

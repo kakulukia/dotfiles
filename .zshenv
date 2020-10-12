@@ -42,8 +42,9 @@ path /usr/local/bin
 
 # initialize pyenv and direnv for all shells
 if [ -d "$HOME/.pyenv" ]; then
-  path ~/.pyenv/bin
-  eval "$(pyenv init -)"
+  # for non interactive shells initialize pyenv here
+  [[ $- == *i* ]] || path ~/.pyenv/bin
+  [[ $- == *i* ]] || eval "$(pyenv init -)"
 fi
 command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
 
