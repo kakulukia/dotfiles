@@ -1,12 +1,32 @@
+### 0. Optional startup profiling
+# based on http://stackoverflow.com/questions/4351244
+#ZSH_ENABLE_PROFILE=true
+if [[ -n $ZSH_ENABLE_PROFILE ]]; then
+  # start zsh profiling
+  zmodload zsh/datetime
+  # set the trace prompt to include seconds, nanoseconds, script name and line number
+  setopt promptsubst
+  PS4='+$EPOCHREALTIME %N:%i> '
+  # save file stderr to file descriptor 3 and redirect stderr (including trace
+  # output) to a file with the script's PID as an extension
+  STARTLOG=/tmp/startlog.$$
+  exec 3>&2 2>$STARTLOG
+  # set options to turn on tracing and expansion of commands contained in the
+  # prompt
+  setopt xtrace prompt_subst
+  zmodload zsh/zprof
+fi
+
+
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
 # use the theme defined in profile
-if [ -z ${ZSH_THEME} ]; then
+if [[ -z ${ZSH_THEME} ]]; then
   export ZSH_THEME="bullet-train"
 fi
 
-ZSH_DISABLE_COMPFIX=false
+ZSH_DISABLE_COMPFIX="true"
 HYPHEN_INSENSITIVE="true" # _ and - will be interchangeable.
 unsetopt correct_all
 setopt correct
@@ -26,7 +46,12 @@ plugins=(
   zsh-syntax-highlighting
   history-substring-search
 )
-autoload -U compinit && compinit
+autoload -Uz compinit
+if [[ -n .zcompdump(#qN.mh+24) ]]; then
+	compinit;
+else
+	compinit -C;
+fi;
 
 # syntax highlighting has to be loaded last
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
@@ -128,4 +153,19 @@ if [ -d "$HOME/.pyenv" ]; then
   # for interactive shells initialize pyenv here
   [[ $- == *i* ]] && path ~/.pyenv/bin
   [[ $- == *i* ]] && eval "$(pyenv init -)"
+fi
+
+eval "$(starship init zsh)"
+
+## 0. End startup profiling
+#
+
+if [[ -n $ZSH_ENABLE_PROFILE ]]; then
+  # turn off tracing
+  unsetopt xtrace
+  # restore stderr to the value saved in FD 3
+  exec 2>&3 3>&-
+  echo >>$STARTLOG
+  zprof >>$STARTLOG
+  echo "Start log saved in $STARTLOG"
 fi
