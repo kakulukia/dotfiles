@@ -65,7 +65,7 @@ style = "bg:#587744 fg:bright-white"
 symbol = "⚙"
 
 [custom.host]
-when = 'test "$SSH_CLIENT" != ""'
+when = 'test -n "$SSH_CLIENT"'
 format = "[ $symbol $output ]($style)"
 command = "echo $USER@$(uname -n)"
 style = "bg:#FD7208 fg:bright-white"
