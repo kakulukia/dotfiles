@@ -83,6 +83,10 @@ setup () {
   mkdir -p ~/.config/colorls
   path=`pwd`
   ln -s $path/dark_colors.yaml ~/.config/colorls/
+  green "Installing starship .."
+  command -v starship >/dev/null 2>&1 || curl -fsSL https://starship.rs/install.sh | bash
+  ln -s ~/ghar/dotfiles/misc/starship.toml ~/.config
+  
   zsh install-additional-stuff.sh
 
   echo ""

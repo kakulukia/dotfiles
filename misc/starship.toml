@@ -1,0 +1,70 @@
+# Don't print a new line a
+
+# the start of the prompt
+add_newline = false
+format = """
+${custom.host}\
+$username\
+$jobs\
+$character\
+$python\
+$git_branch\
+$git_status\
+$directory\
+$cmd_duration """
+
+[character]                            # The name of the module we are configuring is "character"
+success_symbol = ''
+error_symbol = '[ :\( ](bg:red fg:white)'
+format = '$symbol'
+[line_break]
+disabled = true
+[directory]
+#format = "[ $path ]($style)[$read_only ]($read_only_style)"
+format = "[ $path ]($style)"
+read_only = ""
+style = "bg:#4D4E48 fg:white"
+read_only_style = "yellow"
+truncate_to_repo = false
+truncation_symbol = '…'
+
+[username]
+show_always = false
+format = "[ $user ]($style)"
+style_user = "bg:#0A6FFF fg:bold bright-white"
+style_root = "bg:purple fg:bright-white"
+
+[hostname]
+ssh_only = false
+format = "[$user $hostname ]($style)"
+
+[git_branch]
+format = "[ $symbol $branch ]($style)"
+symbol = "⎇"
+style = 'bg:#2C2C2C fg:white'
+
+[git_status]
+show_sync_count = true
+style = "bg:#2C2C2C fg:white"
+format = '([\[$all_status$ahead_behind\] ]($style))'
+
+[cmd_duration]
+format = '[ took $duration ]($style)'
+style = 'bg:#2C2C2C fg:red'
+
+[python]
+format = '[ $symbol $version ]($style)'
+style = "bg:#587744 fg:white"
+symbol = "⬡"
+
+[jobs]
+format = "[ $symbol$number ]($style)"
+style = "bg:#587744 fg:bright-white"
+symbol = "⚙"
+
+[custom.host]
+when = 'test "$SSH_CLIENT" != ""'
+format = "[ $symbol $output ]($style)"
+command = "echo $USER@$(uname -n)"
+style = "bg:#FD7208 fg:bright-white"
+symbol = "⌁"
