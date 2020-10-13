@@ -4,7 +4,6 @@
 add_newline = false
 format = """
 ${custom.host}\
-$username\
 $jobs\
 $character\
 $python\
