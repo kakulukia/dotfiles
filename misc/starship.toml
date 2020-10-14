@@ -43,7 +43,7 @@ symbol = "⎇"
 style = 'bg:#2C2C2C fg:white'
 
 [git_status]
-style = "bg:#2C2C2C fg:white"
+style = "bg:#2C2C2C fg:red"
 format = '([($ahead_behind )($all_status )]($style))'
 ahead = "⇡${count}"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
