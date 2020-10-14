@@ -78,11 +78,11 @@ function venv-here {
   echo "[ -e .venv ] || ln -s \$FILE .venv" >> .envrc
   direnv allow
   poetry init
-  echo "\n\nUse ${green}init_venv${normal} to start with updated base packages.\nStart adding dependencies with ${green}poetry add xy${normal}.\n"
+  echo "\n\nUse ${green}init-venv${normal} to start with updated base packages.\nStart adding dependencies with ${green}poetry add xy${normal}.\n"
 }
 alias idea='open -a "IntelliJ IDEA"'
-alias init_venv="pip install -U pip setuptools wheel"
-alias init_python="init_venv && pip install -U poetry twine bumpversion isort black"
+alias init-venv="pip install -U pip setuptools wheel"
+alias init-python="init_venv && pip install -U poetry twine bumpversion isort black"
 
 # FASD
 alias v='f -e vim' # quick opening files with vim
