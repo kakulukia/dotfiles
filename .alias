@@ -65,6 +65,10 @@ alias gfi='find . -type f | grep -v .venv | grep -v .idea | git check-ignore -v 
 alias grm="git branch --merged | grep -v \"\*\" | xargs -n 1 git branch -d"
 
 # Python / Django
+bold=$(tput bold)
+normal=$(tput sgr0)
+green=$(tput setaf 2)
+
 alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 alias shell='python manage.py shell_plus'
 # creates a new virtualenv in the current dir including auto setup and activation via direnv
@@ -73,9 +77,12 @@ function venv-here {
   echo "FILE=.direnv/\$(basename \$VIRTUAL_ENV)/" >> .envrc
   echo "[ -e .venv ] || ln -s \$FILE .venv" >> .envrc
   direnv allow
+  poetry init
+  echo "\n\nUse ${green}init_venv${normal} to start with updated base packages.\nStart adding dependencies with ${green}poetry add xy${normal}.\n"
 }
 alias idea='open -a "IntelliJ IDEA"'
-alias init_python="pip install -U pip setuptools wheel poetry twine bumpversion isort black"
+alias init_venv="pip install -U pip setuptools wheel"
+alias init_python="init_venv && pip install -U poetry twine bumpversion isort black"
 
 # FASD
 alias v='f -e vim' # quick opening files with vim
