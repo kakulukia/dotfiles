@@ -64,11 +64,11 @@ alias diff="diff_so_fancy"
 alias gfi='find . -type f | grep -v .venv | grep -v .idea | git check-ignore -v --stdin'
 alias grm="git branch --merged | grep -v \"\*\" | xargs -n 1 git branch -d"
 
-# Python / Django
-bold=$(tput bold)
+# helpers
 normal=$(tput sgr0)
 green=$(tput setaf 2)
 
+# Python / Django
 alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 alias shell='python manage.py shell_plus'
 # creates a new virtualenv in the current dir including auto setup and activation via direnv
