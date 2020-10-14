@@ -82,7 +82,7 @@ function venv-here {
 }
 alias idea='open -a "IntelliJ IDEA"'
 alias init-venv="pip install -U pip setuptools wheel"
-alias init-python="init_venv && pip install -U poetry twine bumpversion isort black"
+alias init-python="init-venv && pip install -U poetry twine bumpversion isort black"
 
 # FASD
 alias v='f -e vim' # quick opening files with vim
