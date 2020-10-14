@@ -21,11 +21,6 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
-# use the theme defined in profile
-if [[ -z ${ZSH_THEME} ]]; then
-  export ZSH_THEME="bullet-train"
-fi
-
 ZSH_DISABLE_COMPFIX="true"
 HYPHEN_INSENSITIVE="true" # _ and - will be interchangeable.
 unsetopt correct_all
@@ -86,8 +81,6 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE # If a line starts with a space, dont save it.
 setopt HIST_NO_STORE
-
-export REPORTTIME=1
 
 source $ZSH/oh-my-zsh.sh
 
@@ -158,8 +151,6 @@ fi
 eval "$(starship init zsh)"
 
 ## 0. End startup profiling
-#
-
 if [[ -n $ZSH_ENABLE_PROFILE ]]; then
   # turn off tracing
   unsetopt xtrace

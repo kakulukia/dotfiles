@@ -1,9 +1,7 @@
-# Don't print a new line a
-
-# the start of the prompt
-add_newline = false
 format = """
-${custom.host}\
+${custom.ssh}\
+${custom.ssh_root}\
+${custom.local_root}\
 $jobs\
 $character\
 $python\
@@ -11,21 +9,23 @@ $git_branch\
 $git_status\
 $directory\
 $cmd_duration """
+add_newline = false
 
-[character]                            # The name of the module we are configuring is "character"
+[character]
 success_symbol = ''
 error_symbol = '[ :\( ](bg:red fg:white)'
 format = '$symbol'
-[line_break]
-disabled = true
+disabled = false
+
 [directory]
-#format = "[ $path ]($style)[$read_only ]($read_only_style)"
-format = "[ $path ]($style)"
 read_only = ""
 style = "bg:#4D4E48 fg:white"
 read_only_style = "yellow"
 truncate_to_repo = false
-truncation_symbol = '…'
+truncation_symbol = "…/"
+truncation_length = 2
+#fish_style_pwd_dir_length = 1
+format = "[ $path ]($style)[($read_only )]($read_only_style)"
 
 [username]
 show_always = false
@@ -56,16 +56,30 @@ style = 'bg:#2C2C2C fg:red'
 [python]
 format = '[ $symbol $version ]($style)'
 style = "bg:#587744 fg:white"
-symbol = "⬡"
+symbol = ""
 
 [jobs]
 format = "[ $symbol$number ]($style)"
 style = "bg:#587744 fg:bright-white"
 symbol = "⚙"
 
-[custom.host]
-when = 'test -n "$SSH_CLIENT"'
+[custom.ssh]
+shell = ["zsh", "-d", "-f"]
+when = '[[ -n "$SSH_CLIENT" ]] && [[ "$USER" != "root" ]]'
 format = "[ $symbol $output ]($style)"
 command = "echo $USER@$(uname -n)"
 style = "bg:#FD7208 fg:bright-white"
 symbol = "⌁"
+[custom.ssh_root]
+shell = ["zsh", "-d", "-f"]
+when = '[[ -n "$SSH_CLIENT" ]] && [[ "$USER" = "root" ]]'
+format = "[ $symbol $output ]($style)"
+command = "echo $USER@$(uname -n)"
+style = "bg:red fg:bright-white"
+symbol = "⌁"
+[custom.local_root]
+shell = ["zsh", "-d", "-f"]
+when = '[[ -z "$SSH_CLIENT" ]] && [[ "$USER" = "root" ]]'
+format = "[ $output ]($style)"
+command = "echo $USER"
+style = "bg:red fg:bright-white"
