@@ -18,13 +18,13 @@ format = '$symbol'
 disabled = false
 
 [directory]
-read_only = ""
+#read_only = ""
 style = "bg:#4D4E48 fg:white"
-read_only_style = "yellow"
+read_only_style = "bg:#4D4E48 fg:red"
 truncate_to_repo = false
-truncation_symbol = "…/"
+truncation_symbol = "../"
 truncation_length = 2
-#fish_style_pwd_dir_length = 1
+fish_style_pwd_dir_length = 3
 format = "[ $path ]($style)[($read_only )]($read_only_style)"
 
 [username]

@@ -64,22 +64,11 @@ alias diff="diff_so_fancy"
 alias gfi='find . -type f | grep -v .venv | grep -v .idea | git check-ignore -v --stdin'
 alias grm="git branch --merged | grep -v \"\*\" | xargs -n 1 git branch -d"
 
-# helpers
-normal=$(tput sgr0)
-green=$(tput setaf 2)
-
 # Python / Django
 alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 alias shell='python manage.py shell_plus'
 # creates a new virtualenv in the current dir including auto setup and activation via direnv
-function venv-here {
-  echo "layout python3" > .envrc
-  echo "FILE=.direnv/\$(basename \$VIRTUAL_ENV)/" >> .envrc
-  echo "[ -e .venv ] || ln -s \$FILE .venv" >> .envrc
-  direnv allow
-  poetry init
-  echo "\n\nUse ${green}init-venv${normal} to start with updated base packages.\nStart adding dependencies with ${green}poetry add xy${normal}.\n"
-}
+
 alias idea='open -a "IntelliJ IDEA"'
 alias init-venv="pip install -U pip setuptools wheel"
 alias init-python="init-venv && pip install -U poetry twine bumpversion isort black"
@@ -159,7 +148,7 @@ alias -g C="| wc -l"
 alias p="ps aux G "
 
 # get public/local IP addresses
-alias ip="curl -s https://ipinfo.io/"
+alias ip="curl -s https://ipinfo.io/ J"
 alias ips="ifconfig -a | grep -o 'inet\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet? (addr:)? ?/, \"\"); print }' | grep -v 127.0.0.1"
 alias localip="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p' | head -n 1"
 function digga() {
@@ -174,7 +163,7 @@ alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && k
 alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
 
 # Recursively delete `.DS_Store` files
-alias cleanup="find . -type f -name '*.DS_Store' -ls -delete && find . -name *.pyc -ls -delete"
+alias cleanup="find . -type f -name '*.DS_Store' -ls -delete && find . -name '*.pyc' -ls -delete"
 # Empty the Trash on all mounted volumes and the main HDD.
 # Also, clear Apple’s System Logs to improve shell startup speed.
 # Finally, clear download history from quarantine. https://mths.be/bum
