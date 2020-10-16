@@ -509,7 +509,37 @@ ui_widget_select() {
 normal=$(tput sgr0)
 green=$(tput setaf 2)
 
-echo "Select the Python version for the new virtulenv:"
+# checking for pyenv and direnv
+command -v pyenv >/dev/null 2>&1
+pyenv=$?
+if [[ "$pyenv" != "0" ]]; then
+   echo $pyenv
+  echo "pyenv not available - do you want to install it?"
+  ui_widget_select -k yes no -i yes no
+  [[ "yes" = "${UI_WIDGET_RC}" ]] && curl https://pyenv.run | bash
+fi
+command -v direnv >/dev/null 2>&1
+direnv=$?
+if [[ "$direnv" != "0" ]];  then
+  echo "direnv not available - do you want to install it?"
+  ui_widget_select -k yes no -i yes no
+  [[ "yes" = "${UI_WIDGET_RC}" ]] && curl -sfL https://direnv.net/install.sh | bash
+fi
+
+if [[ "$pyenv" != "0" ]] || [[ "$direnv" != "0" ]]; then
+   echo -e "\nPlease come back with pyenv and direnv loaded.\n"
+   exit -1
+fi
+
+if [[ ! -d "$HOME/.pyenv/versions" ]] ||  [[ "$(ls $HOME/.pyenv/versions)" = "" ]]; then
+  echo  ""
+  echo "No python versions installed in ~/.pyenv/versions"
+  echo "Please install one with ${green}pyenv install <version>${normal} and run this script again."
+  echo ""
+  exit -1
+fi
+
+echo "Select the Python version for the new virtualenv:"
 options=($(ls ~/.pyenv/versions))
 ui_widget_select -l -i "${options[@]}"
 echo "layout pyenv ${options[${UI_WIDGET_RC}]}" > .envrc
@@ -518,3 +548,4 @@ echo "[ -e .venv ] || ln -s \$FILE .venv" >> .envrc
 direnv allow
 poetry init
 echo -e "\n\nUse ${green}init-venv${normal} to start with updated base packages.\nStart adding dependencies with ${green}poetry add xy${normal}.\n"
+
