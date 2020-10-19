@@ -4,7 +4,7 @@ ${custom.ssh_root}\
 ${custom.local_root}\
 $jobs\
 $character\
-$python\
+${custom.venv}\
 $git_branch\
 $git_status\
 $directory\
@@ -53,11 +53,6 @@ behind = "⇣${count}"
 format = '[ took $duration ]($style)'
 style = 'bg:#2C2C2C fg:red'
 
-[python]
-format = '[ $symbol $version ]($style)'
-style = "bg:#587744 fg:white"
-symbol = ""
-
 [jobs]
 format = "[ $symbol$number ]($style)"
 style = "bg:#587744 fg:bright-white"
@@ -83,3 +78,10 @@ when = '[[ -z "$SSH_CLIENT" ]] && [[ "$USER" = "root" ]]'
 format = "[ $output ]($style)"
 command = "echo $USER"
 style = "bg:red fg:bright-white"
+[custom.venv]
+shell = ["zsh", "-d", "-f"]
+when = '[[ -n "$VIRTUAL_ENV" ]]'
+format = "[ $symbol $output ]($style)"
+command = "python --version | cut -d ' ' -f2"
+style = "bg:#587744 fg:bright-white"
+symbol = ""
