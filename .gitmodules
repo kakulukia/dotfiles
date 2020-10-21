@@ -7,3 +7,6 @@
 [submodule ".zprezto-contrib/fzf-tab"]
 	path = .zprezto-contrib/fzf-tab
 	url = https://github.com/Aloxaf/fzf-tab
+[submodule ".zprezto-contrib/history-search-multi-word"]
+	path = .zprezto-contrib/history-search-multi-word
+	url = git@github.com:zdharma/history-search-multi-word.git
