@@ -81,7 +81,7 @@ zstyle ':prezto:module:tmux:auto-start' remote 'no'
 
 # load aliases and  the prompt
 source ~/.alias
-command -v fzf >/dev/null 2>&1 && eval "$(starship init zsh)"
+command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
 
 
 # misc
