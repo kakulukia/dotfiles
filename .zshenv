@@ -1,9 +1,3 @@
-#
-# Defines environment variables.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
 
 # nicer path configuration and lookup
 function path {
@@ -27,7 +21,7 @@ function path {
 
 # starting clean
 export PATH="/usr/sbin"
-
+#  add some more common defaults
 path . # no need to use ./ to execute local scripts
 path ~/bin
 path /bin
@@ -35,16 +29,14 @@ path /sbin
 path /usr/bin
 path /usr/sbin
 path /usr/local/bin
-# in case of weird paths problems: check /etc/paths and /ets/path.d
-
-# include local settings
-[[ -e ~/.profile ]] && source ~/.profile
+# in case of weird paths problems: check /etc/profile on OSX not start the path helper
 
 # initialize pyenv and direnv for all shells
 if [[ -d "$HOME/.pyenv" ]]; then
-  # for non interactive shells initialize pyenv here
-  [[ $- == *i* ]] || path ~/.pyenv/bin
-  [[ $- == *i* ]] || eval "$(pyenv init -)"
+  path ~/.pyenv/bin
+  eval "$(pyenv init -)"
 fi
 command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
 
+# include local, unversioned settings
+[[ -e ~/.profile ]] && source ~/.profile

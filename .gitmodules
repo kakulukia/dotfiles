@@ -1,33 +1,10 @@
-[submodule ".vim/bundle/vim-fugitive"]
-	path = .vim/bundle/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive.git
-[submodule ".vim/bundle/vim-airline"]
-	path = .vim/bundle/vim-airline
-	url = https://github.com/bling/vim-airline
-[submodule ".vim/bundle/vim-colors-solarized"]
-	path = .vim/bundle/vim-colors-solarized
-	url = https://github.com/altercation/vim-colors-solarized.git
-[submodule ".vim/bundle/vim-sensible"]
-	path = .vim/bundle/vim-sensible
-	url = https://github.com/tpope/vim-sensible.git
-[submodule ".oh-my-zsh"]
-	path = .oh-my-zsh
-	url = https://github.com/robbyrussell/oh-my-zsh.git
-[submodule ".vim/bundle/gundo"]
-	path = .vim/bundle/gundo
-	url = http://github.com/sjl/gundo.vim.git
 [submodule ".SpaceVim"]
 	path = .SpaceVim
 	url = https://github.com/SpaceVim/SpaceVim.git
-[submodule ".zsh-custom/plugins/zsh-autosuggestions"]
-	path = .zsh-custom/plugins/zsh-autosuggestions
-	url = https://github.com/zsh-users/zsh-autosuggestions
-[submodule ".zsh-custom/plugins/history-search-multi-word"]
-	path = .zsh-custom/plugins/history-search-multi-word
+[submodule "~/.zprezto-contrib/history-search-multi-word"]
+	path = ~/.zprezto-contrib/history-search-multi-word
 	url = https://github.com/zdharma/history-search-multi-word.git
-[submodule ".zsh-custom/plugins/zsh-syntax-highlighting"]
-	path = .zsh-custom/plugins/zsh-syntax-highlighting
+[submodule "~/.zprezto-contrib/zsh-syntax-highlighting"]
+	path = ~/.zprezto-contrib/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-[submodule ".zsh-custom/plugins/zsh-completions"]
-	path = .zsh-custom/plugins/zsh-completions
-	url = https://github.com/zsh-users/zsh-completions
+	

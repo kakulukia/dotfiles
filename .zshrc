@@ -1,126 +1,81 @@
-### 0. Optional startup profiling
-# based on http://stackoverflow.com/questions/4351244
-#ZSH_ENABLE_PROFILE=true
-if [[ -n $ZSH_ENABLE_PROFILE ]]; then
-  # start zsh profiling
-  zmodload zsh/datetime
-  # set the trace prompt to include seconds, nanoseconds, script name and line number
-  setopt promptsubst
-  PS4='+$EPOCHREALTIME %N:%i> '
-  # save file stderr to file descriptor 3 and redirect stderr (including trace
-  # output) to a file with the script's PID as an extension
-  STARTLOG=/tmp/startlog.$$
-  exec 3>&2 2>$STARTLOG
-  # set options to turn on tracing and expansion of commands contained in the
-  # prompt
-  setopt xtrace prompt_subst
-  zmodload zsh/zprof
-fi
+### Editors
+export EDITOR='vim'
+export VISUAL='vim'
+export PAGER='less'
 
+# Language
+export LANG='de_DE.UTF-8'
 
-# Path to your oh-my-zsh installation.
-export ZSH=~/.oh-my-zsh
+# Add additional directories to load prezto modules from
+zstyle ':prezto:load' pmodule-dirs $HOME/.zprezto-contrib
+# Color output (auto set to 'no' on dumb terminals).
+zstyle ':prezto:*:*' color 'yes'
 
-ZSH_DISABLE_COMPFIX="true"
-HYPHEN_INSENSITIVE="true" # _ and - will be interchangeable.
-unsetopt correct_all
-setopt correct
-COMPLETION_WAITING_DOTS="true"
-ZSH_CUSTOM=~/.zsh-custom
+# Set the Prezto modules to load (browse modules).
+# The order matters.
+zstyle ':prezto:load' pmodule \
+  'history' \
+  'syntax-highlighting' \
+  'history-substring-search' \
+  'history-search-multi-word' \
+  'autosuggestions' \
+  'archive' \
+  'fzf-tab' \
+  'completion' \
+  'terminal'
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  extract
-  fasd
-  zsh-autosuggestions
-  history-search-multi-word
-  zsh-completions
-  zsh-syntax-highlighting
-  history-substring-search
-)
-autoload -Uz compinit
-if [[ -n .zcompdump(#qN.mh+24) ]]; then
-	compinit;
-else
-	compinit -C;
-fi;
+# Set the command prefix on non-GNU systems.
+# zstyle ':prezto:module:gnu-utility' prefix 'g'
 
-# syntax highlighting has to be loaded last
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-zstyle ':bracketed-paste-magic' active-widgets '.self-*'
-# Declare the variable
-typeset -A ZSH_HIGHLIGHT_STYLES
-ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=red'
-# To have paths colored instead of underlined
-ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
-# To disable highlighting of globbing expressions
-ZSH_HIGHLIGHT_STYLES[globbing]='none'
+### Syntax Highlighting
+zstyle ':prezto:module:syntax-highlighting' highlighters \
+  'main' \
+  'brackets' \
+  'pattern'
+# Set syntax highlighting styles.
+zstyle ':prezto:module:syntax-highlighting' styles \
+  'builtin' 'fg=green' \
+  'command' 'fg=green' \
+  'function' 'fg=green' \
+  'path' 'fg=cyan'
+# Set syntax pattern styles.
+zstyle ':prezto:module:syntax-highlighting' pattern \
+  'rm*-rf*' 'fg=white,bold,bg=red'
 
 # HISTORY SEARCH OPTIONS
 zstyle ":history-search-multi-word" highlight-color "fg=white,bg=yellow"
 zstyle ":plugin:history-search-multi-word" synhl "yes"                 # Whether to perform syntax highlighting (default true)
-zstyle ":plugin:history-search-multi-word" active "bold"          # Effect on active history entry. Try: standout, bold, bg=blue (default underline)
+zstyle ":plugin:history-search-multi-word" active "bg=59"
+# HYPHEN_INSENSITIVE="true"
+COMPLETION_WAITING_DOTS="true"
+zstyle ':completion:*' special-dirs true
 
-# You may need to manually set your language environment
-export LANG=de_DE.UTF-8
-export EDITOR='vim'
+# Source Prezto
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+# unset preztos annoying grouping feature
+zstyle -d ':completion:*:matches' group
+zstyle -d ':completion:*:*:*:*:*' menu
+zstyle -d ':completion:*:options' description
+zstyle -d ':completion:*' group-name
+zstyle -d ':completion:*' verbose
+zstyle -d ':completion:*:options' auto-description
+zstyle -d ':completion:*:corrections' format
+zstyle -d ':completion:*:descriptions' format
+zstyle -d ':completion:*:messages' format
+zstyle -d ':completion:*:warnings' format
+zstyle -d ':completion:*:default' list-prompt
+zstyle -d ':completion:*' format
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
 
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-HIST_STAMPS="dd.mm.yyyy"
-HISTFILE=~/.history
-SAVEHIST=10000
-HISTSIZE=10000
-setopt SHARE_HISTORY # Killer: share history between multiple shells
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_IGNORE_SPACE # If a line starts with a space, dont save it.
-setopt HIST_NO_STORE
+# load aliases and  the prompt
+source .alias
+eval "$(starship init zsh)"
 
-source $ZSH/oh-my-zsh.sh
 
-# Bind keypad
-############################
-# 0 . , Enter
-bindkey -s "^[Op" "0"
-bindkey -s "^[Ol" "."
-bindkey -s "^[On" "."
-bindkey -s "^[OM" "^M"
-# 1 2 3
-bindkey -s "^[Oq" "1"
-bindkey -s "^[Or" "2"
-bindkey -s "^[Os" "3"
-# 4 5 6
-bindkey -s "^[Ot" "4"
-bindkey -s "^[Ou" "5"
-bindkey -s "^[Ov" "6"
-# 7 8 9
-bindkey -s "^[Ow" "7"
-bindkey -s "^[Ox" "8"
-bindkey -s "^[Oy" "9"
-# + -  * /
-bindkey -s "^[Ok" "+"
-bindkey -s "^[Om" "-"
-bindkey -s "^[Oj" "*"
-bindkey -s "^[Oo" "/"
-bindkey -s "^[OX" "="
-
-COMP_WORDBREAKS=${COMP_WORDBREAKS/=/}
-COMP_WORDBREAKS=${COMP_WORDBREAKS/@/}
-export COMP_WORDBREAKS
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-export PIPENV_VENV_IN_PROJECT=1
+# misc
 export PYTHONBREAKPOINT=ipdb.set_trace
-export VIRTUALENVWRAPPER_PYTHON=`which python`
-export PROMPT_EOL_MARK=""
-export TERM=xterm-256color
 
 zle-upify() {
     buf="$(echo "$BUFFER" | sed 's/[ |]*$//')"
@@ -132,31 +87,7 @@ zle-upify() {
     zle end-of-line
 }
 zle -N zle-upify
-
 # use ctrl+p to invoke and ctrl+x to close and use the result
 bindkey '^P' zle-upify
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs, plugins, and themes.
-source ~/.alias
-
-# autoload -U promptinit; promptinit
-# prompt pure
-
-if [[ -d "$HOME/.pyenv" ]]; then
-  # for interactive shells initialize pyenv here
-  [[ $- == *i* ]] && path ~/.pyenv/bin
-  [[ $- == *i* ]] && eval "$(pyenv init -)"
-fi
-
-eval "$(starship init zsh)"
-
-## 0. End startup profiling
-if [[ -n $ZSH_ENABLE_PROFILE ]]; then
-  # turn off tracing
-  unsetopt xtrace
-  # restore stderr to the value saved in FD 3
-  exec 2>&3 3>&-
-  echo >>$STARTLOG
-  zprof >>$STARTLOG
-  echo "Start log saved in $STARTLOG"
-fi
+eval "$(fasd --init auto)"
