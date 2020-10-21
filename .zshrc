@@ -68,6 +68,12 @@ zstyle -d ':completion:*:warnings' format
 zstyle -d ':completion:*:default' list-prompt
 zstyle -d ':completion:*' format
 
+### Tmux
+# Auto start a session when Zsh is launched in a local terminal.
+zstyle ':prezto:module:tmux:auto-start' local 'no'
+# Auto start a session when Zsh is launched in a SSH connection.
+zstyle ':prezto:module:tmux:auto-start' remote 'no'
+
 
 # load aliases and  the prompt
 source .alias
