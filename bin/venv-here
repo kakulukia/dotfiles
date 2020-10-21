@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# creates a new virtualenv in the current dir including auto setup and activation via direnv
+# The rest could also be used for other cool menus :)
 
 ##
 # Pure BASH interactive CLI/TUI menu (single and multi-select/checkboxes)

@@ -41,7 +41,7 @@ path /usr/local/bin
 [[ -e ~/.profile ]] && source ~/.profile
 
 # initialize pyenv and direnv for all shells
-if [ -d "$HOME/.pyenv" ]; then
+if [[ -d "$HOME/.pyenv" ]]; then
   # for non interactive shells initialize pyenv here
   [[ $- == *i* ]] || path ~/.pyenv/bin
   [[ $- == *i* ]] || eval "$(pyenv init -)"
