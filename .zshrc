@@ -76,7 +76,7 @@ zstyle ':prezto:module:tmux:auto-start' remote 'no'
 
 
 # load aliases and  the prompt
-source .alias
+source ~/.alias
 eval "$(starship init zsh)"
 
 
@@ -97,3 +97,4 @@ zle -N zle-upify
 bindkey '^P' zle-upify
 
 eval "$(fasd --init auto)"
+[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
