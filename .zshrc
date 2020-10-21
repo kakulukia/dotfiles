@@ -22,7 +22,11 @@ zstyle ':prezto:load' pmodule \
   'archive' \
   'fzf-tab' \
   'completion' \
-  'terminal'
+  'terminal' \
+  'prompt'
+
+# fallback for ARM systems - for now ..
+zstyle ':prezto:module:prompt' theme 'sorin'
 
 # Set the command prefix on non-GNU systems.
 # zstyle ':prezto:module:gnu-utility' prefix 'g'
@@ -77,7 +81,7 @@ zstyle ':prezto:module:tmux:auto-start' remote 'no'
 
 # load aliases and  the prompt
 source ~/.alias
-eval "$(starship init zsh)"
+command -v fzf >/dev/null 2>&1 && eval "$(starship init zsh)"
 
 
 # misc
