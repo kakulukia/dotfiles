@@ -1,7 +1,7 @@
 
 # nicer path configuration and lookup
 function path {
-  if [ $# -eq 0 ]; then
+  if [[ $# -eq 0 ]]; then
     echo -e ${PATH//:/\\n} | sort
   elif [[ "$1" == "--save" ]]; then
     path $2 && echo "\npath $2" >> $HOME/.profile
