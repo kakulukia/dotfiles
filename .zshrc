@@ -57,7 +57,7 @@ zstyle ':completion:*' special-dirs true
 # Source Prezto
 source "$HOME/.zprezto/init.zsh"
 ## unset preztos annoying grouping feature
-zstyle ':completion:*:descriptions' format ''
+zstyle ':completion:*' format ' -- %d --'
 
 #### Tmux
 ## Auto start a session when Zsh is launched in a local terminal.
