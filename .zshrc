@@ -24,6 +24,7 @@ zstyle ':prezto:load' pmodule \
   'completion' \
   'fzf-tab' \
   'directory' \
+  'docker' \
 #  'terminal' \
 
 # fallback for ARM systems - for now ..

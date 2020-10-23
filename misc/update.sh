@@ -25,8 +25,8 @@ git submodule update --init --recursive --remote
 echo "\n\nrefreshing dotfiles links .."
 python3 ../bin/ghar install
 [[ -e ~/.config/starship.toml ]] || ln -s ~/ghar/dotfiles/misc/starship.toml ~/.config
-
 command -v starship >/dev/null 2>&1 || curl -fsSL https://starship.rs/install.sh | bash
+command -v fzf >/dev/null 2>&1 || git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install --bin
 
 cd
 cd ghar/dotfiles/misc/

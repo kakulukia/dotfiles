@@ -84,9 +84,10 @@ setup () {
   path=`pwd`
   ln -s $path/dark_colors.yaml ~/.config/colorls/
   green "Installing starship .."
-  command -v starship >/dev/null 2>&1 || curl -fsSL https://starship.rs/install.sh | bash
+  command -v starship >/dev/null 2>&1 || curl -fsSL https://starship.rs/install.sh | bash -s -- -y
   ln -s ~/ghar/dotfiles/misc/starship.toml ~/.config
-  
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install --bin
+
   zsh install-additional-stuff.sh
 
   echo ""
