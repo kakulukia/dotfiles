@@ -133,7 +133,7 @@ alias shell='python manage.py shell_plus'
 alias rs="manage.py runserver 0.0.0.0:8000"
 alias idea='open -a "IntelliJ IDEA"'
 alias update-venv="pip install -U pip setuptools wheel"
-alias init-python="init-venv && pip install -U poetry twine bumpversion isort black"
+alias init-python="update-venv && pip install -U poetry twine bumpversion isort black"
 function jwt() {
   for part in 1 2; do
     b64="$(cut -f${part} -d. <<< "$1" | tr '_-' '/+')"
