@@ -14,6 +14,7 @@ zstyle ':prezto:*:*' color 'yes'
 # Set the Prezto modules to load (browse modules).
 # The order matters.
 zstyle ':prezto:load' pmodule \
+  'evalcache' \
   'history' \
   'syntax-highlighting' \
   'history-substring-search' \
@@ -25,6 +26,7 @@ zstyle ':prezto:load' pmodule \
   'fzf-tab' \
   'directory' \
   'docker' \
+  'pyenv-lazy' \
 #  'terminal' \
 
 # fallback for ARM systems - for now ..
@@ -65,10 +67,15 @@ zstyle ':completion:*' format ' -- %d --'
 ## Auto start a session when Zsh is launched in a SSH connection.
 #zstyle ':prezto:module:tmux:auto-start' remote 'no'
 
+# initialize direnv
+command -v direnv >/dev/null 2>&1 && _evalcache direnv hook zsh
+
+# include local, unversioned settings
+[[ -e ~/.profile ]] && source ~/.profile
 
 # load aliases and  the prompt
 source ~/.alias
-command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
+command -v starship >/dev/null 2>&1 && _evalcache starship init zsh
 
 
 # misc
@@ -87,5 +94,5 @@ zle -N zle-upify
 # use Ctrl+P to invoke and Ctrl+X to close and use the result
 bindkey '^P' zle-upify
 
-eval "$(fasd --init auto)"
+_evalcache fasd --init auto  # 30ms :(
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh

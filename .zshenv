@@ -31,12 +31,7 @@ path /usr/sbin
 path /usr/local/bin
 # in case of weird paths problems: check /etc/profile on OSX not start the path helper
 
-# initialize pyenv and direnv for all shells
-if [[ -d "$HOME/.pyenv" ]]; then
-  path ~/.pyenv/bin
-  eval "$(pyenv init -)"
+# Ensure that a non-login, non-interactive shell has a defined environment.
+if [[ "$SHLVL" -eq 1 && ! -o LOGIN ]]; then
+  source ~/.zshrc
 fi
-command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
-
-# include local, unversioned settings
-[[ -e ~/.profile ]] && source ~/.profile
