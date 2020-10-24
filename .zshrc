@@ -16,7 +16,6 @@ zstyle ':prezto:*:*' color 'yes'
 zstyle ':prezto:load' pmodule \
   'evalcache' \
   'history' \
-  'history-substring-search' \
   'history-search-multi-word' \
   'autosuggestions' \
   'archive' \
@@ -27,6 +26,7 @@ zstyle ':prezto:load' pmodule \
   'docker' \
   'pyenv-lazy' \
   'syntax-highlighting' \
+  'history-substring-search' \
 #  'terminal' \
 
 # fallback for ARM systems - for now ..
