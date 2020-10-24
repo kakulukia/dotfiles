@@ -16,7 +16,6 @@ zstyle ':prezto:*:*' color 'yes'
 zstyle ':prezto:load' pmodule \
   'evalcache' \
   'history' \
-  'syntax-highlighting' \
   'history-substring-search' \
   'history-search-multi-word' \
   'autosuggestions' \
@@ -27,6 +26,7 @@ zstyle ':prezto:load' pmodule \
   'directory' \
   'docker' \
   'pyenv-lazy' \
+  'syntax-highlighting' \
 #  'terminal' \
 
 # fallback for ARM systems - for now ..
@@ -81,7 +81,7 @@ command -v starship >/dev/null 2>&1 && _evalcache starship init zsh
 # misc
 export PYTHONBREAKPOINT=ipdb.set_trace
 
-zle-upify() {
+upify() {
     buf="$(echo "${BUFFER}" | sed 's/[ |]*$//')"
     tmp="$(mktemp)"
     eval "${buf} |& up --unsafe-full-throttle -o '$tmp' 2>/dev/null"
@@ -90,9 +90,9 @@ zle-upify() {
     BUFFER="${BUFFER} | ${cmd}"
     zle end-of-line
 }
-zle -N zle-upify
+zle -N upify
 # use Ctrl+P to invoke and Ctrl+X to close and use the result
-bindkey '^P' zle-upify
+bindkey '^P' upify
 
-_evalcache fasd --init auto  # 30ms :(
+_evalcache fasd --init auto  # 35ms :(
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
