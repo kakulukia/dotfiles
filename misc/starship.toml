@@ -13,7 +13,7 @@ add_newline = false
 
 [character]
 success_symbol = ''
-error_symbol = '[ :\( ](bg:red fg:white)'
+error_symbol = '[ :\( ](bg:red fg:bright-white)'
 format = '$symbol'
 disabled = false
 
