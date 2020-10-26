@@ -1,5 +1,4 @@
 
-
 ### navigation
 ##############
 # default to colorsl if available
@@ -165,7 +164,6 @@ function server() {
     local IP=`localip`
     local port="${1:-8000}";
     echo "http://$IP:$port/"
-    #sleep 1 && open "http://localhost:${port}/" &
     python -m http.server ${port}
 }
 alias send="woof"
@@ -176,7 +174,6 @@ alias localip="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}
 function digga() {
 	dig +nocmd "$1" any +multiline +noall +answer;
 }
-alias port="netstat -tulpn | grep"
 alias get='curl --continue-at - --location --progress-bar --remote-name --remote-time'
 # Flush Directory Service cache
 alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
