@@ -57,7 +57,7 @@ alias ga='git add'
 alias gl='git pull'
 alias gp='git push'
 commit () { git commit -v -m "$*" }
-alias gc='commit'
+alias gc='noglob commit'
 # show a nice version of the git graph
 alias gg="git log --remotes --tags --oneline --decorate --stat --abbrev-commit --date=relative --branches --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n'"
 diff_so_fancy () { diff -u "$@" | diff-so-fancy }
