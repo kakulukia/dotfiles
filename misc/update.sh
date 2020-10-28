@@ -17,7 +17,7 @@ else
 fi
 
 git pull
-if [ "$?" -gt 0 ]; then
+if [[ "$?" -gt 0 ]]; then
     exit 1
 fi
 git submodule update --init --recursive --remote

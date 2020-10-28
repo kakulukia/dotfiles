@@ -20,7 +20,7 @@
 
         h2.subtitle Intro
         p.
-          For the last 5 years I have been building up my shell environment and it's the
+          For the last 6 years I have been building up my shell environment and it's the
           first thing that gets installed on a new server or Mac. Especially fasd and the reverse
           history search is a huge time saver.
         p.
@@ -47,12 +47,14 @@
         ul
           li GIT to be able to download the repo itself
           li ZSH as your new default shell
-          li oh my zsh
+          li prezto
           li Python3 (ghar is a Python script)
           li ghar for managing the dotfiles itself (links everything into your home folder)
           li SpaceVim
           li fasd
+          li fzf - mainly for completion
           li some handy aliases
+          li starship
 
         p.
           #[strong Note:] Use the #[span.command ~/.gitconfig-personal] file to set your git username.
@@ -62,7 +64,7 @@
         p In the misc folder you can find:
         ul
           li the Powerline patched SourceCode font (you may use any #[a(href="https://www.nerdfonts.com/") Nerdfont])
-          li my currently used Sundried.itermcolors
+          li my currently used Dracula.itermcolors
           li better-osx-settings script
           li.
             an opinionated set of tools (#[a(href="https://github.com/kakulukia/dotfiles/blob/master/misc/essentials.txt") these] and
@@ -120,22 +122,7 @@
           li mgs - multi git status - if your company/current project totally embraces micro services (🙈)
             |  this might come in handy to update em all in one go
           li rg - alias for "rg -S --max-columns 444" won't clutter the screen with nasty one line files
-          li Themes - you can use any ZSH theme by redefining it in ~/.profile
-            br
-            span.command export ZSH_THEME="oxide"
-            br
-            | Choose
-            a(href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes")  any theme name
-            |  from this list and update the #[span.command ZSH_THEME] var to use it.
-            a(href="https://github.com/ohmyzsh/ohmyzsh/wiki/External-themes")  Here
-            |  are some more themes (that probably need to be installed first).
-          li
-            a(href="https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins") Plugins
-            |  - there are a lot of plugins, but choose wisely as they add up to zsh startup time
-            br
-            | To add plugins, enhance the plugins var inside your ~/.profile like this
-            br
-            span.command plugins+=(virtualenvwrapper docker)
+          li customize startship.toml to create a custom prompt
           li up - that's the live preview pipe thing you saw at the end of the screencast. It's activated with CTRL+P for pipe.
           li and much more .. but that's about the stuff I frequently use :)
 
@@ -144,15 +131,19 @@
         ul
           li colorls is a lil slow - there is a promising alternative, but
             a(href="https://github.com/Peltoche/lsd/issues/92")  it's not looking sexy yet
-          li Maybe some day in the future I'm switching yet again to prezto and will redo my default theme.
-            |  But as of yet this still sounds like too much trouble. :/
           li Decoupling this shell from needing Python. I am a Python developer, but sure it's
             |  not really needed for the shell itself. Currently the sync tool ghar is a Python script, tho.
-            br
-            | Nevertheless there is a
+          li This
             a(href="https://www.atlassian.com/git/tutorials/dotfiles")  trick
-            |  to kinda achieve the same result. I just need a lil more time to get this done. 🙄
-
+            |  looked kinda nice, i tried it, but it looked and felt messy. 🙄
+            br
+            | Im probably going to create a shell script to link my files the the HOME directory.
+          li Testing more speedup options. I tried zinit and zplug, but both failed to just work. :/
+            br
+            | I was not in the mood to keep fiddling around with them, but the current speed is not that bad.
+            figure
+              img(src="benchmark.png")
+              figcaption current startup speed with all features enabled
 
         h2.subtitle Credits
         p
