@@ -62,7 +62,7 @@ alias gc='noglob commit'
 alias gg="git log --remotes --tags --oneline --decorate --stat --abbrev-commit --date=relative --branches --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n'"
 diff_so_fancy () { diff -u "$@" | diff-so-fancy }
 alias diff="diff_so_fancy"
-alias gfi='find . -type f | grep -v .venv | grep -v .idea | git check-ignore -v --stdin'  # find files ignored by git and the reason why
+alias gfi='find . -type f | grep -v .venv | grep -v .idea | grep -v .direnv | grep -v migrations | grep -v static | grep -v __ | git check-ignore -v --stdin'  # find files ignored by git and the reason why
 alias grm="git branch --merged | grep -v \"\*\" | xargs -n 1 git branch -d"  #remove merged branches
 
 
