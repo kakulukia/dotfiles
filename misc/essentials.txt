@@ -13,12 +13,14 @@ git # version control
 gnu-sed # updated version of sed compared to OSX default
 htop # better version ot top
 httpie # better version of curl
+http-prompt # its like an httpie shell
 hyperfine # command line benchmarking https://github.com/sharkdp/hyperfine
 iftop # top for network interfaces
 irssi # irc client
 jq # a must have when working with json https://github.com/stedolan/jq
 mosh # the mobile shell https://github.com/mobile-shell/mosh
 n # node version manager
+ngrok # port forward locaclhost to the outside world
 neofetch # get stats about your OS https://github.com/dylanaraps/neofetch
 nmap # network mapper https://github.com/nmap/nmap
 nnn # command line file browser

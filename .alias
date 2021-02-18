@@ -121,6 +121,7 @@ alias ping="prettyping --nolegend"
 command -v bat >/dev/null 2>&1 && alias cat="bat --theme TwoDark --style=plain --paging never"
 command -v fzf >/dev/null 2>&1 && alias preview="fzf --preview 'bat --color \"always\" {}'"
 command -v gsed >/dev/null 2>&1 && alias sed="gsed"
+command -v gtar >/dev/null 2>&1 && alias tar="gtar"
 command -v glances >/dev/null 2>&1 && alias top="glances"
 command -v gdate >/dev/null 2>&1 && alias date="gdate"
 
