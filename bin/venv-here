@@ -548,6 +548,6 @@ echo "layout pyenv ${options[${UI_WIDGET_RC}]}" > .envrc
 echo "FILE=.direnv/\$(basename \$VIRTUAL_ENV)/" >> .envrc
 echo "[ -e .venv ] || ln -s \$FILE .venv" >> .envrc
 direnv allow
-poetry init
+poetry init --python ${options[${UI_WIDGET_RC}]}
 echo -e "\n\nUse ${green}update-venv${normal} to start with updated base packages.\nStart adding dependencies with ${green}poetry add xy${normal}.\n"
 
