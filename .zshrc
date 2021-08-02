@@ -30,7 +30,7 @@ zstyle ':prezto:load' pmodule \
 #  'terminal' \
 
 # fallback for ARM systems - for now ..
-zstyle ':prezto:module:prompt' theme 'minimal'
+zstyle ':prezto:module:prompt' theme 'powerlevel10k'
 zstyle ':prezto:module:prompt' show-return-val 'no'
 
 # Set the command prefix on non-GNU systems.
@@ -75,7 +75,7 @@ command -v direnv >/dev/null 2>&1 && _evalcache direnv hook zsh
 
 # load aliases and  the prompt
 source ~/.alias
-command -v starship >/dev/null 2>&1 && _evalcache starship init zsh
+# command -v starship >/dev/null 2>&1 && _evalcache starship init zsh
 
 
 # misc
