@@ -23,12 +23,12 @@ function path {
 export PATH="/usr/sbin"
 #  add some more common defaults
 path . # no need to use ./ to execute local scripts
-path ~/bin
 path /bin
 path /sbin
 path /usr/bin
 path /usr/sbin
 path /usr/local/bin
+path ~/bin
 # in case of weird paths problems: check /etc/profile on OSX not start the path helper
 
 # Ensure that a non-login, non-interactive shell has a defined environment.
