@@ -10,12 +10,12 @@ brew=`command -v brew`
 ## Detect the systems installer
 if [ -n "$apt" ]; then
     INSTALL='apt-get -y install'
-    if [[ $EUID -ne 0 ]]; then
+    if [ $EUID -ne 0 ]; then
        INSTALL='sudo ' $INSTALL
     fi
 elif [ -n "$yum" ]; then
     INSTALL='yum -y install'
-    if [[ $EUID -ne 0 ]]; then
+    if [ $EUID -ne 0 ]; then
        INSTALL='sudo ' $INSTALL
     fi
 elif [ -n "$brew" ]; then
@@ -82,7 +82,7 @@ setup () {
   wget https://github.com/clvv/fasd/archive/1.0.1.tar.gz
   tar xzfv 1.0.1.tar.gz
   cd /tmp/fasd-1.0.1
-  if [[ $EUID -ne 0 ]]; then
+  if [ $EUID -ne 0 ]; then
     sudo make install
   else
     make install
@@ -92,7 +92,7 @@ setup () {
   cd
   cd ghar/dotfiles/misc/
   mkdir -p ~/.config/colorls
-  path=`pwd`
+  path=$(pwd)
   ln -s $path/dark_colors.yaml ~/.config/colorls/
   green "Installing starship .."
   command -v starship >/dev/null 2>&1 || curl -fsSL https://starship.rs/install.sh | bash -s -- -y
@@ -104,10 +104,10 @@ setup () {
   echo ""
   echo ""
   green "Changing your default login shell to zsh .."
-  if [[ $EUID -ne 0 ]]; then
-    chsh -s `which zsh` `whoami`
+  if [ $EUID -ne 0 ]; then
+    chsh -s $(which zsh) $(whoami)
   else
-    sudo chsh -s `which zsh` `whoami`
+    sudo chsh -s $(which zsh) $(whoami)
   fi
   echo ""
   green "Have fun with your new shell!"
