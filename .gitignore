@@ -4,3 +4,4 @@ chromedriver
 *.pyc
 .DS_Store
 node_modules
+bin/pycharm
