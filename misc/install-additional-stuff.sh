@@ -14,15 +14,21 @@ brew=$(command -v brew)
 ## Detect the systems installer
 if [ -n "$apt" ]; then
     echo "some of the packages might not be installable if not using osx\n\n"
-    INSTALL='sudo apt -y install'
-    sudo apt-get install build-essential
+    INSTALL='apt -y install'
+    if [ $EUID -ne 0 ]; then
+       INSTALL='sudo ' $INSTALL
+    fi
+    $INSTALL build-essential
     # Python dependencies
-    sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
+    $INSTALL build-essential libssl-dev zlib1g-dev libbz2-dev \
     libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
     xz-utils tk-dev libffi-dev liblzma-dev python-openssl libjpeg-dev zlib1g-dev
 elif [ -n "$yum" ]; then
     echo "some of the packages might not be installable if not using osx\n\n"
-    INSTALL='sudo yum -y install'
+    INSTALL='yum -y install'
+    if [ $EUID -ne 0 ]; then
+       INSTALL='sudo ' $INSTALL
+    fi
 elif [ -n "$brew" ]; then
     INSTALL='brew install'
 else

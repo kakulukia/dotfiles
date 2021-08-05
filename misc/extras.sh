@@ -20,3 +20,5 @@ cargo install broot # A better way to navigate directories https://github.com/Ca
 
 brew cask install db-browser-for-sqlite # osx app to have a look into sqlite DBs
 
+cargo install ripgrep # it finds stuff - ultra fast - https://github.com/BurntSushi/ripgrep
+cargo install broot # A new way to see and navigate directory trees
