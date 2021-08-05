@@ -1,15 +1,15 @@
 #!/usr/bin/env zsh
 echo "\n\nDo you also want to install additional apps? [y/N] "
 read -r -q response
-if [[ "$response" != "y" ]]
+if [ "$response" != "y" ]
 then
     exit 0
 fi
 
-apt=`command -v snap`
-apt=`command -v apt-get`
-yum=`command -v yum`
-brew=`command -v brew`
+apt=$(command -v snap)
+apt=$(command -v apt-get)
+yum=$(command -v yum)
+brew=$(command -v brew)
 
 ## Detect the systems installer
 if [ -n "$apt" ]; then
