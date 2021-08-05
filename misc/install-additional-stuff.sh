@@ -14,7 +14,7 @@ brew=$(command -v brew)
 ## Detect the systems installer
 if [ -n "$apt" ]; then
     echo "some of the packages might not be installable if not using osx\n\n"
-    INSTALL='apt -y install'
+    INSTALL='apt install -y'
     if [ $EUID -ne 0 ]; then
        INSTALL='sudo ' $INSTALL
     fi
@@ -25,7 +25,7 @@ if [ -n "$apt" ]; then
     xz-utils tk-dev libffi-dev liblzma-dev python-openssl libjpeg-dev zlib1g-dev
 elif [ -n "$yum" ]; then
     echo "some of the packages might not be installable if not using osx\n\n"
-    INSTALL='yum -y install'
+    INSTALL='yum install -y'
     if [ $EUID -ne 0 ]; then
        INSTALL='sudo ' $INSTALL
     fi
