@@ -33,7 +33,6 @@ python3
 python3-dev # to be able to compile stuff
 python3-pip # python package manager
 redis
-ripgrep # it finds stuff - ultra fast - https://github.com/BurntSushi/ripgrep
 ruby
 ruby-dev # to be able to compile stuff
 rust # this works on osx
