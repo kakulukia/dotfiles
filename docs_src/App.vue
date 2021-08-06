@@ -37,7 +37,7 @@
           img(src="install_dotfiles.png")
           p
             span.command curl
-            span.text  "https://raw.githubusercontent.com/kakulukia/dotfiles/master/misc/setup.sh"
+            span.text  "https://raw.githubusercontent.com/kakulukia/dotfiles/main/misc/setup.sh"
             span  |
             span.command  sh
 
