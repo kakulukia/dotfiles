@@ -155,7 +155,7 @@ function jwt() {
 # URL-encode strings
 alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
 # Recursively delete `.DS_Store` files
-alias cleanup="find . -type f -name '*.DS_Store' -ls -delete && find . -name '*.pyc' -ls -delete"
+alias cleanup="find . -type f -name '*.DS_Store' -ls -delete && find . -name __pycache__ -print -delete && find . -name '*.pyc' -ls -delete"
 
 
 ### network

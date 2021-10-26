@@ -16,7 +16,7 @@ if [ -n "$apt" ]; then
     echo "some of the packages might not be installable if not using osx\n\n"
     INSTALL='apt install -y'
     if [ $EUID -ne 0 ]; then
-       INSTALL='sudo ' $INSTALL
+       INSTALL='sudo '$INSTALL
     fi
     $INSTALL build-essential
     # Python dependencies
@@ -27,7 +27,7 @@ elif [ -n "$yum" ]; then
     echo "some of the packages might not be installable if not using osx\n\n"
     INSTALL='yum install -y'
     if [ $EUID -ne 0 ]; then
-       INSTALL='sudo ' $INSTALL
+       INSTALL='sudo '$INSTALL
     fi
 elif [ -n "$brew" ]; then
     INSTALL='brew install'
