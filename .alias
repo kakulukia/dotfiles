@@ -161,6 +161,10 @@ alias cleanup="find . -type f -name '*.DS_Store' -ls -delete && find . -name '*.
 ### network
 ###########
 # Start an HTTP server from a directory, optionally specifying the port
+function seecert () {
+  nslookup $1
+  (openssl s_client -showcerts -servername $1 -connect $1:443 <<< "Q" | openssl x509 -text | grep -iA2 "Validity")
+}
 function server() {
     local IP=`localip`
     local port="${1:-8000}";

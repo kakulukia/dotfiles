@@ -18,9 +18,9 @@ if [ -n "$apt" ]; then
     if [ $EUID -ne 0 ]; then
        INSTALL='sudo ' $INSTALL
     fi
-    $INSTALL build-essential
+    eval "$INSTALL" build-essential
     # Python dependencies
-    $INSTALL build-essential libssl-dev zlib1g-dev libbz2-dev \
+    eval "$INSTALL" build-essential libssl-dev zlib1g-dev libbz2-dev \
     libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
     xz-utils tk-dev libffi-dev liblzma-dev python-openssl libjpeg-dev zlib1g-dev
 elif [ -n "$yum" ]; then

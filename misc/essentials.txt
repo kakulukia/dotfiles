@@ -4,9 +4,7 @@ coreutils # some core linux versions of totally outdated OSX/BSD tools like gdat
 ctop # top for docker containers
 ddgr # duck duck go for command line
 dos2unix # ^M no more
-fasd # https://github.com/clvv/fasd
 fd # find replacement
-ffmpeg # video en/decoding in the command line
 fx # json viewer https://github.com/antonmedv/fx
 fzf # fuzzy finder https://github.com/junegunn/fzf
 git # version control
@@ -20,7 +18,7 @@ irssi # irc client
 jq # a must have when working with json https://github.com/stedolan/jq
 mosh # the mobile shell https://github.com/mobile-shell/mosh
 n # node version manager
-ngrok # port forward locaclhost to the outside world
+ngrok # port forward localhost to the outside world
 neofetch # get stats about your OS https://github.com/dylanaraps/neofetch
 nmap # network mapper https://github.com/nmap/nmap
 nnn # command line file browser
