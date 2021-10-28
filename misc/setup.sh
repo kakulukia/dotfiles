@@ -11,12 +11,12 @@ brew=`command -v brew`
 if [ -n "$apt" ]; then
     INSTALL='apt-get -y install'
     if [ $EUID -ne 0 ]; then
-       INSTALL='sudo ' $INSTALL
+       INSTALL='sudo '$INSTALL
     fi
 elif [ -n "$yum" ]; then
     INSTALL='yum -y install'
     if [ $EUID -ne 0 ]; then
-       INSTALL='sudo ' $INSTALL
+       INSTALL='sudo '$INSTALL
     fi
 elif [ -n "$brew" ]; then
     INSTALL='brew install'
