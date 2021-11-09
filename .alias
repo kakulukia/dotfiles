@@ -32,6 +32,7 @@ alias tgz='COPYFILE_DISABLE=true tar -c --exclude=.git --exclude=.DS_Store -zvf 
 alias x="unarchive"
 alias errorcode="echo $?"
 alias p="ps aux G "
+command -v fd >/dev/null 2>&1 && alias fda="fd --hidden --no-ignore"
 # fasd
 alias v='f -e vim' # quick opening files with vim
 alias c='z'
