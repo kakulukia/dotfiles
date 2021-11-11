@@ -1,183 +1,248 @@
 <template lang="pug">
-  body
-    .pizza.is-hidden-mobile
-      a(href="https://www.paypal.me/AndyGrabow/3" target="_blank")
-        img(src="pizza.png")
-        div
-          span If you like it
-          br
-          span buy me a pizza :)
+body
+  .pizza.is-hidden-mobile
+    a(href="https://www.paypal.me/AndyGrabow/3", target="_blank")
+      img(src="pizza.png")
+      div
+        span If you like it
+        br
+        span buy me a pizza :)
 
-    .container
-      .section
-        h1.title.marginless dotfiles
-          a(href="https://github.com/kakulukia/dotfiles" title="Go to the GitHub-Repo")
-            img.github(src="github.png")
-        a.claim(href="https://ohmyz.sh/" target="_blank") Your terminal never felt #[i this] good before.™
-      .section
-        asciinema-player.is-hidden-mobile(v-pre id="player" src="demo.cast" poster="npt:0:01" speed="1.5" idle-time-limit="1")
-        iframe.is-hidden-tablet(width="560" height="315" src="https://www.youtube.com/embed/nkT3tQFLddU?VQ=HD720" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen)
+  .container
+    .section
+      h1.title.marginless dotfiles
+        a(
+          href="https://github.com/kakulukia/dotfiles",
+          title="Go to the GitHub-Repo"
+        )
+          img.github(src="github.png")
+      a.claim(href="https://ohmyz.sh/", target="_blank") Your terminal never felt #[i this] good before.™
+    .section
+      asciinema-player#player.is-hidden-mobile(
+        v-pre,
+        src="demo.cast",
+        poster="npt:0:01",
+        speed="1.5",
+        idle-time-limit="1"
+      )
+      iframe.is-hidden-tablet(
+        width="560",
+        height="315",
+        src="https://www.youtube.com/embed/nkT3tQFLddU?VQ=HD720",
+        frameborder="0",
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture",
+        allowfullscreen
+      )
 
-        h2.subtitle Intro
-        p.
-          For the last 6 years I have been building up my shell environment and it's the
-          first thing that gets installed on a new server or Mac. Especially fasd and the reverse
-          history search is a huge time saver.
-        p.
-          Some of this stuff I didn't even know was possible before I switched to ZSH or
-          found app X, so I just wanted to share the whole collection. I did a few improvements myself,
-          but basically it was all out there. This repo enables everybody to get all the goodies at
-          once and helps me to feel at home, whenever I open a new shell. 😎
+      h2.subtitle Intro
+      p.
+        For the last 6 years I have been building up my shell environment and it's the
+        first thing that gets installed on a new server or Mac. Especially fasd and the reverse
+        history search is a huge time saver.
+      p.
+        Some of this stuff I didn't even know was possible before I switched to ZSH or
+        found app X, so I just wanted to share the whole collection. I did a few improvements myself,
+        but basically it was all out there. This repo enables everybody to get all the goodies at
+        once and helps me to feel at home, whenever I open a new shell. 😎
 
-        h2.subtitle Installation
-        p.
-          Be sure you are logged in as the user for whom you want to install this shell
-          package and that the user has sudo rights.
-        .install.is-hidden-mobile
-          img(src="install_dotfiles.png")
+      h2.subtitle Installation
+      p.
+        Be sure you are logged in as the user for whom you want to install this shell
+        package and that the user has sudo rights.
+      .install.is-hidden-mobile
+        img(src="install_dotfiles.png")
+        .command-line
           p
             span.command curl
             span.text  "https://raw.githubusercontent.com/kakulukia/dotfiles/main/misc/setup.sh"
             span  |
-            span.command  sh
+            span.command  bash
 
-        img.is-hidden-tablet(src="install-mobile.png")
-        p.
-          This will install the following:
-        ul
-          li GIT to be able to download the repo itself
-          li ZSH as your new default shell
-          li prezto
-          li Python3 (ghar is a Python script)
-          li ghar for managing the dotfiles itself (links everything into your home folder)
-          li SpaceVim
-          li fasd
-          li fzf - mainly for completion
-          li some handy aliases
-          li starship
+          span.icon.copy(@click="copyInstallCommand")
+            i.mdi.mdi-content-copy
 
-        p.
-          #[strong Note:] Use the #[span.command ~/.gitconfig-personal] file to set your git username.
-          That file is imported in #[span.command .gitconfig] so that settings can be ported via this
-          repo, but the username stays personal.
+      img.is-hidden-tablet(src="install-mobile.png")
+      p.
+        This will install the following:
+      span.icon
+        i.mdi.mdi-signal-4g.mdi-light
 
-        p In the misc folder you can find:
-        ul
-          li the Powerline patched SourceCode font (you may use any #[a(href="https://www.nerdfonts.com/") Nerdfont])
-          li my currently used Dracula.itermcolors
-          li better-osx-settings script
-          li.
-            an opinionated set of tools (#[a(href="https://github.com/kakulukia/dotfiles/blob/master/misc/essentials.txt") these] and
-            #[a(href="https://github.com/kakulukia/dotfiles/blob/master/misc/additional-stuff.sh") those])
+      ul
+        li GIT to be able to download the repo itself
+        li ZSH as your new default shell
+        li prezto
+        li Python3 (ghar is a Python script)
+        li ghar for managing the dotfiles itself (links everything into your home folder)
+        li SpaceVim
+        li fasd
+        li fzf - mainly for completion
+        li some handy aliases
+        li starship
 
-        p The dotfiles repo can be updated with the #[span.command update-dotfiles] alias.
+      p.
+        #[strong Note:] Use the #[span.command ~/.gitconfig-personal] file to set your git username.
+        That file is imported in #[span.command .gitconfig] so that settings can be ported via this
+        repo, but the username stays personal.
 
-        h2.subtitle Features
-        p Apart from what's shown in the recording, here is some more of what's included:
-        ul
-          li suggestions (grey text) - use the right arrow key to accept
-          li history reverse search - use the up arrow to cycle through previous commands.
-            |  Anything you typed before hitting up will be used as filter and highlighted.
-            |  This seriously saves a lot of typing. 😇
-            br
-            br
-            figure
-              img(src="history.png")
-              figcaption migr + up
-          li red / green colored commands - shows that the command is (un)available
-          li . is in the path so no need for any ./ prefixing executables
-          li path
-            ul
-              li print a sorted version of $PATH
-              li add the given folder to $PATH and
-              li append the given path to your .profile when called with #[span.command path --save DIR]
-          li mv - no need to type the file name twice for renaming
-          li top - is aliased to glances if installed
-          li ctop - for docker containers
-          li ,, - jump to the git root dir
-          li o - will open the finder in the current directory
-          li
-            a(href="https://github.com/kakulukia/dotfiles/tree/master/bin") cd to.app
-            |  - there is an app in the bin folder that provides a
-            |  way to reverse the above trick and open a terminal at the current finder location.
-            |  Use the command key to just drag it into the finders toolbar.
-            br
-            br
-            figure
-              img(src="cdto.png")
-              figcaption The result will look like this
-          li
-            a(href="https://github.com/kakulukia/dotfiles/tree/master/misc/QuickLook") QuickLook Plugins
-            |  - there are a few collected plugins for OSX to preview some more files like Markdown
-          li tm - there's a tmux theme and tm will reconnect to to your last session or create a new one
-            br
-            | I also changed the default prefix to CTRL+SPACE for easier usage.
-          li diff - aliased to diff-so-fancy in general, not just the git version
-          li co - use fasd to launch any known file in VS Code
-          li errorcode - in general I don't see the point in displaying the error code
-            | , hence the sad smiley in the prompt, but if you really wanna know, use that alias (unless you can remember the #?)
-          li ips - will show all local ips (IPV4) / ip will show some info about your external one
-          li ping - is aliased to prettyping
-          li go-reload - hot reload for go apps you are working on
-          li mgs - multi git status - if your company/current project totally embraces micro services (🙈)
-            |  this might come in handy to update em all in one go
-          li rg - alias for "rg -S --max-columns 444" won't clutter the screen with nasty one line files
-          li customize startship.toml to create a custom prompt
-          li up - that's the live preview pipe thing you saw at the end of the screencast. It's activated with CTRL+P for pipe.
-          li and much more .. but that's about the stuff I frequently use :)
+      p In the misc folder you can find:
+      ul
+        li the Powerline patched SourceCode font (you may use any #[a(href="https://www.nerdfonts.com/") Nerdfont])
+        li my currently used Dracula.itermcolors
+        li better-osx-settings script
+        li.
+          an opinionated set of tools (#[a(href="https://github.com/kakulukia/dotfiles/blob/master/misc/essentials.txt") these] and
+          #[a(href="https://github.com/kakulukia/dotfiles/blob/master/misc/additional-stuff.sh") those])
 
+      p The dotfiles repo can be updated with the #[span.command update-dotfiles] alias.
 
-        h2.subtitle ToDo
-        ul
-          li colorls is a lil slow - there is a promising alternative, but
-            a(href="https://github.com/Peltoche/lsd/issues/92")  it's not looking sexy yet
-          li Decoupling this shell from needing Python. I am a Python developer, but sure it's
-            |  not really needed for the shell itself. Currently the sync tool ghar is a Python script, tho.
-          li This
-            a(href="https://www.atlassian.com/git/tutorials/dotfiles")  trick
-            |  looked kinda nice, i tried it, but it looked and felt messy. 🙄
-            br
-            | Im probably going to create a shell script to link my files the the HOME directory.
-          li Testing more speedup options. I tried zinit and zplug, but both failed to just work. :/
-            br
-            | I was not in the mood to keep fiddling around with them, but the current speed is not that bad.
-            figure
-              img(src="benchmark.png")
-              figcaption current startup speed with all features enabled
-
-        h2.subtitle Credits
-        p
-          | This theme was inspired by
-          a(href="https://github.com/Bash-it/bash-it/blob/master/themes/powerline-plain/powerline-plain.theme.bash")  PowerlinePlain
-          |  and based on
-          a(href="https://github.com/caiogondim/bullet-train-oh-my-zsh-theme")  BulletTrain
-          | .
+      h2.subtitle Features
+      p Apart from what's shown in the recording, here is some more of what's included:
+      ul
+        li suggestions (grey text) - use the right arrow key to accept
+        li history reverse search - use the up arrow to cycle through previous commands.
+          |
+          | Anything you typed before hitting up will be used as filter and highlighted.
+          |
+          | This seriously saves a lot of typing. 😇
           br
           br
-          strong Generally:
-          |  Mad props to all awesome devs who build most of the apps referenced here.
-          |  Too many to list em all, but most if not all do feature a credit line inside the scripts.
+          figure
+            img(src="history.png")
+            figcaption migr + up
+        li red / green colored commands - shows that the command is (un)available
+        li . is in the path so no need for any ./ prefixing executables
+        li path
+          ul
+            li print a sorted version of $PATH
+            li add the given folder to $PATH and
+            li append the given path to your .profile when called with #[span.command path --save DIR]
+        li mv - no need to type the file name twice for renaming
+        li top - is aliased to glances if installed
+        li ctop - for docker containers
+        li ,, - jump to the git root dir
+        li o - will open the finder in the current directory
+        li
+          a(href="https://github.com/kakulukia/dotfiles/tree/master/bin") cd to.app
+          |
+          | - there is an app in the bin folder that provides a
+          |
+          | way to reverse the above trick and open a terminal at the current finder location.
+          |
+          | Use the command key to just drag it into the finders toolbar.
+          br
+          br
+          figure
+            img(src="cdto.png")
+            figcaption The result will look like this
+        li
+          a(
+            href="https://github.com/kakulukia/dotfiles/tree/master/misc/QuickLook"
+          ) QuickLook Plugins
+          |
+          | - there are a few collected plugins for OSX to preview some more files like Markdown
+        li tm - there's a tmux theme and tm will reconnect to to your last session or create a new one
+          br
+          | I also changed the default prefix to CTRL+SPACE for easier usage.
+        li diff - aliased to diff-so-fancy in general, not just the git version
+        li co - use fasd to launch any known file in VS Code
+        li errorcode - in general I don't see the point in displaying the error code
+          | , hence the sad smiley in the prompt, but if you really wanna know, use that alias (unless you can remember the #?)
+        li ips - will show all local ips (IPV4) / ip will show some info about your external one
+        li ping - is aliased to prettyping
+        li go-reload - hot reload for go apps you are working on
+        li mgs - multi git status - if your company/current project totally embraces micro services (🙈)
+          |
+          | this might come in handy to update em all in one go
+        li rg - alias for "rg -S --max-columns 444" won't clutter the screen with nasty one line files
+        li customize startship.toml to create a custom prompt
+        li up - that's the live preview pipe thing you saw at the end of the screencast. It's activated with CTRL+P for pipe.
+        li and much more .. but that's about the stuff I frequently use :)
 
+      h2.subtitle ToDo
+      ul
+        li colorls is a lil slow - there is a promising alternative, but
+          a(href="https://github.com/Peltoche/lsd/issues/92") it's not looking sexy yet
+        li Decoupling this shell from needing Python. I am a Python developer, but sure it's
+          |
+          | not really needed for the shell itself. Currently the sync tool ghar is a Python script, tho.
+        li This
+          a(href="https://www.atlassian.com/git/tutorials/dotfiles") trick
+          |
+          | looked kinda nice, i tried it, but it looked and felt messy. 🙄
+          br
+          | Im probably going to create a shell script to link my files the the HOME directory.
+        li Testing more speedup options. I tried zinit and zplug, but both failed to just work. :/
+          br
+          | I was not in the mood to keep fiddling around with them, but the current speed is not that bad.
+          figure
+            img(src="benchmark.png")
+            figcaption current startup speed with all features enabled
 
+      h2.subtitle Credits
+      p
+        | This theme was inspired by
+        a(
+          href="https://github.com/Bash-it/bash-it/blob/master/themes/powerline-plain/powerline-plain.theme.bash"
+        ) PowerlinePlain
+        |
+        | and based on
+        a(href="https://github.com/caiogondim/bullet-train-oh-my-zsh-theme") BulletTrain
+        | .
+        br
+        br
+        strong Generally:
+        |
+        | Mad props to all awesome devs who build most of the apps referenced here.
+        |
+        | Too many to list em all, but most if not all do feature a credit line inside the scripts.
 </template>
 
 <script>
 export default {
-  mounted () {
-    let asciinema = document.createElement('script')
-    asciinema.setAttribute('src', 'asciinema-player.js')
-    document.head.appendChild(asciinema)
+  mounted() {
+    let asciinema = document.createElement("script");
+    asciinema.setAttribute("src", "asciinema-player.js");
+    document.head.appendChild(asciinema);
+  },
+  methods: {
+    copyInstallCommand () {
+      navigator.clipboard.writeText('curl "https://raw.githubusercontent.com/kakulukia/dotfiles/main/misc/setup.sh" | bash')
+    }
   }
-}
-
-
+};
 </script>
 
 <style lang="sass">
-
 @font-face
   font-family: SauceCodePro
   src: url(SauceCodePro.ttf)
+
+.install
+  margin: 2em 0
+  position: relative
+  .command-line
+    position: absolute
+    top: calc(50% - 10px)
+    width: 100%
+    display: grid
+    grid-template-columns: 1fr 20px
+    padding: 0 10px
+  p
+    font-size: 16px
+    .command
+      background: none
+      color: #70865B
+      padding: 0
+    .text
+      color: #A99367
+    span
+      color: white
+
+  .icon.copy
+    color: rgba(255, 255, 255, 0.38)
+    cursor: pointer
+    &:hover
+      color: white
 
 body::-webkit-scrollbar
   width: 10px
@@ -220,7 +285,7 @@ img.github
       height: 50px
     div
       margin: 0 20px 0 25px
-  transition: ease-in-out 0.2s
+      transition: ease-in-out 0.2s
   &:hover
     right: 0
 
@@ -245,21 +310,6 @@ ul
   li
     padding-left: 30px
 
-.install
-  margin: 2em 0
-  position: relative
-  p
-    position: absolute
-    top: 42%
-    left: 18px
-    font-size: 16px
-    .command
-      background: none
-      color: #70865B
-    .text
-      color: #A99367
-    span
-      color: white
 p
   margin-bottom: 0.5em
 
@@ -304,16 +354,16 @@ h2, h3
   .bg-4
     background: #5D70A5
 
-@media (max-width: 1020px)
-  .install p
-    font-size: 14px
-@media (max-width: 814px)
+@media (max-width: 821px)
   .install p
     font-size: 13px
+@media (min-width: 822px) and (max-width: 1020px)
+  .install p
+    font-size: 14px
 
 .asciinema-player .start-prompt .play-button div span
-    display: flex
-    align-items: center
-    margin: 0 auto
-    justify-content: center
+  display: flex
+  align-items: center
+  margin: 0 auto
+  justify-content: center
 </style>
