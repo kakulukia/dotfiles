@@ -5,3 +5,6 @@ chromedriver
 .DS_Store
 node_modules
 bin/pycharm
+aok-rdp.sh
+avayaVPN.sh
+vpnconnect.sh
