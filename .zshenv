@@ -26,7 +26,6 @@ path . # no need to use ./ to execute local scripts
 path /bin
 path /sbin
 path /usr/bin
-path /usr/sbin
 path /usr/local/bin
 path ~/bin
 # in case of weird paths problems: check /etc/profile on OSX not start the path helper
