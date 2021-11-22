@@ -96,3 +96,5 @@ bindkey '^P' upify
 
 _evalcache fasd --init auto  # 35ms :(
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
+PROMPT_EOL_MARK=⏎
+
