@@ -34,3 +34,6 @@ path ~/bin
 if [[ "$SHLVL" -eq 1 && ! -o LOGIN ]]; then
   source ~/.zshrc
 fi
+
+# include local, unversioned settings
+[[ -e ~/.profile ]] && source ~/.profile

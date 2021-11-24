@@ -67,9 +67,6 @@ zstyle ':completion:*' format ' -- %d --'
 ## Auto start a session when Zsh is launched in a SSH connection.
 #zstyle ':prezto:module:tmux:auto-start' remote 'no'
 
-# include local, unversioned settings
-[[ -e ~/.profile ]] && source ~/.profile
-
 # initialize direnv
 command -v direnv >/dev/null 2>&1 && _evalcache direnv hook zsh
 
