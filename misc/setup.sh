@@ -1,7 +1,7 @@
 #!/bin/bash
 
 GHAR=${REMOTE:-https://github.com/philips/ghar.git}
-DOTFILES=${REMOTE:-git://github.com/kakulukia/dotfiles.git}
+DOTFILES=${REMOTE:-git@github.com:kakulukia/dotfiles.git}
 
 apt=`command -v apt-get`
 yum=`command -v yum`
