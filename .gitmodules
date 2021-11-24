@@ -9,7 +9,7 @@
 	url = https://github.com/Aloxaf/fzf-tab
 [submodule ".zprezto-contrib/history-search-multi-word"]
 	path = .zprezto-contrib/history-search-multi-word
-	url = https://github.com/zdharma/history-search-multi-word.git
+	url = https://github.com/zdharma-continuum/history-search-multi-word.git
 [submodule ".zprezto-contrib/evalcache"]
 	path = .zprezto-contrib/evalcache
 	url = https://github.com/mroth/evalcache
