@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # creates a new virtualenv in the current dir including auto setup and activation via direnv
 # The rest could also be used for other cool menus :)
 

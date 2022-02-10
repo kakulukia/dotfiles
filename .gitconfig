@@ -52,3 +52,5 @@
 [alias]
 	co = checkout
 	discard = reset --hard HEAD
+[init]
+	defaultBranch = main
