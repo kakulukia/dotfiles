@@ -23,7 +23,7 @@ zstyle ':prezto:load' pmodule \
   'fzf-tab' \
   'directory' \
   'docker' \
-  'pyenv-lazy' \
+  'zsh-pyenv-lazy' \
   'syntax-highlighting' \
   'history-substring-search' \
   'history-search-multi-word' \
