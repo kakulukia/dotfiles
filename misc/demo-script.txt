@@ -1,0 +1,230 @@
+
+ # Let's jump somewhere interesting.
+ 
+c misc
+l
+
+ # That's colorls showing a lil more than just filenames.
+
+ # The prompt also shows that we are in a dirty git branch, lets see why.
+
+gs
+
+ # Let's see more details. 
+ 
+gd
+SLEEP: 2
+q
+ 
+ # We can tab complete the changed files.
+
+ ga demo-ß
+ gc last additions to the demo script
+
+ # How did we get here in the first place?
+
+ c | tail
+
+ # That was fasd remembering locations based on recent usage.
+ # This way you can instantly jump into any known dir.
+
+c kunde
+
+ # This also works with files!
+ # Oh, let's test this new idea and change this alias.
+
+v ali
+SLEEP: 2
+:q
+
+ # Voilà! Open any file from anywhere!
+
+l
+
+ # Oh, most of the folders start the same.
+ # No luck tab completing here, you say?
+
+ cd ssoß
+
+ # Na, you don't have to start typing from the beginning!
+ # You don't even have to use upper case letters.
+
+cat verü
+SLEEP: 1
+ß
+
+ # ZSH will also let you see all matching alternatives.
+
+cat reßßß
+SLEEP: 1
+
+ # You guessed it .. that's not the normal cat.
+
+ which cat
+
+ # Let's go back.
+ SLEEP: 1
+
+2
+
+ # What was I working on?
+SLEEP: 2
+
+gg
+SLEEP: 2
+q
+
+ # Have a look into the alias file to find some more useful stuff like ip.
+ # Quite handy if you constantly forget your zip code like I am:
+
+ ip J .postal
+SLEEP: 5
+
+ # That J is basically | jq - a global alias only possible with zsh.
+ # And there are more.
+
+,,
+ rg "alias -g" .alias
+
+ # So if you want to find that process ..
+
+ ps aux G redis
+SLEEP: 1
+
+ # Oh, how many times did i type this?
+ 
+ p redis
+
+ # Killing stuff can also be done with tab completion.
+
+ kill redß
+
+ # Let's start redis again.
+
+redis-server &
+
+ # We can see, there is something running in the background.
+ 
+ exit
+
+ # And zsh will prevent you from accidentally closing that session.
+
+ssh po
+SLEEP: 2
+
+ # Being logged into a remote system will also change the prompt to reflect that.
+
+exit
+
+ # What was that nasty app running on port 6379? No need for netstat.
+
+fkill
+SLEEP: 1
+:6379ü
+SLEEP: 1
+
+
+ # To help you remember all those commands, there are suggestions (gray text),
+ # history reverse search and an enhanced version of CTRL+R.
+
+SLEEP: 9 : >>>>>>>>> CTRL+R >>> kill >>>>>>>> CTRL+C
+
+ # Scan the misc folder for even more useful tools.
+ # Probably one of the most useful ones is tldr.
+
+ tldr curl
+
+ # But don't use curl. ;P
+ # Use http(ie) or http-prompt for more complex stuff.
+
+ # Did you know, that vim has a global history feature?
+ # Have a look at the dates below, while we are browsing back in time.
+
+v ali
+SLEEP: 1
+uuuuuuuuuuuuuuuuuuuuuuuuuuuu
+uuuuuuuuuuuuuuuuuuuuuu
+uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+SLEEP: 1
+:q!
+ # ^^ Here are stats for longer running commands.
+ # This history was useful more than once!
+ # So now all vim changes are persisted at a local cache directory.
+
+ cd /Users/andy/.cache/SpaceVim/undofile
+ l
+SLEEP: 1
+ dus
+
+ # And its hardly taking up any space. 
+
+ echo $PATH
+
+ # Oh, that's kinda hard to read, isn't it?
+ 
+ path
+
+ # Ahhh, much better and sorted!
+ # But why is app X used from path 1 instead of path 2?
+ 
+c sal
+
+ # BTW: virtualenvs are enabled by default
+
+ which uwsgi
+
+ # which shows all matching alternatives.
+ 
+ # So, we have this fancy zipped file .. 
+
+t
+ wget https://www.python.org/ftp/python/3.8.2/Python-3.8.2.tar.xz
+SLEEP: 7
+
+ # But what the hell is xz supposed to be?
+ # Ah, we don't care!
+
+x pyß
+SLEEP: 4
+
+ # Be gone!
+
+ rd Python-3.8.2*
+
+ # Oh, and what also saved my ass multiple times: The rd alias is deleting 
+ # with trash cli so you can actually undelete stuff again!
+
+ undelete
+SLEEP:9
+0
+
+l
+
+ # And it's back - Yeah!
+
+ # Let's quickly share that file.
+
+ send pyß
+SLEEP: 9 : >>>>>>>>>>> CTRL+C
+
+ # Or lets send the whole directory!
+
+ send .
+SLEEP: 9 : >>>>>>>>>>> CTRL+C
+
+ # Or lets hand pick some files in the browser:
+
+ server
+SLEEP: 5 : >>>>>>>>>>> CTRL+C
+
+ # Those apps don't use the right ip?
+ # Hmm, how do we get the right one again?
+ # Lets figure that out on the go ..
+
+ ifconfigü
+SLEEP: 4 : >>>>>>>>>>> CTRL+P
+grep inet | grep -v inet6 | ec 2
+SLEEP: 5 : >>>>>>>>>>> CTRL+X  + ENTER
+
+ # fin
+ SLEEP: 2

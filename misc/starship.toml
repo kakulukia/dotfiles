@@ -1,0 +1,87 @@
+format = """
+${custom.ssh}\
+${custom.ssh_root}\
+${custom.local_root}\
+$jobs\
+$character\
+${custom.venv}\
+$git_branch\
+$git_status\
+$directory\
+$cmd_duration """
+add_newline = false
+
+[character]
+success_symbol = ''
+error_symbol = '[ :\( ](bg:red fg:bright-white)'
+format = '$symbol'
+disabled = false
+
+[directory]
+#read_only = ""
+style = "bg:#4D4E48 fg:white"
+read_only_style = "bg:#4D4E48 fg:red"
+truncate_to_repo = false
+truncation_symbol = "../"
+truncation_length = 2
+fish_style_pwd_dir_length = 3
+format = "[ $path ]($style)[($read_only )]($read_only_style)"
+
+[username]
+show_always = false
+format = "[ $user ]($style)"
+style_user = "bg:#0A6FFF fg:bold bright-white"
+style_root = "bg:purple fg:bright-white"
+
+[hostname]
+ssh_only = false
+format = "[$user $hostname ]($style)"
+
+[git_branch]
+format = "[ $symbol $branch ]($style)"
+symbol = "⎇"
+style = 'bg:#3c3c3c fg:white'
+
+[git_status]
+style = "bg:#3c3c3c fg:red"
+format = '([($ahead_behind )($all_status )]($style))'
+ahead = "↑${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+behind = "↓${count}"
+
+[cmd_duration]
+format = '[ took $duration ]($style)'
+style = 'bg:#3c3c3c fg:red'
+
+[jobs]
+format = "[ $symbol$number ]($style)"
+style = "bg:#587744 fg:bright-white"
+symbol = "⚙"
+
+[custom.ssh]
+shell = ["zsh", "-d", "-f"]
+when = '[[ -n "$SSH_CLIENT" ]] && [[ "$USER" != "root" ]]'
+format = "[ $symbol $output ]($style)"
+command = "echo $USER@$(uname -n)"
+style = "bg:#FD7208 fg:bright-white"
+symbol = "⌁"
+[custom.ssh_root]
+shell = ["zsh", "-d", "-f"]
+when = '[[ -n "$SSH_CLIENT" ]] && [[ "$USER" = "root" ]]'
+format = "[ $symbol $output ]($style)"
+command = "echo $USER@$(uname -n)"
+style = "bg:red fg:bright-white"
+symbol = "⌁"
+[custom.local_root]
+shell = ["zsh", "-d", "-f"]
+when = '[[ -z "$SSH_CLIENT" ]] && [[ "$USER" = "root" ]]'
+format = "[ $output ]($style)"
+command = "echo $USER"
+style = "bg:red fg:bright-white"
+[custom.venv]
+shell = ["zsh", "-d", "-f"]
+when = '[[ -n "$VIRTUAL_ENV" ]]'
+format = "[ $symbol $output ]($style)"
+command = "python --version | cut -d ' ' -f2"
+style = "bg:#587744 fg:bright-white"
+symbol = ""

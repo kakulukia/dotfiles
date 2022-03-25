@@ -1,0 +1,190 @@
+
+### navigation
+##############
+# default to colorsl if available
+if command -v colorls >/dev/null 2>&1; then
+    alias l='colorls --gs --sd -l'
+    alias ll='colorls --gs --sd -la'
+    alias lt='colorls --gs --sd -ltr'
+    alias llt='colorls --gs --sd -latr'
+else
+    alias l='ls -Flh'
+    alias ll='ls -Flah'
+    alias lt='ls -Flthr'
+    alias llt='ls -Flathr'
+fi
+# create folder and cd into it
+md () { mkdir -p $1; cd $1 }
+alias rd='trash'
+alias undelete="trash-restore"
+# Empty the Trash on all mounted volumes and the main HDD.
+# Also, clear Apple’s System Logs to improve shell startup speed.
+# Finally, clear download history from quarantine. https://mths.be/bum
+alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
+alias ..='cd ..'
+alias ,,='git rev-parse --git-dir >/dev/null 2>&1 && cd `git rev-parse --show-toplevel` || echo "Not in git repo"'
+alias dus='du -d 1 -h | sort -h'
+alias df="df -h"
+alias root='sudo zsh'
+alias t='cd /tmp'
+alias o='open .'
+alias tgz='COPYFILE_DISABLE=true tar -c --exclude=.git --exclude=.DS_Store -zvf '
+alias x="unarchive"
+alias errorcode="echo $?"
+alias p="ps aux G "
+command -v fd >/dev/null 2>&1 && alias fda="fd --hidden --no-ignore"
+# fasd
+alias v='f -e vim' # quick opening files with vim
+alias c='z'
+alias co='f -e code ' #quick opening files with code
+# search
+alias rg="rg -S --max-columns 444"
+alias rgi='rg -i --max-columns 444'
+alias rga='rgi --hidden --no-ignore --search-zip'
+# Globals
+alias -g G="| rg -v 'rg -S' | rg "
+alias -g GC="| rg -v 'rg -S' | rg -C 5 "
+alias -g L="| less"
+alias -g J="| jq"
+alias -g C="| wc -l"
+
+
+### GIT stuff
+#############
+alias gs='git status -s'
+alias gu='git submodule update --init --recursive --remote'
+alias gd='git diff'
+alias gf='git fetch --all --prune'
+alias ga='git add'
+alias gl='git pull'
+alias gp='git push'
+commit () { git commit -v -m "$*" }
+alias gc='noglob commit'
+# show a nice version of the git graph
+alias gg="git log --remotes --tags --oneline --decorate --stat --abbrev-commit --date=relative --branches --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n'"
+diff_so_fancy () { diff -u "$@" | diff-so-fancy }
+alias diff="diff_so_fancy"
+alias gfi='find . -type f | grep -v .venv | grep -v .idea | grep -v .direnv | grep -v migrations | grep -v static | grep -v __ | git check-ignore -v --stdin'  # find files ignored by git and the reason why
+alias grm="git branch --merged | grep -v \"\*\" | xargs -n 1 git branch -d"  #remove merged branches
+
+
+### sane defaults / utilities
+#############################
+# Disable globbing for some tools
+alias poetry='noglob poetry'
+alias pip='noglob pip'
+alias wget="noglob wget"
+alias sudo='sudo --preserve-env '  # Enable aliases to be sudo’ed
+alias please='sudo $(fc -ln -1)'  # rerun the last command (because it failed)
+alias cp='cp -iv'
+function mv() {
+  if [[ "$#" -ne 1 ]] || [[ ! -f "$1" ]]; then
+    command mv -iv "$@"
+    return
+  fi
+
+  new_filename="$1"
+  vared new_filename
+  command mv -iv -- "$1" "$new_filename"
+}
+function which() {
+    IFS='
+'
+    set -f
+    for LINE in `type -a $1`; do
+        COMMAND=`echo ${LINE} | cut -d ' ' -f 3`
+        if [[ ${COMMAND} = /* ]]; then
+            version=`${COMMAND} --version 2>/dev/null` # might not work with all commands
+            [[ -n "$version" ]] && version="($version)"
+            echo "$1 is $COMMAND $version"
+            ll ${COMMAND}
+        else
+            echo ${LINE}
+        fi
+    done
+}
+
+
+### shortcuts
+#############
+alias update-dotfiles="~/ghar/dotfiles/misc/update.sh"
+alias stree='open -a SourceTree .'
+alias csv='column -s, -t'
+alias wetter='curl wttr.in/Berlin'
+alias tm='tmux attach || tmux new'
+alias getmp3="youtube-dl -x --audio-format mp3 "
+# Hide/show all desktop icons (useful when presenting)
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+sleep-in() { echo "Going to  sleep in $1 minutes .." && sleep $((60 * $1)) && pmset sleepnow }
+# Faster npm for Europeans
+command -v npm > /dev/null && alias npme="npm --registry http://registry.npmjs.eu/"
+alias ping="prettyping --nolegend"
+command -v bat >/dev/null 2>&1 && alias cat="bat --theme TwoDark --style=plain --paging never"
+command -v fzf >/dev/null 2>&1 && alias preview="fzf --preview 'bat --color \"always\" {}'"
+command -v gsed >/dev/null 2>&1 && alias sed="gsed"
+command -v gtar >/dev/null 2>&1 && alias tar="gtar"
+command -v glances >/dev/null 2>&1 && alias top="glances"
+command -v gdate >/dev/null 2>&1 && alias date="gdate"
+
+
+### Python / Django
+###################
+alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
+alias shell='python manage.py shell_plus'
+alias rs="manage.py runserver 0.0.0.0:8000"
+alias idea='open -a "IntelliJ IDEA"'
+alias update-venv="pip install -U pip setuptools wheel"
+alias init-python="update-venv && pip install -U poetry twine bumpversion isort black httpie magic-wormhole"
+function jwt() {
+  for part in 1 2; do
+    b64="$(cut -f${part} -d. <<< "$1" | tr '_-' '/+')"
+    len=${#b64}
+    n=$((len % 4))
+    if [[ 2 -eq n ]]; then
+      b64="${b64}=="
+    elif [[ 3 -eq n ]]; then
+      b64="${b64}="
+    fi
+    d="$(openssl enc -base64 -d -A <<< "$b64")"
+    echo "$d" | jq
+    # don't decode further if this is an encrypted JWT (JWE)
+    if [[ 1 -eq part ]] && grep '"enc":' <<< "$d" >/dev/null ; then
+        return 0
+    fi
+  done
+}
+# URL-encode strings
+alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
+# Recursively delete `.DS_Store` files
+alias cleanup="find . -type f -name '*.DS_Store' -ls -delete && find . -name __pycache__ -print -delete && find . -name '*.pyc' -ls -delete"
+
+
+### network
+###########
+# Start an HTTP server from a directory, optionally specifying the port
+function seecert () {
+  nslookup $1
+  (openssl s_client -showcerts -servername $1 -connect $1:443 <<< "Q" | openssl x509 -text | grep -iA2 "Validity")
+}
+function server() {
+    local IP=`localip`
+    local port="${1:-8000}";
+    echo "http://$IP:$port/"
+    python -m http.server ${port}
+}
+alias send="woof"
+# get public/local IP addresses
+alias ip="curl -s https://ipinfo.io/ J"
+alias ips="ifconfig -a | grep -o 'inet\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet? (addr:)? ?/, \"\"); print }' | grep -v 127.0.0.1"
+alias localip="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p' | head -n 1"
+function digga() {
+	dig +nocmd "$1" any +multiline +noall +answer;
+}
+alias get='curl --continue-at - --location --progress-bar --remote-name --remote-time'
+# Flush Directory Service cache
+alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
+# View HTTP traffic
+alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
+alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+alias info="neofetch"

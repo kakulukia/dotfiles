@@ -1,0 +1,18 @@
+[submodule ".SpaceVim"]
+	path = .SpaceVim
+	url = https://github.com/SpaceVim/SpaceVim.git
+[submodule ".zprezto"]
+	path = .zprezto
+	url = https://github.com/sorin-ionescu/prezto.git
+[submodule ".zprezto-contrib/fzf-tab"]
+	path = .zprezto-contrib/fzf-tab
+	url = https://github.com/Aloxaf/fzf-tab
+[submodule ".zprezto-contrib/history-search-multi-word"]
+	path = .zprezto-contrib/history-search-multi-word
+	url = https://github.com/zdharma-continuum/history-search-multi-word.git
+[submodule ".zprezto-contrib/evalcache"]
+	path = .zprezto-contrib/evalcache
+	url = https://github.com/mroth/evalcache
+[submodule ".zprezto-contrib/pyenv-lazy"]
+	path = .zprezto-contrib/pyenv-lazy
+	url = https://github.com/davidparsson/zsh-pyenv-lazy.git

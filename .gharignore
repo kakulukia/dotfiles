@@ -1,0 +1,11 @@
+.gitmodules
+.gitignore
+README.md
+.DS_Store
+LICENSE
+misc
+.idea
+demo.sh
+docs
+docs_src
+.github

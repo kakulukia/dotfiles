@@ -1,0 +1,10 @@
+.idea
+.gitconfig-personal
+chromedriver
+*.pyc
+.DS_Store
+node_modules
+bin/pycharm
+aok-rdp.sh
+avayaVPN.sh
+vpnconnect.sh
