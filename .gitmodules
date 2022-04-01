@@ -16,6 +16,3 @@
 [submodule ".zprezto-contrib/pyenv-lazy"]
 	path = .zprezto-contrib/pyenv-lazy
 	url = https://github.com/davidparsson/zsh-pyenv-lazy.git
-[submodule ".zprezto-contrib/zsh-pyenv-lazy"]
-	path = .zprezto-contrib/zsh-pyenv-lazy
-	url = https://github.com/davidparsson/zsh-pyenv-lazy.git

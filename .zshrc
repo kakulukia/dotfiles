@@ -21,9 +21,9 @@ zstyle ':prezto:load' pmodule \
   'prompt' \
   'completion' \
   'fzf-tab' \
+  'pyenv-lazy' \
   'directory' \
   'docker' \
-  'zsh-pyenv-lazy' \
   'syntax-highlighting' \
   'history-substring-search' \
   'history-search-multi-word' \
