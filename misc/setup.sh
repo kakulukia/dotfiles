@@ -63,7 +63,7 @@ setup () {
   cd
   git clone https://github.com/philips/ghar.git
   cd ghar
-  git clone --recursive git://github.com/kakulukia/dotfiles.git
+  git clone --recursive https://github.com/kakulukia/dotfiles.git
 
   # install pyenv, activate and install python3 if necessary
   # git clone https://github.com/pyenv/pyenv.git ~/.pyenv
