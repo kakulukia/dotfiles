@@ -7,10 +7,22 @@ apt=`command -v apt-get`
 yum=`command -v yum`
 brew=`command -v brew`
 
+green () {
+  out='\033[0;32m'
+  NC='\033[0m'
+  echo "${out}${1}${NC}"
+}
+red () {
+  out='\033[0;31m'
+  NC='\033[0m'
+  echo "${out}${1}${NC}"
+}
+
 ## Detect the systems installer
+green "detecting OS .."
 if [ -n "$apt" ]; then
     INSTALL='apt-get -y install'
-    echo $EUID
+    red $EUID
     if [ $EUID -ne 0 ]; then
        INSTALL='sudo '$INSTALL
     fi
@@ -25,17 +37,6 @@ else
     echo "Error: Your OS is not supported :(" >&2;
     exit 1;
 fi
-
-green () {
-  out='\033[0;32m'
-  NC='\033[0m'
-  echo "${out}${1}${NC}"
-}
-red () {
-  out='\033[0;31m'
-  NC='\033[0m'
-  echo "${out}${1}${NC}"
-}
 
 ## test if command exists
 check () {
