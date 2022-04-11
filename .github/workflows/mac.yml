@@ -26,3 +26,4 @@ jobs:
     - name: install dotfiles
       run: |
         curl https://raw.githubusercontent.com/kakulukia/dotfiles/testing/misc/setup.sh | bash
+        zsh -c 'alias'
