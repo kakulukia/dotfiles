@@ -25,4 +25,4 @@ jobs:
     # Runs a single command using the runners shell
     - name: install dotfiles
       run: |
-        curl https://raw.githubusercontent.com/kakulukia/dotfiles/master/misc/setup.sh | sh
+        curl https://raw.githubusercontent.com/kakulukia/dotfiles/testing/misc/setup.sh | sh
