@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GHAR=${REMOTE:-https://github.com/philips/ghar.git}
+GHAR=${REMOTE:-git://github.com/philips/ghar.git}
 DOTFILES=${REMOTE:-git@github.com:kakulukia/dotfiles.git}
 
 apt=`command -v apt-get`
