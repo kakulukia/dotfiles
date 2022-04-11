@@ -10,12 +10,12 @@ brew=`command -v brew`
 green () {
   out='\033[0;32m'
   NC='\033[0m'
-  echo "${out}${1}${NC}"
+  echo -e "${out}${1}${NC}"
 }
 red () {
   out='\033[0;31m'
   NC='\033[0m'
-  echo "${out}${1}${NC}"
+  echo -e "${out}${1}${NC}"
 }
 
 ## Detect the systems installer
