@@ -10,6 +10,7 @@ brew=`command -v brew`
 ## Detect the systems installer
 if [ -n "$apt" ]; then
     INSTALL='apt-get -y install'
+    echo $EUID
     if [ $EUID -ne 0 ]; then
        INSTALL='sudo '$INSTALL
     fi
@@ -28,7 +29,7 @@ fi
 green () {
   out='\033[0;32m'
   NC='\033[0m'
-  echo -e "${out}${1}${NC}"
+  echo "${out}${1}${NC}"
 }
 red () {
   out='\033[0;31m'
