@@ -34,7 +34,7 @@ green () {
 red () {
   out='\033[0;31m'
   NC='\033[0m'
-  echo -e "${out}${1}${NC}"
+  echo "${out}${1}${NC}"
 }
 
 ## test if command exists
