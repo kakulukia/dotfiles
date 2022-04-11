@@ -29,9 +29,12 @@ path /usr/bin
 path /usr/local/bin
 path ~/bin
 # in case of weird paths problems: check /etc/zprofile on OSX and do not start the path_helper
+# which messes with the path and tends to reorder it - very bad!
 
 # Ensure that all shells have a defined environment.
-source ~/.zshrc
+if [[ ! -o login && ! -o interactive ]]; then
+  . $HOME/.zshrc
+fi
 
 # include local, unversioned settings
 [[ -e ~/.profile ]] && source ~/.profile
