@@ -67,6 +67,10 @@ zstyle ':completion:*' format ' -- %d --'
 ## Auto start a session when Zsh is launched in a SSH connection.
 #zstyle ':prezto:module:tmux:auto-start' remote 'no'
 
+
+# init homebrew for apple silicon - needed for direnv
+[ -f "/opt/homebrew/bin/brew" ] && _evalcache /opt/homebrew/bin/brew shellenv
+
 # initialize direnv
 command -v direnv >/dev/null 2>&1 && _evalcache direnv hook zsh
 
