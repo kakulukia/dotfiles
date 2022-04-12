@@ -95,3 +95,7 @@ _evalcache fasd --init auto  # 35ms :(
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 PROMPT_EOL_MARK=⏎
 
+
+export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && source ~/.nvm/nvm.sh  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && source ~/.nvm/bash_completion  # This loads nvm bash_completion

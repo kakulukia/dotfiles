@@ -86,7 +86,7 @@ body
 
       p In the misc folder you can find:
       ul
-        li the Powerline patched SourceCode font (you may use any #[a(href="https://www.nerdfonts.com/") Nerdfont])
+        li the Powerline patched SourceCode font (you may use any #[a(href="https://www.nerdfonts.com/" target="_blank") Nerdfont])
         li my currently used Dracula.itermcolors
         li better-osx-settings script
         li.
@@ -107,8 +107,8 @@ body
           br
           br
           figure
-            img(src="history.png")
-            figcaption migr + up
+            img(src="history.png" title="context sensitive history search")
+            figcaption migr + up arrow
         li red / green colored commands - shows that the command is (un)available
         li . is in the path so no need for any ./ prefixing executables
         li path
@@ -123,23 +123,19 @@ body
         li o - will open the finder in the current directory
         li
           a(href="https://github.com/kakulukia/dotfiles/tree/master/bin") cd to.app
-          |
-          | - there is an app in the bin folder that provides a
-          |
+          |  - there is an app in the bin folder that provides a
           | way to reverse the above trick and open a terminal at the current finder location.
-          |
           | Use the command key to just drag it into the finders toolbar.
           br
           br
           figure
-            img(src="cdto.png")
+            img(src="cdto.png" title="cdto in the finder")
             figcaption The result will look like this
         li
           a(
             href="https://github.com/kakulukia/dotfiles/tree/master/misc/QuickLook"
           ) QuickLook Plugins
-          |
-          | - there are a few collected plugins for OSX to preview some more files like Markdown
+          |  - there are a few collected plugins for OSX to preview some more files like Markdown
         li tm - there's a tmux theme and tm will reconnect to to your last session or create a new one
           br
           | I also changed the default prefix to CTRL+SPACE for easier usage.
@@ -151,8 +147,7 @@ body
         li ping - is aliased to prettyping
         li go-reload - hot reload for go apps you are working on
         li mgs - multi git status - if your company/current project totally embraces micro services (🙈)
-          |
-          | this might come in handy to update em all in one go
+          |  this might come in handy to update em all in one go
         li rg - alias for "rg -S --max-columns 444" won't clutter the screen with nasty one line files
         li customize startship.toml to create a custom prompt
         li up - that's the live preview pipe thing you saw at the end of the screencast. It's activated with CTRL+P for pipe.
@@ -161,39 +156,34 @@ body
       h2.subtitle ToDo
       ul
         li colorls is a lil slow - there is a promising alternative, but
-          a(href="https://github.com/Peltoche/lsd/issues/92") it's not looking sexy yet
+          a(href="https://github.com/Peltoche/lsd/issues/92" target="_blank")  it's not looking sexy yet
         li Decoupling this shell from needing Python. I am a Python developer, but sure it's
-          |
-          | not really needed for the shell itself. Currently the sync tool ghar is a Python script, tho.
+          |  not really needed for the shell itself. Currently the sync tool ghar is a Python script, tho.
         li This
-          a(href="https://www.atlassian.com/git/tutorials/dotfiles") trick
-          |
-          | looked kinda nice, i tried it, but it looked and felt messy. 🙄
+          a(href="https://www.atlassian.com/git/tutorials/dotfiles" target="_blank")  trick
+          |  looked kinda nice, i tried it, but it looked and felt messy. 🙄
           br
           | Im probably going to create a shell script to link my files the the HOME directory.
-        li Testing more speedup options. I tried zinit and zplug, but both failed to just work. :/
+        li I tried zinit and zplug, but both failed to just work without extensive care. :/
           br
-          | I was not in the mood to keep fiddling around with them, but the current speed is not that bad.
+          | But the current startup speed is not that bad:
           figure
-            img(src="benchmark.png")
+            img(src="benchmark.png" title="startup benchmark")
             figcaption current startup speed with all features enabled
 
       h2.subtitle Credits
       p
         | This theme was inspired by
         a(
-          href="https://github.com/Bash-it/bash-it/blob/master/themes/powerline-plain/powerline-plain.theme.bash"
-        ) PowerlinePlain
-        |
-        | and based on
-        a(href="https://github.com/caiogondim/bullet-train-oh-my-zsh-theme") BulletTrain
+          href="https://github.com/Bash-it/bash-it/blob/master/themes/powerline-plain/powerline-plain.theme.bash" target="_blank"
+        )  PowerlinePlain
+        |  and based on
+        a(href="https://github.com/caiogondim/bullet-train-oh-my-zsh-theme" target="_blank")  BulletTrain
         | .
         br
         br
         strong Generally:
-        |
-        | Mad props to all awesome devs who build most of the apps referenced here.
-        |
+        |  Mad props to all awesome devs who build most of the apps referenced here.
         | Too many to list em all, but most if not all do feature a credit line inside the scripts.
 </template>
 
@@ -215,7 +205,7 @@ export default {
 <style lang="sass">
 @font-face
   font-family: SauceCodePro
-  src: url(SauceCodePro.ttf)
+  src: url(assets/SauceCodePro.ttf)
 
 .install
   margin: 2em 0
@@ -226,7 +216,7 @@ export default {
     width: 100%
     display: grid
     grid-template-columns: 1fr 20px
-    padding: 0 10px
+    padding: 0 12px
   p
     font-size: 16px
     .command
@@ -247,7 +237,7 @@ export default {
 body::-webkit-scrollbar
   width: 10px
 body::-webkit-scrollbar-thumb
-  background-image: url(public/scrollbar.png)
+  background-image: url(../public/scrollbar.png)
 
 iframe
   width: 100%
@@ -306,7 +296,7 @@ ul
   li:before
     content: "> "
     font-weight: bold
-    margin-left: -17px
+    margin-left: -20px
   li
     padding-left: 30px
 
