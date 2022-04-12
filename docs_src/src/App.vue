@@ -244,7 +244,7 @@ iframe
   display: block
 
 body, .asciinema-terminal
-  font-family: "SauceCodePro"
+  font-family: "SauceCodePro", serif
 
 h1.title.marginless
   margin-bottom: 0
