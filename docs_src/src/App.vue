@@ -36,7 +36,7 @@ body
 
       h2.subtitle Intro
       p.
-        For the last 6 years I have been building up my shell environment and it's the
+        For the last several years (initial commit 2014-10-04) I have been building up my shell environment and it's the
         first thing that gets installed on a new server or Mac. Especially fasd and the reverse
         history search is a huge time saver.
       p.
