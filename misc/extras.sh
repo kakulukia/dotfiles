@@ -17,7 +17,8 @@ sudo gem install colorls # better directory listing https://github.com/athityaku
 # xcode-select --install
 
 cargo install broot # A better way to navigate directories https://github.com/Canop/broot
+cargo install du-dust # du +rust = dust - https://github.com/bootandy/dust
+cargo install ripgrep # it finds stuff - ultra fast - https://github.com/BurntSushi/ripgrep
 
 brew cask install db-browser-for-sqlite # osx app to have a look into sqlite DBs
 
-cargo install ripgrep # it finds stuff - ultra fast - https://github.com/BurntSushi/ripgrep

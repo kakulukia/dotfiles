@@ -32,7 +32,7 @@ alias tgz='COPYFILE_DISABLE=true tar -c --exclude=.git --exclude=.DS_Store -zvf 
 alias x="unarchive"
 alias errorcode="echo $?"
 alias p="ps aux G "
-command -v fd >/dev/null 2>&1 && alias fda="fd --hidden --no-ignore"
+(( $+commands[fd] )) && alias fda="fd --hidden --no-ignore"
 # fasd
 alias v='f -e vim' # quick opening files with vim
 alias c='z'
@@ -47,6 +47,7 @@ alias -g GC="| rg -v 'rg -S' | rg -C 5 "
 alias -g L="| less"
 alias -g J="| jq"
 alias -g C="| wc -l"
+alias -g F="| fzf --multi"
 
 
 ### GIT stuff
@@ -120,12 +121,12 @@ sleep-in() { echo "Going to  sleep in $1 minutes .." && sleep $((60 * $1)) && pm
 # Faster npm for Europeans
 command -v npm > /dev/null && alias npme="npm --registry http://registry.npmjs.eu/"
 alias ping="prettyping --nolegend"
-command -v bat >/dev/null 2>&1 && alias cat="bat --theme TwoDark --style=plain --paging never"
-command -v fzf >/dev/null 2>&1 && alias preview="fzf --preview 'bat --color \"always\" {}'"
-command -v gsed >/dev/null 2>&1 && alias sed="gsed"
-command -v gtar >/dev/null 2>&1 && alias tar="gtar"
-command -v glances >/dev/null 2>&1 && alias top="glances"
-command -v gdate >/dev/null 2>&1 && alias date="gdate"
+(( $+commands[bat] )) && alias cat="bat --theme TwoDark --style=plain --paging never"
+(( $+commands[fzf] )) && alias preview="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+(( $+commands[gsed] )) && alias sed="gsed"
+(( $+commands[gtar] )) && alias tar="gtar"
+(( $+commands[glances] )) && alias top="glances"
+(( $+commands[gdate] )) && alias date="gdate"
 
 
 ### Python / Django

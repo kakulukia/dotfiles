@@ -72,15 +72,13 @@ zstyle ':completion:*' format ' -- %d --'
 [ -f "/opt/homebrew/bin/brew" ] && _evalcache /opt/homebrew/bin/brew shellenv
 
 # initialize direnv
-command -v direnv >/dev/null 2>&1 && _evalcache direnv hook zsh
+(( $+commands[direnv] )) 2>&1 && _evalcache direnv hook zsh
 
+[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
+_evalcache fasd --init auto  # 35ms :(
 # load aliases and  the prompt
 source ~/.alias
-command -v starship >/dev/null 2>&1 && _evalcache starship init zsh
-
-
-# misc
-export PYTHONBREAKPOINT=ipdb.set_trace
+(( $+commands[starship] )) && _evalcache starship init zsh
 
 upify() {
     buf="$(echo "${BUFFER}" | sed 's/[ |]*$//')"
@@ -95,11 +93,14 @@ zle -N upify
 # use Ctrl+P to invoke and Ctrl+X to close and use the result
 bindkey '^P' upify
 
-_evalcache fasd --init auto  # 35ms :(
-[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 PROMPT_EOL_MARK=⏎
-
 
 export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && source ~/.nvm/nvm.sh  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && source ~/.nvm/bash_completion  # This loads nvm bash_completion
+
+# Setting fd as the default source for fzf
+(( $+commands[fd] )) && export FZF_DEFAULT_COMMAND='fd --type f'
+
+# misc
+export PYTHONBREAKPOINT=ipdb.set_trace
