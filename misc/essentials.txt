@@ -1,4 +1,3 @@
-bat # cat with wings https://github.com/sharkdp/bat
 cloc # count lines of code
 coreutils # some core linux versions of totally outdated OSX/BSD tools like gdate and gsed
 ctop # top for docker containers
@@ -33,8 +32,6 @@ python3-pip # python package manager
 redis
 ruby
 ruby-dev # to be able to compile stuff
-rust # this works on osx
-cargo # this works on ubuntu
 sd # find and replace (like sed)
 speedtest-cli # connection speed tester
 ssh-copy-id # copy ssh key to remote box

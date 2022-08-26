@@ -16,6 +16,10 @@ sudo gem install colorls # better directory listing https://github.com/athityaku
 
 # xcode-select --install
 
+# installing rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+cargo install bat # cat with wings https://github.com/sharkdp/bat
 cargo install broot # A better way to navigate directories https://github.com/Canop/broot
 cargo install du-dust # du +rust = dust - https://github.com/bootandy/dust
 cargo install ripgrep # it finds stuff - ultra fast - https://github.com/BurntSushi/ripgrep

@@ -44,9 +44,10 @@ alias v='f -e vim' # quick opening files with vim
 alias c='z'
 alias co='f -e code ' #quick opening files with code
 # search
-alias rg="rg -S --max-columns 444"
-alias rgi='rg -i --max-columns 444'
-alias rga='rgi --hidden --no-ignore --search-zip'
+alias rg="rga -S --max-columns 444"
+alias rgh='rg --hidden '
+alias rga='rg --hidden --no-ignore --search-zip'
+
 # Globals
 alias -g G="| rg -v 'rg -S' | rg "
 alias -g GC="| rg -v 'rg -S' | rg -C 5 "
@@ -81,7 +82,7 @@ alias grm="git branch --merged | grep -v \"\*\" | xargs -n 1 git branch -d"  #re
 alias poetry='noglob poetry'
 alias pip='noglob pip'
 alias wget="noglob wget"
-alias sudo='sudo --preserve-env '  # Enable aliases to be sudo’ed
+alias sudo='sudo -s '  # Enable aliases and shell functions to be sudo’ed
 alias please='sudo zsh -c "$(fc -ln -1)"'  # rerun the last command with sudo (because it failed)
 alias cp='cp -iv'
 function mv() {
