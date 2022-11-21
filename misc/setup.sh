@@ -22,7 +22,6 @@ red () {
 green "detecting OS .."
 if [ -n "$apt" ]; then
     INSTALL='apt-get -y install'
-    red $EUID
     if [ $EUID -ne 0 ]; then
        INSTALL='sudo '$INSTALL
     fi
@@ -97,7 +96,7 @@ setup () {
   path=$(pwd)
   ln -s $path/dark_colors.yaml ~/.config/colorls/
   green "Installing starship .."
-  command -v starship >/dev/null 2>&1 || curl -fsSL https://starship.rs/install.sh | bash -s -- -y > /dev/null 2>&1
+  command -v starship >/dev/null 2>&1 || curl -fsSL https://starship.rs/install.sh | sh -s -- -y > /dev/null 2>&1
   ln -s ~/ghar/dotfiles/misc/starship.toml ~/.config
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install --bin > /dev/null 2>&1
 
