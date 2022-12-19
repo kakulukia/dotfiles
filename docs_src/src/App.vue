@@ -48,7 +48,8 @@ body
       h2.subtitle Installation
       p.
         Be sure you are logged in as the user for whom you want to install this shell
-        package and that the user has sudo rights.
+        package and that the user has sudo rights. On OSX also make sure that #[a(href="https://brew.sh/") homebrew] is installed.
+
       .install.is-hidden-mobile
         img(src="install_dotfiles.png")
         .command-line
@@ -206,6 +207,12 @@ export default {
 @font-face
   font-family: SauceCodePro
   src: url(assets/SauceCodePro.ttf)
+
+a
+  color: #8a56df
+  &:hover
+    color: #8a56df
+    text-decoration: underline
 
 .install
   margin: 2em 0
