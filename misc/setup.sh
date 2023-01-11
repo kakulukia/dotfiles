@@ -108,6 +108,7 @@ setup () {
   if [ $EUID -ne 0 ]; then
     chsh -s $(which zsh) $(whoami)
   else
+    echo "chsh -s $(which zsh) $(whoami)"
     sudo chsh -s $(which zsh) $(whoami)
   fi
   echo ""
