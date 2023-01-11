@@ -104,7 +104,7 @@ setup () {
 
   echo ""
   echo ""
-  green "Changing your default login shell to zsh .."
+  green "Changing your default login shell to zsh ..."
   echo "chsh -s $(which zsh) $(whoami)"
   if [ $EUID -ne 0 ]; then
     chsh -s $(which zsh) $(whoami)
