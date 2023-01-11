@@ -107,9 +107,9 @@ setup () {
   green "Changing your default login shell to zsh ..."
   echo "chsh -s $(which zsh) $(whoami)"
   if [ $EUID -ne 0 ]; then
-    chsh -s $(which zsh) $(whoami)
-  else
     sudo chsh -s $(which zsh) $(whoami)
+  else
+    chsh -s $(which zsh) $(whoami)
   fi
   echo ""
   green "Have fun with your new shell!"
