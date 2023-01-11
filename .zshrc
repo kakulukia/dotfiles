@@ -104,6 +104,3 @@ export NVM_DIR="$HOME/.nvm"
 
 # misc
 export PYTHONBREAKPOINT=ipdb.set_trace
-
-#load completions
-compinit -u
