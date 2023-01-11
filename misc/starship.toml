@@ -31,7 +31,7 @@ format = "[ $path ]($style)[($read_only )]($read_only_style)"
 show_always = false
 format = "[ $user ]($style)"
 style_user = "bg:#0A6FFF fg:bold bright-white"
-style_root = "bg:purple fg:bright-white"
+style_root = "bg:bright-white fg:purple"
 
 [hostname]
 ssh_only = false
@@ -70,14 +70,14 @@ shell = ["zsh", "-d", "-f"]
 when = '[[ -n "$SSH_CLIENT" ]] && [[ "$USER" = "root" ]]'
 format = "[ $symbol $output ]($style)"
 command = "echo $USER@$(uname -n)"
-style = "bg:red fg:bright-white"
+style = "bg:bright-white fg:red"
 symbol = "⌁"
 [custom.local_root]
 shell = ["zsh", "-d", "-f"]
 when = '[[ -z "$SSH_CLIENT" ]] && [[ "$USER" = "root" ]]'
 format = "[ $output ]($style)"
 command = "echo $USER"
-style = "bg:red fg:bright-white"
+style = "fg:red bg:bright-white"
 [custom.venv]
 shell = ["zsh", "-d", "-f"]
 when = '[[ -n "$VIRTUAL_ENV" ]]'
