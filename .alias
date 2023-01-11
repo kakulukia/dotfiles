@@ -31,7 +31,11 @@ else
   alias df="df -h --total"
 fi
 
-alias root='sudo zsh'
+if [[ "$(uname)" == "Linux" ]]; then
+    alias root='sudo -E zsh'  # keep $SSH_CLIENT to show remote connections
+elif [[ "$(uname)" == "Darwin" ]]; then
+    alias root='sudo zsh'
+fi
 alias t='cd /tmp'
 alias o='open .'
 alias tgz='COPYFILE_DISABLE=true tar -c --exclude=.git --exclude=.DS_Store -zvf '
