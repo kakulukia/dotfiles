@@ -99,22 +99,35 @@ function mv() {
   vared new_filename
   command mv -iv -- "$1" "$new_filename"
 }
-function which() {
-    IFS='
-'
-    set -f
-    for LINE in `type -a $1`; do
-        COMMAND=`echo ${LINE} | cut -d ' ' -f 3`
-        if [[ ${COMMAND} = /* ]]; then
-            version=`${COMMAND} --version 2>/dev/null` # might not work with all commands
-            [[ -n "$version" ]] && version="($version)"
-            echo "$1 is $COMMAND $version"
-            ll ${COMMAND}
-        else
-            echo ${LINE}
-        fi
-    done
+which() {
+  local format="${2:-path}"  # Default to path output
+  if [[ "$1" = "--full" ]]; then
+    format="full"
+    shift 1
+  fi
+  IFS=$'\n'
+  set -f
+  found=false
+  for LINE in $(type -a "$1"); do
+    COMMAND=$(echo "$LINE" | cut -d ' ' -f 3)
+    if [[ $COMMAND = /* ]]; then
+      version=$("$COMMAND" --version 2>/dev/null)
+      [[ -n $version ]] && version="($version)"
+      found=true
+      if [[ $format == 'full' ]]; then
+        echo "$1 is $COMMAND $version"
+        ll "$COMMAND"
+      else
+        echo "$COMMAND"
+        break
+      fi
+    fi
+  done
+  if [[ $found = false ]]; then
+    return 1
+  fi
 }
+alias wi="which --full"
 
 
 ### shortcuts
