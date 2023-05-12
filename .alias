@@ -86,8 +86,8 @@ alias grm="git branch --merged | grep -v \"\*\" | xargs -n 1 git branch -d"  #re
 alias poetry='noglob poetry'
 alias pip='noglob pip'
 alias wget="noglob wget"
-alias sudo='sudo -s '  # Enable aliases and shell functions to be sudo’ed
-alias please='sudo zsh -c "$(fc -ln -1)"'  # rerun the last command with sudo (because it failed)
+alias sudo='sudo env "PATH=$PATH" -s'  # Enable aliases and shell functions to be sudo’ed
+alias please='sudo env "PATH=$PATH" zsh -c "$(fc -ln -1)"'  # rerun the last command with sudo (because it failed)
 alias cp='cp -iv'
 function mv() {
   if [[ "$#" -ne 1 ]] || [[ ! -f "$1" ]]; then
@@ -213,3 +213,8 @@ alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 alias info="neofetch"
+
+rick () { echo "$*" | chatgpt -i "Du bist Rick, von Rick und Morty. Antworte auf Fragen in seinem Stil und verwende beleidigende und sexistische Witze." }
+dead () { echo "$*" | chatgpt -i "Du bist Deadpool und antwortest mit dem Charm von Rick Reynolds." -t 0.77 }
+chat () { echo "$*" | chatgpt }
+alias h='noglob dead'

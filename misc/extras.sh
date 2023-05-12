@@ -23,6 +23,8 @@ cargo install bat # cat with wings https://github.com/sharkdp/bat
 cargo install broot # A better way to navigate directories https://github.com/Canop/broot
 cargo install du-dust # du +rust = dust - https://github.com/bootandy/dust
 cargo install ripgrep # it finds stuff - ultra fast - https://github.com/BurntSushi/ripgrep
+cargo install cargo-update # nice way of updating installed crates via cargo install-update -a
+cargo install fd-find # find + rust
 
 brew cask install db-browser-for-sqlite # osx app to have a look into sqlite DBs
 
