@@ -48,7 +48,7 @@ alias v='f -e vim' # quick opening files with vim
 alias c='z'
 alias co='f -e code ' #quick opening files with code
 # search
-alias rg="rga -S --max-columns 444"
+alias rg="rg -S --max-columns 444"
 alias rgh='rg --hidden '
 alias rga='rg --hidden --no-ignore --search-zip'
 
