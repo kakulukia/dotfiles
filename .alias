@@ -86,7 +86,7 @@ alias grm="git branch --merged | grep -v \"\*\" | xargs -n 1 git branch -d"  #re
 alias poetry='noglob poetry'
 alias pip='noglob pip'
 alias wget="noglob wget"
-alias sudo='sudo env "PATH=$PATH" -s'  # Enable aliases and shell functions to be sudo’ed
+alias sudo='sudo -s env "PATH=$PATH"'  # Enable aliases and shell functions to be sudo’ed
 alias please='sudo env "PATH=$PATH" zsh -c "$(fc -ln -1)"'  # rerun the last command with sudo (because it failed)
 alias cp='cp -iv'
 function mv() {
