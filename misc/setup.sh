@@ -33,7 +33,7 @@ elif [ -n "$yum" ]; then
 elif [ -n "$brew" ]; then
     INSTALL='brew install'
 else
-    echo "Error: Your OS is not supported :(" >&2;
+    echo "Error: Your OS is not supported :(\nOr you might need to install Homebrew first?" >&2;
     exit 1;
 fi
 

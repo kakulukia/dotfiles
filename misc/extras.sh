@@ -28,3 +28,5 @@ cargo install fd-find # find + rust
 
 brew cask install db-browser-for-sqlite # osx app to have a look into sqlite DBs
 
+brew install bruno # might be a nice alternative for Postman o httpie API client
+

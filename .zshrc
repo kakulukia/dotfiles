@@ -21,12 +21,12 @@ zstyle ':prezto:load' pmodule \
   'prompt' \
   'completion' \
   'fzf-tab' \
-  'pyenv-lazy' \
   'directory' \
   'docker' \
   'syntax-highlighting' \
   'history-substring-search' \
   'history-search-multi-word' \
+  'pyenv-lazy' \
 #  'terminal' \
 
 # fallback for ARM systems - for now ..
@@ -35,6 +35,14 @@ zstyle ':prezto:module:prompt' show-return-val 'no'
 
 # Set the command prefix on non-GNU systems.
 # zstyle ':prezto:module:gnu-utility' prefix 'g'
+
+
+# init homebrew for apple silicon - needed for direnv
+# needs to happen before plugin loading, so that pyenv pip comes first in PATH
+[ -f "/opt/homebrew/bin/brew" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# put this dir before homebrew bin in the path to ensure using the right node app 
+path /usr/local/bin
 
 ### Syntax Highlighting
 zstyle ':prezto:module:syntax-highlighting' highlighters \
@@ -66,10 +74,6 @@ zstyle ':completion:*' format ' -- %d --'
 #zstyle ':prezto:module:tmux:auto-start' local 'no'
 ## Auto start a session when Zsh is launched in a SSH connection.
 #zstyle ':prezto:module:tmux:auto-start' remote 'no'
-
-
-# init homebrew for apple silicon - needed for direnv
-[ -f "/opt/homebrew/bin/brew" ] && _evalcache /opt/homebrew/bin/brew shellenv
 
 # initialize direnv
 (( $+commands[direnv] )) 2>&1 && _evalcache direnv hook zsh
