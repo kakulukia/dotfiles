@@ -2,11 +2,11 @@
 ### navigation
 ##############
 # default to colorsl if available
-if command -v colorls >/dev/null 2>&1; then
-    alias l='colorls --gs --sd -l'
-    alias ll='colorls --gs --sd -la'
-    alias lt='colorls --gs --sd -ltr'
-    alias llt='colorls --gs --sd -latr'
+if command -v lsd >/dev/null 2>&1; then
+    alias l='lsd -gl'
+    alias ll='lsd -gal'
+    alias lt='lsd -gltr'
+    alias llt='lsd -galtr'
 else
     alias l='ls -Flh'
     alias ll='ls -Flah'
@@ -70,6 +70,7 @@ alias gf='git fetch --all --prune'
 alias ga='git add'
 alias gl='git pull'
 alias gp='git push'
+alias co='git submodule foreach git checkout'
 commit () { git commit -v -m "$*" }
 alias gc='noglob commit'
 # show a nice version of the git graph

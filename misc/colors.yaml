@@ -1,0 +1,38 @@
+user: dark_grey #cyan
+group: dark_grey #foreground
+permission:
+  read: dark_grey #purple
+  write: dark_grey #pink
+  exec: [226, 95, 110] #red
+  exec-sticky: dark_grey #cyan
+  no-access: dark_grey #red
+  octal: [226, 95, 110] #red
+  acl: dark_grey
+  context: dark_grey
+date:
+  hour-old: [255, 170, 0] #orange
+  day-old: 103 #comment
+  older: dark_grey #current line
+size:
+  none: dark_grey
+  small: dark_grey
+  medium: [255, 170, 0] #orange
+  large: [226, 95, 110] #red
+inode:
+  valid: white #foreground
+  invalid: [226, 95, 110] #red
+links:
+  valid: white #cyan
+  invalid: [226, 95, 110] #red
+tree-edge: 183 #purple
+git-status:
+  default: 245
+  unmodified: 245
+  ignored: 245
+  new-in-index: dark_green
+  new-in-workdir: dark_green
+  typechange: dark_yellow
+  deleted: dark_red
+  renamed: dark_green
+  modified: dark_yellow
+  conflicted: dark_red

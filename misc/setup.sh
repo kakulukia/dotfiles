@@ -92,9 +92,10 @@ setup () {
   echo ""
   cd
   cd ghar/dotfiles/misc/
-  mkdir -p ~/.config/colorls
+  mkdir -p ~/.config/lsd
   path=$(pwd)
-  ln -s $path/dark_colors.yaml ~/.config/colorls/
+  ln -s $path/color.yaml ~/.config/lsd/
+  ln -s $path/config.yaml ~/.config/lsd/
   green "Installing starship .."
   command -v starship >/dev/null 2>&1 || curl -fsSL https://starship.rs/install.sh | sh -s -- -y > /dev/null 2>&1
   ln -s ~/ghar/dotfiles/misc/starship.toml ~/.config
