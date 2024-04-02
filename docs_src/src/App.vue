@@ -156,8 +156,6 @@ body
 
       h2.subtitle ToDo
       ul
-        li colorls is a lil slow - there is a promising alternative, but
-          a(href="https://github.com/Peltoche/lsd/issues/92" target="_blank")  it's not looking sexy yet
         li Decoupling this shell from needing Python. I am a Python developer, but sure it's
           |  not really needed for the shell itself. Currently the sync tool ghar is a Python script, tho.
         li This
