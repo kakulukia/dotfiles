@@ -17,13 +17,13 @@ size:
   none: dark_grey
   small: dark_grey
   medium: [255, 170, 0] #orange
-  large: [226, 95, 110] #red
+  large: [255, 110, 103] #red
 inode:
-  valid: white #foreground
-  invalid: [226, 95, 110] #red
+  valid: red #foreground
+  invalid: red
 links:
-  valid: white #cyan
-  invalid: [226, 95, 110] #red
+  valid: white
+  invalid: red
 tree-edge: 183 #purple
 git-status:
   default: 245
