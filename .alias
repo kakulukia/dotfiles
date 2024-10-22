@@ -219,5 +219,7 @@ rick () { echo "$*" | chatgpt -i "Du bist Rick, von Rick und Morty. Antworte auf
 dead () { echo "$*" | chatgpt -i "Du bist Deadpool und antwortest mit dem Charm von Rick Reynolds." -t 0.77 }
 chat () { echo "$*" | chatgpt }
 alias h='noglob dead'
-alias sg='sgpt'
-alias sgs='sgpt -s'
+gpt() { sgpt "$*" }
+gpts() { sgpt -s "$*" }
+alias sg="noglob gpt"
+alias sgs="noglob gpts"
