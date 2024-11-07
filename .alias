@@ -109,18 +109,26 @@ which() {
   IFS=$'\n'
   set -f
   found=false
-  for LINE in $(type -a "$1"); do
-    COMMAND=$(echo "$LINE" | cut -d ' ' -f 3)
-    if [[ $COMMAND = /* ]]; then
-      version=$("$COMMAND" --version 2>/dev/null)
-      [[ -n $version ]] && version="($version)"
+  for LINE in $(type -a "$1" 2>/dev/null); do
+    if [[ "$LINE" == "$1 is an alias for "* ]]; then
+      alias_def=$(echo "$LINE" | sed -E "s/^$1 is an alias for //")
       found=true
       if [[ $format == 'full' ]]; then
-        echo "$1 is $COMMAND $version"
-        ll "$COMMAND"
-      else
-        echo "$COMMAND"
-        break
+        echo "$1 is an alias for $alias_def"
+      fi
+    else
+      COMMAND=$(echo "$LINE" | awk '{print $NF}')
+      if [[ $COMMAND = /* ]]; then
+        version=$("$COMMAND" --version 2>/dev/null)
+        [[ -n $version ]] && version="($version)"
+        found=true
+        if [[ $format == 'full' ]]; then
+          echo "$1 is $COMMAND $version"
+          ll "$COMMAND"
+        else
+          echo "$COMMAND"
+          break
+        fi
       fi
     fi
   done
@@ -201,7 +209,9 @@ function server() {
 }
 alias send="woof"
 # get public/local IP addresses
-alias ip="curl -s https://ipinfo.io/ J"
+alias ip="curl -s https://ifconfig.co/json J"
+alias ip4="curl -4 -s https://ifconfig.co/json J"
+alias ip6="curl -6 -s https://ifconfig.co/json J"
 alias ips="ifconfig -a | grep -o 'inet\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet? (addr:)? ?/, \"\"); print }' | grep -v 127.0.0.1"
 alias localip="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p' | head -n 1"
 function digga() {
