@@ -17,19 +17,18 @@ zstyle ':prezto:*:*' color 'yes'
 # Set the Prezto modules to load (browse modules).
 # The order matters.
 zstyle ':prezto:load' pmodule \
-  'evalcache' \
-  'history' \
-  'autosuggestions' \
-  'archive' \
-  'prompt' \
-  'completion' \
-  'fzf-tab' \
   'directory' \
-  'docker' \
-  'syntax-highlighting' \
+  'history' \
   'history-substring-search' \
   'history-search-multi-word' \
+  'autosuggestions' \
+  'completion' \
+  'fzf-tab' \
+  'syntax-highlighting' \
+  'archive' \
   'pyenv-lazy' \
+  # 'prompt' \
+  # 'docker' \
 #  'terminal' \
 
 # fallback for ARM systems - for now ..
@@ -66,6 +65,9 @@ zstyle ":plugin:history-search-multi-word" active "bg=59"
 
 COMPLETION_WAITING_DOTS="true"
 zstyle ':completion:*' special-dirs true
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "$HOME/.zcompcache"
+zstyle ':prezto:module:completion' dumpfile "$HOME/.cache/prezto/zcompdump"
 
 # Source Prezto
 source "$HOME/.zprezto/init.zsh"
@@ -79,13 +81,13 @@ zstyle ':completion:*' format ' -- %d --'
 #zstyle ':prezto:module:tmux:auto-start' remote 'no'
 
 # initialize direnv
-(( $+commands[direnv] )) 2>&1 && _evalcache direnv hook zsh
+(( $+commands[direnv] )) 2>&1 && eval "$(direnv hook zsh)"
 
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
-_evalcache fasd --init auto  # 35ms :(
+eval "$(fasd --init auto)"  # 35ms :(
 # load aliases and  the prompt
 source ~/.alias
-(( $+commands[starship] )) && _evalcache starship init zsh
+(( $+commands[starship] )) && eval "$(starship init zsh)"
 
 upify() {
     buf="$(echo "${BUFFER}" | sed 's/[ |]*$//')"
