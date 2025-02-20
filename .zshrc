@@ -105,7 +105,7 @@ bindkey '^P' upify
 PROMPT_EOL_MARK=⏎
 
 # fast node manager
-( $+commands[fnm] )) && eval "$(fnm env --use-on-cd --shell zsh)"
+(( $+commands[fnm] )) && eval "$(fnm env --use-on-cd --shell zsh)"
 
 # Setting fd as the default source for fzf
 (( $+commands[fd] )) && export FZF_DEFAULT_COMMAND='fd --type f'
