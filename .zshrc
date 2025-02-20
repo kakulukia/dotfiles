@@ -112,6 +112,7 @@ eval "$(fnm env --use-on-cd --shell zsh)"
 
 # misc
 export PYTHONBREAKPOINT=ipdb.set_trace
+export TERM=xterm-256color
 
 # show benchmark results
 # zprof
