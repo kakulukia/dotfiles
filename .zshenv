@@ -37,7 +37,7 @@ function path {
 }
 
 # export full PATH after loading the shell
-export PATH="/usr/sbin:.:/bin:/sbin:/usr/bin:/usr/local/bin:$HOME/bin"
+export PATH="/usr/sbin:.:/bin:/sbin:/usr/bin:/usr/local/bin:$HOME/bin:$HOME/.local/bin"
 
 # in case of weird paths problems: check /etc/zprofile on OSX and do not start the path_helper
 # which messes with the path and tends to reorder it - very bad!

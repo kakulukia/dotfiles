@@ -87,8 +87,7 @@ alias grm="git branch --merged | grep -v \"\*\" | xargs -n 1 git branch -d"  #re
 alias poetry='noglob poetry'
 alias pip='noglob pip'
 alias wget="noglob wget"
-alias sudo='sudo -s "PATH=$PATH"'  # Enable aliases and shell functions to be sudo’ed
-alias please='sudo "PATH=$PATH" zsh -c "$(fc -ln -1)"'  # rerun the last command with sudo (because it failed)
+alias please='sudo -E zsh -c "$(fc -ln -1)"'  # rerun the last command with sudo (because it failed)
 alias cp='cp -iv'
 function mv() {
   if [[ "$#" -ne 1 ]] || [[ ! -f "$1" ]]; then
@@ -169,7 +168,7 @@ alias shell='python manage.py shell_plus'
 alias rs="manage.py runserver 0.0.0.0:8000"
 alias idea='open -a "IntelliJ IDEA"'
 alias update-venv="pip install -U pip setuptools wheel"
-alias init-python="update-venv && pip install -U poetry twine bumpversion isort black httpie magic-wormhole"
+alias init-python="update-venv && pip install -U poetry twine bumpversion ruff  httpie magic-wormhole ipython"
 function jwt() {
   for part in 1 2; do
     b64="$(cut -f${part} -d. <<< "$1" | tr '_-' '/+')"

@@ -25,6 +25,15 @@ cargo install du-dust # du +rust = dust - https://github.com/bootandy/dust
 cargo install ripgrep # it finds stuff - ultra fast - https://github.com/BurntSushi/ripgrep
 cargo install cargo-update # nice way of updating installed crates via cargo install-update -a
 cargo install fd-find # find + rust
+cargo install lsd # ls
+cargo install bottom # top
+cargo install erdtree # tree
+cargo install hyperfine # measure execution speed
+cargo install git-delta # diff util
+cargo install skim # fzf + rust
+cargo install tealdeer # tldr + rust
+cargo instzall hck # cut with regex
+
 
 brew cask install db-browser-for-sqlite # osx app to have a look into sqlite DBs
 

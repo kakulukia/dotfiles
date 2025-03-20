@@ -16,3 +16,7 @@
 [submodule ".zprezto-contrib/pyenv-lazy"]
 	path = .zprezto-contrib/pyenv-lazy
 	url = https://github.com/davidparsson/zsh-pyenv-lazy.git
+[submodule ".zprezto-contrib/fzf-fasd"]
+	path = .zprezto-contrib/fzf-fasd
+	url = https://github.com/kakulukia/fzf-fasd.git
+

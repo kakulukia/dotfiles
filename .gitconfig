@@ -9,7 +9,7 @@
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [merge]
-  tool = opendiff
+	tool = pycharm
   conflictstyle = diff3
   # Standard diff is two sets of final changes. This introduces the original text before each side's changes.
   # https://git-scm.com/docs/git-config#git-config-mergeconflictStyle
@@ -59,3 +59,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[mergetool "pycharm"]
+	cmd = /Applications/PyCharm.app/Contents/MacOS/pycharm merge \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"

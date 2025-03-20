@@ -24,6 +24,7 @@ zstyle ':prezto:load' pmodule \
   'autosuggestions' \
   'completion' \
   'fzf-tab' \
+  'fzf-fasd' \
   'syntax-highlighting' \
   'archive' \
   'pyenv-lazy' \
