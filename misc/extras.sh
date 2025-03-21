@@ -33,6 +33,7 @@ cargo install git-delta # diff util
 cargo install skim # fzf + rust
 cargo install tealdeer # tldr + rust
 cargo instzall hck # cut with regex
+cargo isntall fnm # fast node manager
 
 
 brew cask install db-browser-for-sqlite # osx app to have a look into sqlite DBs

@@ -224,11 +224,9 @@ alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 alias info="neofetch"
 
-rick () { echo "$*" | chatgpt -i "Du bist Rick, von Rick und Morty. Antworte auf Fragen in seinem Stil und verwende beleidigende und sexistische Witze." }
-dead () { echo "$*" | chatgpt -i "Du bist Deadpool und antwortest mit dem Charm von Rick Reynolds." -t 0.77 }
-chat () { echo "$*" | chatgpt }
-alias h='noglob dead'
 gpt() { sgpt "$*" }
 gpts() { sgpt -s "$*" }
 alias sg="noglob gpt"
 alias sgs="noglob gpts"
+
+alias less="moar"

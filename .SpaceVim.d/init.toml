@@ -8,24 +8,24 @@
 
 # All SpaceVim option below [option] section
 [options]
-    # set spacevim theme. by default colorscheme layer is not loaded,
-    # if you want to use more colorscheme, please load the colorscheme
-    # layer
-    colorscheme = "onedark"
-    colorscheme_bg = "dark"
-    # Disable guicolors in basic mode, many terminal do not support 24bit
-    # true colors
-    enable_guicolors = true
-    # Disable statusline separator, if you want to use other value, please
-    # install nerd fonts
-    statusline_separator = "arrow"
-    statusline_inactive_separator = "arrow"
-    buffer_index_type = 4
-    enable_tabline_filetype_icon = true
-    enable_statusline_mode = false
-    bootstrap_before = "loadkeys#before"
-    filemanager = "nerdtree"
-    default_indent = 2
+# set spacevim theme. by default colorscheme layer is not loaded,
+# if you want to use more colorscheme, please load the colorscheme
+# layer
+colorscheme = "onedark"
+colorscheme_bg = "dark"
+# Disable guicolors in basic mode, many terminal do not support 24bit
+# true colors
+enable_guicolors = true
+# Disable statusline separator, if you want to use other value, please
+# install nerd fonts
+statusline_separator = "arrow"
+statusline_inactive_separator = "arrow"
+buffer_index_type = 4
+enable_tabline_filetype_icon = true
+enable_statusline_mode = false
+bootstrap_before = "loadkeys#before"
+filemanager = "nerdtree"
+default_indent = 2
 
 # Enable autocomplete layer
 [[layers]]
@@ -42,4 +42,8 @@ default_position = 'top'
 default_height = 30
 
 [[layers]]
-  name = "colorscheme"
+name = "colorscheme"
+
+[[custom_plugins]]
+repo = 'sindrets/diffview.nvim'
+merged = false

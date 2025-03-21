@@ -46,3 +46,4 @@ wget # get files from the web
 woof # send files or directories
 youtube-dl # download stuff from youtube
 zlib1g-dev # needed for installing Python
+moar # less alternative with syntax highlighting

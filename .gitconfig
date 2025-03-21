@@ -1,19 +1,16 @@
 [core]
   compression = 1
-  pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = diff-so-fancy | less --tabs=4 -RFX
   excludesfile = ~/.gitignore_global
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+	path =
 [merge]
-	tool = pycharm
-  conflictstyle = diff3
-  # Standard diff is two sets of final changes. This introduces the original text before each side's changes.
-  # https://git-scm.com/docs/git-config#git-config-mergeconflictStyle
-
+	tool = vimdiff
+[mergetool "vimdiff"]
+  	path = vim
+[mergetool "pycharm"]
+	cmd = /Applications/PyCharm.app/Contents/MacOS/pycharm merge \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
 [include]
     path = ~/.gitconfig-personal
 [push]
@@ -59,5 +56,7 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[mergetool "pycharm"]
-	cmd = /Applications/PyCharm.app/Contents/MacOS/pycharm merge \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+[interactive]
+	diffFilter = diff-so-fancy --patch
+[diff-so-fancy]
+	changeHunkIndicators = false
