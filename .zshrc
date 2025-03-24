@@ -5,6 +5,10 @@
 export EDITOR='vim'
 export VISUAL='vim'
 export PAGER='less'
+if [[ "$(uname)" != "Darwin" ]]; then
+    export TERM=xterm-256color
+fi
+export XDG_RUNTIME_DIR="$HOME/.cache/xdgr"
 
 # Language
 export LANG='de_DE.UTF-8'
@@ -113,9 +117,6 @@ PROMPT_EOL_MARK=⏎
 
 # misc
 export PYTHONBREAKPOINT=ipdb.set_trace
-if [[ "$(uname)" != "Darwin" ]]; then
-    export TERM=xterm-256color
-fi
 
 # show benchmark results
 # zprof

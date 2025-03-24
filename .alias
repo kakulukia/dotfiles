@@ -159,6 +159,7 @@ alias ping="prettyping --nolegend"
 (( $+commands[gtar] )) && alias tar="gtar"
 (( $+commands[glances] )) && alias top="glances"
 (( $+commands[gdate] )) && alias date="gdate"
+(( $+commands[moar] )) &&  alias less="moar"
 
 
 ### Python / Django
@@ -228,5 +229,3 @@ gpt() { sgpt "$*" }
 gpts() { sgpt -s "$*" }
 alias sg="noglob gpt"
 alias sgs="noglob gpts"
-
-alias less="moar"

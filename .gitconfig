@@ -4,7 +4,7 @@
   excludesfile = ~/.gitignore_global
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
+	path = 
 [merge]
 	tool = vimdiff
 [mergetool "vimdiff"]
@@ -60,3 +60,6 @@
 	diffFilter = diff-so-fancy --patch
 [diff-so-fancy]
 	changeHunkIndicators = false
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
