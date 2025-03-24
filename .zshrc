@@ -113,7 +113,7 @@ PROMPT_EOL_MARK=⏎
 
 # misc
 export PYTHONBREAKPOINT=ipdb.set_trace
-if [[ -n "$SSH_TTY" ]]; then
+if [[ "$(uname)" != "Darwin" ]]; then
     export TERM=xterm-256color
 fi
 
