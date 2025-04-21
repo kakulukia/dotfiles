@@ -2,19 +2,26 @@
 # zmodload zsh/zprof
 
 ### Editors
-export EDITOR='vim'
-export VISUAL='vim'
+export EDITOR='nvim'
+export VISUAL='nvim'
 export PAGER='less'
 if [[ "$(uname)" != "Darwin" ]]; then
     export TERM=xterm-256color
 fi
 export XDG_RUNTIME_DIR="$HOME/.cache/xdgr"
+export XDG_DATA_HOME="$HOME/.local/share"
 
 # Language
 export LANG='de_DE.UTF-8'
 
 # Add additional directories to load prezto modules from
+# Add custom prezto modules directory
 zstyle ':prezto:load' pmodule-dirs $HOME/.zprezto-contrib
+[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
+
+# Initialize zsh completion system early (needed for fzf-tab, zsh-completions)
+autoload -Uz compinit
+compinit -u
 # Color output (auto set to 'no' on dumb terminals).
 zstyle ':prezto:*:*' color 'yes'
 
@@ -23,18 +30,13 @@ zstyle ':prezto:*:*' color 'yes'
 zstyle ':prezto:load' pmodule \
   'directory' \
   'history' \
-  'history-substring-search' \
-  'history-search-multi-word' \
-  'autosuggestions' \
   'completion' \
   'fzf-tab' \
-  'fzf-fasd' \
+  'autosuggestions' \
   'syntax-highlighting' \
-  'archive' \
-  'pyenv-lazy' \
-  # 'prompt' \
-  # 'docker' \
-#  'terminal' \
+  'history-substring-search' \
+  'history-search-multi-word' \
+  'archive'
 
 # fallback for ARM systems - for now ..
 zstyle ':prezto:module:prompt' theme 'minimal'
@@ -88,8 +90,17 @@ zstyle ':completion:*' format ' -- %d --'
 # initialize direnv
 (( $+commands[direnv] )) 2>&1 && eval "$(direnv hook zsh)"
 
-[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
-eval "$(fasd --init auto)"  # 35ms :(
+# Switched from fasd to v (recently edited files) + zoxide (dir jumps):
+# disable fasd initialization
+# eval "$(fasd --init auto)"  # now using v + zoxide instead
+
+# v: jump to recently edited files via viminfo (no init needed; ensure bin/v is executable and in PATH)
+# Usage: v <pattern>  (it will open matching file in your $EDITOR)
+
+# zoxide: fast directory jumping
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init zsh)"
+fi
 # load aliases and  the prompt
 source ~/.alias
 (( $+commands[starship] )) && eval "$(starship init zsh)"

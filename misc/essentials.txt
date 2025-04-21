@@ -3,45 +3,28 @@ coreutils # some core linux versions of totally outdated OSX/BSD tools like gdat
 ctop # top for docker containers
 ddgr # duck duck go for command line
 dos2unix # ^M no more
-fd # find replacement
 fx # json viewer https://github.com/antonmedv/fx
-fzf # fuzzy finder https://github.com/junegunn/fzf
-git # version control
 gnu-sed # updated version of sed compared to OSX default
-htop # better version ot top
-httpie # better version of curl
 http-prompt # its like an httpie shell
-hyperfine # command line benchmarking https://github.com/sharkdp/hyperfine
 iftop # top for network interfaces
 irssi # irc client
 jq # a must have when working with json https://github.com/stedolan/jq
 mosh # the mobile shell https://github.com/mobile-shell/mosh
-fnm # node version manager
 ngrok # port forward localhost to the outside world
 neofetch # get stats about your OS https://github.com/dylanaraps/neofetch
 nmap # network mapper https://github.com/nmap/nmap
 nnn # command line file browser
-nodejs # works on ubuntu
 openconnect # VPN client
 openssl # SSL lib
-pyenv # Python version management
-python3
-python3-dev # to be able to compile stuff
-python3-pip # python package manager
 redis
-ruby
-ruby-dev # to be able to compile stuff
 sd # find and replace (like sed)
 speedtest-cli # connection speed tester
-ssh-copy-id # copy ssh key to remote box
 telnet
-tldr # better man pages
 tmux # terminal multiplexer
 trash-cli # trash for the command line
 tree # directory contents in a tree like structure
 unrar # unpack rar files
 up # the ultimate plumber https://github.com/akavel/up
-watchexec # Run arbitrary commands when files change https://github.com/watchexec/watchexec
 wget # get files from the web
 woof # send files or directories
 youtube-dl # download stuff from youtube

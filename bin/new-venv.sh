@@ -14,13 +14,7 @@ fi
 
 # Liste der verwalteten Python-Versionen ermitteln.
 # uv python list gibt eine Tabelle aus – wir extrahieren die erste Spalte (Version) und überspringen die Header-Zeile.
-PY_VERSIONS=$(uv python list --only-installed | awk 'NR>1 {print $1}' | sed -E 's/^cpython-([0-9]+\.[0-9]+\.[0-9]+)-.*$/\1/')
-
-if [ -z "$PY_VERSIONS" ]; then
-  echo "Keine verwalteten Python-Versionen gefunden. Installiere eine Version z.B. mit:"
-  echo "  uv python install 3.12"
-  exit 1
-fi
+PY_VERSIONS=$(uv python list | hck -f 1)
 
 # Falls fzf vorhanden ist, benutze es für die Auswahl, ansonsten nutze ein simples Bash-Menü.
 if command -v fzf &>/dev/null; then
@@ -28,26 +22,22 @@ if command -v fzf &>/dev/null; then
 else
   echo "Verfügbare Python-Versionen:"
   select ver in $PY_VERSIONS; do
-    SELECTED_VERSION=$ver
+    SELECTED_VERSION=$(echo $ver | hck -f 1)
     break
   done
 fi
 
-if [ -z "$SELECTED_VERSION" ]; then
-  echo "Keine Python-Version ausgewählt."
-  exit 1
-fi
-
-echo "Ausgewählte Python-Version: $SELECTED_VERSION"
-
 # Erstelle das virtuelle Environment mit uv und --seed (sodass pip vorinstalliert wird)
 echo "Erstelle virtuelles Environment..."
-uv venv --python "$SELECTED_VERSION" --seed || { echo "Fehler beim Erstellen des venv"; exit 1; }
+echo $SELECTED_VERSION
+uv python install $SELECTED_VERSION
+uv venv --python $SELECTED_VERSION --seed || { echo "Fehler beim Erstellen des venv"; exit 1; }
 
 # Lege eine .envrc an, damit direnv das venv beim Betreten des Verzeichnisses lädt.
 # Die Standard-direnv-Funktion "layout python" sucht nach einem venv im aktuellen Verzeichnis (.venv)
 cat <<EOF > .envrc
-layout python
+source .venv/bin/activate
 EOF
 
-echo ".envrc wurde erstellt. Bitte führe 'direnv allow' aus, damit direnv das Environment automatisch aktiviert."
+direnv allow
+poetry init
