@@ -2,19 +2,26 @@
 # zmodload zsh/zprof
 
 ### Editors
-export EDITOR='vim'
-export VISUAL='vim'
+export EDITOR='nvim'
+export VISUAL='nvim'
 export PAGER='less'
 if [[ "$(uname)" != "Darwin" ]]; then
     export TERM=xterm-256color
 fi
 export XDG_RUNTIME_DIR="$HOME/.cache/xdgr"
+export XDG_DATA_HOME="$HOME/.local/share"
 
 # Language
 export LANG='de_DE.UTF-8'
 
 # Add additional directories to load prezto modules from
 zstyle ':prezto:load' pmodule-dirs $HOME/.zprezto-contrib
+
+
+# Initialize zsh completion system early (needed for fzf-tab, zsh-completions)
+#[[ $- == *i* ]] && source "/Users/andy/.fzf/shell/completion.zsh"
+#[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
+
 # Color output (auto set to 'no' on dumb terminals).
 zstyle ':prezto:*:*' color 'yes'
 
@@ -23,18 +30,13 @@ zstyle ':prezto:*:*' color 'yes'
 zstyle ':prezto:load' pmodule \
   'directory' \
   'history' \
+  'completion' \
+  'autosuggestions' \
+  'syntax-highlighting' \
   'history-substring-search' \
   'history-search-multi-word' \
-  'autosuggestions' \
-  'completion' \
   'fzf-tab' \
-  'fzf-fasd' \
-  'syntax-highlighting' \
-  'archive' \
-  'pyenv-lazy' \
-  # 'prompt' \
-  # 'docker' \
-#  'terminal' \
+  'archive'
 
 # fallback for ARM systems - for now ..
 zstyle ':prezto:module:prompt' theme 'minimal'
@@ -73,11 +75,15 @@ zstyle ':completion:*' special-dirs true
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path "$HOME/.zcompcache"
 zstyle ':prezto:module:completion' dumpfile "$HOME/.cache/prezto/zcompdump"
+## unset preztos annoying grouping feature
+zstyle ':completion:*' format ' -- %d --'
 
 # Source Prezto
 source "$HOME/.zprezto/init.zsh"
-## unset preztos annoying grouping feature
-zstyle ':completion:*' format ' -- %d --'
+autoload -Uz compinit compdef
+compinit -u
+source ~/.alias
+
 
 #### Tmux
 ## Auto start a session when Zsh is launched in a local terminal.
@@ -88,10 +94,12 @@ zstyle ':completion:*' format ' -- %d --'
 # initialize direnv
 (( $+commands[direnv] )) 2>&1 && eval "$(direnv hook zsh)"
 
-[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
-eval "$(fasd --init auto)"  # 35ms :(
+# zoxide: fast directory jumping
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init zsh)"
+fi
+
 # load aliases and  the prompt
-source ~/.alias
 (( $+commands[starship] )) && eval "$(starship init zsh)"
 
 upify() {

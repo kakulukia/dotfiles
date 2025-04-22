@@ -1,123 +1,108 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -e
 
+######################
+# Configuration
+######################
 GHAR=${REMOTE:-git://github.com/philips/ghar.git}
 DOTFILES=${REMOTE:-git@github.com:kakulukia/dotfiles.git}
-
-apt=`command -v apt-get`
-yum=`command -v yum`
-brew=`command -v brew`
-
-green () {
-  out='\033[0;32m'
-  NC='\033[0m'
-  echo -e "${out}${1}${NC}"
+green() {
+  echo ""
+  echo -e "\033[0;32m$1\033[0m"
 }
-red () {
-  out='\033[0;31m'
-  NC='\033[0m'
-  echo -e "${out}${1}${NC}"
+red() {
+  echo -e "\033[0;31m$1\033[0m"
 }
 
-## Detect the systems installer
-green "detecting OS .."
-if [ -n "$apt" ]; then
-    INSTALL='apt-get -y install'
-    if [ $EUID -ne 0 ]; then
-       INSTALL='sudo '$INSTALL
-    fi
-elif [ -n "$yum" ]; then
-    INSTALL='yum -y install'
-    if [ $EUID -ne 0 ]; then
-       INSTALL='sudo '$INSTALL
-    fi
-elif [ -n "$brew" ]; then
-    INSTALL='brew install'
-else
-    echo "Error: Your OS is not supported :(\nOr you might need to install Homebrew first?" >&2;
-    exit 1;
+
+##############################
+# 1. Detect OS / PackageMgr
+##############################
+detect_os() {
+  if command -v apt-get &>/dev/null; then
+    INSTALL="sudo apt-get -y install"
+  elif command -v yum &>/dev/null; then
+    INSTALL="sudo yum -y install"
+  elif command -v brew &>/dev/null; then
+    INSTALL="brew install"
+  else
+    echo "Unsupported OS; please install dependencies manually." >&2
+    exit 1
+  fi
+  echo "Using installer: $INSTALL"
+}
+green "Detecting OS and package manager..."
+detect_os
+
+##############################
+# 2. Bootstrap: uv & Python
+##############################
+if ! command -v uv &>/dev/null; then
+  echo "Installing uv..."
+  curl -LsSf https://astral.sh/uv/install.sh | sh
+  export PATH="$HOME/.local/bin:$PATH"
+fi
+green "Installing Python (3.13) via uv..."
+uv python install 3.13 --default --preview
+
+##############################
+# 3. Core Tools (via apps.yaml)
+##############################
+# Install Rust-based tools via binstall
+# Ensure Rust toolchain (rustup & cargo)
+#if ! command -v rustup >/dev/null 2>&1; then
+#  green "Installing rustup (Rust toolchain manager)..."
+#  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+#  # Load cargo environment
+#  source "$HOME/.cargo/env"
+#fi
+#green "Ensuring Starship is installed..."
+#if ! command -v starship >/dev/null 2>&1; then
+#  curl -fsSL https://starship.rs/install.sh | sh -s -- -y >/dev/null 2>&1
+#fi
+
+# Install fzf if not already installed
+if [ ! -d "$HOME/.fzf" ]; then
+  green "Installing fzf..."
+  git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"
 fi
 
-## test if command exists
-check () {
-  green "Checking for ${1} .."
-  if type -f "${1}" > /dev/null 2>&1; then
-    return 1
-  else
-    green "Installing ${1}"
-    return 0
-  fi
-}
+# Placeholder: install_from_yaml apps.yaml
+# e.g. uv tool install-from apps.yaml
 
-## main setup
-setup () {
-  echo ""
-  green "installing dotfiles .."
-  ## test for require features
-  check git && $INSTALL git
-  check zsh && $INSTALL zsh
-  check wget && $INSTALL wget
-  check python3 && $INSTALL python3
-  check make && $INSTALL make
+##############################
+# 4. Dotfiles Linking (Ghar)
+##############################
+echo "Linking dotfiles via ghar..."
+python "$HOME/ghar/bin/ghar" install
 
-  echo ""
-  green "Cloning the repo .."
-  cd
-  git clone https://github.com/philips/ghar.git
-  cd ghar
-  git clone --recursive https://github.com/kakulukia/dotfiles.git
+##############################
+# 5. Config Directory Sync
+##############################
+echo "Linking additional configs..."
+mkdir -p "$HOME/.config"
+for d in "$(pwd)/misc/.config"/*; do
+  ln -sf "$d" "$HOME/.config/$(basename "$d")"
+done
 
-  # install pyenv, activate and install python3 if necessary
-  # git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-  # git clone https://github.com/pyenv/pyenv-virtualenvwrapper.git ~/.pyenv/plugins/pyenv-virtualenvwrapper
-  # PYENV_ROOT="$HOME/.pyenv"
-  # PATH="$PYENV_ROOT/bin:$PATH"
-  # eval "$(pyenv init -)"
-  # command -v python3 || pyenv install 3.8.2 && pyenv global 3.8.2
+##############################
+# 6. Optional Tools
+##############################
+# Placeholder for interactive apps.yaml logic
+# echo "Installing optional tools..."
+# uv tool install-from apps.yaml
 
-  #installing dotfiles symlinks
-  python3 bin/ghar install
+##############################
+# 7. Finalization
+##############################
+green "Changing default login shell to zsh..."
+chsh -s "$(which zsh)" "$(whoami)"
+#  Change default login shell to zsh
+# if [ $EUID -ne 0 ]; then
+#   sudo chsh -s "$(which zsh)" "$(whoami)"
+# else
+#   chsh -s "$(which zsh)" "$(whoami)"
+# fi
 
-  echo ""
-  green "Installing fasd .."
-  cd /tmp
-  wget https://github.com/clvv/fasd/archive/1.0.1.tar.gz
-  tar xzfv 1.0.1.tar.gz
-  cd /tmp/fasd-1.0.1
-  if [ $EUID -ne 0 ]; then
-    sudo make install
-  else
-    make install
-  fi
-
-  echo ""
-  cd
-  cd ghar/dotfiles/misc/
-  mkdir -p ~/.config/lsd
-  path=$(pwd)
-  ln -s $path/colors.yaml ~/.config/lsd/
-  ln -s $path/config.yaml ~/.config/lsd/
-  green "Installing starship .."
-  command -v starship >/dev/null 2>&1 || curl -fsSL https://starship.rs/install.sh | sh -s -- -y > /dev/null 2>&1
-  ln -s ~/ghar/dotfiles/misc/starship.toml ~/.config
-  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install --bin > /dev/null 2>&1
-
-  zsh install-additional-stuff.sh
-
-  echo ""
-  echo ""
-  green "Changing your default login shell to zsh ..."
-  echo "chsh -s $(which zsh) $(whoami)"
-  if [ $EUID -ne 0 ]; then
-    sudo chsh -s $(which zsh) $(whoami)
-  else
-    chsh -s $(which zsh) $(whoami)
-  fi
-  echo ""
-  green "Have fun with your new shell!"
-  echo "type zsh to start it or just login again .."
-  echo ""
-  echo ""
-
-}
-
-setup
+green "Installation complete. Have fun with your new shell!"
+echo "Type 'zsh' to start it or simply log out and back in."
