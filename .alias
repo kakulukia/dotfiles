@@ -33,26 +33,53 @@ c() {
     z "$@"
   fi
 }
+# nicer path configuration and lookup
+function path {
+  case "$1" in
+    "--save")
+      shift
+      for dir in "$@"; do
+        if [[ -d "$dir" ]]; then
+          if ! grep -q "path $dir" "$HOME/.profile"; then
+            echo "path $dir" >> "$HOME/.profile"
+          fi
+          path "$dir"  # Direkt setzen
+        else
+          echo "$dir does not exist :("
+        fi
+      done
+      ;;
+
+    "")
+      echo "sorted .."
+      echo -e "$(echo $PATH | tr ':' '\n' | sort)"
+      ;;
+
+    "-o")
+      echo -e "current order .."
+      echo -e "$(echo $PATH | tr ':' '\n')"
+      ;;
+
+    *)
+      for dir in "$@"; do
+        if [[ -d "$dir" && ":$PATH:" != *":$dir:"* ]]; then
+          export PATH="$dir:$PATH"
+        fi
+      done
+      ;;
+  esac
+}
 
 if (( $+commands[zoxide] )) && (( $+commands[fzf] )); then
   __fzf_zoxide_c() {
-    # 1) Puffer sichern
     local orig_buffer=$LBUFFER
-
-    # 2) Splitten und prüfen, ob das Kommando 'c' ist
     local args cmd slug
     args=(${(z)LBUFFER})
     cmd=${args[1]}
     [[ $cmd != c ]] && { zle expand-or-complete; return }
-
-    # 3) Such‑Prefix (falls eingegeben)
     slug=${args[2]:-}
-
-    # 4) Einträge aus Zoxide ziehen (ungefiltert)
     local entries
     entries=(${(f)"$(zoxide query --list)"})
-
-    # 5) Menü via FZF öffnen, mit vorbefülltem Query
     local selected
     selected=$(
       printf '%s\n' "${entries[@]}" \
@@ -63,18 +90,13 @@ if (( $+commands[zoxide] )) && (( $+commands[fzf] )); then
           --query "$slug" \
           --bind 'esc:abort'
     ) || {
-      # 6) Abbruch (ESC) → Prompt wiederherstellen
       LBUFFER=$orig_buffer
       zle redisplay
       return
     }
-
-    # 7) In das gewählte Verzeichnis springen
     zle redisplay
     LBUFFER="c $selected"
     zle accept-line
-
-    # 8) Prompt neu zeichnen
   }
 
   # 1) Make sure __fzf_zoxide_c is registered as a ZLE widget:
@@ -156,6 +178,7 @@ alias grm="git branch --merged | grep -v \"\*\" | xargs -n 1 git branch -d"  #re
 alias poetry='noglob poetry'
 alias pip='noglob pip'
 alias wget="noglob wget"
+
 alias please='sudo -E zsh -c "$(fc -ln -1)"'  # rerun the last command with sudo (because it failed)
 alias cp='cp -iv'
 function mv() {
@@ -216,7 +239,8 @@ gpt() { sgpt "$*" }
 gpts() { sgpt -s "$*" }
 alias sg="noglob gpt"
 alias sgs="noglob gpts"
-alias dotbox="docker run -it --rm --name dotfiles-test-container --hostname dotbox --user testuser1 --workdir /home/testuser1 -v ~/ghar:/home/testuser1/ghar dotfiles-test bash"
+alias dotbox="docker run -it --rm --name dotfiles-test-container --hostname dotbox --user testuser1 --workdir /home/testuser1 bash"
+alias dotbox2="docker run -it --rm --name dotfiles-test-container --hostname dotbox --user testuser2 --workdir /home/testuser2 bash"
 
 # Hide/show all desktop icons (useful when presenting)
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
@@ -230,6 +254,19 @@ sleep-in() { echo "Going to  sleep in $1 minutes .." && sleep $((60 * $1)) && pm
 (( $+commands[gtar] )) && alias tar="gtar"
 (( $+commands[gdate] )) && alias date="gdate"
 (( $+commands[moar] )) &&  alias less="moar"
+
+upify() {
+    buf="$(echo "${BUFFER}" | sed 's/[ |]*$//')"
+    tmp="$(mktemp)"
+    eval "${buf} |& up --unsafe-full-throttle -o '$tmp' 2>/dev/null"
+    cmd="$(tail -n +2 "$tmp")"
+    rm -f "$tmp"
+    BUFFER="${BUFFER} | ${cmd}"
+    zle end-of-line
+}
+zle -N upify
+# use Ctrl+P to invoke and Ctrl+X to close and use the result
+bindkey '^P' upify
 
 
 ### PYTHON / DJANGO ########################################################
@@ -262,4 +299,4 @@ alias get='curl --continue-at - --location --progress-bar --remote-name --remote
 # View HTTP traffic
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
-alias info="neofetch"
+alias info="fastfetch"

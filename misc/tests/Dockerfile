@@ -19,17 +19,22 @@ ENV LC_ALL=en_US.UTF-8
 
 # Benutzer testuser1 mit sudo ohne Passwort
 RUN useradd -m -s /bin/bash testuser1 && \
+    echo 'testuser1:test' | chpasswd && \
     echo 'testuser1 ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 # Benutzer testuser2 ohne sudo
-RUN useradd -m -s /bin/bash testuser2
+RUN useradd -m -s /bin/bash testuser2 && \
+    echo 'testuser2:test' | chpasswd
 
-# Automatischer Start von setup.sh beim Login (nur testuser1)
-RUN echo '\
-    if [[ $- == *i* ]] && [ -f "$HOME/ghar/dotfiles/misc/setup.sh" ]; then \n\
-    echo ">> Starte Setup: ghar/dotfiles/misc/setup.sh" \n\
-    bash "$HOME/ghar/dotfiles/misc/setup.sh" \n\
-    fi' >> /home/testuser1/.bashrc
+# Automatischer Start von setup.sh beim Login (für testuser1 und testuser2)
+RUN printf '%s\n' \
+'echo ">> Starte Setup: ghar/dotfiles/misc/setup.sh"' \
+'bash "$HOME/ghar/dotfiles/misc/setup.sh"' \
+>> /home/testuser1/.bashrc && \
+printf '%s\n' \
+'echo ">> Starte Setup: ghar/dotfiles/misc/setup.sh"' \
+'bash "$HOME/ghar/dotfiles/misc/setup.sh"' \
+>> /home/testuser2/.bashrc
 
 # Start direkt in Bash
 CMD ["/bin/bash"]

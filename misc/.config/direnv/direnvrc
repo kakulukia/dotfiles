@@ -1,0 +1,7 @@
+use_fnm() {
+  export FNM_DIR="$HOME/.fnm"
+  eval "$(fnm env --use-on-cd)"
+  if [[ -f .nvmrc || -f .node-version ]]; then
+    fnm use --install-if-missing
+  fi
+}

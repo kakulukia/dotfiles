@@ -1,0 +1,85 @@
+{
+  "system":  {
+    "cmd":  "install",
+    "apps":  [
+      {"name": "curl", "default": true, "desc": "curl"},
+      {"name": "git", "default": true, "desc": "Version control"},
+      {"name": "jq", "default": true, "desc": "JSON Parser"},
+      {"name": "wget", "default": true, "desc": "Web-Downloader"},
+      {"name": "zsh", "default": true, "desc": "Z Shell"},
+
+      {"name": "cloc", "default": false, "desc": "Count Lines of Code"},
+      {"name": "coreutils", "default": false, "desc": "GNU Coreutils (gdate, etc.)", "cmd": "gdate"},
+      {"name": "fastfetch", "default": false, "desc": "Systeminfo (install manually under Ubuntu or use neofetch)",
+        "comment": "Ubuntu needs to install ppa:zhangsongcui3371/fastfetch"},
+      {"name": "neofetch", "default": false, "desc": "Systeminfo (for older systems)"},
+      {"name": "ddgr", "default": false, "desc": "DuckDuckGo CLI"},
+      {"name": "dos2unix", "default": false, "desc": "Line-Endings converter"},
+      {"name": "gnu-sed", "default": false, "desc": "GNU sed for OSX", "cmd": "gsed"},
+      {"name": "irssi", "default": false, "desc": "IRC client"},
+      {"name": "mosh", "default": false, "desc": "Mobile Shell (explicitly for instable connections)"},
+      {"name": "ngrok", "default": false, "desc": "Make your ports public"},
+      {"name": "nmap", "default": false, "desc": "Network scanner"},
+      {"name": "nnn", "default": false, "desc": "Command line file browser"},
+      {"name": "openconnect", "default": false, "desc": "VPN client"},
+      {"name": "openssl", "default": false, "desc": "OpenSSL toolkit"},
+      {"name": "rar", "default": false, "desc": "RAR-Archive support (MAC)"},
+      {"name": "unrar", "default": false, "desc": "RAR-Archive support (Ubuntu)"},
+      {"name": "redis", "default": false, "desc": "Redis CLI tools", "cmd": "redis-server"},
+      {"name": "speedtest-cli", "default": false, "desc": "Speedtest CLI", "cmd": "speedtest"},
+      {"name": "telnet", "default": false, "desc": "Telnet client"},
+      {"name": "tmux", "default": false, "desc": "Terminal multiplexer"},
+      {"name": "up", "default": false, "desc": "Ultimate plumber (hot pip building / exploring)"},
+      {"name": "yt-dlp", "default": false, "desc": "YouTube Downloader"}
+    ]
+  },
+  "cargo":  {
+    "cmd":  "binstall -y",
+    "apps":  [
+      {"name": "bat", "default": true, "desc": "Cat with syntax highlighting"},
+      {"name": "bottom", "default": true, "desc": "Modern top/htop alternative", "cmd": "btm"},
+      {"name": "cargo-update", "default": true, "desc": "Cargo package update support", "cmd": "cargo-install-update"},
+      {"name": "du-dust", "default": true, "desc": "du + rust (show disc usage)", "cmd": "dust"},
+      {"name": "erdtree", "default": true, "desc": "Faster tree tool", "cmd": "erd"},
+      {"name": "fd-find", "default": true, "desc": "Faster find alternative", "cmd": "fd"},
+      {"name": "fnm", "default": true, "desc": "Fast Node Manager"},
+      {"name": "lsd", "default": true, "desc": "ls with icons, colors and speed"},
+      {"name": "rip2", "default": true, "desc": "Delete with trash", "cmd": "rip"},
+      {"name": "ripgrep", "default": true, "desc": "grep, but a bit faster", "cmd": "rg"},
+      {"name": "tealdeer", "default": true, "desc": "Better manuals with tldr", "cmd": "tldr"},
+      {"name": "zoxide", "default": true, "desc": "fasd for directories"},
+
+      {"name": "broot", "default": false, "desc": "Dateisystem-Navigation"},
+      {"name": "git-delta", "default": false, "desc": "Verbessertes Git-Diff", "cmd": "delta"},
+      {"name": "hyperfine", "default": false, "desc": "Benchmarking Tool"},
+      {"name": "skim", "default": false, "desc": "Fuzzy Finder (fzf-Alternative)", "cmd": "sk"}
+    ]
+  },
+  "uv":  {
+    "cmd":  "tool install",
+    "apps":  [
+      {"name": "httpie", "default": true, "desc": "User friendly HTTP CLI"},
+      {"name": "poetry", "default": true, "desc": "Still my default package manger"},
+      {"name": "shell-gpt", "default": true, "desc": "Chat GPT for the command line", "cmd": "sgpt"},
+      {"name": "ipython", "default": true, "desc": "Better Python shell"},
+      {"name": "magic-wormhole", "default": true, "desc": "Get things from one computer to another, safely.", "cmd": "wormhole"},
+
+      {"name": "cookiecutter", "default": false, "desc": "Coding project template tool"},
+      {"name": "http-prompt", "default": false, "desc": "Interaktive HTTP-Shell"},
+      {"name": "pgcli", "default": false, "desc": "Interaktiver Postgres Client"}
+    ]
+  },
+  "npm":  {
+    "cmd":  "install -g",
+    "apps":  [
+      {"name": "fkill-cli", "default": true, "desc": "Prozesse komfortabel beenden", "cmd": "fkill"},
+      {"name": "sass", "default": true, "desc": "dart-sass"},
+
+      {"name": "@openai/codex", "default": false, "desc": "Chat GPT coding environment", "cmd": "codex"},
+      {"name": "carbon-now-cli", "default": false, "desc": "Code-Screenshots aus der CLI", "cmd": "carbon-now"},
+      {"name": "iponmap", "default": false, "desc": "Eigene IP-Adresse auf Karte"},
+      {"name": "mapscii", "default": false, "desc": "Interaktive Weltkarte in ASCII"},
+      {"name": "rename-cli", "default": false, "desc": "Dateien einfach umbenennen", "cmd": "rename"}
+    ]
+  }
+}

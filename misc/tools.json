@@ -1,0 +1,13 @@
+{
+  "system": [
+    { "name": "git",   "desc": "Git version control", "default": true },
+    { "name": "zsh",   "desc": "Z Shell",         "default": true },
+    { "name": "curl",  "desc": "HTTP client",      "default": true }
+  ],
+  "optional": [
+    { "name": "direnv",  "desc": "Directory env loader",   "default": true },
+    { "name": "fzf",     "desc": "Fuzzy Finder CLI",       "default": false },
+    { "name": "zoxide",  "desc": "Smart cd alternative",   "default": true },
+    { "name": "starship","desc": "Cross-shell prompt",     "default": false }
+  ]
+}
